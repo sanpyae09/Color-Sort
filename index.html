@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Color Sort - Enhanced Edition</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Bungee&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <div id="toast-notification"></div>
+
+    <div id="login-screen">
+        <div class="loader-container">
+            <div class="loading-block" style="background-color: #ff4757;"></div>
+            <div class="loading-block" style="background-color: #3742fa;"></div>
+            <div class="loading-block" style="background-color: #fbc531;"></div>
+            <div class="loading-block" style="background-color: #4cd137;"></div>
+            <div class="loading-block" style="background-color: #9c88ff;"></div>
+            <div class="loading-block" style="background-color: #f78fb3;"></div>
+            <div class="loading-block" style="background-color: #7158e2;"></div>
+            <div class="loading-block" style="background-color: #fbc531;"></div>
+            <div class="loading-block" style="background-color: #ff4757;"></div>
+        </div>
+        <div id="loading-text">Connecting...</div>
+        <div id="login-options" class="mt-8 hidden">
+             <button id="guest-mode-btn" class="home-button" style="width: 280px; height: 80px; font-size: 1.5rem;">
+                 <i class="fas fa-user-secret mr-3"></i> Play as Guest
+            </button>
+        </div>
+    </div>
+
+    <div id="home-screen" class="hidden">
+        <div id="home-header">
+            <div class="top-bar-container">
+                <div id="home-top-bar">
+                    <div class="top-bar-stat">
+                        <span>💰</span>
+                        <span id="home-usd">0.00</span>
+                    </div>
+                    <div class="top-bar-stat">
+                        <span>💠</span>
+                        <span id="home-points">0</span>
+                    </div>
+                    <div class="top-bar-stat">
+                        <span>🪙</span>
+                        <span id="home-coins">0</span>
+                    </div>
+                </div>
+                 <div id="settings-btn" class="top-icon-button">
+                    <i class="fas fa-cog"></i>
+                </div>
+            </div>
+            <div id="earner-notification-bar">
+                <div id="earner-notification-content"></div>
+            </div>
+        </div>
+
+        <div class="text-center"> 
+            <h1 id="game-title">Color<br>Sort</h1>
+            <div class="home-button-grid">
+                <button id="start-game-btn" class="home-button">Start</button>
+                <button id="levels-btn" class="home-button">Levels</button>
+                <button id="missions-btn" class="home-button">Missions</button>
+                <button id="daily-bonus-btn" class="home-button">Daily Bonus</button>
+                <button id="spin-wheel-btn" class="home-button">Spin Wheel</button>
+                <button id="pro-mode-btn" class="home-button"><i class="fas fa-crown mr-2"></i>Get Pro</button>
+            </div>
+            <div id="home-icon-buttons">
+                <button id="profile-btn" class="home-icon-btn"><i class="fas fa-user-circle"></i></button>
+                <button id="invite-btn" class="home-icon-btn"><i class="fas fa-user-plus"></i></button>
+                <button id="withdraw-btn" class="home-icon-btn"><i class="fas fa-wallet"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="settings-modal" class="hidden">
+        <div class="settings-content">
+            <button id="close-settings">×</button>
+            <h2 class="settings-title">Settings</h2>
+            
+            <div class="setting-item">
+                <span>Background Music</span>
+                <div id="music-toggle" class="toggle-switch active"></div>
+            </div>
+            <div class="setting-item">
+                <span>Sound Effects</span>
+                <div id="sound-toggle" class="toggle-switch active"></div>
+            </div>
+            <div class="setting-item">
+                <span>Show Animations</span>
+                <div id="animation-toggle" class="toggle-switch active"></div>
+            </div>
+            <div class="setting-item">
+                <span>Auto Save Progress</span>
+                <div id="autosave-toggle" class="toggle-switch active"></div>
+            </div>
+            <div class="setting-item">
+                <span>Show Hints</span>
+                <div id="hints-toggle" class="toggle-switch active"></div>
+            </div>
+            
+            <button id="logout-btn" class="neat-button logout-button w-full mt-4">
+                <i class="fas fa-sign-out-alt mr-2"></i> Logout
+            </button>
+
+            <button id="reset-progress" class="neat-button danger-button w-full mt-2">
+                Reset All Progress
+            </button>
+            
+            <div class="version-info">
+                Version 7.3.0 - Withdrawal Update
+            </div>
+        </div>
+    </div>
+
+    <div id="profile-modal" class="fixed inset-0 flex items-center justify-center z-[300] hidden" style="background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);">
+        <div class="feature-modal-content">
+            <div class="feature-modal-header">
+                <h2 class="feature-modal-title">Profile</h2>
+                <button class="close-feature-modal" data-modal="profile-modal">×</button>
+            </div>
+            <div class="profile-stat">
+                <span class="profile-stat-label">User ID</span>
+                <span id="profile-user-id" class="profile-stat-value text-xs"></span>
+            </div>
+            <div class="profile-stat">
+                <span class="profile-stat-label">Current Level</span>
+                <span id="profile-current-level" class="profile-stat-value">1</span>
+            </div>
+            <div class="profile-stat">
+                <span class="profile-stat-label">Highest Level</span>
+                <span id="profile-highest-level" class="profile-stat-value">1</span>
+            </div>
+            <div class="profile-stat">
+                <span class="profile-stat-label">Total Coins</span>
+                <span id="profile-total-coins" class="profile-stat-value">🪙 0</span>
+            </div>
+            <div class="profile-stat">
+                <span class="profile-stat-label">Total Points</span>
+                <span id="profile-total-points" class="profile-stat-value">💠 0</span>
+            </div>
+            <div class="profile-stat">
+                <span class="profile-stat-label">Friends Invited</span>
+                <span id="profile-friends-invited" class="profile-stat-value">0</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="invite-modal" class="fixed inset-0 flex items-center justify-center z-[300] hidden" style="background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);">
+        <div class="feature-modal-content">
+            <div class="feature-modal-header">
+                <h2 class="feature-modal-title">Invite a Friend</h2>
+                <button class="close-feature-modal" data-modal="invite-modal">×</button>
+            </div>
+            <div class="invite-card">
+                <div class="invite-icon">🎁</div>
+                <p class="invite-explanation">
+                    Invite a friend and you'll both earn <strong>1000 Points!</strong>
+                    <br><small>(Your friend receives their points upon reaching Level 50)</small>
+                </p>
+                <div class="referral-code-wrapper">
+                    <span id="referral-code">ABC123XYZ</span>
+                    <button id="copy-code-btn" class="neat-button px-4">Copy</button>
+                </div>
+                <button id="share-invite-btn" class="neat-button w-full" style="background-color: #38a169; border-bottom-color: #2f855a;">
+                    <i class="fas fa-share-alt mr-2"></i>Share Invite
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="withdraw-modal" class="fixed inset-0 flex items-center justify-center z-[300] hidden" style="background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);">
+        <div class="feature-modal-content">
+            <div class="feature-modal-header">
+                <h2 class="feature-modal-title">Withdraw</h2>
+                <button class="close-feature-modal" data-modal="withdraw-modal">×</button>
+            </div>
+            <p class="withdraw-info">
+                10,000 Coins = 1 Point<br>
+                1,000 Points = $1 USD (via Binance)
+            </p>
+            <div class="profile-stat mb-4">
+                <span class="profile-stat-label">Your Points Balance</span>
+                <span id="withdraw-points-balance" class="profile-stat-value">💠 0</span>
+            </div>
+            <div>
+                <input type="number" id="withdraw-amount-input" placeholder="Points to withdraw" class="withdraw-input">
+                <input type="text" id="binance-id-input" placeholder="Your Binance ID" class="withdraw-input">
+            </div>
+            <p class="withdraw-conversion">
+                You will receive: <strong id="withdraw-usd-value">$0.00</strong>
+            </p>
+            <button id="submit-withdraw-btn" class="neat-button w-full bg-blue-500 border-b-blue-700 hover:bg-blue-600">
+                Submit Withdrawal
+            </button>
+            <div id="withdrawal-requirements" class="hidden">
+                <h4>Confirmation Required</h4>
+                <p class="text-xs mb-2">To finalize your withdrawal, please complete the following tasks:</p>
+                <div class="requirement">
+                    <span><i class="fas fa-calendar-check mr-2"></i>Complete daily missions 7 days in a row</span>
+                    <span id="req-days-status" class="status not-met">0/7 Days</span>
+                </div>
+                <div class="requirement">
+                    <span><i class="fas fa-user-plus mr-2"></i>Invite 7 friends</span>
+                    <span id="req-invites-status" class="status not-met">0/7 Friends</span>
+                </div>
+            </div>
+            <button id="confirm-withdraw-btn" class="neat-button w-full mt-4 bg-green-500 border-b-green-700 hover:bg-green-600 hidden" disabled>
+                Confirm Withdrawal
+            </button>
+        </div>
+    </div>
+
+    <div id="missions-modal" class="fixed inset-0 flex items-center justify-center z-[300] hidden" style="background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);">
+        <div class="feature-modal-content">
+            <div class="feature-modal-header">
+                <h2 class="feature-modal-title">Missions</h2>
+                <button class="close-feature-modal" data-modal="missions-modal">×</button>
+            </div>
+            <div class="mission-tabs">
+                <div class="mission-tab active" data-tab="daily">Daily</div>
+                <div class="mission-tab" data-tab="weekly">Weekly</div>
+            </div>
+            <div id="daily-missions" class="mission-list"></div>
+            <div id="weekly-missions" class="mission-list hidden"></div>
+            <div id="mission-timer" class="mission-timer"></div>
+        </div>
+    </div>
+
+    <div id="spin-wheel-modal" class="fixed inset-0 flex items-center justify-center z-[300] hidden" style="background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);">
+        <div class="feature-modal-content">
+            <div class="feature-modal-header">
+                <h2 class="feature-modal-title">Spin Wheel</h2>
+                <button class="close-feature-modal" data-modal="spin-wheel-modal">×</button>
+            </div>
+            <div id="wheel-container">
+                <div id="wheel-pointer"></div>
+                <div id="wheel-center"></div>
+                <div id="wheel"></div>
+            </div>
+            <button id="spin-btn" class="win-button mt-4">
+                <i class="fas fa-video mr-2"></i> Watch Ad to Spin
+            </button>
+            <div id="spin-timer" class="hidden"></div>
+        </div>
+    </div>
+    
+    <div id="pro-modal" class="fixed inset-0 flex items-center justify-center z-[300] hidden" style="background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);">
+        <div class="feature-modal-content text-center">
+            <div class="feature-modal-header">
+                <h2 class="feature-modal-title"><i class="fas fa-crown text-yellow-400"></i> Pro Mode</h2>
+                <button class="close-feature-modal" data-modal="pro-modal">×</button>
+            </div>
+            <p class="text-lg mb-4">Unlock the ultimate experience!</p>
+            <ul class="text-left list-disc list-inside bg-black bg-opacity-20 p-4 rounded-lg mb-6 space-y-2">
+                <li>🚫 <strong>No More Ads!</strong> Enjoy uninterrupted gameplay.</li>
+                <li>⏪ <strong>Unlimited FREE Undos!</strong> Never worry about mistakes.</li>
+                <li>🪙 <strong>+10,000 Bonus Coins!</strong> A gift to get you started.</li>
+            </ul>
+            <button id="buy-pro-btn" class="win-button w-full" style="background: linear-gradient(180deg, #4ade80 0%, #22c55e 100%); --shadow-color: #16a34a;">
+                Buy Now for $5.99
+            </button>
+        </div>
+    </div>
+
+    <div id="ad-modal" class="hidden">
+        <div class="ad-content">
+            <h3 id="ad-title" class="text-2xl font-bold mb-4">Watching Ad...</h3>
+            <div class="ad-video">
+                <div id="ad-icon">📺</div>
+                <div id="ad-progress" class="ad-progress" style="width: 0%"></div>
+            </div>
+            <div id="ad-timer" class="text-lg font-semibold mb-4">5</div>
+        </div>
+    </div>
+    
+    <div id="ad-choice-modal" class="hidden">
+        <div class="ad-content">
+            <h3 class="text-2xl font-bold mb-2">Continue Playing</h3>
+            <p class="text-gray-300 mb-6">Watch a short ad to continue, or skip it with coins.</p>
+            <div class="space-y-4">
+                 <button id="ad-choice-watch-btn" class="win-button w-full" style="background: linear-gradient(180deg, #60a5fa 0%, #3b82f6 100%); --shadow-color: #2563eb;">
+                    <i class="fas fa-video mr-2"></i>Watch Ad (Free)
+                </button>
+                <button id="ad-choice-skip-btn" class="win-button w-full" style="background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%); --shadow-color: #b45309;">
+                    Skip Ad (🪙 1000)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="level-select-screen" class="hidden">
+        <div id="level-select-header">
+            <button id="back-button" class="neat-button">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <h2 id="level-select-title">Select Level</h2>
+            <div style="width: 2.5rem;"></div>
+        </div>
+        <div id="level-select-wrapper">
+            <div id="levels-container"></div>
+        </div>
+    </div>
+
+    <div id="game-screen" class="w-full max-w-5xl mx-auto hidden">
+        <button id="game-back-button" class="neat-button">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        
+        <div id="level-display-top">
+            Level <span id="current-level-display">1</span>
+        </div>
+        
+        <div class="coin-display coin-display-game">
+            <span>🪙</span>
+            <span id="game-coins">0</span>
+        </div>
+
+        <div id="game-area">
+            <div id="bottles-container"></div>
+            <div id="animation-layer"></div>
+        </div>
+        
+        <div class="game-controls">
+            <button id="undo-button" class="icon-control-button" disabled>
+                <i class="fas fa-undo"></i>
+                <span class="button-count" id="undo-count">0</span>
+            </button>
+            <button id="add-bottle-button" class="icon-control-button">
+                <div class="bottle-icon">
+                    <span class="plus-sign" style="font-size: 0.8rem; font-weight: bold;">AD</span>
+                </div>
+                <span class="button-count" id="add-bottle-count">2</span>
+            </button>
+        </div>
+    </div>
+
+    <div id="win-modal" class="fixed inset-0 flex justify-center z-50 hidden">
+        <div class="modal-content">
+            <div class="win-modal-header">
+                <span class="level-complete-text">Level <span id="completed-level-num">1</span> Complete!</span>
+                <h2 class="win-title">You Win!</h2>
+            </div>
+            <div id="star-display" class="text-6xl"></div>
+            <div class="my-6">
+                <p id="coin-reward">🪙 +500 Coins!</p>
+            </div>
+            <button id="double-coins-btn" class="win-button">
+                <i class="fas fa-video"></i> Watch Ad for 2x Coins!
+            </button>
+            <div class="flex gap-4">
+                <button id="home-btn" class="win-button"><i class="fas fa-home"></i> Home</button>
+                <button id="next-level-btn" class="win-button">Next <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="game-over-modal" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+        <div class="modal-content">
+            <div class="win-modal-header">
+                <h2 class="win-title" style="color: #C53030;">Game Over</h2>
+            </div>
+            <p id="game-over-message" class="text-gray-600 text-lg my-6">You sorted the key color in the wrong bottle!</p>
+            <div class="flex gap-4">
+                <button id="game-over-home-btn" class="win-button"><i class="fas fa-home"></i> Home</button>
+                <button id="retry-level-btn" class="win-button">Retry <i class="fas fa-redo"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signInAnonymously, signOut } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+        
+        const firebaseConfig = {
+          apiKey: "AIzaSyCGbfy6qyNy3vnFGXrxRE39ov2fXqgWehI",
+          authDomain: "color-sort-86157.firebaseapp.com",
+          projectId: "color-sort-86157",
+          storageBucket: "color-sort-86157.firebasestorage.app",
+          messagingSenderId: "882889145224",
+          appId: "1:882889145224:web:adb23a40e0e7012448583d"
+        };
+
+        let app;
+        let auth;
+        try {
+            app = initializeApp(firebaseConfig);
+            auth = getAuth(app);
+            console.log("Firebase Initialized Successfully");
+        } catch (error) {
+            console.error("Firebase Initialization Failed:", error);
+            document.getElementById('loading-text').textContent = "Connection Error";
+        }
+
+        const loginScreen = document.getElementById('login-screen');
+        const loadingText = document.getElementById('loading-text');
+        const loginOptions = document.getElementById('login-options');
+        const guestModeBtn = document.getElementById('guest-mode-btn');
+        const homeScreen = document.getElementById('home-screen');
+        const logoutBtn = document.getElementById('logout-btn');
+
+        onAuthStateChanged(auth, user => {
+            if (user) {
+                console.log("User is signed in:", user.uid);
+                window.gameState.userId = user.uid; 
+                loginScreen.classList.add('hidden');
+                homeScreen.classList.remove('hidden');
+                window.loadGameProgress(); 
+                window.updateUIForProStatus();
+                window.updateDailyBonusButtonState();
+                window.startEarnerNotifications();
+                window.updateNotificationDots();
+            } else {
+                console.log("User is signed out.");
+                window.gameState.userId = null;
+                loginScreen.classList.remove('hidden');
+                homeScreen.classList.add('hidden');
+                loadingText.textContent = "Ready!";
+                loginOptions.classList.remove('hidden');
+            }
+        });
+
+        guestModeBtn.addEventListener('click', () => {
+            loadingText.textContent = "Logging In...";
+            loginOptions.classList.add('hidden');
+            signInAnonymously(auth).catch(error => {
+                console.error("Anonymous sign-in failed:", error);
+                loadingText.textContent = "Login Failed. Try Again.";
+                loginOptions.classList.remove('hidden');
+            });
+        });
+
+        logoutBtn.addEventListener('click', () => {
+            signOut(auth).then(() => {
+                window.location.reload(); 
+            }).catch(error => {
+                console.error("Sign-out failed:", error);
+            });
+        });
+    </script>
+    
+    <script src="script.js"></script>
+</body>
+</html>
