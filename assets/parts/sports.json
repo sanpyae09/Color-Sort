@@ -1,0 +1,282 @@
+[
+  {
+    "id": 701,
+    "cat": "Sports",
+    "diff": "easy",
+    "q": "How many players does a soccer team have on the field at one time?",
+    "a": [
+      "11",
+      "9",
+      "10",
+      "12"
+    ],
+    "correct": 1,
+    "fact": "A soccer team also usually has several substitutes waiting on the bench."
+  },
+  {
+    "id": 702,
+    "cat": "Sports",
+    "diff": "easy",
+    "q": "The Super Bowl is the championship game of which sport?",
+    "a": [
+      "Baseball",
+      "American football",
+      "Basketball",
+      "Ice hockey"
+    ],
+    "correct": 2,
+    "fact": "The first Super Bowl was played in 1967."
+  },
+  {
+    "id": 703,
+    "cat": "Sports",
+    "diff": "easy",
+    "q": "How many rings appear on the Olympic flag?",
+    "a": [
+      "Four",
+      "Six",
+      "Five",
+      "Seven"
+    ],
+    "correct": 3,
+    "fact": "The five Olympic rings represent the inhabited continents of the world."
+  },
+  {
+    "id": 704,
+    "cat": "Sports",
+    "diff": "easy",
+    "q": "In baseball, how many strikes does a batter get before striking out?",
+    "a": [
+      "Two",
+      "Four",
+      "Five",
+      "Three"
+    ],
+    "correct": 4,
+    "fact": "A strikeout is often recorded with the letter K in baseball scorekeeping."
+  },
+  {
+    "id": 705,
+    "cat": "Sports",
+    "diff": "easy",
+    "q": "How many points is a free throw worth in basketball?",
+    "a": [
+      "One",
+      "Two",
+      "Three",
+      "Four"
+    ],
+    "correct": 1,
+    "fact": "Free throws are taken from a line 15 feet from the basket."
+  },
+  {
+    "id": 706,
+    "cat": "Sports",
+    "diff": "easy",
+    "q": "Which sport uses a lightweight shuttlecock instead of a ball?",
+    "a": [
+      "Tennis",
+      "Badminton",
+      "Squash",
+      "Table tennis"
+    ],
+    "correct": 2,
+    "fact": "Badminton shuttlecocks can travel faster than balls in any other racket sport."
+  },
+  {
+    "id": 707,
+    "cat": "Sports",
+    "diff": "easy",
+    "q": "Wimbledon is the most famous championship in which sport?",
+    "a": [
+      "Golf",
+      "Cricket",
+      "Tennis",
+      "Croquet"
+    ],
+    "correct": 3,
+    "fact": "Wimbledon, first held in 1877, is the oldest tennis tournament in the world."
+  },
+  {
+    "id": 708,
+    "cat": "Sports",
+    "diff": "easy",
+    "q": "In golf, what is it called when a player finishes a hole in just one stroke?",
+    "a": [
+      "Birdie",
+      "Eagle",
+      "Bogey",
+      "Hole-in-one"
+    ],
+    "correct": 4,
+    "fact": "A hole-in-one is also commonly called an ace."
+  },
+  {
+    "id": 709,
+    "cat": "Sports",
+    "diff": "medium",
+    "q": "In which city were the first modern Olympic Games held in 1896?",
+    "a": [
+      "Athens",
+      "Paris",
+      "London",
+      "Rome"
+    ],
+    "correct": 1,
+    "fact": "Only 241 athletes competed at the first modern Olympics in Athens."
+  },
+  {
+    "id": 710,
+    "cat": "Sports",
+    "diff": "medium",
+    "q": "How many points is a touchdown worth in American football?",
+    "a": [
+      "Three",
+      "Six",
+      "Seven",
+      "Eight"
+    ],
+    "correct": 2,
+    "fact": "After a touchdown, a team can try for one or two extra points."
+  },
+  {
+    "id": 711,
+    "cat": "Sports",
+    "diff": "medium",
+    "q": "About how long is a marathon race?",
+    "a": [
+      "13.1 miles",
+      "20 miles",
+      "26.2 miles",
+      "31 miles"
+    ],
+    "correct": 3,
+    "fact": "26.2 miles is about 42.2 kilometers."
+  },
+  {
+    "id": 712,
+    "cat": "Sports",
+    "diff": "medium",
+    "q": "Who invented basketball in 1891?",
+    "a": [
+      "Walter Camp",
+      "Abner Doubleday",
+      "William Morgan",
+      "James Naismith"
+    ],
+    "correct": 4,
+    "fact": "James Naismith invented basketball in Springfield, Massachusetts, using peach baskets."
+  },
+  {
+    "id": 713,
+    "cat": "Sports",
+    "diff": "medium",
+    "q": "How many periods are played in a standard ice hockey game?",
+    "a": [
+      "Three",
+      "Two",
+      "Four",
+      "Five"
+    ],
+    "correct": 1,
+    "fact": "Each period in ice hockey lasts 20 minutes of play time."
+  },
+  {
+    "id": 714,
+    "cat": "Sports",
+    "diff": "medium",
+    "q": "Sprinter Usain Bolt represented which country?",
+    "a": [
+      "United States",
+      "Jamaica",
+      "Kenya",
+      "Canada"
+    ],
+    "correct": 2,
+    "fact": "Usain Bolt set the 100 meter world record of 9.58 seconds in 2009."
+  },
+  {
+    "id": 715,
+    "cat": "Sports",
+    "diff": "medium",
+    "q": "How often is the FIFA World Cup held?",
+    "a": [
+      "Every 2 years",
+      "Every 3 years",
+      "Every 4 years",
+      "Every 5 years"
+    ],
+    "correct": 3,
+    "fact": "The first FIFA World Cup was held in Uruguay in 1930."
+  },
+  {
+    "id": 716,
+    "cat": "Sports",
+    "diff": "medium",
+    "q": "In golf, what is one stroke under par on a hole called?",
+    "a": [
+      "Bogey",
+      "Par saver",
+      "Albatross",
+      "Birdie"
+    ],
+    "correct": 4,
+    "fact": "Two strokes under par on a hole is called an eagle."
+  },
+  {
+    "id": 717,
+    "cat": "Sports",
+    "diff": "hard",
+    "q": "In which year was the first Super Bowl played?",
+    "a": [
+      "1967",
+      "1960",
+      "1970",
+      "1975"
+    ],
+    "correct": 1,
+    "fact": "Super Bowl I was played on January 15, 1967, in Los Angeles."
+  },
+  {
+    "id": 718,
+    "cat": "Sports",
+    "diff": "hard",
+    "q": "Who is the most decorated Olympian of all time, with 28 medals?",
+    "a": [
+      "Larisa Latynina",
+      "Michael Phelps",
+      "Mark Spitz",
+      "Usain Bolt"
+    ],
+    "correct": 2,
+    "fact": "Michael Phelps won 23 Olympic gold medals, more than any other athlete."
+  },
+  {
+    "id": 719,
+    "cat": "Sports",
+    "diff": "hard",
+    "q": "The ancient Olympic Games were held in honor of which Greek god?",
+    "a": [
+      "Apollo",
+      "Poseidon",
+      "Zeus",
+      "Ares"
+    ],
+    "correct": 3,
+    "fact": "A huge statue of Zeus at Olympia was one of the Seven Wonders of the Ancient World."
+  },
+  {
+    "id": 720,
+    "cat": "Sports",
+    "diff": "hard",
+    "q": "Which basketball player scored a record 100 points in a single NBA game in 1962?",
+    "a": [
+      "Kareem Abdul-Jabbar",
+      "Michael Jordan",
+      "Bill Russell",
+      "Wilt Chamberlain"
+    ],
+    "correct": 4,
+    "fact": "Wilt Chamberlain's 100-point game record has stood since March 2, 1962."
+  }
+]
