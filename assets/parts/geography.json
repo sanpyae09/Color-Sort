@@ -1,0 +1,492 @@
+[
+  {
+    "id": 401,
+    "cat": "Geography",
+    "diff": "easy",
+    "q": "What is the capital of France?",
+    "a": [
+      "Paris",
+      "London",
+      "Brussels",
+      "Amsterdam"
+    ],
+    "correct": 1,
+    "fact": "Paris is home to the Eiffel Tower, which was completed in 1889."
+  },
+  {
+    "id": 402,
+    "cat": "Geography",
+    "diff": "easy",
+    "q": "What is the capital of Japan?",
+    "a": [
+      "Kyoto",
+      "Tokyo",
+      "Osaka",
+      "Nagoya"
+    ],
+    "correct": 2,
+    "fact": "Tokyo was known as Edo until it became the imperial capital in 1868."
+  },
+  {
+    "id": 403,
+    "cat": "Geography",
+    "diff": "easy",
+    "q": "Which is the largest ocean on Earth?",
+    "a": [
+      "The Atlantic Ocean",
+      "The Indian Ocean",
+      "The Pacific Ocean",
+      "The Arctic Ocean"
+    ],
+    "correct": 3,
+    "fact": "The Pacific Ocean covers more area than all of Earth's land combined."
+  },
+  {
+    "id": 404,
+    "cat": "Geography",
+    "diff": "easy",
+    "q": "Which mountain is the highest above sea level on Earth?",
+    "a": [
+      "K2",
+      "Mount Kilimanjaro",
+      "Mount Denali",
+      "Mount Everest"
+    ],
+    "correct": 4,
+    "fact": "Mount Everest grows a few millimeters taller each year due to tectonic movement."
+  },
+  {
+    "id": 405,
+    "cat": "Geography",
+    "diff": "easy",
+    "q": "Which is the largest hot desert in the world?",
+    "a": [
+      "The Sahara",
+      "The Gobi",
+      "The Mojave",
+      "The Kalahari"
+    ],
+    "correct": 1,
+    "fact": "The Sahara is almost as large as the entire United States."
+  },
+  {
+    "id": 406,
+    "cat": "Geography",
+    "diff": "easy",
+    "q": "What is the capital of Canada?",
+    "a": [
+      "Toronto",
+      "Ottawa",
+      "Vancouver",
+      "Montreal"
+    ],
+    "correct": 2,
+    "fact": "Ottawa was chosen as Canada's capital by Queen Victoria in 1857."
+  },
+  {
+    "id": 407,
+    "cat": "Geography",
+    "diff": "easy",
+    "q": "Which river flows through Egypt to the Mediterranean Sea?",
+    "a": [
+      "The Niger",
+      "The Congo",
+      "The Nile",
+      "The Euphrates"
+    ],
+    "correct": 3,
+    "fact": "The Nile is generally considered the longest river in the world."
+  },
+  {
+    "id": 408,
+    "cat": "Geography",
+    "diff": "easy",
+    "q": "What is the capital of the U.S. state of California?",
+    "a": [
+      "Los Angeles",
+      "San Francisco",
+      "San Diego",
+      "Sacramento"
+    ],
+    "correct": 4,
+    "fact": "Sacramento became California's state capital in 1854."
+  },
+  {
+    "id": 409,
+    "cat": "Geography",
+    "diff": "easy",
+    "q": "Which of the Great Lakes is the largest by surface area?",
+    "a": [
+      "Lake Superior",
+      "Lake Michigan",
+      "Lake Erie",
+      "Lake Ontario"
+    ],
+    "correct": 1,
+    "fact": "Lake Superior is the largest freshwater lake in the world by surface area."
+  },
+  {
+    "id": 410,
+    "cat": "Geography",
+    "diff": "easy",
+    "q": "The Grand Canyon is located mainly in which U.S. state?",
+    "a": [
+      "Utah",
+      "Arizona",
+      "Nevada",
+      "Colorado"
+    ],
+    "correct": 2,
+    "fact": "The Grand Canyon is about 277 miles long and up to 18 miles wide."
+  },
+  {
+    "id": 411,
+    "cat": "Geography",
+    "diff": "easy",
+    "q": "What is the capital of Italy?",
+    "a": [
+      "Venice",
+      "Milan",
+      "Rome",
+      "Naples"
+    ],
+    "correct": 3,
+    "fact": "Rome is often called the Eternal City and was founded, according to legend, in 753 BCE."
+  },
+  {
+    "id": 412,
+    "cat": "Geography",
+    "diff": "easy",
+    "q": "Which was the first national park established in the United States?",
+    "a": [
+      "Yosemite National Park",
+      "Grand Canyon National Park",
+      "Glacier National Park",
+      "Yellowstone National Park"
+    ],
+    "correct": 4,
+    "fact": "Yellowstone, established in 1872, is famous for its geysers and hot springs."
+  },
+  {
+    "id": 413,
+    "cat": "Geography",
+    "diff": "easy",
+    "q": "The Mississippi River flows into which body of water?",
+    "a": [
+      "The Gulf of Mexico",
+      "The Atlantic Ocean",
+      "The Great Lakes",
+      "The Pacific Ocean"
+    ],
+    "correct": 1,
+    "fact": "The Mississippi River drains water from all or parts of 31 U.S. states."
+  },
+  {
+    "id": 414,
+    "cat": "Geography",
+    "diff": "easy",
+    "q": "What is the capital of the U.S. state of Texas?",
+    "a": [
+      "Houston",
+      "Austin",
+      "Dallas",
+      "San Antonio"
+    ],
+    "correct": 2,
+    "fact": "Austin is home to the largest urban bat colony in North America, under the Congress Avenue Bridge."
+  },
+  {
+    "id": 415,
+    "cat": "Geography",
+    "diff": "medium",
+    "q": "What is the capital of Australia?",
+    "a": [
+      "Sydney",
+      "Melbourne",
+      "Canberra",
+      "Perth"
+    ],
+    "correct": 3,
+    "fact": "Canberra was purpose-built as Australia's capital and became the seat of government in 1927."
+  },
+  {
+    "id": 416,
+    "cat": "Geography",
+    "diff": "medium",
+    "q": "Which river is generally considered the longest in the United States?",
+    "a": [
+      "The Mississippi River",
+      "The Colorado River",
+      "The Rio Grande",
+      "The Missouri River"
+    ],
+    "correct": 4,
+    "fact": "The Missouri River flows about 2,341 miles before joining the Mississippi River."
+  },
+  {
+    "id": 417,
+    "cat": "Geography",
+    "diff": "medium",
+    "q": "What is the capital of South Korea?",
+    "a": [
+      "Seoul",
+      "Busan",
+      "Incheon",
+      "Pyongyang"
+    ],
+    "correct": 1,
+    "fact": "Seoul has been a capital city for more than 600 years."
+  },
+  {
+    "id": 418,
+    "cat": "Geography",
+    "diff": "medium",
+    "q": "Mount Kilimanjaro, the highest mountain in Africa, is located in which country?",
+    "a": [
+      "Kenya",
+      "Tanzania",
+      "Ethiopia",
+      "Uganda"
+    ],
+    "correct": 2,
+    "fact": "Kilimanjaro is a dormant volcano and the tallest free-standing mountain in the world."
+  },
+  {
+    "id": 419,
+    "cat": "Geography",
+    "diff": "medium",
+    "q": "Which country contains the largest share of the Amazon rainforest?",
+    "a": [
+      "Peru",
+      "Colombia",
+      "Brazil",
+      "Venezuela"
+    ],
+    "correct": 3,
+    "fact": "About 60 percent of the Amazon rainforest lies within Brazil."
+  },
+  {
+    "id": 420,
+    "cat": "Geography",
+    "diff": "medium",
+    "q": "What is the capital of the U.S. state of New York?",
+    "a": [
+      "New York City",
+      "Buffalo",
+      "Rochester",
+      "Albany"
+    ],
+    "correct": 4,
+    "fact": "Albany is one of the oldest continuously chartered cities in the United States, chartered in 1686."
+  },
+  {
+    "id": 421,
+    "cat": "Geography",
+    "diff": "medium",
+    "q": "Which mountain range runs along the eastern side of the United States?",
+    "a": [
+      "The Appalachian Mountains",
+      "The Rocky Mountains",
+      "The Sierra Nevada",
+      "The Cascade Range"
+    ],
+    "correct": 1,
+    "fact": "The Appalachian Mountains are among the oldest mountain ranges on Earth."
+  },
+  {
+    "id": 422,
+    "cat": "Geography",
+    "diff": "medium",
+    "q": "What is the capital of Norway?",
+    "a": [
+      "Stockholm",
+      "Oslo",
+      "Helsinki",
+      "Copenhagen"
+    ],
+    "correct": 2,
+    "fact": "Oslo was founded around 1048 and was once called Christiania."
+  },
+  {
+    "id": 423,
+    "cat": "Geography",
+    "diff": "medium",
+    "q": "Death Valley, one of the hottest places on Earth, is located mainly in which U.S. state?",
+    "a": [
+      "Nevada",
+      "Arizona",
+      "California",
+      "Utah"
+    ],
+    "correct": 3,
+    "fact": "Death Valley holds the record for the highest air temperature reliably recorded on Earth, 134 degrees Fahrenheit in 1913."
+  },
+  {
+    "id": 424,
+    "cat": "Geography",
+    "diff": "medium",
+    "q": "Which river forms a large part of the border between the United States and Mexico?",
+    "a": [
+      "The Colorado River",
+      "The Mississippi River",
+      "The Missouri River",
+      "The Rio Grande"
+    ],
+    "correct": 4,
+    "fact": "The Rio Grande is known as the Rio Bravo in Mexico."
+  },
+  {
+    "id": 425,
+    "cat": "Geography",
+    "diff": "medium",
+    "q": "What is the capital of Argentina?",
+    "a": [
+      "Buenos Aires",
+      "Santiago",
+      "Lima",
+      "Montevideo"
+    ],
+    "correct": 1,
+    "fact": "Buenos Aires is famous for its wide avenue, 9 de Julio, one of the widest in the world."
+  },
+  {
+    "id": 426,
+    "cat": "Geography",
+    "diff": "medium",
+    "q": "What is the capital of Iceland?",
+    "a": [
+      "Oslo",
+      "Reykjavik",
+      "Dublin",
+      "Tallinn"
+    ],
+    "correct": 2,
+    "fact": "Reykjavik is the world's northernmost capital of a sovereign state."
+  },
+  {
+    "id": 427,
+    "cat": "Geography",
+    "diff": "medium",
+    "q": "Lake Baikal, the deepest freshwater lake in the world, is located in which country?",
+    "a": [
+      "Canada",
+      "Kazakhstan",
+      "Russia",
+      "Mongolia"
+    ],
+    "correct": 3,
+    "fact": "Lake Baikal contains roughly one-fifth of the world's fresh surface water."
+  },
+  {
+    "id": 428,
+    "cat": "Geography",
+    "diff": "medium",
+    "q": "Denali, the highest peak in North America, is located in which U.S. state?",
+    "a": [
+      "Colorado",
+      "Washington",
+      "Wyoming",
+      "Alaska"
+    ],
+    "correct": 4,
+    "fact": "Denali rises to 20,310 feet above sea level."
+  },
+  {
+    "id": 429,
+    "cat": "Geography",
+    "diff": "hard",
+    "q": "What is the capital of Kazakhstan?",
+    "a": [
+      "Astana",
+      "Almaty",
+      "Tashkent",
+      "Bishkek"
+    ],
+    "correct": 1,
+    "fact": "Astana was renamed Nur-Sultan in 2019 and changed back to Astana in 2022."
+  },
+  {
+    "id": 430,
+    "cat": "Geography",
+    "diff": "hard",
+    "q": "Which European capital city lies on the Danube River?",
+    "a": [
+      "Prague",
+      "Vienna",
+      "Warsaw",
+      "Berlin"
+    ],
+    "correct": 2,
+    "fact": "The Danube flows through four European capitals: Vienna, Bratislava, Budapest, and Belgrade."
+  },
+  {
+    "id": 431,
+    "cat": "Geography",
+    "diff": "hard",
+    "q": "The Atacama Desert, one of the driest places on Earth, lies mainly in which country?",
+    "a": [
+      "Peru",
+      "Bolivia",
+      "Chile",
+      "Argentina"
+    ],
+    "correct": 3,
+    "fact": "Some parts of the Atacama Desert receive almost no recorded rainfall for years at a time."
+  },
+  {
+    "id": 432,
+    "cat": "Geography",
+    "diff": "hard",
+    "q": "Mount Aconcagua, the highest mountain outside Asia, is located on which continent?",
+    "a": [
+      "North America",
+      "Africa",
+      "Europe",
+      "South America"
+    ],
+    "correct": 4,
+    "fact": "Aconcagua, in Argentina, rises to about 22,841 feet above sea level."
+  },
+  {
+    "id": 433,
+    "cat": "Geography",
+    "diff": "hard",
+    "q": "What is the capital of Mongolia?",
+    "a": [
+      "Ulaanbaatar",
+      "Astana",
+      "Kathmandu",
+      "Thimphu"
+    ],
+    "correct": 1,
+    "fact": "Ulaanbaatar is often considered the coldest capital city in the world by average annual temperature."
+  },
+  {
+    "id": 434,
+    "cat": "Geography",
+    "diff": "hard",
+    "q": "The Sargasso Sea, known for having no land coastline, is part of which ocean?",
+    "a": [
+      "The Pacific Ocean",
+      "The Atlantic Ocean",
+      "The Indian Ocean",
+      "The Arctic Ocean"
+    ],
+    "correct": 2,
+    "fact": "The Sargasso Sea is defined by ocean currents rather than by land boundaries."
+  },
+  {
+    "id": 435,
+    "cat": "Geography",
+    "diff": "hard",
+    "q": "The Strait of Gibraltar separates Spain from which African country?",
+    "a": [
+      "Algeria",
+      "Tunisia",
+      "Morocco",
+      "Libya"
+    ],
+    "correct": 3,
+    "fact": "At its narrowest point, the Strait of Gibraltar is only about 8 miles wide."
+  }
+]
