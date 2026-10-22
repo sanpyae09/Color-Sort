@@ -1,0 +1,632 @@
+[
+  {
+    "id": 301,
+    "cat": "History",
+    "diff": "easy",
+    "q": "Who was the first President of the United States?",
+    "a": [
+      "George Washington",
+      "John Adams",
+      "Thomas Jefferson",
+      "Abraham Lincoln"
+    ],
+    "correct": 1,
+    "fact": "George Washington served as president from 1789 to 1797."
+  },
+  {
+    "id": 302,
+    "cat": "History",
+    "diff": "easy",
+    "q": "In which year did World War II end?",
+    "a": [
+      "1939",
+      "1945",
+      "1943",
+      "1947"
+    ],
+    "correct": 2,
+    "fact": "World War II ended in 1945 with the surrenders of Germany and Japan."
+  },
+  {
+    "id": 303,
+    "cat": "History",
+    "diff": "easy",
+    "q": "Which structures at Giza were built by the ancient Egyptians?",
+    "a": [
+      "The Colosseum",
+      "The Parthenon",
+      "The Pyramids of Giza",
+      "The Taj Mahal"
+    ],
+    "correct": 3,
+    "fact": "The Great Pyramid of Giza is the oldest of the Seven Wonders of the Ancient World still largely intact."
+  },
+  {
+    "id": 304,
+    "cat": "History",
+    "diff": "easy",
+    "q": "In which year did humans first land on the Moon?",
+    "a": [
+      "1965",
+      "1967",
+      "1971",
+      "1969"
+    ],
+    "correct": 4,
+    "fact": "Apollo 11 astronauts landed on the Moon on July 20, 1969."
+  },
+  {
+    "id": 305,
+    "cat": "History",
+    "diff": "easy",
+    "q": "Who was the British prime minister for most of World War II?",
+    "a": [
+      "Winston Churchill",
+      "Neville Chamberlain",
+      "Clement Attlee",
+      "Anthony Eden"
+    ],
+    "correct": 1,
+    "fact": "Winston Churchill became prime minister in 1940 and led Britain through most of the war."
+  },
+  {
+    "id": 306,
+    "cat": "History",
+    "diff": "easy",
+    "q": "Which ancient civilization built a famous network of aqueducts and roads across Europe?",
+    "a": [
+      "The Vikings",
+      "The Romans",
+      "The Aztecs",
+      "The Mongols"
+    ],
+    "correct": 2,
+    "fact": "Roman aqueducts carried water into cities using gravity and carefully engineered slopes."
+  },
+  {
+    "id": 307,
+    "cat": "History",
+    "diff": "easy",
+    "q": "In which year was the United States Declaration of Independence adopted?",
+    "a": [
+      "1770",
+      "1789",
+      "1776",
+      "1800"
+    ],
+    "correct": 3,
+    "fact": "The Declaration of Independence was adopted on July 4, 1776."
+  },
+  {
+    "id": 308,
+    "cat": "History",
+    "diff": "easy",
+    "q": "The Great Wall was built to help protect which country from northern invasions?",
+    "a": [
+      "Japan",
+      "India",
+      "Persia",
+      "China"
+    ],
+    "correct": 4,
+    "fact": "The Great Wall of China stretches more than 13,000 miles including all of its branches."
+  },
+  {
+    "id": 309,
+    "cat": "History",
+    "diff": "easy",
+    "q": "In which year did World War I begin?",
+    "a": [
+      "1914",
+      "1905",
+      "1918",
+      "1936"
+    ],
+    "correct": 1,
+    "fact": "World War I began in 1914 after the assassination of Archduke Franz Ferdinand."
+  },
+  {
+    "id": 310,
+    "cat": "History",
+    "diff": "easy",
+    "q": "Who was President of the United States during the American Civil War?",
+    "a": [
+      "Andrew Johnson",
+      "Abraham Lincoln",
+      "Ulysses S. Grant",
+      "James Buchanan"
+    ],
+    "correct": 2,
+    "fact": "Abraham Lincoln issued the Emancipation Proclamation in 1863."
+  },
+  {
+    "id": 311,
+    "cat": "History",
+    "diff": "easy",
+    "q": "The ancient Olympic Games were first held in which country?",
+    "a": [
+      "Italy",
+      "Egypt",
+      "Greece",
+      "Turkey"
+    ],
+    "correct": 3,
+    "fact": "The ancient Olympic Games were held in Olympia, Greece, beginning in 776 BCE."
+  },
+  {
+    "id": 312,
+    "cat": "History",
+    "diff": "easy",
+    "q": "In which year did the Titanic sink on its maiden voyage?",
+    "a": [
+      "1905",
+      "1915",
+      "1920",
+      "1912"
+    ],
+    "correct": 4,
+    "fact": "The Titanic sank in the North Atlantic Ocean in April 1912."
+  },
+  {
+    "id": 313,
+    "cat": "History",
+    "diff": "easy",
+    "q": "In which year did the Berlin Wall fall?",
+    "a": [
+      "1989",
+      "1979",
+      "1985",
+      "1991"
+    ],
+    "correct": 1,
+    "fact": "The fall of the Berlin Wall in 1989 paved the way for German reunification in 1990."
+  },
+  {
+    "id": 314,
+    "cat": "History",
+    "diff": "easy",
+    "q": "Julius Caesar was a famous leader of which ancient state?",
+    "a": [
+      "Athens",
+      "Rome",
+      "Sparta",
+      "Carthage"
+    ],
+    "correct": 2,
+    "fact": "Julius Caesar was assassinated on the Ides of March in 44 BCE."
+  },
+  {
+    "id": 315,
+    "cat": "History",
+    "diff": "easy",
+    "q": "Johannes Gutenberg is best known for developing a movable-type printing press in which century?",
+    "a": [
+      "The 12th century",
+      "The 17th century",
+      "The 15th century",
+      "The 19th century"
+    ],
+    "correct": 3,
+    "fact": "Gutenberg's press, developed around 1440, greatly reduced the cost of producing books in Europe."
+  },
+  {
+    "id": 316,
+    "cat": "History",
+    "diff": "easy",
+    "q": "Cleopatra was the last active ruler of which ancient kingdom?",
+    "a": [
+      "Rome",
+      "Greece",
+      "Babylon",
+      "Egypt"
+    ],
+    "correct": 4,
+    "fact": "Cleopatra VII spoke several languages and ruled Egypt for more than two decades."
+  },
+  {
+    "id": 317,
+    "cat": "History",
+    "diff": "easy",
+    "q": "In which year did the American Civil War end?",
+    "a": [
+      "1865",
+      "1861",
+      "1870",
+      "1877"
+    ],
+    "correct": 1,
+    "fact": "The American Civil War ended in 1865, the same year the Thirteenth Amendment abolished slavery in the United States."
+  },
+  {
+    "id": 318,
+    "cat": "History",
+    "diff": "easy",
+    "q": "Alexander the Great was king of which ancient kingdom?",
+    "a": [
+      "Athens",
+      "Macedon",
+      "Persia",
+      "Egypt"
+    ],
+    "correct": 2,
+    "fact": "By age 30, Alexander the Great had created one of the largest empires of the ancient world."
+  },
+  {
+    "id": 319,
+    "cat": "History",
+    "diff": "medium",
+    "q": "In which year was the Battle of Hastings fought?",
+    "a": [
+      "996",
+      "1166",
+      "1066",
+      "1215"
+    ],
+    "correct": 3,
+    "fact": "The Battle of Hastings in 1066 led to the Norman conquest of England."
+  },
+  {
+    "id": 320,
+    "cat": "History",
+    "diff": "medium",
+    "q": "The Magna Carta, which limited the power of the English king, was sealed in which year?",
+    "a": [
+      "1066",
+      "1315",
+      "1415",
+      "1215"
+    ],
+    "correct": 4,
+    "fact": "King John sealed the Magna Carta at Runnymede in 1215."
+  },
+  {
+    "id": 321,
+    "cat": "History",
+    "diff": "medium",
+    "q": "The Renaissance is generally considered to have begun in which country?",
+    "a": [
+      "Italy",
+      "France",
+      "Spain",
+      "England"
+    ],
+    "correct": 1,
+    "fact": "Florence, Italy, was an early center of Renaissance art and learning."
+  },
+  {
+    "id": 322,
+    "cat": "History",
+    "diff": "medium",
+    "q": "Napoleon Bonaparte was finally defeated at which battle in 1815?",
+    "a": [
+      "The Battle of Trafalgar",
+      "The Battle of Waterloo",
+      "The Battle of Austerlitz",
+      "The Battle of Leipzig"
+    ],
+    "correct": 2,
+    "fact": "The Battle of Waterloo was fought in present-day Belgium in June 1815."
+  },
+  {
+    "id": 323,
+    "cat": "History",
+    "diff": "medium",
+    "q": "In which year did the Wright brothers make their first successful powered airplane flight?",
+    "a": [
+      "1899",
+      "1911",
+      "1903",
+      "1920"
+    ],
+    "correct": 3,
+    "fact": "The Wright brothers' first flight at Kitty Hawk lasted only 12 seconds."
+  },
+  {
+    "id": 324,
+    "cat": "History",
+    "diff": "medium",
+    "q": "In which year did the Soviet Union officially dissolve?",
+    "a": [
+      "1985",
+      "1989",
+      "1995",
+      "1991"
+    ],
+    "correct": 4,
+    "fact": "The Soviet Union dissolved in December 1991, ending the Cold War era."
+  },
+  {
+    "id": 325,
+    "cat": "History",
+    "diff": "medium",
+    "q": "The ancient Maya civilization developed mainly in which region?",
+    "a": [
+      "Southern Mexico and Central America",
+      "The Andes Mountains",
+      "The Caribbean islands only",
+      "Northern South America"
+    ],
+    "correct": 1,
+    "fact": "The Maya built major cities such as Tikal and Chichen Itza."
+  },
+  {
+    "id": 326,
+    "cat": "History",
+    "diff": "medium",
+    "q": "In which year was the United States Constitution signed at the Constitutional Convention?",
+    "a": [
+      "1776",
+      "1787",
+      "1791",
+      "1803"
+    ],
+    "correct": 2,
+    "fact": "The U.S. Constitution was signed in Philadelphia in 1787 and ratified the following year."
+  },
+  {
+    "id": 327,
+    "cat": "History",
+    "diff": "medium",
+    "q": "King Henry VIII of England is famous for having how many wives?",
+    "a": [
+      "Three",
+      "Four",
+      "Six",
+      "Eight"
+    ],
+    "correct": 3,
+    "fact": "Two of Henry VIII's six marriages ended with the wife's execution."
+  },
+  {
+    "id": 328,
+    "cat": "History",
+    "diff": "medium",
+    "q": "Joan of Arc helped lead forces from which country during the Hundred Years' War?",
+    "a": [
+      "England",
+      "Spain",
+      "Italy",
+      "France"
+    ],
+    "correct": 4,
+    "fact": "Joan of Arc helped lift the siege of Orleans in 1429."
+  },
+  {
+    "id": 329,
+    "cat": "History",
+    "diff": "medium",
+    "q": "Which empire came to an end in the aftermath of World War I?",
+    "a": [
+      "The Ottoman Empire",
+      "The Roman Empire",
+      "The Mongol Empire",
+      "The British Empire"
+    ],
+    "correct": 1,
+    "fact": "The Ottoman Empire had lasted for more than 600 years before it ended in 1922."
+  },
+  {
+    "id": 330,
+    "cat": "History",
+    "diff": "medium",
+    "q": "The Industrial Revolution began in which country?",
+    "a": [
+      "Germany",
+      "Britain",
+      "The United States",
+      "France"
+    ],
+    "correct": 2,
+    "fact": "Britain's textile industry was one of the first to be transformed by machines and factories."
+  },
+  {
+    "id": 331,
+    "cat": "History",
+    "diff": "medium",
+    "q": "The California Gold Rush is generally considered to have begun in which year?",
+    "a": [
+      "1839",
+      "1859",
+      "1849",
+      "1869"
+    ],
+    "correct": 3,
+    "fact": "Gold was discovered at Sutter's Mill in 1848, sparking the rush of 1849."
+  },
+  {
+    "id": 332,
+    "cat": "History",
+    "diff": "medium",
+    "q": "Leonardo da Vinci, painter of the Mona Lisa, lived during which period?",
+    "a": [
+      "The Middle Ages only",
+      "The Baroque era",
+      "The Roman Empire",
+      "The Renaissance"
+    ],
+    "correct": 4,
+    "fact": "Leonardo da Vinci filled notebooks with studies of anatomy, flight, and engineering."
+  },
+  {
+    "id": 333,
+    "cat": "History",
+    "diff": "medium",
+    "q": "The Cold War was mainly a rivalry between the United States and which other power?",
+    "a": [
+      "The Soviet Union",
+      "China",
+      "Britain",
+      "Germany"
+    ],
+    "correct": 1,
+    "fact": "The Cold War lasted from the late 1940s until the Soviet Union dissolved in 1991."
+  },
+  {
+    "id": 334,
+    "cat": "History",
+    "diff": "medium",
+    "q": "Who became the first emperor of Rome in 27 BCE?",
+    "a": [
+      "Julius Caesar",
+      "Augustus",
+      "Nero",
+      "Constantine"
+    ],
+    "correct": 2,
+    "fact": "Augustus, born Gaius Octavius, was the adopted heir of Julius Caesar."
+  },
+  {
+    "id": 335,
+    "cat": "History",
+    "diff": "medium",
+    "q": "In which year was the Berlin Wall built?",
+    "a": [
+      "1949",
+      "1955",
+      "1961",
+      "1971"
+    ],
+    "correct": 3,
+    "fact": "The Berlin Wall stood for more than 28 years before it fell in 1989."
+  },
+  {
+    "id": 336,
+    "cat": "History",
+    "diff": "medium",
+    "q": "In 1803, the United States purchased the Louisiana Territory from which country?",
+    "a": [
+      "Spain",
+      "Britain",
+      "Mexico",
+      "France"
+    ],
+    "correct": 4,
+    "fact": "The Louisiana Purchase roughly doubled the size of the United States."
+  },
+  {
+    "id": 337,
+    "cat": "History",
+    "diff": "hard",
+    "q": "The Treaty of Versailles, which formally ended World War I with Germany, was signed in which year?",
+    "a": [
+      "1919",
+      "1918",
+      "1920",
+      "1923"
+    ],
+    "correct": 1,
+    "fact": "The Treaty of Versailles was signed on June 28, 1919, exactly five years after the assassination that helped trigger the war."
+  },
+  {
+    "id": 338,
+    "cat": "History",
+    "diff": "hard",
+    "q": "Constantinople was the capital of which empire?",
+    "a": [
+      "The Persian Empire",
+      "The Byzantine Empire",
+      "The Ottoman Empire at its founding",
+      "The Macedonian Empire"
+    ],
+    "correct": 2,
+    "fact": "Constantinople was founded by the Roman emperor Constantine I in 330 CE."
+  },
+  {
+    "id": 339,
+    "cat": "History",
+    "diff": "hard",
+    "q": "Cuneiform, one of the earliest known writing systems, was developed by which people?",
+    "a": [
+      "The Egyptians",
+      "The Phoenicians",
+      "The Sumerians",
+      "The Hittites"
+    ],
+    "correct": 3,
+    "fact": "Cuneiform was written by pressing a reed stylus into wet clay tablets."
+  },
+  {
+    "id": 340,
+    "cat": "History",
+    "diff": "hard",
+    "q": "The Wars of the Roses were fought between which two English houses?",
+    "a": [
+      "Tudor and Stuart",
+      "Windsor and Hanover",
+      "Plantagenet and Norman",
+      "Lancaster and York"
+    ],
+    "correct": 4,
+    "fact": "The Wars of the Roses ended when Henry Tudor became King Henry VII in 1485."
+  },
+  {
+    "id": 341,
+    "cat": "History",
+    "diff": "hard",
+    "q": "Ashoka was a famous emperor of which ancient Indian empire?",
+    "a": [
+      "The Maurya Empire",
+      "The Gupta Empire",
+      "The Mughal Empire",
+      "The Chola Empire"
+    ],
+    "correct": 1,
+    "fact": "After the Kalinga War, Ashoka embraced Buddhism and promoted it across Asia."
+  },
+  {
+    "id": 342,
+    "cat": "History",
+    "diff": "hard",
+    "q": "The Meiji Restoration, which modernized Japan, began in which year?",
+    "a": [
+      "1800",
+      "1868",
+      "1853",
+      "1905"
+    ],
+    "correct": 2,
+    "fact": "The Meiji Restoration restored imperial rule under Emperor Meiji in 1868."
+  },
+  {
+    "id": 343,
+    "cat": "History",
+    "diff": "hard",
+    "q": "The Battle of Agincourt in 1415 was part of which long conflict?",
+    "a": [
+      "The Wars of the Roses",
+      "The Thirty Years' War",
+      "The Hundred Years' War",
+      "The Napoleonic Wars"
+    ],
+    "correct": 3,
+    "fact": "English longbowmen played a decisive role in the victory at Agincourt."
+  },
+  {
+    "id": 344,
+    "cat": "History",
+    "diff": "hard",
+    "q": "Qin Shi Huang is best known as the first emperor of a unified what?",
+    "a": [
+      "Japan",
+      "Korea",
+      "Mongolia",
+      "China"
+    ],
+    "correct": 4,
+    "fact": "Qin Shi Huang is buried with the famous Terracotta Army of thousands of clay soldiers."
+  },
+  {
+    "id": 345,
+    "cat": "History",
+    "diff": "hard",
+    "q": "The Rosetta Stone was key to deciphering which ancient writing system?",
+    "a": [
+      "Egyptian hieroglyphs",
+      "Sumerian cuneiform",
+      "Maya glyphs",
+      "Linear B"
+    ],
+    "correct": 1,
+    "fact": "The Rosetta Stone carries the same text in hieroglyphs, Demotic script, and ancient Greek."
+  }
+]
