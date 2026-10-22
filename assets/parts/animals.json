@@ -1,0 +1,492 @@
+[
+  {
+    "id": 501,
+    "cat": "Animals",
+    "diff": "easy",
+    "q": "What is the fastest land animal in the world?",
+    "a": [
+      "Cheetah",
+      "Lion",
+      "Racehorse",
+      "Greyhound"
+    ],
+    "correct": 1,
+    "fact": "Cheetahs can sprint up to about 60 mph in short bursts to catch prey."
+  },
+  {
+    "id": 502,
+    "cat": "Animals",
+    "diff": "easy",
+    "q": "What is the largest land animal in the world?",
+    "a": [
+      "White rhinoceros",
+      "African elephant",
+      "Giraffe",
+      "Hippopotamus"
+    ],
+    "correct": 2,
+    "fact": "African elephants can weigh more than 6 tons and stand over 3 meters tall at the shoulder."
+  },
+  {
+    "id": 503,
+    "cat": "Animals",
+    "diff": "easy",
+    "q": "What is the tallest land animal in the world?",
+    "a": [
+      "Horse",
+      "Moose",
+      "Giraffe",
+      "Camel"
+    ],
+    "correct": 3,
+    "fact": "A giraffe's heart weighs about 11 kilograms to pump blood all the way up its long neck."
+  },
+  {
+    "id": 504,
+    "cat": "Animals",
+    "diff": "easy",
+    "q": "Which animal is famous for its black and white stripes?",
+    "a": [
+      "Tiger",
+      "Okapi",
+      "Dalmatian dog",
+      "Zebra"
+    ],
+    "correct": 4,
+    "fact": "No two zebras have exactly the same stripe pattern, each one is unique."
+  },
+  {
+    "id": 505,
+    "cat": "Animals",
+    "diff": "easy",
+    "q": "Which flightless bird lives in Antarctica and is an excellent swimmer?",
+    "a": [
+      "Penguin",
+      "Ostrich",
+      "Kiwi",
+      "Puffin"
+    ],
+    "correct": 1,
+    "fact": "Emperor penguins can dive deeper than 500 meters in search of food."
+  },
+  {
+    "id": 506,
+    "cat": "Animals",
+    "diff": "easy",
+    "q": "What do giant pandas eat almost all of the time?",
+    "a": [
+      "Eucalyptus leaves",
+      "Bamboo",
+      "Grass",
+      "Fish"
+    ],
+    "correct": 2,
+    "fact": "Giant pandas spend 10 to 16 hours a day eating bamboo."
+  },
+  {
+    "id": 507,
+    "cat": "Animals",
+    "diff": "easy",
+    "q": "Which animal hops on powerful hind legs and carries its baby in a pouch?",
+    "a": [
+      "Rabbit",
+      "Koala",
+      "Kangaroo",
+      "Deer"
+    ],
+    "correct": 3,
+    "fact": "Red kangaroos can leap more than 9 meters in a single bound."
+  },
+  {
+    "id": 508,
+    "cat": "Animals",
+    "diff": "easy",
+    "q": "How many legs does a spider have?",
+    "a": [
+      "Six",
+      "Ten",
+      "Four",
+      "Eight"
+    ],
+    "correct": 4,
+    "fact": "Spiders have eight legs, while insects have only six."
+  },
+  {
+    "id": 509,
+    "cat": "Animals",
+    "diff": "easy",
+    "q": "Which animal is well known for being able to change its skin color?",
+    "a": [
+      "Chameleon",
+      "Frog",
+      "Lizard gecko",
+      "Snake"
+    ],
+    "correct": 1,
+    "fact": "Chameleons change color by adjusting special pigment cells in their skin."
+  },
+  {
+    "id": 510,
+    "cat": "Animals",
+    "diff": "easy",
+    "q": "What is the largest flightless bird in the world?",
+    "a": [
+      "Emu",
+      "Ostrich",
+      "Penguin",
+      "Cassowary"
+    ],
+    "correct": 2,
+    "fact": "Ostriches lay the largest eggs of any living land animal."
+  },
+  {
+    "id": 511,
+    "cat": "Animals",
+    "diff": "easy",
+    "q": "Which insect produces honey?",
+    "a": [
+      "Ant",
+      "Butterfly",
+      "Honey bee",
+      "Wasp hornet"
+    ],
+    "correct": 3,
+    "fact": "A single honey bee colony can contain up to 60,000 bees."
+  },
+  {
+    "id": 512,
+    "cat": "Animals",
+    "diff": "easy",
+    "q": "Which nocturnal bird is known for hooting and turning its head far around?",
+    "a": [
+      "Eagle",
+      "Crow",
+      "Sparrow",
+      "Owl"
+    ],
+    "correct": 4,
+    "fact": "Some owls can rotate their heads up to 270 degrees."
+  },
+  {
+    "id": 513,
+    "cat": "Animals",
+    "diff": "easy",
+    "q": "Which sea animal has eight arms and a soft body with no bones?",
+    "a": [
+      "Octopus",
+      "Squid",
+      "Jellyfish",
+      "Starfish"
+    ],
+    "correct": 1,
+    "fact": "Octopuses are considered among the most intelligent invertebrates."
+  },
+  {
+    "id": 514,
+    "cat": "Animals",
+    "diff": "easy",
+    "q": "Which domestic animal is known for purring when it is content?",
+    "a": [
+      "Dog",
+      "Cat",
+      "Rabbit",
+      "Hamster"
+    ],
+    "correct": 2,
+    "fact": "Cats can make over 100 different vocal sounds."
+  },
+  {
+    "id": 515,
+    "cat": "Animals",
+    "diff": "medium",
+    "q": "Which is the only mammal capable of true powered flight?",
+    "a": [
+      "Flying squirrel",
+      "Sugar glider",
+      "Bat",
+      "Colugo"
+    ],
+    "correct": 3,
+    "fact": "There are more than 1,400 species of bats worldwide."
+  },
+  {
+    "id": 516,
+    "cat": "Animals",
+    "diff": "medium",
+    "q": "Which animal is the largest animal known to have ever lived?",
+    "a": [
+      "African elephant",
+      "Argentinosaurus",
+      "Megalodon shark",
+      "Blue whale"
+    ],
+    "correct": 4,
+    "fact": "A blue whale's tongue alone can weigh as much as an elephant."
+  },
+  {
+    "id": 517,
+    "cat": "Animals",
+    "diff": "medium",
+    "q": "How many hearts does an octopus have?",
+    "a": [
+      "Three",
+      "One",
+      "Two",
+      "Four"
+    ],
+    "correct": 1,
+    "fact": "Two of an octopus's three hearts pump blood to its gills, and one pumps it to the body."
+  },
+  {
+    "id": 518,
+    "cat": "Animals",
+    "diff": "medium",
+    "q": "What color is a polar bear's skin underneath its white fur?",
+    "a": [
+      "Pink",
+      "Black",
+      "White",
+      "Grey"
+    ],
+    "correct": 2,
+    "fact": "Polar bear fur is not actually white, it is translucent and looks white because it reflects light."
+  },
+  {
+    "id": 519,
+    "cat": "Animals",
+    "diff": "medium",
+    "q": "Which bird is the fastest animal in the world when it dives?",
+    "a": [
+      "Golden eagle",
+      "Albatross",
+      "Peregrine falcon",
+      "Swift"
+    ],
+    "correct": 3,
+    "fact": "Peregrine falcons can dive at speeds over 240 mph."
+  },
+  {
+    "id": 520,
+    "cat": "Animals",
+    "diff": "medium",
+    "q": "Which mammal lays eggs instead of giving birth to live young?",
+    "a": [
+      "Koala",
+      "Armadillo",
+      "Otter",
+      "Platypus"
+    ],
+    "correct": 4,
+    "fact": "The platypus is one of only five living species of egg-laying mammals called monotremes."
+  },
+  {
+    "id": 521,
+    "cat": "Animals",
+    "diff": "medium",
+    "q": "What is a group of wolves called?",
+    "a": [
+      "Pack",
+      "Herd",
+      "Flock",
+      "Swarm"
+    ],
+    "correct": 1,
+    "fact": "Wolf packs are usually family groups led by a breeding pair."
+  },
+  {
+    "id": 522,
+    "cat": "Animals",
+    "diff": "medium",
+    "q": "Which animal has fingerprints that are very similar to human fingerprints?",
+    "a": [
+      "Gorilla",
+      "Koala",
+      "Panda",
+      "Raccoon"
+    ],
+    "correct": 2,
+    "fact": "Koalas have unique fingerprints, just like humans."
+  },
+  {
+    "id": 523,
+    "cat": "Animals",
+    "diff": "medium",
+    "q": "What is a baby frog called?",
+    "a": [
+      "Froglet",
+      "Cub",
+      "Tadpole",
+      "Calf"
+    ],
+    "correct": 3,
+    "fact": "Tadpoles breathe through gills before they grow lungs and legs."
+  },
+  {
+    "id": 524,
+    "cat": "Animals",
+    "diff": "medium",
+    "q": "Which is the largest fish in the world?",
+    "a": [
+      "Great white shark",
+      "Basking shark",
+      "Ocean sunfish",
+      "Whale shark"
+    ],
+    "correct": 4,
+    "fact": "Whale sharks can grow longer than a city bus but eat mostly plankton."
+  },
+  {
+    "id": 525,
+    "cat": "Animals",
+    "diff": "medium",
+    "q": "Which bird is the only bird that can fly backwards?",
+    "a": [
+      "Hummingbird",
+      "Kingfisher",
+      "Swallow",
+      "Finch"
+    ],
+    "correct": 1,
+    "fact": "Hummingbirds can beat their wings up to 80 times per second."
+  },
+  {
+    "id": 526,
+    "cat": "Animals",
+    "diff": "medium",
+    "q": "In which animal does the male carry the babies in a special pouch?",
+    "a": [
+      "Penguin",
+      "Seahorse",
+      "Clownfish",
+      "Frog"
+    ],
+    "correct": 2,
+    "fact": "Male seahorses carry developing young in a brood pouch until they are born."
+  },
+  {
+    "id": 527,
+    "cat": "Animals",
+    "diff": "medium",
+    "q": "Which giant reptile is known for living well over 100 years?",
+    "a": [
+      "Komodo dragon",
+      "Green iguana",
+      "Giant tortoise",
+      "American alligator"
+    ],
+    "correct": 3,
+    "fact": "Some giant tortoises are believed to have lived for more than 150 years."
+  },
+  {
+    "id": 528,
+    "cat": "Animals",
+    "diff": "medium",
+    "q": "What do you call an animal that is active mainly at night?",
+    "a": [
+      "Diurnal",
+      "Crepuscular only",
+      "Hibernating",
+      "Nocturnal"
+    ],
+    "correct": 4,
+    "fact": "Owls, bats and many other nocturnal animals have special senses adapted for darkness."
+  },
+  {
+    "id": 529,
+    "cat": "Animals",
+    "diff": "hard",
+    "q": "Which amphibian can regenerate its limbs, heart and parts of its brain?",
+    "a": [
+      "Axolotl",
+      "Salamander newt",
+      "Frog",
+      "Caecilian"
+    ],
+    "correct": 1,
+    "fact": "Axolotls keep their larval features for their whole lives, a trait called neoteny."
+  },
+  {
+    "id": 530,
+    "cat": "Animals",
+    "diff": "hard",
+    "q": "Which is the only mammal in the world covered in scales?",
+    "a": [
+      "Armadillo",
+      "Pangolin",
+      "Porcupine",
+      "Hedgehog"
+    ],
+    "correct": 2,
+    "fact": "Pangolin scales are made of keratin, the same material as human fingernails."
+  },
+  {
+    "id": 531,
+    "cat": "Animals",
+    "diff": "hard",
+    "q": "Which tiny animal is famous for surviving the vacuum of space in experiments?",
+    "a": [
+      "Water flea",
+      "Rotifer",
+      "Tardigrade",
+      "Nematode worm"
+    ],
+    "correct": 3,
+    "fact": "Tardigrades, also called water bears, can survive extreme heat, cold and radiation."
+  },
+  {
+    "id": 532,
+    "cat": "Animals",
+    "diff": "hard",
+    "q": "A narwhal's long spiral tusk is actually what body part?",
+    "a": [
+      "A horn",
+      "A bone spike",
+      "A fin",
+      "An enlarged tooth"
+    ],
+    "correct": 4,
+    "fact": "A narwhal's tusk is usually its left canine tooth growing through its lip."
+  },
+  {
+    "id": 533,
+    "cat": "Animals",
+    "diff": "hard",
+    "q": "How many chambers does a cow's stomach have?",
+    "a": [
+      "Four",
+      "One",
+      "Two",
+      "Three"
+    ],
+    "correct": 1,
+    "fact": "A cow's four stomach chambers help it digest tough plant material like grass."
+  },
+  {
+    "id": 534,
+    "cat": "Animals",
+    "diff": "hard",
+    "q": "Which venomous primate is found in Southeast Asia?",
+    "a": [
+      "Lemur",
+      "Slow loris",
+      "Tarsier",
+      "Marmoset"
+    ],
+    "correct": 2,
+    "fact": "The slow loris is one of the very few venomous mammals in the world."
+  },
+  {
+    "id": 535,
+    "cat": "Animals",
+    "diff": "hard",
+    "q": "What makes the skin of a glass frog special?",
+    "a": [
+      "It glows in the dark",
+      "It changes to bright red",
+      "It is translucent, so its organs can be seen from below",
+      "It is covered in tiny glass-like scales"
+    ],
+    "correct": 3,
+    "fact": "Glass frogs are mostly active at night and live in rainforests of Central and South America."
+  }
+]
