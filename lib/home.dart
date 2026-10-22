@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'ads.dart';
 import 'data.dart';
 import 'quiz.dart';
@@ -120,54 +119,11 @@ class _NavBar extends StatelessWidget {
   }
 }
 
-class _BannerSlot extends StatefulWidget {
+class _BannerSlot extends StatelessWidget {
   const _BannerSlot();
 
   @override
-  State<_BannerSlot> createState() => _BannerSlotState();
-}
-
-class _BannerSlotState extends State<_BannerSlot> {
-  BannerAd? _ad;
-  bool _loaded = false;
-
-  @override
-  void initState() {
-    super.initState();
-    if (!Ads.enabled) return;
-    _ad = BannerAd(
-      size: AdSize.banner,
-      adUnitId: Ads.bannerId,
-      request: const AdRequest(),
-      listener: BannerAdListener(
-        onAdLoaded: (_) {
-          if (mounted) setState(() => _loaded = true);
-        },
-        onAdFailedToLoad: (ad, _) {
-          ad.dispose();
-          if (mounted) setState(() => _loaded = false);
-        },
-      ),
-    )..load();
-  }
-
-  @override
-  void dispose() {
-    _ad?.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    if (!_loaded || _ad == null) return const SizedBox.shrink();
-    return Container(
-      color: Colors.white,
-      alignment: Alignment.center,
-      width: double.infinity,
-      height: 56,
-      child: SizedBox(width: _ad!.size.width.toDouble(), height: _ad!.size.height.toDouble(), child: AdWidget(ad: _ad!)),
-    );
-  }
+  Widget build(BuildContext context) => const SizedBox.shrink();
 }
 
 // ---------------------------------------------------------------------------
