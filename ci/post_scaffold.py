@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Patch the CI-generated Flutter android scaffold for QuizNova:
 - applicationId -> com.pyaystudios.quiznova
-- minSdk -> 23 (google_mobile_ads requirement)
+- minSdk -> 24 (google_mobile_ads 9.x requirement)
 - AdMob TEST application id meta-data in AndroidManifest.xml
 """
 import re
@@ -20,14 +20,14 @@ is_kts = gradle.suffix == ".kts"
 text = gradle.read_text()
 if is_kts:
     text, n1 = re.subn(r'applicationId\s*=\s*"[^"]*"', f'applicationId = "{APP_ID}"', text, count=1)
-    text, n2 = re.subn(r"minSdk\s*=\s*flutter\.minSdkVersion", "minSdk = 23", text, count=1)
+    text, n2 = re.subn(r"minSdk\s*=\s*flutter\.minSdkVersion", "minSdk = 24", text, count=1)
     if n2 == 0:
-        text, n2 = re.subn(r"minSdk\s*=\s*\d+", "minSdk = 23", text, count=1)
+        text, n2 = re.subn(r"minSdk\s*=\s*\d+", "minSdk = 24", text, count=1)
 else:
     text, n1 = re.subn(r'applicationId\s+"[^"]*"', f'applicationId "{APP_ID}"', text, count=1)
-    text, n2 = re.subn(r"minSdkVersion\s+flutter\.minSdkVersion", "minSdkVersion 23", text, count=1)
+    text, n2 = re.subn(r"minSdkVersion\s+flutter\.minSdkVersion", "minSdkVersion 24", text, count=1)
     if n2 == 0:
-        text, n2 = re.subn(r"minSdkVersion\s+\d+", "minSdkVersion 23", text, count=1)
+        text, n2 = re.subn(r"minSdkVersion\s+\d+", "minSdkVersion 24", text, count=1)
 gradle.write_text(text)
 print(f"gradle patched: applicationId replacements={n1}, minSdk replacements={n2}")
 
