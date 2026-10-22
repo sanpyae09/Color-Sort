@@ -1,0 +1,352 @@
+[
+  {
+    "id": 601,
+    "cat": "Movies & TV",
+    "diff": "easy",
+    "q": "Who played Jack Dawson in Titanic?",
+    "a": [
+      "Leonardo DiCaprio",
+      "Matt Damon",
+      "Brad Pitt",
+      "Tom Cruise"
+    ],
+    "correct": 1,
+    "fact": "Leonardo DiCaprio was 22 years old when Titanic was released in 1997."
+  },
+  {
+    "id": 602,
+    "cat": "Movies & TV",
+    "diff": "easy",
+    "q": "Which animated film features the snowman Olaf?",
+    "a": [
+      "Moana",
+      "Frozen",
+      "Tangled",
+      "Brave"
+    ],
+    "correct": 2,
+    "fact": "Frozen, released in 2013, became one of the highest-grossing animated films of its era."
+  },
+  {
+    "id": 603,
+    "cat": "Movies & TV",
+    "diff": "easy",
+    "q": "In Star Wars, who is revealed to be Luke Skywalker's father?",
+    "a": [
+      "Obi-Wan Kenobi",
+      "Emperor Palpatine",
+      "Darth Vader",
+      "Yoda"
+    ],
+    "correct": 3,
+    "fact": "The reveal in The Empire Strikes Back (1980) is one of the most famous plot twists in film history."
+  },
+  {
+    "id": 604,
+    "cat": "Movies & TV",
+    "diff": "easy",
+    "q": "Who plays Iron Man in the Marvel Cinematic Universe?",
+    "a": [
+      "Chris Evans",
+      "Chris Hemsworth",
+      "Mark Ruffalo",
+      "Robert Downey Jr."
+    ],
+    "correct": 4,
+    "fact": "Robert Downey Jr. first played Iron Man in the 2008 film that launched the MCU."
+  },
+  {
+    "id": 605,
+    "cat": "Movies & TV",
+    "diff": "easy",
+    "q": "Which Pixar film is about a clownfish searching for his missing son?",
+    "a": [
+      "Finding Nemo",
+      "Shark Tale",
+      "The Little Mermaid",
+      "Luca"
+    ],
+    "correct": 1,
+    "fact": "Finding Nemo won the Academy Award for Best Animated Feature in 2004."
+  },
+  {
+    "id": 606,
+    "cat": "Movies & TV",
+    "diff": "easy",
+    "q": "Which 1939 classic film features Dorothy, Toto and the Yellow Brick Road?",
+    "a": [
+      "Gone with the Wind",
+      "The Wizard of Oz",
+      "Snow White and the Seven Dwarfs",
+      "Pinocchio"
+    ],
+    "correct": 2,
+    "fact": "The Wizard of Oz was notable for its vivid use of Technicolor."
+  },
+  {
+    "id": 607,
+    "cat": "Movies & TV",
+    "diff": "easy",
+    "q": "Who directed Jaws, E.T. and Jurassic Park?",
+    "a": [
+      "James Cameron",
+      "George Lucas",
+      "Steven Spielberg",
+      "Ridley Scott"
+    ],
+    "correct": 3,
+    "fact": "Steven Spielberg co-founded DreamWorks Pictures in 1994."
+  },
+  {
+    "id": 608,
+    "cat": "Movies & TV",
+    "diff": "easy",
+    "q": "Which 1994 Disney animated film features Simba, a young lion?",
+    "a": [
+      "Aladdin",
+      "Beauty and the Beast",
+      "Tarzan",
+      "The Lion King"
+    ],
+    "correct": 4,
+    "fact": "The Lion King was inspired in part by Shakespeare's Hamlet."
+  },
+  {
+    "id": 609,
+    "cat": "Movies & TV",
+    "diff": "easy",
+    "q": "Which TV sitcom follows six friends living in New York City?",
+    "a": [
+      "Friends",
+      "Seinfeld",
+      "Frasier",
+      "Cheers"
+    ],
+    "correct": 1,
+    "fact": "Friends ran for 10 seasons from 1994 to 2004."
+  },
+  {
+    "id": 610,
+    "cat": "Movies & TV",
+    "diff": "easy",
+    "q": "Which green ogre is voiced by Mike Myers in a hit animated series?",
+    "a": [
+      "Hulk",
+      "Shrek",
+      "Yoda",
+      "Oscar the Grouch"
+    ],
+    "correct": 2,
+    "fact": "Shrek won the first Academy Award for Best Animated Feature in 2002."
+  },
+  {
+    "id": 611,
+    "cat": "Movies & TV",
+    "diff": "medium",
+    "q": "Which 1959 epic was the first film to win 11 Academy Awards?",
+    "a": [
+      "Titanic",
+      "The Lord of the Rings: The Return of the King",
+      "Ben-Hur",
+      "West Side Story"
+    ],
+    "correct": 3,
+    "fact": "Ben-Hur won 11 Oscars, a record later tied by Titanic and The Return of the King."
+  },
+  {
+    "id": 612,
+    "cat": "Movies & TV",
+    "diff": "medium",
+    "q": "Who did Marlon Brando play in The Godfather?",
+    "a": [
+      "Michael Corleone",
+      "Sonny Corleone",
+      "Tom Hagen",
+      "Vito Corleone"
+    ],
+    "correct": 4,
+    "fact": "Marlon Brando won the Academy Award for Best Actor for The Godfather (1972)."
+  },
+  {
+    "id": 613,
+    "cat": "Movies & TV",
+    "diff": "medium",
+    "q": "What was Pixar's first feature-length film?",
+    "a": [
+      "Toy Story",
+      "A Bug's Life",
+      "Monsters, Inc.",
+      "Finding Nemo"
+    ],
+    "correct": 1,
+    "fact": "Toy Story, released in 1995, was the first fully computer-animated feature film."
+  },
+  {
+    "id": 614,
+    "cat": "Movies & TV",
+    "diff": "medium",
+    "q": "Which director made Psycho, Vertigo and Rear Window?",
+    "a": [
+      "Stanley Kubrick",
+      "Alfred Hitchcock",
+      "Orson Welles",
+      "Billy Wilder"
+    ],
+    "correct": 2,
+    "fact": "Alfred Hitchcock is widely known as the Master of Suspense."
+  },
+  {
+    "id": 615,
+    "cat": "Movies & TV",
+    "diff": "medium",
+    "q": "Who played Hermione Granger in the Harry Potter films?",
+    "a": [
+      "Bonnie Wright",
+      "Evanna Lynch",
+      "Emma Watson",
+      "Katie Leung"
+    ],
+    "correct": 3,
+    "fact": "Emma Watson was cast as Hermione when she was nine years old."
+  },
+  {
+    "id": 616,
+    "cat": "Movies & TV",
+    "diff": "medium",
+    "q": "In which year was the first Star Wars film released?",
+    "a": [
+      "1975",
+      "1980",
+      "1983",
+      "1977"
+    ],
+    "correct": 4,
+    "fact": "The first Star Wars film was later retitled Episode IV: A New Hope."
+  },
+  {
+    "id": 617,
+    "cat": "Movies & TV",
+    "diff": "medium",
+    "q": "How many Academy Awards did The Lord of the Rings: The Return of the King win?",
+    "a": [
+      "11",
+      "9",
+      "10",
+      "7"
+    ],
+    "correct": 1,
+    "fact": "The Return of the King won all 11 awards it was nominated for in 2004."
+  },
+  {
+    "id": 618,
+    "cat": "Movies & TV",
+    "diff": "medium",
+    "q": "Which TV drama follows chemistry teacher Walter White?",
+    "a": [
+      "Better Call Saul",
+      "Breaking Bad",
+      "The Sopranos",
+      "Mad Men"
+    ],
+    "correct": 2,
+    "fact": "Breaking Bad ran from 2008 to 2013 and is widely ranked among the greatest TV series ever made."
+  },
+  {
+    "id": 619,
+    "cat": "Movies & TV",
+    "diff": "medium",
+    "q": "Casablanca is set during which war?",
+    "a": [
+      "World War I",
+      "The Spanish Civil War",
+      "World War II",
+      "The Korean War"
+    ],
+    "correct": 3,
+    "fact": "Casablanca won the Academy Award for Best Picture in 1943."
+  },
+  {
+    "id": 620,
+    "cat": "Movies & TV",
+    "diff": "medium",
+    "q": "Which composer created the music for Star Wars, Indiana Jones and Jurassic Park?",
+    "a": [
+      "Hans Zimmer",
+      "James Horner",
+      "Alan Silvestri",
+      "John Williams"
+    ],
+    "correct": 4,
+    "fact": "John Williams has received more than 50 Academy Award nominations."
+  },
+  {
+    "id": 621,
+    "cat": "Movies & TV",
+    "diff": "hard",
+    "q": "Which film won the first Academy Award for Best Picture in 1929?",
+    "a": [
+      "Wings",
+      "Sunrise",
+      "Metropolis",
+      "The Jazz Singer"
+    ],
+    "correct": 1,
+    "fact": "Wings is a silent war film known for its pioneering aerial battle scenes."
+  },
+  {
+    "id": 622,
+    "cat": "Movies & TV",
+    "diff": "hard",
+    "q": "Which 1934 film was the first to win the Big Five Academy Awards?",
+    "a": [
+      "Gone with the Wind",
+      "It Happened One Night",
+      "Mutiny on the Bounty",
+      "The Great Ziegfeld"
+    ],
+    "correct": 2,
+    "fact": "The Big Five are Best Picture, Director, Actor, Actress and Screenplay."
+  },
+  {
+    "id": 623,
+    "cat": "Movies & TV",
+    "diff": "hard",
+    "q": "Who directed and starred in Citizen Kane?",
+    "a": [
+      "John Ford",
+      "Charlie Chaplin",
+      "Orson Welles",
+      "Howard Hawks"
+    ],
+    "correct": 3,
+    "fact": "Orson Welles was only 25 years old when Citizen Kane was released in 1941."
+  },
+  {
+    "id": 624,
+    "cat": "Movies & TV",
+    "diff": "hard",
+    "q": "Which actor holds the record with three Academy Awards for Best Actor?",
+    "a": [
+      "Jack Nicholson",
+      "Spencer Tracy",
+      "Walter Brennan",
+      "Daniel Day-Lewis"
+    ],
+    "correct": 4,
+    "fact": "Daniel Day-Lewis won Best Actor for My Left Foot, There Will Be Blood and Lincoln."
+  },
+  {
+    "id": 625,
+    "cat": "Movies & TV",
+    "diff": "hard",
+    "q": "Which was the first animated film ever nominated for Best Picture?",
+    "a": [
+      "Beauty and the Beast",
+      "Snow White and the Seven Dwarfs",
+      "Up",
+      "Toy Story 3"
+    ],
+    "correct": 1,
+    "fact": "Beauty and the Beast received its Best Picture nomination in 1991."
+  }
+]
