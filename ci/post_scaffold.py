@@ -33,12 +33,18 @@ print(f"gradle patched: applicationId replacements={n1}, minSdk replacements={n2
 
 manifest = Path("android/app/src/main/AndroidManifest.xml")
 m = manifest.read_text()
+additions = ""
 if "com.google.android.gms.ads.APPLICATION_ID" not in m:
-    meta = f'        <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="{ADS_APP_ID}"/>\n    </application>'
+    additions += f'        <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="{ADS_APP_ID}"/>\n'
+if "io.flutter.embedding.android.EnableImpeller" not in m:
+    # Impeller (Vulkan) first-frame rendering hangs on some Mali/HiOS devices
+    # (app stuck on the Android system splash). Force the Skia renderer.
+    additions += '        <meta-data android:name="io.flutter.embedding.android.EnableImpeller" android:value="false"/>\n'
+if additions:
     if "</application>" not in m:
         sys.exit("AndroidManifest.xml has no </application> tag")
-    m = m.replace("</application>", meta, 1)
+    m = m.replace("</application>", additions + "    </application>", 1)
     manifest.write_text(m)
-    print("manifest: AdMob test app id inserted")
+    print("manifest: meta-data inserted")
 else:
-    print("manifest: ads meta-data already present")
+    print("manifest: meta-data already present")
