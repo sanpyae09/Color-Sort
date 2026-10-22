@@ -7,8 +7,18 @@ import 'widgets.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Store.instance.init();
-  await QuestionBank.instance.load();
+  // Startup hardening: never let a slow/hung storage or asset load block the
+  // first frame — the Android system splash must always hand over to the app.
+  try {
+    await Store.instance.init().timeout(const Duration(seconds: 5));
+  } catch (e) {
+    debugPrint('QuizNova: store init failed: $e');
+  }
+  try {
+    await QuestionBank.instance.load().timeout(const Duration(seconds: 5));
+  } catch (e) {
+    debugPrint('QuizNova: question load failed: $e');
+  }
   Ads.init();
   runApp(const QuizNovaApp());
 }
