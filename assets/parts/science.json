@@ -1,0 +1,632 @@
+[
+ {
+  "id": 101,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "What is the chemical symbol for water?",
+  "a": [
+   "H2O",
+   "CO2",
+   "O2",
+   "NaCl"
+  ],
+  "correct": 1,
+  "fact": "Water is made of two hydrogen atoms and one oxygen atom."
+ },
+ {
+  "id": 102,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "What force pulls objects toward the Earth?",
+  "a": [
+   "Magnetism",
+   "Gravity",
+   "Friction",
+   "Inertia"
+  ],
+  "correct": 2,
+  "fact": "Gravity is the force that gives weight to objects and keeps us on the ground."
+ },
+ {
+  "id": 103,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "How many bones are there in an adult human body?",
+  "a": [
+   "186",
+   "206",
+   "226",
+   "306"
+  ],
+  "correct": 2,
+  "fact": "Babies are born with about 300 bones, but many fuse together as they grow, leaving 206 in adults."
+ },
+ {
+  "id": 104,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "Which gas do plants absorb from the air for photosynthesis?",
+  "a": [
+   "Oxygen",
+   "Nitrogen",
+   "Hydrogen",
+   "Carbon dioxide"
+  ],
+  "correct": 4,
+  "fact": "Plants use carbon dioxide, water, and sunlight to make their own food."
+ },
+ {
+  "id": 105,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "At sea level, at what temperature does water boil in Celsius?",
+  "a": [
+   "100 degrees",
+   "80 degrees",
+   "90 degrees",
+   "120 degrees"
+  ],
+  "correct": 1,
+  "fact": "At standard sea-level pressure, pure water boils at exactly 100 degrees Celsius."
+ },
+ {
+  "id": 106,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "Which organ pumps blood around the human body?",
+  "a": [
+   "Liver",
+   "Heart",
+   "Lung",
+   "Kidney"
+  ],
+  "correct": 2,
+  "fact": "The human heart beats about 100,000 times every day."
+ },
+ {
+  "id": 107,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "What is the center of an atom called?",
+  "a": [
+   "Electron",
+   "Proton shell",
+   "Nucleus",
+   "Orbit"
+  ],
+  "correct": 3,
+  "fact": "The nucleus contains protons and neutrons and holds nearly all of an atom's mass."
+ },
+ {
+  "id": 108,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "What sweet substance do bees produce?",
+  "a": [
+   "Milk",
+   "Silk",
+   "Wax candles",
+   "Honey"
+  ],
+  "correct": 4,
+  "fact": "A single bee produces only about one-twelfth of a teaspoon of honey in its lifetime."
+ },
+ {
+  "id": 109,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "What is the solid form of water called?",
+  "a": [
+   "Ice",
+   "Steam",
+   "Vapor",
+   "Rain"
+  ],
+  "correct": 1,
+  "fact": "Ice is less dense than liquid water, which is why ice cubes float."
+ },
+ {
+  "id": 110,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "Which gas do humans need to breathe in to survive?",
+  "a": [
+   "Carbon dioxide",
+   "Oxygen",
+   "Nitrogen",
+   "Helium"
+  ],
+  "correct": 2,
+  "fact": "Humans use oxygen to convert food into energy in their cells."
+ },
+ {
+  "id": 111,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "What is the largest organ of the human body?",
+  "a": [
+   "Liver",
+   "Heart",
+   "Skin",
+   "Brain"
+  ],
+  "correct": 3,
+  "fact": "An adult's skin covers an area of about two square meters."
+ },
+ {
+  "id": 112,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "What does a caterpillar change into?",
+  "a": [
+   "Beetle",
+   "Bee",
+   "Ant",
+   "Butterfly"
+  ],
+  "correct": 4,
+  "fact": "This transformation is called metamorphosis and can take weeks to complete."
+ },
+ {
+  "id": 113,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "Which part of a plant makes most of its food?",
+  "a": [
+   "Leaves",
+   "Roots",
+   "Stem",
+   "Flower"
+  ],
+  "correct": 1,
+  "fact": "Leaves contain chlorophyll, the green pigment that captures sunlight."
+ },
+ {
+  "id": 114,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "What are animals that eat only plants called?",
+  "a": [
+   "Carnivores",
+   "Herbivores",
+   "Omnivores",
+   "Scavengers"
+  ],
+  "correct": 2,
+  "fact": "Cows, rabbits, and deer are all herbivores."
+ },
+ {
+  "id": 115,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "How many legs does an insect have?",
+  "a": [
+   "8",
+   "4",
+   "6",
+   "10"
+  ],
+  "correct": 3,
+  "fact": "All insects have six legs and three main body parts."
+ },
+ {
+  "id": 116,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "Which gas is used to fill balloons so they float?",
+  "a": [
+   "Oxygen",
+   "Carbon dioxide",
+   "Nitrogen",
+   "Helium"
+  ],
+  "correct": 4,
+  "fact": "Helium is lighter than air, so helium balloons rise."
+ },
+ {
+  "id": 117,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "What is the chemical formula for table salt?",
+  "a": [
+   "NaCl",
+   "H2O",
+   "CO2",
+   "NaOH"
+  ],
+  "correct": 1,
+  "fact": "Table salt is sodium chloride: one sodium atom bonded to one chlorine atom."
+ },
+ {
+  "id": 118,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "Which sense do you mainly use with your eyes?",
+  "a": [
+   "Hearing",
+   "Sight",
+   "Smell",
+   "Taste"
+  ],
+  "correct": 2,
+  "fact": "The human eye can distinguish roughly ten million different colors."
+ },
+ {
+  "id": 119,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "How many bones does an adult human have?",
+  "a": [
+   "186",
+   "226",
+   "206",
+   "306"
+  ],
+  "correct": 3,
+  "fact": "Babies are born with about 300 bones, many of which fuse as they grow."
+ },
+ {
+  "id": 120,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "What is the chemical symbol for gold?",
+  "a": [
+   "Ag",
+   "Gd",
+   "Go",
+   "Au"
+  ],
+  "correct": 4,
+  "fact": "Au comes from aurum, the Latin word for gold."
+ },
+ {
+  "id": 121,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "What is the pH of a neutral solution?",
+  "a": [
+   "7",
+   "0",
+   "5",
+   "14"
+  ],
+  "correct": 1,
+  "fact": "Pure water is neutral with a pH of 7 at room temperature."
+ },
+ {
+  "id": 122,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "What is the standard unit of force?",
+  "a": [
+   "Joule",
+   "Newton",
+   "Watt",
+   "Pascal"
+  ],
+  "correct": 2,
+  "fact": "The newton is named after Sir Isaac Newton."
+ },
+ {
+  "id": 123,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "What shape describes the structure of DNA?",
+  "a": [
+   "Single strand",
+   "Flat sheet",
+   "Double helix",
+   "Cube"
+  ],
+  "correct": 3,
+  "fact": "James Watson and Francis Crick described the double helix structure in 1953."
+ },
+ {
+  "id": 124,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "About how fast does light travel in a vacuum?",
+  "a": [
+   "150,000 kilometers per second",
+   "30,000 kilometers per second",
+   "1,000 kilometers per second",
+   "300,000 kilometers per second"
+  ],
+  "correct": 4,
+  "fact": "Light from the Sun takes about eight minutes to reach Earth."
+ },
+ {
+  "id": 125,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "Which blood cells carry oxygen around the body?",
+  "a": [
+   "Red blood cells",
+   "White blood cells",
+   "Platelets",
+   "Plasma cells"
+  ],
+  "correct": 1,
+  "fact": "Red blood cells get their color from hemoglobin, which binds oxygen."
+ },
+ {
+  "id": 126,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "What force resists motion between two surfaces touching each other?",
+  "a": [
+   "Gravity",
+   "Friction",
+   "Magnetism",
+   "Buoyancy"
+  ],
+  "correct": 2,
+  "fact": "Friction is why a sliding box eventually comes to a stop."
+ },
+ {
+  "id": 127,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "What is the chemical symbol for sodium?",
+  "a": [
+   "So",
+   "Sd",
+   "Na",
+   "N"
+  ],
+  "correct": 3,
+  "fact": "Na comes from natrium, the Latin name for sodium."
+ },
+ {
+  "id": 128,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "Which organ produces insulin in the human body?",
+  "a": [
+   "Liver",
+   "Spleen",
+   "Thyroid",
+   "Pancreas"
+  ],
+  "correct": 4,
+  "fact": "Insulin helps control the level of sugar in the blood."
+ },
+ {
+  "id": 129,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "What is the process called when water vapor cools and becomes liquid?",
+  "a": [
+   "Condensation",
+   "Evaporation",
+   "Sublimation",
+   "Precipitation"
+  ],
+  "correct": 1,
+  "fact": "Condensation is why dew forms on grass on cool mornings."
+ },
+ {
+  "id": 130,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "Which gas makes up most of Earth's atmosphere?",
+  "a": [
+   "Oxygen",
+   "Nitrogen",
+   "Argon",
+   "Carbon dioxide"
+  ],
+  "correct": 2,
+  "fact": "Nitrogen makes up about 78 percent of Earth's atmosphere."
+ },
+ {
+  "id": 131,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "Which acid gives lemons their sour taste?",
+  "a": [
+   "Hydrochloric acid",
+   "Acetic acid",
+   "Citric acid",
+   "Sulfuric acid"
+  ],
+  "correct": 3,
+  "fact": "Citric acid is also found in oranges, limes, and grapefruits."
+ },
+ {
+  "id": 132,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "How many chromosomes do humans normally have in each cell?",
+  "a": [
+   "23",
+   "48",
+   "44",
+   "46"
+  ],
+  "correct": 4,
+  "fact": "Human chromosomes are arranged in 23 pairs."
+ },
+ {
+  "id": 133,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "What is the chemical symbol for iron?",
+  "a": [
+   "Fe",
+   "Ir",
+   "In",
+   "Fn"
+  ],
+  "correct": 1,
+  "fact": "Fe comes from ferrum, the Latin word for iron."
+ },
+ {
+  "id": 134,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "What is known as the powerhouse of the cell?",
+  "a": [
+   "Nucleus",
+   "Mitochondria",
+   "Ribosome",
+   "Golgi body"
+  ],
+  "correct": 2,
+  "fact": "Mitochondria produce most of a cell's energy in the form of ATP."
+ },
+ {
+  "id": 135,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "What is the hardest naturally occurring substance on Earth?",
+  "a": [
+   "Quartz",
+   "Titanium",
+   "Diamond",
+   "Obsidian"
+  ],
+  "correct": 3,
+  "fact": "Diamonds are made of carbon atoms arranged in a very strong crystal structure."
+ },
+ {
+  "id": 136,
+  "cat": "Science",
+  "diff": "hard",
+  "q": "What is Avogadro's number, approximately?",
+  "a": [
+   "6.022 x 10^20",
+   "3.011 x 10^23",
+   "9.109 x 10^31",
+   "6.022 x 10^23"
+  ],
+  "correct": 4,
+  "fact": "Avogadro's number is the number of particles in one mole of a substance."
+ },
+ {
+  "id": 137,
+  "cat": "Science",
+  "diff": "hard",
+  "q": "Which blood type is known as the universal donor?",
+  "a": [
+   "O negative",
+   "AB positive",
+   "A positive",
+   "B negative"
+  ],
+  "correct": 1,
+  "fact": "O negative blood can be given to people of almost any blood type in emergencies."
+ },
+ {
+  "id": 138,
+  "cat": "Science",
+  "diff": "hard",
+  "q": "Which enzyme begins the digestion of starch in the mouth?",
+  "a": [
+   "Pepsin",
+   "Amylase",
+   "Lipase",
+   "Trypsin"
+  ],
+  "correct": 2,
+  "fact": "Salivary amylase starts breaking down starches before food reaches the stomach."
+ },
+ {
+  "id": 139,
+  "cat": "Science",
+  "diff": "hard",
+  "q": "What is the chemical symbol for antimony?",
+  "a": [
+   "An",
+   "At",
+   "Sb",
+   "Sn"
+  ],
+  "correct": 3,
+  "fact": "Sb comes from stibium, the Latin name for antimony."
+ },
+ {
+  "id": 140,
+  "cat": "Science",
+  "diff": "hard",
+  "q": "Which cell structure is the main site of protein synthesis?",
+  "a": [
+   "Lysosome",
+   "Vacuole",
+   "Chloroplast",
+   "Ribosome"
+  ],
+  "correct": 4,
+  "fact": "Ribosomes build proteins by following instructions from messenger RNA."
+ },
+ {
+  "id": 141,
+  "cat": "Science",
+  "diff": "hard",
+  "q": "Who proposed the theory of evolution by natural selection?",
+  "a": [
+   "Charles Darwin",
+   "Gregor Mendel",
+   "Louis Pasteur",
+   "Alfred Wegener"
+  ],
+  "correct": 1,
+  "fact": "Darwin published his theory in On the Origin of Species in 1859."
+ },
+ {
+  "id": 142,
+  "cat": "Science",
+  "diff": "hard",
+  "q": "What is the approximate pH of healthy human blood?",
+  "a": [
+   "6.5",
+   "7.4",
+   "8.2",
+   "5.5"
+  ],
+  "correct": 2,
+  "fact": "The body keeps blood pH tightly controlled between about 7.35 and 7.45."
+ },
+ {
+  "id": 143,
+  "cat": "Science",
+  "diff": "hard",
+  "q": "After oxygen, what is the second most abundant element in the human body by mass?",
+  "a": [
+   "Hydrogen",
+   "Nitrogen",
+   "Carbon",
+   "Calcium"
+  ],
+  "correct": 3,
+  "fact": "Carbon forms the backbone of proteins, fats, and carbohydrates in the body."
+ },
+ {
+  "id": 144,
+  "cat": "Science",
+  "diff": "hard",
+  "q": "Which subatomic particle has a negative electric charge?",
+  "a": [
+   "Proton",
+   "Neutron",
+   "Photon",
+   "Electron"
+  ],
+  "correct": 4,
+  "fact": "Electrons are far lighter than protons and neutrons."
+ },
+ {
+  "id": 145,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "Which component of blood helps it to clot?",
+  "a": [
+   "Platelets",
+   "Red blood cells",
+   "White blood cells",
+   "Plasma proteins"
+  ],
+  "correct": 1,
+  "fact": "Platelets rush to the site of a cut and stick together to plug the wound."
+ }
+]
