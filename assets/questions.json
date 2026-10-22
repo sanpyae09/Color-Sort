@@ -1,0 +1,4202 @@
+[
+ {
+  "a": [
+   "366",
+   "365",
+   "364",
+   "367"
+  ],
+  "cat": "General Knowledge",
+  "correct": 1,
+  "diff": "easy",
+  "fact": "A leap year adds February 29, which happens almost every four years to keep the calendar in step with Earth's orbit.",
+  "id": 1,
+  "q": "How many days are there in a leap year?"
+ },
+ {
+  "a": [
+   "CO2",
+   "H2O",
+   "O2",
+   "NaCl"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "easy",
+  "fact": "Each water molecule is made of two hydrogen atoms bonded to a single oxygen atom.",
+  "id": 2,
+  "q": "What is the chemical formula for water?"
+ },
+ {
+  "a": [
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "cat": "General Knowledge",
+  "correct": 3,
+  "diff": "easy",
+  "fact": "The seven continents are Africa, Antarctica, Asia, Europe, North America, Australia, and South America.",
+  "id": 3,
+  "q": "How many continents are there on Earth?"
+ },
+ {
+  "a": [
+   "Four",
+   "Five",
+   "Six",
+   "Seven"
+  ],
+  "cat": "General Knowledge",
+  "correct": 3,
+  "diff": "easy",
+  "fact": "A standard guitar has six strings, usually tuned to the notes E, A, D, G, B and E.",
+  "id": 4,
+  "q": "How many strings does a standard guitar have?"
+ },
+ {
+  "a": [
+   "Blueberry",
+   "Strawberry",
+   "Grape",
+   "Cherry"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "easy",
+  "fact": "A strawberry carries around 200 tiny seeds, called achenes, dotted across its outer surface.",
+  "id": 5,
+  "q": "Which fruit has its seeds on the outside?"
+ },
+ {
+  "a": [
+   "London",
+   "Paris",
+   "Rome",
+   "Madrid"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "easy",
+  "fact": "Paris is home to the Eiffel Tower, which was completed in 1889 for a world's fair.",
+  "id": 6,
+  "q": "What is the capital city of France?"
+ },
+ {
+  "a": [
+   "Oxygen",
+   "Nitrogen",
+   "Carbon dioxide",
+   "Hydrogen"
+  ],
+  "cat": "General Knowledge",
+  "correct": 3,
+  "diff": "easy",
+  "fact": "During photosynthesis, plants take in carbon dioxide and release oxygen as a byproduct.",
+  "id": 7,
+  "q": "Which gas do plants absorb from the air to make food?"
+ },
+ {
+  "a": [
+   "6",
+   "4",
+   "5",
+   "3"
+  ],
+  "cat": "General Knowledge",
+  "correct": 4,
+  "diff": "easy",
+  "fact": "The three angles inside any flat triangle always add up to 180 degrees.",
+  "id": 8,
+  "q": "How many sides does a triangle have?"
+ },
+ {
+  "a": [
+   "Cheetah",
+   "Lion",
+   "Horse",
+   "Leopard"
+  ],
+  "cat": "General Knowledge",
+  "correct": 1,
+  "diff": "easy",
+  "fact": "A cheetah can reach speeds of about 60 miles per hour in short bursts while chasing prey.",
+  "id": 9,
+  "q": "Which is the fastest land animal in the world?"
+ },
+ {
+  "a": [
+   "Jam",
+   "Honey",
+   "Syrup",
+   "Caramel"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "easy",
+  "fact": "Honey found in ancient Egyptian tombs thousands of years old was still preserved and safe in appearance.",
+  "id": 10,
+  "q": "Which sweet food do bees make?"
+ },
+ {
+  "a": [
+   "90",
+   "30",
+   "60",
+   "120"
+  ],
+  "cat": "General Knowledge",
+  "correct": 3,
+  "diff": "easy",
+  "fact": "There are 3,600 seconds in one hour, because each of its 60 minutes holds 60 seconds.",
+  "id": 11,
+  "q": "How many minutes are there in one hour?"
+ },
+ {
+  "a": [
+   "December",
+   "February",
+   "March",
+   "January"
+  ],
+  "cat": "General Knowledge",
+  "correct": 4,
+  "diff": "easy",
+  "fact": "January is named after Janus, the Roman god of beginnings and doorways.",
+  "id": 12,
+  "q": "Which month is the first month of the year?"
+ },
+ {
+  "a": [
+   "Thermometer",
+   "Barometer",
+   "Speedometer",
+   "Altimeter"
+  ],
+  "cat": "General Knowledge",
+  "correct": 1,
+  "diff": "easy",
+  "fact": "The first accurate thermometers were developed in the early 1700s by Daniel Gabriel Fahrenheit.",
+  "id": 13,
+  "q": "Which instrument is used to measure temperature?"
+ },
+ {
+  "a": [
+   "6",
+   "7",
+   "8",
+   "5"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "easy",
+  "fact": "The seven traditional rainbow colors are red, orange, yellow, green, blue, indigo, and violet.",
+  "id": 14,
+  "q": "How many colors are traditionally counted in a rainbow?"
+ },
+ {
+  "a": [
+   "5,040",
+   "8,640",
+   "10,080",
+   "12,600"
+  ],
+  "cat": "General Knowledge",
+  "correct": 3,
+  "diff": "easy",
+  "fact": "A week holds 10,080 minutes: 60 minutes x 24 hours x 7 days.",
+  "id": 15,
+  "q": "How many minutes are there in one full week?"
+ },
+ {
+  "a": [
+   "Thermometer",
+   "Barometer",
+   "Hygrometer",
+   "Anemometer"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "easy",
+  "fact": "The barometer was invented in 1643 by Evangelista Torricelli, a student of Galileo.",
+  "id": 16,
+  "q": "Which instrument measures air pressure?"
+ },
+ {
+  "a": [
+   "2",
+   "3",
+   "4",
+   "1"
+  ],
+  "cat": "General Knowledge",
+  "correct": 1,
+  "diff": "easy",
+  "fact": "The word bicycle comes from roots meaning two wheels, while a three-wheeled version is a tricycle.",
+  "id": 17,
+  "q": "How many wheels does a bicycle have?"
+ },
+ {
+  "a": [
+   "Tomato",
+   "Avocado",
+   "Onion",
+   "Bell pepper"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "easy",
+  "fact": "Avocados were first cultivated in Mexico thousands of years ago.",
+  "id": 18,
+  "q": "What is the main ingredient in guacamole?"
+ },
+ {
+  "a": [
+   "North",
+   "South",
+   "East",
+   "West"
+  ],
+  "cat": "General Knowledge",
+  "correct": 3,
+  "diff": "easy",
+  "fact": "The Sun rises in the east because Earth rotates toward the east on its axis.",
+  "id": 19,
+  "q": "In which direction does the Sun rise?"
+ },
+ {
+  "a": [
+   "28",
+   "30",
+   "26",
+   "32"
+  ],
+  "cat": "General Knowledge",
+  "correct": 4,
+  "diff": "easy",
+  "fact": "Children usually have 20 baby teeth before their adult teeth come in.",
+  "id": 20,
+  "q": "How many teeth does a typical adult human have, including wisdom teeth?"
+ },
+ {
+  "a": [
+   "Penguin",
+   "Eagle",
+   "Owl",
+   "Sparrow"
+  ],
+  "cat": "General Knowledge",
+  "correct": 1,
+  "diff": "easy",
+  "fact": "Penguins use their stiff flippers like paddles, which makes them excellent swimmers.",
+  "id": 21,
+  "q": "Which bird lives in Antarctica, swims well, but cannot fly?"
+ },
+ {
+  "a": [
+   "Magnetism",
+   "Gravity",
+   "Friction",
+   "Inertia"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "easy",
+  "fact": "Gravity also holds the Moon in orbit around Earth and Earth in orbit around the Sun.",
+  "id": 22,
+  "q": "Which force pulls objects toward the Earth?"
+ },
+ {
+  "a": [
+   "Steam",
+   "Rain",
+   "Ice",
+   "Vapor"
+  ],
+  "cat": "General Knowledge",
+  "correct": 3,
+  "diff": "easy",
+  "fact": "Ice floats on water because it is less dense than liquid water, which is unusual for a solid.",
+  "id": 23,
+  "q": "What is frozen water called?"
+ },
+ {
+  "a": [
+   "African elephant",
+   "Giraffe",
+   "Hippopotamus",
+   "Blue whale"
+  ],
+  "cat": "General Knowledge",
+  "correct": 4,
+  "diff": "easy",
+  "fact": "A blue whale's heart alone can weigh as much as a small car.",
+  "id": 24,
+  "q": "Which is the largest mammal in the world?"
+ },
+ {
+  "a": [
+   "Canberra",
+   "Sydney",
+   "Melbourne",
+   "Perth"
+  ],
+  "cat": "General Knowledge",
+  "correct": 1,
+  "diff": "medium",
+  "fact": "Canberra was chosen as a compromise because Sydney and Melbourne both wanted to be the capital.",
+  "id": 25,
+  "q": "What is the capital city of Australia?"
+ },
+ {
+  "a": [
+   "Pablo Picasso",
+   "Leonardo da Vinci",
+   "Vincent van Gogh",
+   "Claude Monet"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "medium",
+  "fact": "Leonardo da Vinci began painting the Mona Lisa in 1503 and kept working on it for years.",
+  "id": 26,
+  "q": "Who painted the Mona Lisa?"
+ },
+ {
+  "a": [
+   "186",
+   "226",
+   "206",
+   "306"
+  ],
+  "cat": "General Knowledge",
+  "correct": 3,
+  "diff": "medium",
+  "fact": "Babies are born with about 300 bones, but many fuse together as they grow.",
+  "id": 27,
+  "q": "How many bones are there in a typical adult human body?"
+ },
+ {
+  "a": [
+   "0",
+   "1",
+   "3",
+   "2"
+  ],
+  "cat": "General Knowledge",
+  "correct": 4,
+  "diff": "medium",
+  "fact": "Two is the only even prime number, because every other even number is divisible by two.",
+  "id": 28,
+  "q": "What is the smallest prime number?"
+ },
+ {
+  "a": [
+   "20",
+   "25",
+   "30",
+   "35"
+  ],
+  "cat": "General Knowledge",
+  "correct": 3,
+  "diff": "medium",
+  "fact": "Quick trick for 15%: take 10% (which is 20) and add half of it (10) to get 30.",
+  "id": 29,
+  "q": "What is 15% of 200?"
+ },
+ {
+  "a": [
+   "Spanish",
+   "Portuguese",
+   "French",
+   "Italian"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "medium",
+  "fact": "Brazil has more Portuguese speakers than any other country in the world, including Portugal.",
+  "id": 30,
+  "q": "What is the main language spoken in Brazil?"
+ },
+ {
+  "a": [
+   "100",
+   "500",
+   "1,000",
+   "10,000"
+  ],
+  "cat": "General Knowledge",
+  "correct": 3,
+  "diff": "medium",
+  "fact": "The prefix kilo means one thousand, so a kilometer is also one thousand meters.",
+  "id": 31,
+  "q": "How many grams are there in one kilogram?"
+ },
+ {
+  "a": [
+   "Thomas Edison",
+   "Nikola Tesla",
+   "Isaac Newton",
+   "Alexander Graham Bell"
+  ],
+  "cat": "General Knowledge",
+  "correct": 4,
+  "diff": "medium",
+  "fact": "Alexander Graham Bell received the first United States patent for the telephone in 1876.",
+  "id": 32,
+  "q": "Who is credited with inventing the telephone?"
+ },
+ {
+  "a": [
+   "English",
+   "Hindi",
+   "Spanish",
+   "Mandarin Chinese"
+  ],
+  "cat": "General Knowledge",
+  "correct": 4,
+  "diff": "medium",
+  "fact": "Mandarin Chinese has over 900 million native speakers, more than any other language.",
+  "id": 33,
+  "q": "Which language has the most native speakers in the world?"
+ },
+ {
+  "a": [
+   "Toronto",
+   "Ottawa",
+   "Vancouver",
+   "Montreal"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "medium",
+  "fact": "Ottawa was chosen as Canada's capital by Queen Victoria in 1857.",
+  "id": 34,
+  "q": "What is the capital city of Canada?"
+ },
+ {
+  "a": [
+   "76",
+   "84",
+   "88",
+   "96"
+  ],
+  "cat": "General Knowledge",
+  "correct": 3,
+  "diff": "medium",
+  "fact": "A standard piano has 88 keys: 52 white keys and 36 black keys.",
+  "id": 35,
+  "q": "How many keys does a standard piano have?"
+ },
+ {
+  "a": [
+   "Quartz",
+   "Iron",
+   "Gold",
+   "Diamond"
+  ],
+  "cat": "General Knowledge",
+  "correct": 4,
+  "diff": "medium",
+  "fact": "Diamonds are made of pure carbon arranged in an extremely strong crystal structure.",
+  "id": 36,
+  "q": "Which naturally occurring substance is the hardest on Earth?"
+ },
+ {
+  "a": [
+   "William Shakespeare",
+   "Charles Dickens",
+   "Jane Austen",
+   "Mark Twain"
+  ],
+  "cat": "General Knowledge",
+  "correct": 1,
+  "diff": "medium",
+  "fact": "William Shakespeare wrote Romeo and Juliet early in his career, around 1595.",
+  "id": 37,
+  "q": "Who wrote the play Romeo and Juliet?"
+ },
+ {
+  "a": [
+   "90 degrees Celsius",
+   "100 degrees Celsius",
+   "80 degrees Celsius",
+   "120 degrees Celsius"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "medium",
+  "fact": "On high mountains water boils at a lower temperature because the air pressure is lower.",
+  "id": 38,
+  "q": "At sea level, at what temperature does water boil on the Celsius scale?"
+ },
+ {
+  "a": [
+   "World Wide Web",
+   "Web World Wide",
+   "Wide World Web",
+   "World Web Window"
+  ],
+  "cat": "General Knowledge",
+  "correct": 1,
+  "diff": "medium",
+  "fact": "The World Wide Web was invented by Tim Berners-Lee in 1989 while he worked at CERN.",
+  "id": 39,
+  "q": "What does 'www' in a web address stand for?"
+ },
+ {
+  "a": [
+   "Central Processing Unit",
+   "Computer Personal Unit",
+   "Central Program Utility",
+   "Core Processing Utility"
+  ],
+  "cat": "General Knowledge",
+  "correct": 1,
+  "diff": "medium",
+  "fact": "The CPU is often called the brain of the computer because it carries out the instructions of every program.",
+  "id": 40,
+  "q": "In computing, what does 'CPU' stand for?"
+ },
+ {
+  "a": [
+   "Pancreas",
+   "Liver",
+   "Spleen",
+   "Gallbladder"
+  ],
+  "cat": "General Knowledge",
+  "correct": 1,
+  "diff": "medium",
+  "fact": "Insulin from the pancreas helps control the level of sugar in the blood.",
+  "id": 41,
+  "q": "Which organ in the human body produces insulin?"
+ },
+ {
+  "a": [
+   "Won",
+   "Yen",
+   "Yuan",
+   "Ringgit"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "medium",
+  "fact": "The yen is one of the most traded currencies in the world.",
+  "id": 42,
+  "q": "What is the currency of Japan?"
+ },
+ {
+  "a": [
+   "Iron",
+   "Mercury",
+   "Aluminum",
+   "Copper"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "medium",
+  "fact": "Mercury is the only metal that stays liquid at standard room temperature.",
+  "id": 43,
+  "q": "Which metal is liquid at room temperature?"
+ },
+ {
+  "a": [
+   "Vitamin A",
+   "Vitamin B12",
+   "Vitamin C",
+   "Vitamin D"
+  ],
+  "cat": "General Knowledge",
+  "correct": 4,
+  "diff": "medium",
+  "fact": "Vitamin D is nicknamed the 'sunshine vitamin' because your skin makes it when sunlight touches it.",
+  "id": 44,
+  "q": "Which vitamin does sunlight help the human body produce?"
+ },
+ {
+  "a": [
+   "Africa",
+   "Asia",
+   "Europe",
+   "South America"
+  ],
+  "cat": "General Knowledge",
+  "correct": 1,
+  "diff": "medium",
+  "fact": "Kenya is named after Mount Kenya, the second-highest mountain in Africa.",
+  "id": 45,
+  "q": "On which continent is the country of Kenya located?"
+ },
+ {
+  "a": [
+   "Bill Gates",
+   "Tim Berners-Lee",
+   "Steve Jobs",
+   "Alan Turing"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "medium",
+  "fact": "Tim Berners-Lee created the first website in 1991 while working at CERN in Switzerland.",
+  "id": 46,
+  "q": "Who invented the World Wide Web?"
+ },
+ {
+  "a": [
+   "Venus",
+   "Mars",
+   "Mercury",
+   "Earth"
+  ],
+  "cat": "General Knowledge",
+  "correct": 3,
+  "diff": "medium",
+  "fact": "Mercury is only slightly larger than Earth's Moon.",
+  "id": 47,
+  "q": "Which is the smallest planet in our solar system?"
+ },
+ {
+  "a": [
+   "5",
+   "7",
+   "8",
+   "6"
+  ],
+  "cat": "General Knowledge",
+  "correct": 4,
+  "diff": "medium",
+  "fact": "Honeycomb cells are hexagons because that shape stores the most space using the least wax.",
+  "id": 48,
+  "q": "How many sides does a hexagon have?"
+ },
+ {
+  "a": [
+   "Pollen",
+   "Nectar",
+   "Sap",
+   "Dew"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "hard",
+  "fact": "Bees turn nectar into honey by fanning it with their wings to evaporate the water.",
+  "id": 49,
+  "q": "What do bees collect from flowers to make honey?"
+ },
+ {
+  "a": [
+   "Lead",
+   "Iron",
+   "Tin",
+   "Zinc"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "hard",
+  "fact": "Iron's symbol Fe comes from ferrum, the Latin word for iron.",
+  "id": 50,
+  "q": "The chemical symbol Fe stands for which element?"
+ },
+ {
+  "a": [
+   "Oslo",
+   "Helsinki",
+   "Reykjavik",
+   "Tallinn"
+  ],
+  "cat": "General Knowledge",
+  "correct": 3,
+  "diff": "hard",
+  "fact": "Reykjavik is the northernmost capital city of a country in the world.",
+  "id": 51,
+  "q": "What is the capital city of Iceland?"
+ },
+ {
+  "a": [
+   "23",
+   "44",
+   "48",
+   "46"
+  ],
+  "cat": "General Knowledge",
+  "correct": 4,
+  "diff": "hard",
+  "fact": "Humans get 23 chromosomes from each parent, making 23 pairs in most body cells.",
+  "id": 52,
+  "q": "How many chromosomes are there in a typical human body cell?"
+ },
+ {
+  "a": [
+   "Albert Einstein",
+   "Isaac Newton",
+   "Niels Bohr",
+   "Stephen Hawking"
+  ],
+  "cat": "General Knowledge",
+  "correct": 1,
+  "diff": "hard",
+  "fact": "Albert Einstein published the theory of general relativity in 1915, reshaping how science understands gravity.",
+  "id": 53,
+  "q": "Who developed the theory of general relativity?"
+ },
+ {
+  "a": [
+   "Heart",
+   "Liver",
+   "Lung",
+   "Brain"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "hard",
+  "fact": "The liver performs more than 500 different jobs, including cleaning the blood and aiding digestion.",
+  "id": 54,
+  "q": "Which is the largest internal organ in the human body?"
+ },
+ {
+  "a": [
+   "About 1 second",
+   "About 1 minute",
+   "About 8 minutes",
+   "About 1 hour"
+  ],
+  "cat": "General Knowledge",
+  "correct": 3,
+  "diff": "hard",
+  "fact": "Because light takes about 8 minutes to arrive, we always see the Sun as it looked 8 minutes ago.",
+  "id": 55,
+  "q": "About how long does sunlight take to reach Earth?"
+ },
+ {
+  "a": [
+   "Vitamin A",
+   "Vitamin B12",
+   "Vitamin C",
+   "Vitamin D"
+  ],
+  "cat": "General Knowledge",
+  "correct": 4,
+  "diff": "hard",
+  "fact": "Vitamin D helps the body absorb calcium, which keeps bones strong.",
+  "id": 56,
+  "q": "Which vitamin does human skin make when exposed to sunlight?"
+ },
+ {
+  "a": [
+   "Hydrogen",
+   "Helium",
+   "Oxygen",
+   "Carbon"
+  ],
+  "cat": "General Knowledge",
+  "correct": 1,
+  "diff": "hard",
+  "fact": "Hydrogen is the lightest and most abundant element in the universe.",
+  "id": 57,
+  "q": "Which element is first on the periodic table?"
+ },
+ {
+  "a": [
+   "Auckland",
+   "Wellington",
+   "Christchurch",
+   "Hamilton"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "hard",
+  "fact": "Wellington sits at the southern tip of New Zealand's North Island and is known for its strong winds.",
+  "id": 58,
+  "q": "What is the capital city of New Zealand?"
+ },
+ {
+  "a": [
+   "9",
+   "10",
+   "11",
+   "12"
+  ],
+  "cat": "General Knowledge",
+  "correct": 3,
+  "diff": "hard",
+  "fact": "Russia stretches across so much of the globe that when it is morning in the west, it is evening in the far east.",
+  "id": 59,
+  "q": "How many time zones does Russia have?"
+ },
+ {
+  "a": [
+   "Dinucleic acid",
+   "Deoxyribose nucleic atom",
+   "Dioxyribonucleic acid",
+   "Deoxyribonucleic acid"
+  ],
+  "cat": "General Knowledge",
+  "correct": 4,
+  "diff": "hard",
+  "fact": "If unwound and stretched out, the DNA in a single human cell would be about two meters long.",
+  "id": 60,
+  "q": "What does the abbreviation DNA stand for?"
+ },
+ {
+  "id": 101,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "What is the chemical symbol for water?",
+  "a": [
+   "H2O",
+   "CO2",
+   "O2",
+   "NaCl"
+  ],
+  "correct": 1,
+  "fact": "Water is made of two hydrogen atoms and one oxygen atom."
+ },
+ {
+  "id": 102,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "What force pulls objects toward the Earth?",
+  "a": [
+   "Magnetism",
+   "Gravity",
+   "Friction",
+   "Inertia"
+  ],
+  "correct": 2,
+  "fact": "Gravity is the force that gives weight to objects and keeps us on the ground."
+ },
+ {
+  "id": 103,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "How many bones are there in an adult human body?",
+  "a": [
+   "186",
+   "206",
+   "226",
+   "306"
+  ],
+  "correct": 2,
+  "fact": "Babies are born with about 300 bones, but many fuse together as they grow, leaving 206 in adults."
+ },
+ {
+  "id": 104,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "Which gas do plants absorb from the air for photosynthesis?",
+  "a": [
+   "Oxygen",
+   "Nitrogen",
+   "Hydrogen",
+   "Carbon dioxide"
+  ],
+  "correct": 4,
+  "fact": "Plants use carbon dioxide, water, and sunlight to make their own food."
+ },
+ {
+  "id": 105,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "At sea level, at what temperature does water boil in Celsius?",
+  "a": [
+   "100 degrees",
+   "80 degrees",
+   "90 degrees",
+   "120 degrees"
+  ],
+  "correct": 1,
+  "fact": "At standard sea-level pressure, pure water boils at exactly 100 degrees Celsius."
+ },
+ {
+  "id": 106,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "Which organ pumps blood around the human body?",
+  "a": [
+   "Liver",
+   "Heart",
+   "Lung",
+   "Kidney"
+  ],
+  "correct": 2,
+  "fact": "The human heart beats about 100,000 times every day."
+ },
+ {
+  "id": 107,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "What is the center of an atom called?",
+  "a": [
+   "Electron",
+   "Proton shell",
+   "Nucleus",
+   "Orbit"
+  ],
+  "correct": 3,
+  "fact": "The nucleus contains protons and neutrons and holds nearly all of an atom's mass."
+ },
+ {
+  "id": 108,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "What sweet substance do bees produce?",
+  "a": [
+   "Milk",
+   "Silk",
+   "Wax candles",
+   "Honey"
+  ],
+  "correct": 4,
+  "fact": "A single bee produces only about one-twelfth of a teaspoon of honey in its lifetime."
+ },
+ {
+  "id": 109,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "What is the solid form of water called?",
+  "a": [
+   "Ice",
+   "Steam",
+   "Vapor",
+   "Rain"
+  ],
+  "correct": 1,
+  "fact": "Ice is less dense than liquid water, which is why ice cubes float."
+ },
+ {
+  "id": 110,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "Which gas do humans need to breathe in to survive?",
+  "a": [
+   "Carbon dioxide",
+   "Oxygen",
+   "Nitrogen",
+   "Helium"
+  ],
+  "correct": 2,
+  "fact": "Humans use oxygen to convert food into energy in their cells."
+ },
+ {
+  "id": 111,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "What is the largest organ of the human body?",
+  "a": [
+   "Liver",
+   "Heart",
+   "Skin",
+   "Brain"
+  ],
+  "correct": 3,
+  "fact": "An adult's skin covers an area of about two square meters."
+ },
+ {
+  "id": 112,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "What does a caterpillar change into?",
+  "a": [
+   "Beetle",
+   "Bee",
+   "Ant",
+   "Butterfly"
+  ],
+  "correct": 4,
+  "fact": "This transformation is called metamorphosis and can take weeks to complete."
+ },
+ {
+  "id": 113,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "Which part of a plant makes most of its food?",
+  "a": [
+   "Leaves",
+   "Roots",
+   "Stem",
+   "Flower"
+  ],
+  "correct": 1,
+  "fact": "Leaves contain chlorophyll, the green pigment that captures sunlight."
+ },
+ {
+  "id": 114,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "What are animals that eat only plants called?",
+  "a": [
+   "Carnivores",
+   "Herbivores",
+   "Omnivores",
+   "Scavengers"
+  ],
+  "correct": 2,
+  "fact": "Cows, rabbits, and deer are all herbivores."
+ },
+ {
+  "id": 115,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "How many legs does an insect have?",
+  "a": [
+   "8",
+   "4",
+   "6",
+   "10"
+  ],
+  "correct": 3,
+  "fact": "All insects have six legs and three main body parts."
+ },
+ {
+  "id": 116,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "Which gas is used to fill balloons so they float?",
+  "a": [
+   "Oxygen",
+   "Carbon dioxide",
+   "Nitrogen",
+   "Helium"
+  ],
+  "correct": 4,
+  "fact": "Helium is lighter than air, so helium balloons rise."
+ },
+ {
+  "id": 117,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "What is the chemical formula for table salt?",
+  "a": [
+   "NaCl",
+   "H2O",
+   "CO2",
+   "NaOH"
+  ],
+  "correct": 1,
+  "fact": "Table salt is sodium chloride: one sodium atom bonded to one chlorine atom."
+ },
+ {
+  "id": 118,
+  "cat": "Science",
+  "diff": "easy",
+  "q": "Which sense do you mainly use with your eyes?",
+  "a": [
+   "Hearing",
+   "Sight",
+   "Smell",
+   "Taste"
+  ],
+  "correct": 2,
+  "fact": "The human eye can distinguish roughly ten million different colors."
+ },
+ {
+  "id": 119,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "How many bones does an adult human have?",
+  "a": [
+   "186",
+   "226",
+   "206",
+   "306"
+  ],
+  "correct": 3,
+  "fact": "Babies are born with about 300 bones, many of which fuse as they grow."
+ },
+ {
+  "id": 120,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "What is the chemical symbol for gold?",
+  "a": [
+   "Ag",
+   "Gd",
+   "Go",
+   "Au"
+  ],
+  "correct": 4,
+  "fact": "Au comes from aurum, the Latin word for gold."
+ },
+ {
+  "id": 121,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "What is the pH of a neutral solution?",
+  "a": [
+   "7",
+   "0",
+   "5",
+   "14"
+  ],
+  "correct": 1,
+  "fact": "Pure water is neutral with a pH of 7 at room temperature."
+ },
+ {
+  "id": 122,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "What is the standard unit of force?",
+  "a": [
+   "Joule",
+   "Newton",
+   "Watt",
+   "Pascal"
+  ],
+  "correct": 2,
+  "fact": "The newton is named after Sir Isaac Newton."
+ },
+ {
+  "id": 123,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "What shape describes the structure of DNA?",
+  "a": [
+   "Single strand",
+   "Flat sheet",
+   "Double helix",
+   "Cube"
+  ],
+  "correct": 3,
+  "fact": "James Watson and Francis Crick described the double helix structure in 1953."
+ },
+ {
+  "id": 124,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "About how fast does light travel in a vacuum?",
+  "a": [
+   "150,000 kilometers per second",
+   "30,000 kilometers per second",
+   "1,000 kilometers per second",
+   "300,000 kilometers per second"
+  ],
+  "correct": 4,
+  "fact": "Light from the Sun takes about eight minutes to reach Earth."
+ },
+ {
+  "id": 125,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "Which blood cells carry oxygen around the body?",
+  "a": [
+   "Red blood cells",
+   "White blood cells",
+   "Platelets",
+   "Plasma cells"
+  ],
+  "correct": 1,
+  "fact": "Red blood cells get their color from hemoglobin, which binds oxygen."
+ },
+ {
+  "id": 126,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "What force resists motion between two surfaces touching each other?",
+  "a": [
+   "Gravity",
+   "Friction",
+   "Magnetism",
+   "Buoyancy"
+  ],
+  "correct": 2,
+  "fact": "Friction is why a sliding box eventually comes to a stop."
+ },
+ {
+  "id": 127,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "What is the chemical symbol for sodium?",
+  "a": [
+   "So",
+   "Sd",
+   "Na",
+   "N"
+  ],
+  "correct": 3,
+  "fact": "Na comes from natrium, the Latin name for sodium."
+ },
+ {
+  "id": 128,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "Which organ produces insulin in the human body?",
+  "a": [
+   "Liver",
+   "Spleen",
+   "Thyroid",
+   "Pancreas"
+  ],
+  "correct": 4,
+  "fact": "Insulin helps control the level of sugar in the blood."
+ },
+ {
+  "id": 129,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "What is the process called when water vapor cools and becomes liquid?",
+  "a": [
+   "Condensation",
+   "Evaporation",
+   "Sublimation",
+   "Precipitation"
+  ],
+  "correct": 1,
+  "fact": "Condensation is why dew forms on grass on cool mornings."
+ },
+ {
+  "id": 130,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "Which gas makes up most of Earth's atmosphere?",
+  "a": [
+   "Oxygen",
+   "Nitrogen",
+   "Argon",
+   "Carbon dioxide"
+  ],
+  "correct": 2,
+  "fact": "Nitrogen makes up about 78 percent of Earth's atmosphere."
+ },
+ {
+  "id": 131,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "Which acid gives lemons their sour taste?",
+  "a": [
+   "Hydrochloric acid",
+   "Acetic acid",
+   "Citric acid",
+   "Sulfuric acid"
+  ],
+  "correct": 3,
+  "fact": "Citric acid is also found in oranges, limes, and grapefruits."
+ },
+ {
+  "id": 132,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "How many chromosomes do humans normally have in each cell?",
+  "a": [
+   "23",
+   "48",
+   "44",
+   "46"
+  ],
+  "correct": 4,
+  "fact": "Human chromosomes are arranged in 23 pairs."
+ },
+ {
+  "id": 133,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "What is the chemical symbol for iron?",
+  "a": [
+   "Fe",
+   "Ir",
+   "In",
+   "Fn"
+  ],
+  "correct": 1,
+  "fact": "Fe comes from ferrum, the Latin word for iron."
+ },
+ {
+  "id": 134,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "What is known as the powerhouse of the cell?",
+  "a": [
+   "Nucleus",
+   "Mitochondria",
+   "Ribosome",
+   "Golgi body"
+  ],
+  "correct": 2,
+  "fact": "Mitochondria produce most of a cell's energy in the form of ATP."
+ },
+ {
+  "id": 135,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "What is the hardest naturally occurring substance on Earth?",
+  "a": [
+   "Quartz",
+   "Titanium",
+   "Diamond",
+   "Obsidian"
+  ],
+  "correct": 3,
+  "fact": "Diamonds are made of carbon atoms arranged in a very strong crystal structure."
+ },
+ {
+  "id": 136,
+  "cat": "Science",
+  "diff": "hard",
+  "q": "What is Avogadro's number, approximately?",
+  "a": [
+   "6.022 x 10^20",
+   "3.011 x 10^23",
+   "9.109 x 10^31",
+   "6.022 x 10^23"
+  ],
+  "correct": 4,
+  "fact": "Avogadro's number is the number of particles in one mole of a substance."
+ },
+ {
+  "id": 137,
+  "cat": "Science",
+  "diff": "hard",
+  "q": "Which blood type is known as the universal donor?",
+  "a": [
+   "O negative",
+   "AB positive",
+   "A positive",
+   "B negative"
+  ],
+  "correct": 1,
+  "fact": "O negative blood can be given to people of almost any blood type in emergencies."
+ },
+ {
+  "id": 138,
+  "cat": "Science",
+  "diff": "hard",
+  "q": "Which enzyme begins the digestion of starch in the mouth?",
+  "a": [
+   "Pepsin",
+   "Amylase",
+   "Lipase",
+   "Trypsin"
+  ],
+  "correct": 2,
+  "fact": "Salivary amylase starts breaking down starches before food reaches the stomach."
+ },
+ {
+  "id": 139,
+  "cat": "Science",
+  "diff": "hard",
+  "q": "What is the chemical symbol for antimony?",
+  "a": [
+   "An",
+   "At",
+   "Sb",
+   "Sn"
+  ],
+  "correct": 3,
+  "fact": "Sb comes from stibium, the Latin name for antimony."
+ },
+ {
+  "id": 140,
+  "cat": "Science",
+  "diff": "hard",
+  "q": "Which cell structure is the main site of protein synthesis?",
+  "a": [
+   "Lysosome",
+   "Vacuole",
+   "Chloroplast",
+   "Ribosome"
+  ],
+  "correct": 4,
+  "fact": "Ribosomes build proteins by following instructions from messenger RNA."
+ },
+ {
+  "id": 141,
+  "cat": "Science",
+  "diff": "hard",
+  "q": "Who proposed the theory of evolution by natural selection?",
+  "a": [
+   "Charles Darwin",
+   "Gregor Mendel",
+   "Louis Pasteur",
+   "Alfred Wegener"
+  ],
+  "correct": 1,
+  "fact": "Darwin published his theory in On the Origin of Species in 1859."
+ },
+ {
+  "id": 142,
+  "cat": "Science",
+  "diff": "hard",
+  "q": "What is the approximate pH of healthy human blood?",
+  "a": [
+   "6.5",
+   "7.4",
+   "8.2",
+   "5.5"
+  ],
+  "correct": 2,
+  "fact": "The body keeps blood pH tightly controlled between about 7.35 and 7.45."
+ },
+ {
+  "id": 143,
+  "cat": "Science",
+  "diff": "hard",
+  "q": "After oxygen, what is the second most abundant element in the human body by mass?",
+  "a": [
+   "Hydrogen",
+   "Nitrogen",
+   "Carbon",
+   "Calcium"
+  ],
+  "correct": 3,
+  "fact": "Carbon forms the backbone of proteins, fats, and carbohydrates in the body."
+ },
+ {
+  "id": 144,
+  "cat": "Science",
+  "diff": "hard",
+  "q": "Which subatomic particle has a negative electric charge?",
+  "a": [
+   "Proton",
+   "Neutron",
+   "Photon",
+   "Electron"
+  ],
+  "correct": 4,
+  "fact": "Electrons are far lighter than protons and neutrons."
+ },
+ {
+  "id": 145,
+  "cat": "Science",
+  "diff": "medium",
+  "q": "Which component of blood helps it to clot?",
+  "a": [
+   "Platelets",
+   "Red blood cells",
+   "White blood cells",
+   "Plasma proteins"
+  ],
+  "correct": 1,
+  "fact": "Platelets rush to the site of a cut and stick together to plug the wound."
+ },
+ {
+  "id": 201,
+  "cat": "Space & Astronomy",
+  "diff": "easy",
+  "q": "Which planet is closest to the Sun?",
+  "a": [
+   "Mercury",
+   "Venus",
+   "Mars",
+   "Earth"
+  ],
+  "correct": 1,
+  "fact": "Mercury completes an orbit around the Sun in just 88 days."
+ },
+ {
+  "id": 202,
+  "cat": "Space & Astronomy",
+  "diff": "easy",
+  "q": "What is the name of the planet we live on?",
+  "a": [
+   "Mars",
+   "Earth",
+   "Venus",
+   "Jupiter"
+  ],
+  "correct": 2,
+  "fact": "Earth is the only known planet to support life."
+ },
+ {
+  "id": 203,
+  "cat": "Space & Astronomy",
+  "diff": "easy",
+  "q": "What is the Moon to Earth?",
+  "a": [
+   "A star",
+   "A planet",
+   "A natural satellite",
+   "A comet"
+  ],
+  "correct": 3,
+  "fact": "The Moon is Earth's only natural satellite."
+ },
+ {
+  "id": 204,
+  "cat": "Space & Astronomy",
+  "diff": "easy",
+  "q": "Who was the first person to walk on the Moon?",
+  "a": [
+   "Buzz Aldrin",
+   "Yuri Gagarin",
+   "Michael Collins",
+   "Neil Armstrong"
+  ],
+  "correct": 4,
+  "fact": "Neil Armstrong stepped onto the Moon on July 20, 1969."
+ },
+ {
+  "id": 205,
+  "cat": "Space & Astronomy",
+  "diff": "easy",
+  "q": "Which planet is known as the Red Planet?",
+  "a": [
+   "Mars",
+   "Venus",
+   "Jupiter",
+   "Mercury"
+  ],
+  "correct": 1,
+  "fact": "Mars looks red because its surface is rich in iron oxide, or rust."
+ },
+ {
+  "id": 206,
+  "cat": "Space & Astronomy",
+  "diff": "easy",
+  "q": "Which is the largest planet in our solar system?",
+  "a": [
+   "Saturn",
+   "Jupiter",
+   "Neptune",
+   "Uranus"
+  ],
+  "correct": 2,
+  "fact": "Jupiter is so large that about 1,300 Earths could fit inside it."
+ },
+ {
+  "id": 207,
+  "cat": "Space & Astronomy",
+  "diff": "easy",
+  "q": "What star is at the center of our solar system?",
+  "a": [
+   "Polaris",
+   "Sirius",
+   "The Sun",
+   "Proxima Centauri"
+  ],
+  "correct": 3,
+  "fact": "The Sun contains 99.8 percent of all the mass in the solar system."
+ },
+ {
+  "id": 208,
+  "cat": "Space & Astronomy",
+  "diff": "easy",
+  "q": "Which planet is most famous for its wide, bright rings?",
+  "a": [
+   "Mars",
+   "Venus",
+   "Mercury",
+   "Saturn"
+  ],
+  "correct": 4,
+  "fact": "Saturn's rings are made mostly of ice and rock particles."
+ },
+ {
+  "id": 209,
+  "cat": "Space & Astronomy",
+  "diff": "easy",
+  "q": "How many planets are in our solar system?",
+  "a": [
+   "8",
+   "7",
+   "9",
+   "10"
+  ],
+  "correct": 1,
+  "fact": "Pluto was reclassified as a dwarf planet in 2006, leaving eight planets."
+ },
+ {
+  "id": 210,
+  "cat": "Space & Astronomy",
+  "diff": "easy",
+  "q": "What galaxy is our solar system part of?",
+  "a": [
+   "Andromeda",
+   "Milky Way",
+   "Triangulum",
+   "Whirlpool"
+  ],
+  "correct": 2,
+  "fact": "The Milky Way contains an estimated 100 to 400 billion stars."
+ },
+ {
+  "id": 211,
+  "cat": "Space & Astronomy",
+  "diff": "easy",
+  "q": "Which instrument do astronomers use to observe distant stars?",
+  "a": [
+   "Microscope",
+   "Stethoscope",
+   "Telescope",
+   "Periscope"
+  ],
+  "correct": 3,
+  "fact": "The first telescopes for astronomy were built in the early 1600s."
+ },
+ {
+  "id": 212,
+  "cat": "Space & Astronomy",
+  "diff": "easy",
+  "q": "What causes day and night on Earth?",
+  "a": [
+   "Earth's orbit",
+   "The Moon's orbit",
+   "The Sun moving",
+   "Earth's rotation"
+  ],
+  "correct": 4,
+  "fact": "Earth rotates once on its axis about every 24 hours."
+ },
+ {
+  "id": 213,
+  "cat": "Space & Astronomy",
+  "diff": "easy",
+  "q": "About how long does Earth take to orbit the Sun once?",
+  "a": [
+   "One year",
+   "One month",
+   "One week",
+   "One day"
+  ],
+  "correct": 1,
+  "fact": "Earth travels about 940 million kilometers during one orbit."
+ },
+ {
+  "id": 214,
+  "cat": "Space & Astronomy",
+  "diff": "easy",
+  "q": "Which planet is often called the Morning Star?",
+  "a": [
+   "Mars",
+   "Venus",
+   "Mercury",
+   "Jupiter"
+  ],
+  "correct": 2,
+  "fact": "Venus is the brightest planet visible from Earth."
+ },
+ {
+  "id": 215,
+  "cat": "Space & Astronomy",
+  "diff": "medium",
+  "q": "In what year did Apollo 11 land on the Moon?",
+  "a": [
+   "1959",
+   "1971",
+   "1969",
+   "1965"
+  ],
+  "correct": 3,
+  "fact": "Apollo 11's lunar module was named Eagle."
+ },
+ {
+  "id": 216,
+  "cat": "Space & Astronomy",
+  "diff": "medium",
+  "q": "In what year was the Hubble Space Telescope launched?",
+  "a": [
+   "1985",
+   "1995",
+   "2000",
+   "1990"
+  ],
+  "correct": 4,
+  "fact": "Hubble orbits about 547 kilometers above Earth."
+ },
+ {
+  "id": 217,
+  "cat": "Space & Astronomy",
+  "diff": "medium",
+  "q": "What does ISS stand for?",
+  "a": [
+   "International Space Station",
+   "International Solar System",
+   "Inner Space Station",
+   "International Satellite Station"
+  ],
+  "correct": 1,
+  "fact": "The ISS has been continuously occupied since November 2000."
+ },
+ {
+  "id": 218,
+  "cat": "Space & Astronomy",
+  "diff": "medium",
+  "q": "What was the first artificial satellite launched into space?",
+  "a": [
+   "Explorer 1",
+   "Sputnik 1",
+   "Vostok 1",
+   "Telstar 1"
+  ],
+  "correct": 2,
+  "fact": "The Soviet Union launched Sputnik 1 in 1957."
+ },
+ {
+  "id": 219,
+  "cat": "Space & Astronomy",
+  "diff": "medium",
+  "q": "What is the largest moon in our solar system?",
+  "a": [
+   "Titan",
+   "Europa",
+   "Ganymede",
+   "Callisto"
+  ],
+  "correct": 3,
+  "fact": "Ganymede, a moon of Jupiter, is even larger than the planet Mercury."
+ },
+ {
+  "id": 220,
+  "cat": "Space & Astronomy",
+  "diff": "medium",
+  "q": "Which former planet is now classified as a dwarf planet?",
+  "a": [
+   "Ceres",
+   "Eris",
+   "Makemake",
+   "Pluto"
+  ],
+  "correct": 4,
+  "fact": "Pluto was considered the ninth planet from 1930 until 2006."
+ },
+ {
+  "id": 221,
+  "cat": "Space & Astronomy",
+  "diff": "medium",
+  "q": "What does a light-year measure?",
+  "a": [
+   "Distance",
+   "Time",
+   "Brightness",
+   "Speed"
+  ],
+  "correct": 1,
+  "fact": "One light-year is about 9.46 trillion kilometers."
+ },
+ {
+  "id": 222,
+  "cat": "Space & Astronomy",
+  "diff": "medium",
+  "q": "Which element makes up most of the Sun?",
+  "a": [
+   "Helium",
+   "Hydrogen",
+   "Oxygen",
+   "Carbon"
+  ],
+  "correct": 2,
+  "fact": "The Sun converts hydrogen into helium through nuclear fusion."
+ },
+ {
+  "id": 223,
+  "cat": "Space & Astronomy",
+  "diff": "medium",
+  "q": "Who was the first woman in space?",
+  "a": [
+   "Sally Ride",
+   "Mae Jemison",
+   "Valentina Tereshkova",
+   "Kalpana Chawla"
+  ],
+  "correct": 3,
+  "fact": "Valentina Tereshkova flew aboard Vostok 6 in 1963."
+ },
+ {
+  "id": 224,
+  "cat": "Space & Astronomy",
+  "diff": "medium",
+  "q": "How many moons does Mars have?",
+  "a": [
+   "0",
+   "1",
+   "5",
+   "2"
+  ],
+  "correct": 4,
+  "fact": "Mars's two small moons are named Phobos and Deimos."
+ },
+ {
+  "id": 225,
+  "cat": "Space & Astronomy",
+  "diff": "medium",
+  "q": "What is a black hole?",
+  "a": [
+   "A region where gravity is so strong that light cannot escape",
+   "A hole in the ozone layer",
+   "An empty part of a galaxy",
+   "A type of star"
+  ],
+  "correct": 1,
+  "fact": "The boundary around a black hole is called the event horizon."
+ },
+ {
+  "id": 226,
+  "cat": "Space & Astronomy",
+  "diff": "medium",
+  "q": "Which famous comet returns about every 76 years?",
+  "a": [
+   "Comet Hale-Bopp",
+   "Halley's Comet",
+   "Comet Encke",
+   "Comet Tempel"
+  ],
+  "correct": 2,
+  "fact": "Halley's Comet was last visible from Earth in 1986."
+ },
+ {
+  "id": 227,
+  "cat": "Space & Astronomy",
+  "diff": "medium",
+  "q": "Where is the main asteroid belt located?",
+  "a": [
+   "Between Earth and Mars",
+   "Beyond Neptune",
+   "Between Mars and Jupiter",
+   "Between Venus and Earth"
+  ],
+  "correct": 3,
+  "fact": "The asteroid belt contains millions of rocky objects."
+ },
+ {
+  "id": 228,
+  "cat": "Space & Astronomy",
+  "diff": "medium",
+  "q": "What is it called when the Moon is fully illuminated from Earth?",
+  "a": [
+   "New Moon",
+   "Crescent Moon",
+   "Half Moon",
+   "Full Moon"
+  ],
+  "correct": 4,
+  "fact": "A full Moon occurs when Earth is between the Sun and the Moon."
+ },
+ {
+  "id": 229,
+  "cat": "Space & Astronomy",
+  "diff": "hard",
+  "q": "What is Earth's escape velocity, approximately?",
+  "a": [
+   "11.2 kilometers per second",
+   "7.9 kilometers per second",
+   "25 kilometers per second",
+   "5 kilometers per second"
+  ],
+  "correct": 1,
+  "fact": "A spacecraft must reach escape velocity to leave Earth's gravity without further thrust."
+ },
+ {
+  "id": 230,
+  "cat": "Space & Astronomy",
+  "diff": "hard",
+  "q": "What is the nearest star to Earth besides the Sun?",
+  "a": [
+   "Alpha Centauri A",
+   "Proxima Centauri",
+   "Barnard's Star",
+   "Sirius"
+  ],
+  "correct": 2,
+  "fact": "Proxima Centauri is about 4.24 light-years away."
+ },
+ {
+  "id": 231,
+  "cat": "Space & Astronomy",
+  "diff": "hard",
+  "q": "Who performed the first spacewalk?",
+  "a": [
+   "Yuri Gagarin",
+   "Neil Armstrong",
+   "Alexei Leonov",
+   "John Glenn"
+  ],
+  "correct": 3,
+  "fact": "Alexei Leonov spent about 12 minutes outside Voskhod 2 in 1965."
+ },
+ {
+  "id": 232,
+  "cat": "Space & Astronomy",
+  "diff": "hard",
+  "q": "In what year was Voyager 1 launched?",
+  "a": [
+   "1969",
+   "1981",
+   "1990",
+   "1977"
+  ],
+  "correct": 4,
+  "fact": "Voyager 1 is the most distant human-made object from Earth."
+ },
+ {
+  "id": 233,
+  "cat": "Space & Astronomy",
+  "diff": "hard",
+  "q": "What is the largest volcano in the solar system?",
+  "a": [
+   "Olympus Mons on Mars",
+   "Mauna Loa on Earth",
+   "Alba Mons on Mars",
+   "Elysium Mons on Mars"
+  ],
+  "correct": 1,
+  "fact": "Olympus Mons is about two and a half times the height of Mount Everest."
+ },
+ {
+  "id": 234,
+  "cat": "Space & Astronomy",
+  "diff": "hard",
+  "q": "About how hot is the surface of the Sun in Celsius?",
+  "a": [
+   "1,500 degrees",
+   "5,500 degrees",
+   "15,000 degrees",
+   "10,000 degrees"
+  ],
+  "correct": 2,
+  "fact": "The Sun's core is far hotter, at about 15 million degrees Celsius."
+ },
+ {
+  "id": 235,
+  "cat": "Space & Astronomy",
+  "diff": "hard",
+  "q": "What is the boundary around a black hole beyond which nothing can escape?",
+  "a": [
+   "Singularity",
+   "Accretion disk",
+   "Event horizon",
+   "Photon ring"
+  ],
+  "correct": 3,
+  "fact": "Once anything crosses the event horizon, it cannot return."
+ },
+ {
+  "id": 301,
+  "cat": "History",
+  "diff": "easy",
+  "q": "Who was the first President of the United States?",
+  "a": [
+   "George Washington",
+   "John Adams",
+   "Thomas Jefferson",
+   "Abraham Lincoln"
+  ],
+  "correct": 1,
+  "fact": "George Washington served as president from 1789 to 1797."
+ },
+ {
+  "id": 302,
+  "cat": "History",
+  "diff": "easy",
+  "q": "In which year did World War II end?",
+  "a": [
+   "1939",
+   "1945",
+   "1943",
+   "1947"
+  ],
+  "correct": 2,
+  "fact": "World War II ended in 1945 with the surrenders of Germany and Japan."
+ },
+ {
+  "id": 303,
+  "cat": "History",
+  "diff": "easy",
+  "q": "Which structures at Giza were built by the ancient Egyptians?",
+  "a": [
+   "The Colosseum",
+   "The Parthenon",
+   "The Pyramids of Giza",
+   "The Taj Mahal"
+  ],
+  "correct": 3,
+  "fact": "The Great Pyramid of Giza is the oldest of the Seven Wonders of the Ancient World still largely intact."
+ },
+ {
+  "id": 304,
+  "cat": "History",
+  "diff": "easy",
+  "q": "In which year did humans first land on the Moon?",
+  "a": [
+   "1965",
+   "1967",
+   "1971",
+   "1969"
+  ],
+  "correct": 4,
+  "fact": "Apollo 11 astronauts landed on the Moon on July 20, 1969."
+ },
+ {
+  "id": 305,
+  "cat": "History",
+  "diff": "easy",
+  "q": "Who was the British prime minister for most of World War II?",
+  "a": [
+   "Winston Churchill",
+   "Neville Chamberlain",
+   "Clement Attlee",
+   "Anthony Eden"
+  ],
+  "correct": 1,
+  "fact": "Winston Churchill became prime minister in 1940 and led Britain through most of the war."
+ },
+ {
+  "id": 306,
+  "cat": "History",
+  "diff": "easy",
+  "q": "Which ancient civilization built a famous network of aqueducts and roads across Europe?",
+  "a": [
+   "The Vikings",
+   "The Romans",
+   "The Aztecs",
+   "The Mongols"
+  ],
+  "correct": 2,
+  "fact": "Roman aqueducts carried water into cities using gravity and carefully engineered slopes."
+ },
+ {
+  "id": 307,
+  "cat": "History",
+  "diff": "easy",
+  "q": "In which year was the United States Declaration of Independence adopted?",
+  "a": [
+   "1770",
+   "1789",
+   "1776",
+   "1800"
+  ],
+  "correct": 3,
+  "fact": "The Declaration of Independence was adopted on July 4, 1776."
+ },
+ {
+  "id": 308,
+  "cat": "History",
+  "diff": "easy",
+  "q": "The Great Wall was built to help protect which country from northern invasions?",
+  "a": [
+   "Japan",
+   "India",
+   "Persia",
+   "China"
+  ],
+  "correct": 4,
+  "fact": "The Great Wall of China stretches more than 13,000 miles including all of its branches."
+ },
+ {
+  "id": 309,
+  "cat": "History",
+  "diff": "easy",
+  "q": "In which year did World War I begin?",
+  "a": [
+   "1914",
+   "1905",
+   "1918",
+   "1936"
+  ],
+  "correct": 1,
+  "fact": "World War I began in 1914 after the assassination of Archduke Franz Ferdinand."
+ },
+ {
+  "id": 310,
+  "cat": "History",
+  "diff": "easy",
+  "q": "Who was President of the United States during the American Civil War?",
+  "a": [
+   "Andrew Johnson",
+   "Abraham Lincoln",
+   "Ulysses S. Grant",
+   "James Buchanan"
+  ],
+  "correct": 2,
+  "fact": "Abraham Lincoln issued the Emancipation Proclamation in 1863."
+ },
+ {
+  "id": 311,
+  "cat": "History",
+  "diff": "easy",
+  "q": "The ancient Olympic Games were first held in which country?",
+  "a": [
+   "Italy",
+   "Egypt",
+   "Greece",
+   "Turkey"
+  ],
+  "correct": 3,
+  "fact": "The ancient Olympic Games were held in Olympia, Greece, beginning in 776 BCE."
+ },
+ {
+  "id": 312,
+  "cat": "History",
+  "diff": "easy",
+  "q": "In which year did the Titanic sink on its maiden voyage?",
+  "a": [
+   "1905",
+   "1915",
+   "1920",
+   "1912"
+  ],
+  "correct": 4,
+  "fact": "The Titanic sank in the North Atlantic Ocean in April 1912."
+ },
+ {
+  "id": 313,
+  "cat": "History",
+  "diff": "easy",
+  "q": "In which year did the Berlin Wall fall?",
+  "a": [
+   "1989",
+   "1979",
+   "1985",
+   "1991"
+  ],
+  "correct": 1,
+  "fact": "The fall of the Berlin Wall in 1989 paved the way for German reunification in 1990."
+ },
+ {
+  "id": 314,
+  "cat": "History",
+  "diff": "easy",
+  "q": "Julius Caesar was a famous leader of which ancient state?",
+  "a": [
+   "Athens",
+   "Rome",
+   "Sparta",
+   "Carthage"
+  ],
+  "correct": 2,
+  "fact": "Julius Caesar was assassinated on the Ides of March in 44 BCE."
+ },
+ {
+  "id": 315,
+  "cat": "History",
+  "diff": "easy",
+  "q": "Johannes Gutenberg is best known for developing a movable-type printing press in which century?",
+  "a": [
+   "The 12th century",
+   "The 17th century",
+   "The 15th century",
+   "The 19th century"
+  ],
+  "correct": 3,
+  "fact": "Gutenberg's press, developed around 1440, greatly reduced the cost of producing books in Europe."
+ },
+ {
+  "id": 316,
+  "cat": "History",
+  "diff": "easy",
+  "q": "Cleopatra was the last active ruler of which ancient kingdom?",
+  "a": [
+   "Rome",
+   "Greece",
+   "Babylon",
+   "Egypt"
+  ],
+  "correct": 4,
+  "fact": "Cleopatra VII spoke several languages and ruled Egypt for more than two decades."
+ },
+ {
+  "id": 317,
+  "cat": "History",
+  "diff": "easy",
+  "q": "In which year did the American Civil War end?",
+  "a": [
+   "1865",
+   "1861",
+   "1870",
+   "1877"
+  ],
+  "correct": 1,
+  "fact": "The American Civil War ended in 1865, the same year the Thirteenth Amendment abolished slavery in the United States."
+ },
+ {
+  "id": 318,
+  "cat": "History",
+  "diff": "easy",
+  "q": "Alexander the Great was king of which ancient kingdom?",
+  "a": [
+   "Athens",
+   "Macedon",
+   "Persia",
+   "Egypt"
+  ],
+  "correct": 2,
+  "fact": "By age 30, Alexander the Great had created one of the largest empires of the ancient world."
+ },
+ {
+  "id": 319,
+  "cat": "History",
+  "diff": "medium",
+  "q": "In which year was the Battle of Hastings fought?",
+  "a": [
+   "996",
+   "1166",
+   "1066",
+   "1215"
+  ],
+  "correct": 3,
+  "fact": "The Battle of Hastings in 1066 led to the Norman conquest of England."
+ },
+ {
+  "id": 320,
+  "cat": "History",
+  "diff": "medium",
+  "q": "The Magna Carta, which limited the power of the English king, was sealed in which year?",
+  "a": [
+   "1066",
+   "1315",
+   "1415",
+   "1215"
+  ],
+  "correct": 4,
+  "fact": "King John sealed the Magna Carta at Runnymede in 1215."
+ },
+ {
+  "id": 321,
+  "cat": "History",
+  "diff": "medium",
+  "q": "The Renaissance is generally considered to have begun in which country?",
+  "a": [
+   "Italy",
+   "France",
+   "Spain",
+   "England"
+  ],
+  "correct": 1,
+  "fact": "Florence, Italy, was an early center of Renaissance art and learning."
+ },
+ {
+  "id": 322,
+  "cat": "History",
+  "diff": "medium",
+  "q": "Napoleon Bonaparte was finally defeated at which battle in 1815?",
+  "a": [
+   "The Battle of Trafalgar",
+   "The Battle of Waterloo",
+   "The Battle of Austerlitz",
+   "The Battle of Leipzig"
+  ],
+  "correct": 2,
+  "fact": "The Battle of Waterloo was fought in present-day Belgium in June 1815."
+ },
+ {
+  "id": 323,
+  "cat": "History",
+  "diff": "medium",
+  "q": "In which year did the Wright brothers make their first successful powered airplane flight?",
+  "a": [
+   "1899",
+   "1911",
+   "1903",
+   "1920"
+  ],
+  "correct": 3,
+  "fact": "The Wright brothers' first flight at Kitty Hawk lasted only 12 seconds."
+ },
+ {
+  "id": 324,
+  "cat": "History",
+  "diff": "medium",
+  "q": "In which year did the Soviet Union officially dissolve?",
+  "a": [
+   "1985",
+   "1989",
+   "1995",
+   "1991"
+  ],
+  "correct": 4,
+  "fact": "The Soviet Union dissolved in December 1991, ending the Cold War era."
+ },
+ {
+  "id": 325,
+  "cat": "History",
+  "diff": "medium",
+  "q": "The ancient Maya civilization developed mainly in which region?",
+  "a": [
+   "Southern Mexico and Central America",
+   "The Andes Mountains",
+   "The Caribbean islands only",
+   "Northern South America"
+  ],
+  "correct": 1,
+  "fact": "The Maya built major cities such as Tikal and Chichen Itza."
+ },
+ {
+  "id": 326,
+  "cat": "History",
+  "diff": "medium",
+  "q": "In which year was the United States Constitution signed at the Constitutional Convention?",
+  "a": [
+   "1776",
+   "1787",
+   "1791",
+   "1803"
+  ],
+  "correct": 2,
+  "fact": "The U.S. Constitution was signed in Philadelphia in 1787 and ratified the following year."
+ },
+ {
+  "id": 327,
+  "cat": "History",
+  "diff": "medium",
+  "q": "King Henry VIII of England is famous for having how many wives?",
+  "a": [
+   "Three",
+   "Four",
+   "Six",
+   "Eight"
+  ],
+  "correct": 3,
+  "fact": "Two of Henry VIII's six marriages ended with the wife's execution."
+ },
+ {
+  "id": 328,
+  "cat": "History",
+  "diff": "medium",
+  "q": "Joan of Arc helped lead forces from which country during the Hundred Years' War?",
+  "a": [
+   "England",
+   "Spain",
+   "Italy",
+   "France"
+  ],
+  "correct": 4,
+  "fact": "Joan of Arc helped lift the siege of Orleans in 1429."
+ },
+ {
+  "id": 329,
+  "cat": "History",
+  "diff": "medium",
+  "q": "Which empire came to an end in the aftermath of World War I?",
+  "a": [
+   "The Ottoman Empire",
+   "The Roman Empire",
+   "The Mongol Empire",
+   "The British Empire"
+  ],
+  "correct": 1,
+  "fact": "The Ottoman Empire had lasted for more than 600 years before it ended in 1922."
+ },
+ {
+  "id": 330,
+  "cat": "History",
+  "diff": "medium",
+  "q": "The Industrial Revolution began in which country?",
+  "a": [
+   "Germany",
+   "Britain",
+   "The United States",
+   "France"
+  ],
+  "correct": 2,
+  "fact": "Britain's textile industry was one of the first to be transformed by machines and factories."
+ },
+ {
+  "id": 331,
+  "cat": "History",
+  "diff": "medium",
+  "q": "The California Gold Rush is generally considered to have begun in which year?",
+  "a": [
+   "1839",
+   "1859",
+   "1849",
+   "1869"
+  ],
+  "correct": 3,
+  "fact": "Gold was discovered at Sutter's Mill in 1848, sparking the rush of 1849."
+ },
+ {
+  "id": 332,
+  "cat": "History",
+  "diff": "medium",
+  "q": "Leonardo da Vinci, painter of the Mona Lisa, lived during which period?",
+  "a": [
+   "The Middle Ages only",
+   "The Baroque era",
+   "The Roman Empire",
+   "The Renaissance"
+  ],
+  "correct": 4,
+  "fact": "Leonardo da Vinci filled notebooks with studies of anatomy, flight, and engineering."
+ },
+ {
+  "id": 333,
+  "cat": "History",
+  "diff": "medium",
+  "q": "The Cold War was mainly a rivalry between the United States and which other power?",
+  "a": [
+   "The Soviet Union",
+   "China",
+   "Britain",
+   "Germany"
+  ],
+  "correct": 1,
+  "fact": "The Cold War lasted from the late 1940s until the Soviet Union dissolved in 1991."
+ },
+ {
+  "id": 334,
+  "cat": "History",
+  "diff": "medium",
+  "q": "Who became the first emperor of Rome in 27 BCE?",
+  "a": [
+   "Julius Caesar",
+   "Augustus",
+   "Nero",
+   "Constantine"
+  ],
+  "correct": 2,
+  "fact": "Augustus, born Gaius Octavius, was the adopted heir of Julius Caesar."
+ },
+ {
+  "id": 335,
+  "cat": "History",
+  "diff": "medium",
+  "q": "In which year was the Berlin Wall built?",
+  "a": [
+   "1949",
+   "1955",
+   "1961",
+   "1971"
+  ],
+  "correct": 3,
+  "fact": "The Berlin Wall stood for more than 28 years before it fell in 1989."
+ },
+ {
+  "id": 336,
+  "cat": "History",
+  "diff": "medium",
+  "q": "In 1803, the United States purchased the Louisiana Territory from which country?",
+  "a": [
+   "Spain",
+   "Britain",
+   "Mexico",
+   "France"
+  ],
+  "correct": 4,
+  "fact": "The Louisiana Purchase roughly doubled the size of the United States."
+ },
+ {
+  "id": 337,
+  "cat": "History",
+  "diff": "hard",
+  "q": "The Treaty of Versailles, which formally ended World War I with Germany, was signed in which year?",
+  "a": [
+   "1919",
+   "1918",
+   "1920",
+   "1923"
+  ],
+  "correct": 1,
+  "fact": "The Treaty of Versailles was signed on June 28, 1919, exactly five years after the assassination that helped trigger the war."
+ },
+ {
+  "id": 338,
+  "cat": "History",
+  "diff": "hard",
+  "q": "Constantinople was the capital of which empire?",
+  "a": [
+   "The Persian Empire",
+   "The Byzantine Empire",
+   "The Ottoman Empire at its founding",
+   "The Macedonian Empire"
+  ],
+  "correct": 2,
+  "fact": "Constantinople was founded by the Roman emperor Constantine I in 330 CE."
+ },
+ {
+  "id": 339,
+  "cat": "History",
+  "diff": "hard",
+  "q": "Cuneiform, one of the earliest known writing systems, was developed by which people?",
+  "a": [
+   "The Egyptians",
+   "The Phoenicians",
+   "The Sumerians",
+   "The Hittites"
+  ],
+  "correct": 3,
+  "fact": "Cuneiform was written by pressing a reed stylus into wet clay tablets."
+ },
+ {
+  "id": 340,
+  "cat": "History",
+  "diff": "hard",
+  "q": "The Wars of the Roses were fought between which two English houses?",
+  "a": [
+   "Tudor and Stuart",
+   "Windsor and Hanover",
+   "Plantagenet and Norman",
+   "Lancaster and York"
+  ],
+  "correct": 4,
+  "fact": "The Wars of the Roses ended when Henry Tudor became King Henry VII in 1485."
+ },
+ {
+  "id": 341,
+  "cat": "History",
+  "diff": "hard",
+  "q": "Ashoka was a famous emperor of which ancient Indian empire?",
+  "a": [
+   "The Maurya Empire",
+   "The Gupta Empire",
+   "The Mughal Empire",
+   "The Chola Empire"
+  ],
+  "correct": 1,
+  "fact": "After the Kalinga War, Ashoka embraced Buddhism and promoted it across Asia."
+ },
+ {
+  "id": 342,
+  "cat": "History",
+  "diff": "hard",
+  "q": "The Meiji Restoration, which modernized Japan, began in which year?",
+  "a": [
+   "1800",
+   "1868",
+   "1853",
+   "1905"
+  ],
+  "correct": 2,
+  "fact": "The Meiji Restoration restored imperial rule under Emperor Meiji in 1868."
+ },
+ {
+  "id": 343,
+  "cat": "History",
+  "diff": "hard",
+  "q": "The Battle of Agincourt in 1415 was part of which long conflict?",
+  "a": [
+   "The Wars of the Roses",
+   "The Thirty Years' War",
+   "The Hundred Years' War",
+   "The Napoleonic Wars"
+  ],
+  "correct": 3,
+  "fact": "English longbowmen played a decisive role in the victory at Agincourt."
+ },
+ {
+  "id": 344,
+  "cat": "History",
+  "diff": "hard",
+  "q": "Qin Shi Huang is best known as the first emperor of a unified what?",
+  "a": [
+   "Japan",
+   "Korea",
+   "Mongolia",
+   "China"
+  ],
+  "correct": 4,
+  "fact": "Qin Shi Huang is buried with the famous Terracotta Army of thousands of clay soldiers."
+ },
+ {
+  "id": 345,
+  "cat": "History",
+  "diff": "hard",
+  "q": "The Rosetta Stone was key to deciphering which ancient writing system?",
+  "a": [
+   "Egyptian hieroglyphs",
+   "Sumerian cuneiform",
+   "Maya glyphs",
+   "Linear B"
+  ],
+  "correct": 1,
+  "fact": "The Rosetta Stone carries the same text in hieroglyphs, Demotic script, and ancient Greek."
+ },
+ {
+  "id": 401,
+  "cat": "Geography",
+  "diff": "easy",
+  "q": "What is the capital of France?",
+  "a": [
+   "Paris",
+   "London",
+   "Brussels",
+   "Amsterdam"
+  ],
+  "correct": 1,
+  "fact": "Paris is home to the Eiffel Tower, which was completed in 1889."
+ },
+ {
+  "id": 402,
+  "cat": "Geography",
+  "diff": "easy",
+  "q": "What is the capital of Japan?",
+  "a": [
+   "Kyoto",
+   "Tokyo",
+   "Osaka",
+   "Nagoya"
+  ],
+  "correct": 2,
+  "fact": "Tokyo was known as Edo until it became the imperial capital in 1868."
+ },
+ {
+  "id": 403,
+  "cat": "Geography",
+  "diff": "easy",
+  "q": "Which is the largest ocean on Earth?",
+  "a": [
+   "The Atlantic Ocean",
+   "The Indian Ocean",
+   "The Pacific Ocean",
+   "The Arctic Ocean"
+  ],
+  "correct": 3,
+  "fact": "The Pacific Ocean covers more area than all of Earth's land combined."
+ },
+ {
+  "id": 404,
+  "cat": "Geography",
+  "diff": "easy",
+  "q": "Which mountain is the highest above sea level on Earth?",
+  "a": [
+   "K2",
+   "Mount Kilimanjaro",
+   "Mount Denali",
+   "Mount Everest"
+  ],
+  "correct": 4,
+  "fact": "Mount Everest grows a few millimeters taller each year due to tectonic movement."
+ },
+ {
+  "id": 405,
+  "cat": "Geography",
+  "diff": "easy",
+  "q": "Which is the largest hot desert in the world?",
+  "a": [
+   "The Sahara",
+   "The Gobi",
+   "The Mojave",
+   "The Kalahari"
+  ],
+  "correct": 1,
+  "fact": "The Sahara is almost as large as the entire United States."
+ },
+ {
+  "id": 406,
+  "cat": "Geography",
+  "diff": "easy",
+  "q": "What is the capital of Canada?",
+  "a": [
+   "Toronto",
+   "Ottawa",
+   "Vancouver",
+   "Montreal"
+  ],
+  "correct": 2,
+  "fact": "Ottawa was chosen as Canada's capital by Queen Victoria in 1857."
+ },
+ {
+  "id": 407,
+  "cat": "Geography",
+  "diff": "easy",
+  "q": "Which river flows through Egypt to the Mediterranean Sea?",
+  "a": [
+   "The Niger",
+   "The Congo",
+   "The Nile",
+   "The Euphrates"
+  ],
+  "correct": 3,
+  "fact": "The Nile is generally considered the longest river in the world."
+ },
+ {
+  "id": 408,
+  "cat": "Geography",
+  "diff": "easy",
+  "q": "What is the capital of the U.S. state of California?",
+  "a": [
+   "Los Angeles",
+   "San Francisco",
+   "San Diego",
+   "Sacramento"
+  ],
+  "correct": 4,
+  "fact": "Sacramento became California's state capital in 1854."
+ },
+ {
+  "id": 409,
+  "cat": "Geography",
+  "diff": "easy",
+  "q": "Which of the Great Lakes is the largest by surface area?",
+  "a": [
+   "Lake Superior",
+   "Lake Michigan",
+   "Lake Erie",
+   "Lake Ontario"
+  ],
+  "correct": 1,
+  "fact": "Lake Superior is the largest freshwater lake in the world by surface area."
+ },
+ {
+  "id": 410,
+  "cat": "Geography",
+  "diff": "easy",
+  "q": "The Grand Canyon is located mainly in which U.S. state?",
+  "a": [
+   "Utah",
+   "Arizona",
+   "Nevada",
+   "Colorado"
+  ],
+  "correct": 2,
+  "fact": "The Grand Canyon is about 277 miles long and up to 18 miles wide."
+ },
+ {
+  "id": 411,
+  "cat": "Geography",
+  "diff": "easy",
+  "q": "What is the capital of Italy?",
+  "a": [
+   "Venice",
+   "Milan",
+   "Rome",
+   "Naples"
+  ],
+  "correct": 3,
+  "fact": "Rome is often called the Eternal City and was founded, according to legend, in 753 BCE."
+ },
+ {
+  "id": 412,
+  "cat": "Geography",
+  "diff": "easy",
+  "q": "Which was the first national park established in the United States?",
+  "a": [
+   "Yosemite National Park",
+   "Grand Canyon National Park",
+   "Glacier National Park",
+   "Yellowstone National Park"
+  ],
+  "correct": 4,
+  "fact": "Yellowstone, established in 1872, is famous for its geysers and hot springs."
+ },
+ {
+  "id": 413,
+  "cat": "Geography",
+  "diff": "easy",
+  "q": "The Mississippi River flows into which body of water?",
+  "a": [
+   "The Gulf of Mexico",
+   "The Atlantic Ocean",
+   "The Great Lakes",
+   "The Pacific Ocean"
+  ],
+  "correct": 1,
+  "fact": "The Mississippi River drains water from all or parts of 31 U.S. states."
+ },
+ {
+  "id": 414,
+  "cat": "Geography",
+  "diff": "easy",
+  "q": "What is the capital of the U.S. state of Texas?",
+  "a": [
+   "Houston",
+   "Austin",
+   "Dallas",
+   "San Antonio"
+  ],
+  "correct": 2,
+  "fact": "Austin is home to the largest urban bat colony in North America, under the Congress Avenue Bridge."
+ },
+ {
+  "id": 415,
+  "cat": "Geography",
+  "diff": "medium",
+  "q": "What is the capital of Australia?",
+  "a": [
+   "Sydney",
+   "Melbourne",
+   "Canberra",
+   "Perth"
+  ],
+  "correct": 3,
+  "fact": "Canberra was purpose-built as Australia's capital and became the seat of government in 1927."
+ },
+ {
+  "id": 416,
+  "cat": "Geography",
+  "diff": "medium",
+  "q": "Which river is generally considered the longest in the United States?",
+  "a": [
+   "The Mississippi River",
+   "The Colorado River",
+   "The Rio Grande",
+   "The Missouri River"
+  ],
+  "correct": 4,
+  "fact": "The Missouri River flows about 2,341 miles before joining the Mississippi River."
+ },
+ {
+  "id": 417,
+  "cat": "Geography",
+  "diff": "medium",
+  "q": "What is the capital of South Korea?",
+  "a": [
+   "Seoul",
+   "Busan",
+   "Incheon",
+   "Pyongyang"
+  ],
+  "correct": 1,
+  "fact": "Seoul has been a capital city for more than 600 years."
+ },
+ {
+  "id": 418,
+  "cat": "Geography",
+  "diff": "medium",
+  "q": "Mount Kilimanjaro, the highest mountain in Africa, is located in which country?",
+  "a": [
+   "Kenya",
+   "Tanzania",
+   "Ethiopia",
+   "Uganda"
+  ],
+  "correct": 2,
+  "fact": "Kilimanjaro is a dormant volcano and the tallest free-standing mountain in the world."
+ },
+ {
+  "id": 419,
+  "cat": "Geography",
+  "diff": "medium",
+  "q": "Which country contains the largest share of the Amazon rainforest?",
+  "a": [
+   "Peru",
+   "Colombia",
+   "Brazil",
+   "Venezuela"
+  ],
+  "correct": 3,
+  "fact": "About 60 percent of the Amazon rainforest lies within Brazil."
+ },
+ {
+  "id": 420,
+  "cat": "Geography",
+  "diff": "medium",
+  "q": "What is the capital of the U.S. state of New York?",
+  "a": [
+   "New York City",
+   "Buffalo",
+   "Rochester",
+   "Albany"
+  ],
+  "correct": 4,
+  "fact": "Albany is one of the oldest continuously chartered cities in the United States, chartered in 1686."
+ },
+ {
+  "id": 421,
+  "cat": "Geography",
+  "diff": "medium",
+  "q": "Which mountain range runs along the eastern side of the United States?",
+  "a": [
+   "The Appalachian Mountains",
+   "The Rocky Mountains",
+   "The Sierra Nevada",
+   "The Cascade Range"
+  ],
+  "correct": 1,
+  "fact": "The Appalachian Mountains are among the oldest mountain ranges on Earth."
+ },
+ {
+  "id": 422,
+  "cat": "Geography",
+  "diff": "medium",
+  "q": "What is the capital of Norway?",
+  "a": [
+   "Stockholm",
+   "Oslo",
+   "Helsinki",
+   "Copenhagen"
+  ],
+  "correct": 2,
+  "fact": "Oslo was founded around 1048 and was once called Christiania."
+ },
+ {
+  "id": 423,
+  "cat": "Geography",
+  "diff": "medium",
+  "q": "Death Valley, one of the hottest places on Earth, is located mainly in which U.S. state?",
+  "a": [
+   "Nevada",
+   "Arizona",
+   "California",
+   "Utah"
+  ],
+  "correct": 3,
+  "fact": "Death Valley holds the record for the highest air temperature reliably recorded on Earth, 134 degrees Fahrenheit in 1913."
+ },
+ {
+  "id": 424,
+  "cat": "Geography",
+  "diff": "medium",
+  "q": "Which river forms a large part of the border between the United States and Mexico?",
+  "a": [
+   "The Colorado River",
+   "The Mississippi River",
+   "The Missouri River",
+   "The Rio Grande"
+  ],
+  "correct": 4,
+  "fact": "The Rio Grande is known as the Rio Bravo in Mexico."
+ },
+ {
+  "id": 425,
+  "cat": "Geography",
+  "diff": "medium",
+  "q": "What is the capital of Argentina?",
+  "a": [
+   "Buenos Aires",
+   "Santiago",
+   "Lima",
+   "Montevideo"
+  ],
+  "correct": 1,
+  "fact": "Buenos Aires is famous for its wide avenue, 9 de Julio, one of the widest in the world."
+ },
+ {
+  "id": 426,
+  "cat": "Geography",
+  "diff": "medium",
+  "q": "What is the capital of Iceland?",
+  "a": [
+   "Oslo",
+   "Reykjavik",
+   "Dublin",
+   "Tallinn"
+  ],
+  "correct": 2,
+  "fact": "Reykjavik is the world's northernmost capital of a sovereign state."
+ },
+ {
+  "id": 427,
+  "cat": "Geography",
+  "diff": "medium",
+  "q": "Lake Baikal, the deepest freshwater lake in the world, is located in which country?",
+  "a": [
+   "Canada",
+   "Kazakhstan",
+   "Russia",
+   "Mongolia"
+  ],
+  "correct": 3,
+  "fact": "Lake Baikal contains roughly one-fifth of the world's fresh surface water."
+ },
+ {
+  "id": 428,
+  "cat": "Geography",
+  "diff": "medium",
+  "q": "Denali, the highest peak in North America, is located in which U.S. state?",
+  "a": [
+   "Colorado",
+   "Washington",
+   "Wyoming",
+   "Alaska"
+  ],
+  "correct": 4,
+  "fact": "Denali rises to 20,310 feet above sea level."
+ },
+ {
+  "id": 429,
+  "cat": "Geography",
+  "diff": "hard",
+  "q": "What is the capital of Kazakhstan?",
+  "a": [
+   "Astana",
+   "Almaty",
+   "Tashkent",
+   "Bishkek"
+  ],
+  "correct": 1,
+  "fact": "Astana was renamed Nur-Sultan in 2019 and changed back to Astana in 2022."
+ },
+ {
+  "id": 430,
+  "cat": "Geography",
+  "diff": "hard",
+  "q": "Which European capital city lies on the Danube River?",
+  "a": [
+   "Prague",
+   "Vienna",
+   "Warsaw",
+   "Berlin"
+  ],
+  "correct": 2,
+  "fact": "The Danube flows through four European capitals: Vienna, Bratislava, Budapest, and Belgrade."
+ },
+ {
+  "id": 431,
+  "cat": "Geography",
+  "diff": "hard",
+  "q": "The Atacama Desert, one of the driest places on Earth, lies mainly in which country?",
+  "a": [
+   "Peru",
+   "Bolivia",
+   "Chile",
+   "Argentina"
+  ],
+  "correct": 3,
+  "fact": "Some parts of the Atacama Desert receive almost no recorded rainfall for years at a time."
+ },
+ {
+  "id": 432,
+  "cat": "Geography",
+  "diff": "hard",
+  "q": "Mount Aconcagua, the highest mountain outside Asia, is located on which continent?",
+  "a": [
+   "North America",
+   "Africa",
+   "Europe",
+   "South America"
+  ],
+  "correct": 4,
+  "fact": "Aconcagua, in Argentina, rises to about 22,841 feet above sea level."
+ },
+ {
+  "id": 433,
+  "cat": "Geography",
+  "diff": "hard",
+  "q": "What is the capital of Mongolia?",
+  "a": [
+   "Ulaanbaatar",
+   "Astana",
+   "Kathmandu",
+   "Thimphu"
+  ],
+  "correct": 1,
+  "fact": "Ulaanbaatar is often considered the coldest capital city in the world by average annual temperature."
+ },
+ {
+  "id": 434,
+  "cat": "Geography",
+  "diff": "hard",
+  "q": "The Sargasso Sea, known for having no land coastline, is part of which ocean?",
+  "a": [
+   "The Pacific Ocean",
+   "The Atlantic Ocean",
+   "The Indian Ocean",
+   "The Arctic Ocean"
+  ],
+  "correct": 2,
+  "fact": "The Sargasso Sea is defined by ocean currents rather than by land boundaries."
+ },
+ {
+  "id": 435,
+  "cat": "Geography",
+  "diff": "hard",
+  "q": "The Strait of Gibraltar separates Spain from which African country?",
+  "a": [
+   "Algeria",
+   "Tunisia",
+   "Morocco",
+   "Libya"
+  ],
+  "correct": 3,
+  "fact": "At its narrowest point, the Strait of Gibraltar is only about 8 miles wide."
+ },
+ {
+  "id": 501,
+  "cat": "Animals",
+  "diff": "easy",
+  "q": "What is the fastest land animal in the world?",
+  "a": [
+   "Cheetah",
+   "Lion",
+   "Racehorse",
+   "Greyhound"
+  ],
+  "correct": 1,
+  "fact": "Cheetahs can sprint up to about 60 mph in short bursts to catch prey."
+ },
+ {
+  "id": 502,
+  "cat": "Animals",
+  "diff": "easy",
+  "q": "What is the largest land animal in the world?",
+  "a": [
+   "White rhinoceros",
+   "African elephant",
+   "Giraffe",
+   "Hippopotamus"
+  ],
+  "correct": 2,
+  "fact": "African elephants can weigh more than 6 tons and stand over 3 meters tall at the shoulder."
+ },
+ {
+  "id": 503,
+  "cat": "Animals",
+  "diff": "easy",
+  "q": "What is the tallest land animal in the world?",
+  "a": [
+   "Horse",
+   "Moose",
+   "Giraffe",
+   "Camel"
+  ],
+  "correct": 3,
+  "fact": "A giraffe's heart weighs about 11 kilograms to pump blood all the way up its long neck."
+ },
+ {
+  "id": 504,
+  "cat": "Animals",
+  "diff": "easy",
+  "q": "Which animal is famous for its black and white stripes?",
+  "a": [
+   "Tiger",
+   "Okapi",
+   "Dalmatian dog",
+   "Zebra"
+  ],
+  "correct": 4,
+  "fact": "No two zebras have exactly the same stripe pattern, each one is unique."
+ },
+ {
+  "id": 505,
+  "cat": "Animals",
+  "diff": "easy",
+  "q": "Which flightless bird lives in Antarctica and is an excellent swimmer?",
+  "a": [
+   "Penguin",
+   "Ostrich",
+   "Kiwi",
+   "Puffin"
+  ],
+  "correct": 1,
+  "fact": "Emperor penguins can dive deeper than 500 meters in search of food."
+ },
+ {
+  "id": 506,
+  "cat": "Animals",
+  "diff": "easy",
+  "q": "What do giant pandas eat almost all of the time?",
+  "a": [
+   "Eucalyptus leaves",
+   "Bamboo",
+   "Grass",
+   "Fish"
+  ],
+  "correct": 2,
+  "fact": "Giant pandas spend 10 to 16 hours a day eating bamboo."
+ },
+ {
+  "id": 507,
+  "cat": "Animals",
+  "diff": "easy",
+  "q": "Which animal hops on powerful hind legs and carries its baby in a pouch?",
+  "a": [
+   "Rabbit",
+   "Koala",
+   "Kangaroo",
+   "Deer"
+  ],
+  "correct": 3,
+  "fact": "Red kangaroos can leap more than 9 meters in a single bound."
+ },
+ {
+  "id": 508,
+  "cat": "Animals",
+  "diff": "easy",
+  "q": "How many legs does a spider have?",
+  "a": [
+   "Six",
+   "Ten",
+   "Four",
+   "Eight"
+  ],
+  "correct": 4,
+  "fact": "Spiders have eight legs, while insects have only six."
+ },
+ {
+  "id": 509,
+  "cat": "Animals",
+  "diff": "easy",
+  "q": "Which animal is well known for being able to change its skin color?",
+  "a": [
+   "Chameleon",
+   "Frog",
+   "Lizard gecko",
+   "Snake"
+  ],
+  "correct": 1,
+  "fact": "Chameleons change color by adjusting special pigment cells in their skin."
+ },
+ {
+  "id": 510,
+  "cat": "Animals",
+  "diff": "easy",
+  "q": "What is the largest flightless bird in the world?",
+  "a": [
+   "Emu",
+   "Ostrich",
+   "Penguin",
+   "Cassowary"
+  ],
+  "correct": 2,
+  "fact": "Ostriches lay the largest eggs of any living land animal."
+ },
+ {
+  "id": 511,
+  "cat": "Animals",
+  "diff": "easy",
+  "q": "Which insect produces honey?",
+  "a": [
+   "Ant",
+   "Butterfly",
+   "Honey bee",
+   "Wasp hornet"
+  ],
+  "correct": 3,
+  "fact": "A single honey bee colony can contain up to 60,000 bees."
+ },
+ {
+  "id": 512,
+  "cat": "Animals",
+  "diff": "easy",
+  "q": "Which nocturnal bird is known for hooting and turning its head far around?",
+  "a": [
+   "Eagle",
+   "Crow",
+   "Sparrow",
+   "Owl"
+  ],
+  "correct": 4,
+  "fact": "Some owls can rotate their heads up to 270 degrees."
+ },
+ {
+  "id": 513,
+  "cat": "Animals",
+  "diff": "easy",
+  "q": "Which sea animal has eight arms and a soft body with no bones?",
+  "a": [
+   "Octopus",
+   "Squid",
+   "Jellyfish",
+   "Starfish"
+  ],
+  "correct": 1,
+  "fact": "Octopuses are considered among the most intelligent invertebrates."
+ },
+ {
+  "id": 514,
+  "cat": "Animals",
+  "diff": "easy",
+  "q": "Which domestic animal is known for purring when it is content?",
+  "a": [
+   "Dog",
+   "Cat",
+   "Rabbit",
+   "Hamster"
+  ],
+  "correct": 2,
+  "fact": "Cats can make over 100 different vocal sounds."
+ },
+ {
+  "id": 515,
+  "cat": "Animals",
+  "diff": "medium",
+  "q": "Which is the only mammal capable of true powered flight?",
+  "a": [
+   "Flying squirrel",
+   "Sugar glider",
+   "Bat",
+   "Colugo"
+  ],
+  "correct": 3,
+  "fact": "There are more than 1,400 species of bats worldwide."
+ },
+ {
+  "id": 516,
+  "cat": "Animals",
+  "diff": "medium",
+  "q": "Which animal is the largest animal known to have ever lived?",
+  "a": [
+   "African elephant",
+   "Argentinosaurus",
+   "Megalodon shark",
+   "Blue whale"
+  ],
+  "correct": 4,
+  "fact": "A blue whale's tongue alone can weigh as much as an elephant."
+ },
+ {
+  "id": 517,
+  "cat": "Animals",
+  "diff": "medium",
+  "q": "How many hearts does an octopus have?",
+  "a": [
+   "Three",
+   "One",
+   "Two",
+   "Four"
+  ],
+  "correct": 1,
+  "fact": "Two of an octopus's three hearts pump blood to its gills, and one pumps it to the body."
+ },
+ {
+  "id": 518,
+  "cat": "Animals",
+  "diff": "medium",
+  "q": "What color is a polar bear's skin underneath its white fur?",
+  "a": [
+   "Pink",
+   "Black",
+   "White",
+   "Grey"
+  ],
+  "correct": 2,
+  "fact": "Polar bear fur is not actually white, it is translucent and looks white because it reflects light."
+ },
+ {
+  "id": 519,
+  "cat": "Animals",
+  "diff": "medium",
+  "q": "Which bird is the fastest animal in the world when it dives?",
+  "a": [
+   "Golden eagle",
+   "Albatross",
+   "Peregrine falcon",
+   "Swift"
+  ],
+  "correct": 3,
+  "fact": "Peregrine falcons can dive at speeds over 240 mph."
+ },
+ {
+  "id": 520,
+  "cat": "Animals",
+  "diff": "medium",
+  "q": "Which mammal lays eggs instead of giving birth to live young?",
+  "a": [
+   "Koala",
+   "Armadillo",
+   "Otter",
+   "Platypus"
+  ],
+  "correct": 4,
+  "fact": "The platypus is one of only five living species of egg-laying mammals called monotremes."
+ },
+ {
+  "id": 521,
+  "cat": "Animals",
+  "diff": "medium",
+  "q": "What is a group of wolves called?",
+  "a": [
+   "Pack",
+   "Herd",
+   "Flock",
+   "Swarm"
+  ],
+  "correct": 1,
+  "fact": "Wolf packs are usually family groups led by a breeding pair."
+ },
+ {
+  "id": 522,
+  "cat": "Animals",
+  "diff": "medium",
+  "q": "Which animal has fingerprints that are very similar to human fingerprints?",
+  "a": [
+   "Gorilla",
+   "Koala",
+   "Panda",
+   "Raccoon"
+  ],
+  "correct": 2,
+  "fact": "Koalas have unique fingerprints, just like humans."
+ },
+ {
+  "id": 523,
+  "cat": "Animals",
+  "diff": "medium",
+  "q": "What is a baby frog called?",
+  "a": [
+   "Froglet",
+   "Cub",
+   "Tadpole",
+   "Calf"
+  ],
+  "correct": 3,
+  "fact": "Tadpoles breathe through gills before they grow lungs and legs."
+ },
+ {
+  "id": 524,
+  "cat": "Animals",
+  "diff": "medium",
+  "q": "Which is the largest fish in the world?",
+  "a": [
+   "Great white shark",
+   "Basking shark",
+   "Ocean sunfish",
+   "Whale shark"
+  ],
+  "correct": 4,
+  "fact": "Whale sharks can grow longer than a city bus but eat mostly plankton."
+ },
+ {
+  "id": 525,
+  "cat": "Animals",
+  "diff": "medium",
+  "q": "Which bird is the only bird that can fly backwards?",
+  "a": [
+   "Hummingbird",
+   "Kingfisher",
+   "Swallow",
+   "Finch"
+  ],
+  "correct": 1,
+  "fact": "Hummingbirds can beat their wings up to 80 times per second."
+ },
+ {
+  "id": 526,
+  "cat": "Animals",
+  "diff": "medium",
+  "q": "In which animal does the male carry the babies in a special pouch?",
+  "a": [
+   "Penguin",
+   "Seahorse",
+   "Clownfish",
+   "Frog"
+  ],
+  "correct": 2,
+  "fact": "Male seahorses carry developing young in a brood pouch until they are born."
+ },
+ {
+  "id": 527,
+  "cat": "Animals",
+  "diff": "medium",
+  "q": "Which giant reptile is known for living well over 100 years?",
+  "a": [
+   "Komodo dragon",
+   "Green iguana",
+   "Giant tortoise",
+   "American alligator"
+  ],
+  "correct": 3,
+  "fact": "Some giant tortoises are believed to have lived for more than 150 years."
+ },
+ {
+  "id": 528,
+  "cat": "Animals",
+  "diff": "medium",
+  "q": "What do you call an animal that is active mainly at night?",
+  "a": [
+   "Diurnal",
+   "Crepuscular only",
+   "Hibernating",
+   "Nocturnal"
+  ],
+  "correct": 4,
+  "fact": "Owls, bats and many other nocturnal animals have special senses adapted for darkness."
+ },
+ {
+  "id": 529,
+  "cat": "Animals",
+  "diff": "hard",
+  "q": "Which amphibian can regenerate its limbs, heart and parts of its brain?",
+  "a": [
+   "Axolotl",
+   "Salamander newt",
+   "Frog",
+   "Caecilian"
+  ],
+  "correct": 1,
+  "fact": "Axolotls keep their larval features for their whole lives, a trait called neoteny."
+ },
+ {
+  "id": 530,
+  "cat": "Animals",
+  "diff": "hard",
+  "q": "Which is the only mammal in the world covered in scales?",
+  "a": [
+   "Armadillo",
+   "Pangolin",
+   "Porcupine",
+   "Hedgehog"
+  ],
+  "correct": 2,
+  "fact": "Pangolin scales are made of keratin, the same material as human fingernails."
+ },
+ {
+  "id": 531,
+  "cat": "Animals",
+  "diff": "hard",
+  "q": "Which tiny animal is famous for surviving the vacuum of space in experiments?",
+  "a": [
+   "Water flea",
+   "Rotifer",
+   "Tardigrade",
+   "Nematode worm"
+  ],
+  "correct": 3,
+  "fact": "Tardigrades, also called water bears, can survive extreme heat, cold and radiation."
+ },
+ {
+  "id": 532,
+  "cat": "Animals",
+  "diff": "hard",
+  "q": "A narwhal's long spiral tusk is actually what body part?",
+  "a": [
+   "A horn",
+   "A bone spike",
+   "A fin",
+   "An enlarged tooth"
+  ],
+  "correct": 4,
+  "fact": "A narwhal's tusk is usually its left canine tooth growing through its lip."
+ },
+ {
+  "id": 533,
+  "cat": "Animals",
+  "diff": "hard",
+  "q": "How many chambers does a cow's stomach have?",
+  "a": [
+   "Four",
+   "One",
+   "Two",
+   "Three"
+  ],
+  "correct": 1,
+  "fact": "A cow's four stomach chambers help it digest tough plant material like grass."
+ },
+ {
+  "id": 534,
+  "cat": "Animals",
+  "diff": "hard",
+  "q": "Which venomous primate is found in Southeast Asia?",
+  "a": [
+   "Lemur",
+   "Slow loris",
+   "Tarsier",
+   "Marmoset"
+  ],
+  "correct": 2,
+  "fact": "The slow loris is one of the very few venomous mammals in the world."
+ },
+ {
+  "id": 535,
+  "cat": "Animals",
+  "diff": "hard",
+  "q": "What makes the skin of a glass frog special?",
+  "a": [
+   "It glows in the dark",
+   "It changes to bright red",
+   "It is translucent, so its organs can be seen from below",
+   "It is covered in tiny glass-like scales"
+  ],
+  "correct": 3,
+  "fact": "Glass frogs are mostly active at night and live in rainforests of Central and South America."
+ },
+ {
+  "id": 601,
+  "cat": "Movies & TV",
+  "diff": "easy",
+  "q": "Who played Jack Dawson in Titanic?",
+  "a": [
+   "Leonardo DiCaprio",
+   "Matt Damon",
+   "Brad Pitt",
+   "Tom Cruise"
+  ],
+  "correct": 1,
+  "fact": "Leonardo DiCaprio was 22 years old when Titanic was released in 1997."
+ },
+ {
+  "id": 602,
+  "cat": "Movies & TV",
+  "diff": "easy",
+  "q": "Which animated film features the snowman Olaf?",
+  "a": [
+   "Moana",
+   "Frozen",
+   "Tangled",
+   "Brave"
+  ],
+  "correct": 2,
+  "fact": "Frozen, released in 2013, became one of the highest-grossing animated films of its era."
+ },
+ {
+  "id": 603,
+  "cat": "Movies & TV",
+  "diff": "easy",
+  "q": "In Star Wars, who is revealed to be Luke Skywalker's father?",
+  "a": [
+   "Obi-Wan Kenobi",
+   "Emperor Palpatine",
+   "Darth Vader",
+   "Yoda"
+  ],
+  "correct": 3,
+  "fact": "The reveal in The Empire Strikes Back (1980) is one of the most famous plot twists in film history."
+ },
+ {
+  "id": 604,
+  "cat": "Movies & TV",
+  "diff": "easy",
+  "q": "Who plays Iron Man in the Marvel Cinematic Universe?",
+  "a": [
+   "Chris Evans",
+   "Chris Hemsworth",
+   "Mark Ruffalo",
+   "Robert Downey Jr."
+  ],
+  "correct": 4,
+  "fact": "Robert Downey Jr. first played Iron Man in the 2008 film that launched the MCU."
+ },
+ {
+  "id": 605,
+  "cat": "Movies & TV",
+  "diff": "easy",
+  "q": "Which Pixar film is about a clownfish searching for his missing son?",
+  "a": [
+   "Finding Nemo",
+   "Shark Tale",
+   "The Little Mermaid",
+   "Luca"
+  ],
+  "correct": 1,
+  "fact": "Finding Nemo won the Academy Award for Best Animated Feature in 2004."
+ },
+ {
+  "id": 606,
+  "cat": "Movies & TV",
+  "diff": "easy",
+  "q": "Which 1939 classic film features Dorothy, Toto and the Yellow Brick Road?",
+  "a": [
+   "Gone with the Wind",
+   "The Wizard of Oz",
+   "Snow White and the Seven Dwarfs",
+   "Pinocchio"
+  ],
+  "correct": 2,
+  "fact": "The Wizard of Oz was notable for its vivid use of Technicolor."
+ },
+ {
+  "id": 607,
+  "cat": "Movies & TV",
+  "diff": "easy",
+  "q": "Who directed Jaws, E.T. and Jurassic Park?",
+  "a": [
+   "James Cameron",
+   "George Lucas",
+   "Steven Spielberg",
+   "Ridley Scott"
+  ],
+  "correct": 3,
+  "fact": "Steven Spielberg co-founded DreamWorks Pictures in 1994."
+ },
+ {
+  "id": 608,
+  "cat": "Movies & TV",
+  "diff": "easy",
+  "q": "Which 1994 Disney animated film features Simba, a young lion?",
+  "a": [
+   "Aladdin",
+   "Beauty and the Beast",
+   "Tarzan",
+   "The Lion King"
+  ],
+  "correct": 4,
+  "fact": "The Lion King was inspired in part by Shakespeare's Hamlet."
+ },
+ {
+  "id": 609,
+  "cat": "Movies & TV",
+  "diff": "easy",
+  "q": "Which TV sitcom follows six friends living in New York City?",
+  "a": [
+   "Friends",
+   "Seinfeld",
+   "Frasier",
+   "Cheers"
+  ],
+  "correct": 1,
+  "fact": "Friends ran for 10 seasons from 1994 to 2004."
+ },
+ {
+  "id": 610,
+  "cat": "Movies & TV",
+  "diff": "easy",
+  "q": "Which green ogre is voiced by Mike Myers in a hit animated series?",
+  "a": [
+   "Hulk",
+   "Shrek",
+   "Yoda",
+   "Oscar the Grouch"
+  ],
+  "correct": 2,
+  "fact": "Shrek won the first Academy Award for Best Animated Feature in 2002."
+ },
+ {
+  "id": 611,
+  "cat": "Movies & TV",
+  "diff": "medium",
+  "q": "Which 1959 epic was the first film to win 11 Academy Awards?",
+  "a": [
+   "Titanic",
+   "The Lord of the Rings: The Return of the King",
+   "Ben-Hur",
+   "West Side Story"
+  ],
+  "correct": 3,
+  "fact": "Ben-Hur won 11 Oscars, a record later tied by Titanic and The Return of the King."
+ },
+ {
+  "id": 612,
+  "cat": "Movies & TV",
+  "diff": "medium",
+  "q": "Who did Marlon Brando play in The Godfather?",
+  "a": [
+   "Michael Corleone",
+   "Sonny Corleone",
+   "Tom Hagen",
+   "Vito Corleone"
+  ],
+  "correct": 4,
+  "fact": "Marlon Brando won the Academy Award for Best Actor for The Godfather (1972)."
+ },
+ {
+  "id": 613,
+  "cat": "Movies & TV",
+  "diff": "medium",
+  "q": "What was Pixar's first feature-length film?",
+  "a": [
+   "Toy Story",
+   "A Bug's Life",
+   "Monsters, Inc.",
+   "Finding Nemo"
+  ],
+  "correct": 1,
+  "fact": "Toy Story, released in 1995, was the first fully computer-animated feature film."
+ },
+ {
+  "id": 614,
+  "cat": "Movies & TV",
+  "diff": "medium",
+  "q": "Which director made Psycho, Vertigo and Rear Window?",
+  "a": [
+   "Stanley Kubrick",
+   "Alfred Hitchcock",
+   "Orson Welles",
+   "Billy Wilder"
+  ],
+  "correct": 2,
+  "fact": "Alfred Hitchcock is widely known as the Master of Suspense."
+ },
+ {
+  "id": 615,
+  "cat": "Movies & TV",
+  "diff": "medium",
+  "q": "Who played Hermione Granger in the Harry Potter films?",
+  "a": [
+   "Bonnie Wright",
+   "Evanna Lynch",
+   "Emma Watson",
+   "Katie Leung"
+  ],
+  "correct": 3,
+  "fact": "Emma Watson was cast as Hermione when she was nine years old."
+ },
+ {
+  "id": 616,
+  "cat": "Movies & TV",
+  "diff": "medium",
+  "q": "In which year was the first Star Wars film released?",
+  "a": [
+   "1975",
+   "1980",
+   "1983",
+   "1977"
+  ],
+  "correct": 4,
+  "fact": "The first Star Wars film was later retitled Episode IV: A New Hope."
+ },
+ {
+  "id": 617,
+  "cat": "Movies & TV",
+  "diff": "medium",
+  "q": "How many Academy Awards did The Lord of the Rings: The Return of the King win?",
+  "a": [
+   "11",
+   "9",
+   "10",
+   "7"
+  ],
+  "correct": 1,
+  "fact": "The Return of the King won all 11 awards it was nominated for in 2004."
+ },
+ {
+  "id": 618,
+  "cat": "Movies & TV",
+  "diff": "medium",
+  "q": "Which TV drama follows chemistry teacher Walter White?",
+  "a": [
+   "Better Call Saul",
+   "Breaking Bad",
+   "The Sopranos",
+   "Mad Men"
+  ],
+  "correct": 2,
+  "fact": "Breaking Bad ran from 2008 to 2013 and is widely ranked among the greatest TV series ever made."
+ },
+ {
+  "id": 619,
+  "cat": "Movies & TV",
+  "diff": "medium",
+  "q": "Casablanca is set during which war?",
+  "a": [
+   "World War I",
+   "The Spanish Civil War",
+   "World War II",
+   "The Korean War"
+  ],
+  "correct": 3,
+  "fact": "Casablanca won the Academy Award for Best Picture in 1943."
+ },
+ {
+  "id": 620,
+  "cat": "Movies & TV",
+  "diff": "medium",
+  "q": "Which composer created the music for Star Wars, Indiana Jones and Jurassic Park?",
+  "a": [
+   "Hans Zimmer",
+   "James Horner",
+   "Alan Silvestri",
+   "John Williams"
+  ],
+  "correct": 4,
+  "fact": "John Williams has received more than 50 Academy Award nominations."
+ },
+ {
+  "id": 621,
+  "cat": "Movies & TV",
+  "diff": "hard",
+  "q": "Which film won the first Academy Award for Best Picture in 1929?",
+  "a": [
+   "Wings",
+   "Sunrise",
+   "Metropolis",
+   "The Jazz Singer"
+  ],
+  "correct": 1,
+  "fact": "Wings is a silent war film known for its pioneering aerial battle scenes."
+ },
+ {
+  "id": 622,
+  "cat": "Movies & TV",
+  "diff": "hard",
+  "q": "Which 1934 film was the first to win the Big Five Academy Awards?",
+  "a": [
+   "Gone with the Wind",
+   "It Happened One Night",
+   "Mutiny on the Bounty",
+   "The Great Ziegfeld"
+  ],
+  "correct": 2,
+  "fact": "The Big Five are Best Picture, Director, Actor, Actress and Screenplay."
+ },
+ {
+  "id": 623,
+  "cat": "Movies & TV",
+  "diff": "hard",
+  "q": "Who directed and starred in Citizen Kane?",
+  "a": [
+   "John Ford",
+   "Charlie Chaplin",
+   "Orson Welles",
+   "Howard Hawks"
+  ],
+  "correct": 3,
+  "fact": "Orson Welles was only 25 years old when Citizen Kane was released in 1941."
+ },
+ {
+  "id": 624,
+  "cat": "Movies & TV",
+  "diff": "hard",
+  "q": "Which actor holds the record with three Academy Awards for Best Actor?",
+  "a": [
+   "Jack Nicholson",
+   "Spencer Tracy",
+   "Walter Brennan",
+   "Daniel Day-Lewis"
+  ],
+  "correct": 4,
+  "fact": "Daniel Day-Lewis won Best Actor for My Left Foot, There Will Be Blood and Lincoln."
+ },
+ {
+  "id": 625,
+  "cat": "Movies & TV",
+  "diff": "hard",
+  "q": "Which was the first animated film ever nominated for Best Picture?",
+  "a": [
+   "Beauty and the Beast",
+   "Snow White and the Seven Dwarfs",
+   "Up",
+   "Toy Story 3"
+  ],
+  "correct": 1,
+  "fact": "Beauty and the Beast received its Best Picture nomination in 1991."
+ },
+ {
+  "id": 701,
+  "cat": "Sports",
+  "diff": "easy",
+  "q": "How many players does a soccer team have on the field at one time?",
+  "a": [
+   "11",
+   "9",
+   "10",
+   "12"
+  ],
+  "correct": 1,
+  "fact": "A soccer team also usually has several substitutes waiting on the bench."
+ },
+ {
+  "id": 702,
+  "cat": "Sports",
+  "diff": "easy",
+  "q": "The Super Bowl is the championship game of which sport?",
+  "a": [
+   "Baseball",
+   "American football",
+   "Basketball",
+   "Ice hockey"
+  ],
+  "correct": 2,
+  "fact": "The first Super Bowl was played in 1967."
+ },
+ {
+  "id": 703,
+  "cat": "Sports",
+  "diff": "easy",
+  "q": "How many rings appear on the Olympic flag?",
+  "a": [
+   "Four",
+   "Six",
+   "Five",
+   "Seven"
+  ],
+  "correct": 3,
+  "fact": "The five Olympic rings represent the inhabited continents of the world."
+ },
+ {
+  "id": 704,
+  "cat": "Sports",
+  "diff": "easy",
+  "q": "In baseball, how many strikes does a batter get before striking out?",
+  "a": [
+   "Two",
+   "Four",
+   "Five",
+   "Three"
+  ],
+  "correct": 4,
+  "fact": "A strikeout is often recorded with the letter K in baseball scorekeeping."
+ },
+ {
+  "id": 705,
+  "cat": "Sports",
+  "diff": "easy",
+  "q": "How many points is a free throw worth in basketball?",
+  "a": [
+   "One",
+   "Two",
+   "Three",
+   "Four"
+  ],
+  "correct": 1,
+  "fact": "Free throws are taken from a line 15 feet from the basket."
+ },
+ {
+  "id": 706,
+  "cat": "Sports",
+  "diff": "easy",
+  "q": "Which sport uses a lightweight shuttlecock instead of a ball?",
+  "a": [
+   "Tennis",
+   "Badminton",
+   "Squash",
+   "Table tennis"
+  ],
+  "correct": 2,
+  "fact": "Badminton shuttlecocks can travel faster than balls in any other racket sport."
+ },
+ {
+  "id": 707,
+  "cat": "Sports",
+  "diff": "easy",
+  "q": "Wimbledon is the most famous championship in which sport?",
+  "a": [
+   "Golf",
+   "Cricket",
+   "Tennis",
+   "Croquet"
+  ],
+  "correct": 3,
+  "fact": "Wimbledon, first held in 1877, is the oldest tennis tournament in the world."
+ },
+ {
+  "id": 708,
+  "cat": "Sports",
+  "diff": "easy",
+  "q": "In golf, what is it called when a player finishes a hole in just one stroke?",
+  "a": [
+   "Birdie",
+   "Eagle",
+   "Bogey",
+   "Hole-in-one"
+  ],
+  "correct": 4,
+  "fact": "A hole-in-one is also commonly called an ace."
+ },
+ {
+  "id": 709,
+  "cat": "Sports",
+  "diff": "medium",
+  "q": "In which city were the first modern Olympic Games held in 1896?",
+  "a": [
+   "Athens",
+   "Paris",
+   "London",
+   "Rome"
+  ],
+  "correct": 1,
+  "fact": "Only 241 athletes competed at the first modern Olympics in Athens."
+ },
+ {
+  "id": 710,
+  "cat": "Sports",
+  "diff": "medium",
+  "q": "How many points is a touchdown worth in American football?",
+  "a": [
+   "Three",
+   "Six",
+   "Seven",
+   "Eight"
+  ],
+  "correct": 2,
+  "fact": "After a touchdown, a team can try for one or two extra points."
+ },
+ {
+  "id": 711,
+  "cat": "Sports",
+  "diff": "medium",
+  "q": "About how long is a marathon race?",
+  "a": [
+   "13.1 miles",
+   "20 miles",
+   "26.2 miles",
+   "31 miles"
+  ],
+  "correct": 3,
+  "fact": "26.2 miles is about 42.2 kilometers."
+ },
+ {
+  "id": 712,
+  "cat": "Sports",
+  "diff": "medium",
+  "q": "Who invented basketball in 1891?",
+  "a": [
+   "Walter Camp",
+   "Abner Doubleday",
+   "William Morgan",
+   "James Naismith"
+  ],
+  "correct": 4,
+  "fact": "James Naismith invented basketball in Springfield, Massachusetts, using peach baskets."
+ },
+ {
+  "id": 713,
+  "cat": "Sports",
+  "diff": "medium",
+  "q": "How many periods are played in a standard ice hockey game?",
+  "a": [
+   "Three",
+   "Two",
+   "Four",
+   "Five"
+  ],
+  "correct": 1,
+  "fact": "Each period in ice hockey lasts 20 minutes of play time."
+ },
+ {
+  "id": 714,
+  "cat": "Sports",
+  "diff": "medium",
+  "q": "Sprinter Usain Bolt represented which country?",
+  "a": [
+   "United States",
+   "Jamaica",
+   "Kenya",
+   "Canada"
+  ],
+  "correct": 2,
+  "fact": "Usain Bolt set the 100 meter world record of 9.58 seconds in 2009."
+ },
+ {
+  "id": 715,
+  "cat": "Sports",
+  "diff": "medium",
+  "q": "How often is the FIFA World Cup held?",
+  "a": [
+   "Every 2 years",
+   "Every 3 years",
+   "Every 4 years",
+   "Every 5 years"
+  ],
+  "correct": 3,
+  "fact": "The first FIFA World Cup was held in Uruguay in 1930."
+ },
+ {
+  "id": 716,
+  "cat": "Sports",
+  "diff": "medium",
+  "q": "In golf, what is one stroke under par on a hole called?",
+  "a": [
+   "Bogey",
+   "Par saver",
+   "Albatross",
+   "Birdie"
+  ],
+  "correct": 4,
+  "fact": "Two strokes under par on a hole is called an eagle."
+ },
+ {
+  "id": 717,
+  "cat": "Sports",
+  "diff": "hard",
+  "q": "In which year was the first Super Bowl played?",
+  "a": [
+   "1967",
+   "1960",
+   "1970",
+   "1975"
+  ],
+  "correct": 1,
+  "fact": "Super Bowl I was played on January 15, 1967, in Los Angeles."
+ },
+ {
+  "id": 718,
+  "cat": "Sports",
+  "diff": "hard",
+  "q": "Who is the most decorated Olympian of all time, with 28 medals?",
+  "a": [
+   "Larisa Latynina",
+   "Michael Phelps",
+   "Mark Spitz",
+   "Usain Bolt"
+  ],
+  "correct": 2,
+  "fact": "Michael Phelps won 23 Olympic gold medals, more than any other athlete."
+ },
+ {
+  "id": 719,
+  "cat": "Sports",
+  "diff": "hard",
+  "q": "The ancient Olympic Games were held in honor of which Greek god?",
+  "a": [
+   "Apollo",
+   "Poseidon",
+   "Zeus",
+   "Ares"
+  ],
+  "correct": 3,
+  "fact": "A huge statue of Zeus at Olympia was one of the Seven Wonders of the Ancient World."
+ },
+ {
+  "id": 720,
+  "cat": "Sports",
+  "diff": "hard",
+  "q": "Which basketball player scored a record 100 points in a single NBA game in 1962?",
+  "a": [
+   "Kareem Abdul-Jabbar",
+   "Michael Jordan",
+   "Bill Russell",
+   "Wilt Chamberlain"
+  ],
+  "correct": 4,
+  "fact": "Wilt Chamberlain's 100-point game record has stood since March 2, 1962."
+ }
+]
