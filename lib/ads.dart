@@ -5,6 +5,9 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 /// Never swap in real IDs in this MVP build.
 class Ads {
   Ads._();
+
+  /// DIAGNOSTIC (v1.0.1): ads fully disabled to isolate the launch crash.
+  static const bool enabled = false;
   static const String bannerId = 'ca-app-pub-3940256099942544/6300978111';
   static const String interstitialId = 'ca-app-pub-3940256099942544/1033173712';
   static const String rewardedId = 'ca-app-pub-3940256099942544/5224354917';
@@ -16,6 +19,7 @@ class Ads {
   static bool _loadingRewarded = false;
 
   static Future<void> init() async {
+    if (!enabled) return;
     try {
       await MobileAds.instance.initialize();
       loadInterstitial();
