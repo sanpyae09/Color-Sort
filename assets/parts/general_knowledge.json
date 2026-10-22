@@ -1,0 +1,842 @@
+[
+ {
+  "a": [
+   "366",
+   "365",
+   "364",
+   "367"
+  ],
+  "cat": "General Knowledge",
+  "correct": 1,
+  "diff": "easy",
+  "fact": "A leap year adds February 29, which happens almost every four years to keep the calendar in step with Earth's orbit.",
+  "id": 1,
+  "q": "How many days are there in a leap year?"
+ },
+ {
+  "a": [
+   "CO2",
+   "H2O",
+   "O2",
+   "NaCl"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "easy",
+  "fact": "Each water molecule is made of two hydrogen atoms bonded to a single oxygen atom.",
+  "id": 2,
+  "q": "What is the chemical formula for water?"
+ },
+ {
+  "a": [
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "cat": "General Knowledge",
+  "correct": 3,
+  "diff": "easy",
+  "fact": "The seven continents are Africa, Antarctica, Asia, Europe, North America, Australia, and South America.",
+  "id": 3,
+  "q": "How many continents are there on Earth?"
+ },
+ {
+  "a": [
+   "Four",
+   "Five",
+   "Six",
+   "Seven"
+  ],
+  "cat": "General Knowledge",
+  "correct": 3,
+  "diff": "easy",
+  "fact": "A standard guitar has six strings, usually tuned to the notes E, A, D, G, B and E.",
+  "id": 4,
+  "q": "How many strings does a standard guitar have?"
+ },
+ {
+  "a": [
+   "Blueberry",
+   "Strawberry",
+   "Grape",
+   "Cherry"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "easy",
+  "fact": "A strawberry carries around 200 tiny seeds, called achenes, dotted across its outer surface.",
+  "id": 5,
+  "q": "Which fruit has its seeds on the outside?"
+ },
+ {
+  "a": [
+   "London",
+   "Paris",
+   "Rome",
+   "Madrid"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "easy",
+  "fact": "Paris is home to the Eiffel Tower, which was completed in 1889 for a world's fair.",
+  "id": 6,
+  "q": "What is the capital city of France?"
+ },
+ {
+  "a": [
+   "Oxygen",
+   "Nitrogen",
+   "Carbon dioxide",
+   "Hydrogen"
+  ],
+  "cat": "General Knowledge",
+  "correct": 3,
+  "diff": "easy",
+  "fact": "During photosynthesis, plants take in carbon dioxide and release oxygen as a byproduct.",
+  "id": 7,
+  "q": "Which gas do plants absorb from the air to make food?"
+ },
+ {
+  "a": [
+   "6",
+   "4",
+   "5",
+   "3"
+  ],
+  "cat": "General Knowledge",
+  "correct": 4,
+  "diff": "easy",
+  "fact": "The three angles inside any flat triangle always add up to 180 degrees.",
+  "id": 8,
+  "q": "How many sides does a triangle have?"
+ },
+ {
+  "a": [
+   "Cheetah",
+   "Lion",
+   "Horse",
+   "Leopard"
+  ],
+  "cat": "General Knowledge",
+  "correct": 1,
+  "diff": "easy",
+  "fact": "A cheetah can reach speeds of about 60 miles per hour in short bursts while chasing prey.",
+  "id": 9,
+  "q": "Which is the fastest land animal in the world?"
+ },
+ {
+  "a": [
+   "Jam",
+   "Honey",
+   "Syrup",
+   "Caramel"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "easy",
+  "fact": "Honey found in ancient Egyptian tombs thousands of years old was still preserved and safe in appearance.",
+  "id": 10,
+  "q": "Which sweet food do bees make?"
+ },
+ {
+  "a": [
+   "90",
+   "30",
+   "60",
+   "120"
+  ],
+  "cat": "General Knowledge",
+  "correct": 3,
+  "diff": "easy",
+  "fact": "There are 3,600 seconds in one hour, because each of its 60 minutes holds 60 seconds.",
+  "id": 11,
+  "q": "How many minutes are there in one hour?"
+ },
+ {
+  "a": [
+   "December",
+   "February",
+   "March",
+   "January"
+  ],
+  "cat": "General Knowledge",
+  "correct": 4,
+  "diff": "easy",
+  "fact": "January is named after Janus, the Roman god of beginnings and doorways.",
+  "id": 12,
+  "q": "Which month is the first month of the year?"
+ },
+ {
+  "a": [
+   "Thermometer",
+   "Barometer",
+   "Speedometer",
+   "Altimeter"
+  ],
+  "cat": "General Knowledge",
+  "correct": 1,
+  "diff": "easy",
+  "fact": "The first accurate thermometers were developed in the early 1700s by Daniel Gabriel Fahrenheit.",
+  "id": 13,
+  "q": "Which instrument is used to measure temperature?"
+ },
+ {
+  "a": [
+   "6",
+   "7",
+   "8",
+   "5"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "easy",
+  "fact": "The seven traditional rainbow colors are red, orange, yellow, green, blue, indigo, and violet.",
+  "id": 14,
+  "q": "How many colors are traditionally counted in a rainbow?"
+ },
+ {
+  "a": [
+   "5,040",
+   "8,640",
+   "10,080",
+   "12,600"
+  ],
+  "cat": "General Knowledge",
+  "correct": 3,
+  "diff": "easy",
+  "fact": "A week holds 10,080 minutes: 60 minutes x 24 hours x 7 days.",
+  "id": 15,
+  "q": "How many minutes are there in one full week?"
+ },
+ {
+  "a": [
+   "Thermometer",
+   "Barometer",
+   "Hygrometer",
+   "Anemometer"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "easy",
+  "fact": "The barometer was invented in 1643 by Evangelista Torricelli, a student of Galileo.",
+  "id": 16,
+  "q": "Which instrument measures air pressure?"
+ },
+ {
+  "a": [
+   "2",
+   "3",
+   "4",
+   "1"
+  ],
+  "cat": "General Knowledge",
+  "correct": 1,
+  "diff": "easy",
+  "fact": "The word bicycle comes from roots meaning two wheels, while a three-wheeled version is a tricycle.",
+  "id": 17,
+  "q": "How many wheels does a bicycle have?"
+ },
+ {
+  "a": [
+   "Tomato",
+   "Avocado",
+   "Onion",
+   "Bell pepper"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "easy",
+  "fact": "Avocados were first cultivated in Mexico thousands of years ago.",
+  "id": 18,
+  "q": "What is the main ingredient in guacamole?"
+ },
+ {
+  "a": [
+   "North",
+   "South",
+   "East",
+   "West"
+  ],
+  "cat": "General Knowledge",
+  "correct": 3,
+  "diff": "easy",
+  "fact": "The Sun rises in the east because Earth rotates toward the east on its axis.",
+  "id": 19,
+  "q": "In which direction does the Sun rise?"
+ },
+ {
+  "a": [
+   "28",
+   "30",
+   "26",
+   "32"
+  ],
+  "cat": "General Knowledge",
+  "correct": 4,
+  "diff": "easy",
+  "fact": "Children usually have 20 baby teeth before their adult teeth come in.",
+  "id": 20,
+  "q": "How many teeth does a typical adult human have, including wisdom teeth?"
+ },
+ {
+  "a": [
+   "Penguin",
+   "Eagle",
+   "Owl",
+   "Sparrow"
+  ],
+  "cat": "General Knowledge",
+  "correct": 1,
+  "diff": "easy",
+  "fact": "Penguins use their stiff flippers like paddles, which makes them excellent swimmers.",
+  "id": 21,
+  "q": "Which bird lives in Antarctica, swims well, but cannot fly?"
+ },
+ {
+  "a": [
+   "Magnetism",
+   "Gravity",
+   "Friction",
+   "Inertia"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "easy",
+  "fact": "Gravity also holds the Moon in orbit around Earth and Earth in orbit around the Sun.",
+  "id": 22,
+  "q": "Which force pulls objects toward the Earth?"
+ },
+ {
+  "a": [
+   "Steam",
+   "Rain",
+   "Ice",
+   "Vapor"
+  ],
+  "cat": "General Knowledge",
+  "correct": 3,
+  "diff": "easy",
+  "fact": "Ice floats on water because it is less dense than liquid water, which is unusual for a solid.",
+  "id": 23,
+  "q": "What is frozen water called?"
+ },
+ {
+  "a": [
+   "African elephant",
+   "Giraffe",
+   "Hippopotamus",
+   "Blue whale"
+  ],
+  "cat": "General Knowledge",
+  "correct": 4,
+  "diff": "easy",
+  "fact": "A blue whale's heart alone can weigh as much as a small car.",
+  "id": 24,
+  "q": "Which is the largest mammal in the world?"
+ },
+ {
+  "a": [
+   "Canberra",
+   "Sydney",
+   "Melbourne",
+   "Perth"
+  ],
+  "cat": "General Knowledge",
+  "correct": 1,
+  "diff": "medium",
+  "fact": "Canberra was chosen as a compromise because Sydney and Melbourne both wanted to be the capital.",
+  "id": 25,
+  "q": "What is the capital city of Australia?"
+ },
+ {
+  "a": [
+   "Pablo Picasso",
+   "Leonardo da Vinci",
+   "Vincent van Gogh",
+   "Claude Monet"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "medium",
+  "fact": "Leonardo da Vinci began painting the Mona Lisa in 1503 and kept working on it for years.",
+  "id": 26,
+  "q": "Who painted the Mona Lisa?"
+ },
+ {
+  "a": [
+   "186",
+   "226",
+   "206",
+   "306"
+  ],
+  "cat": "General Knowledge",
+  "correct": 3,
+  "diff": "medium",
+  "fact": "Babies are born with about 300 bones, but many fuse together as they grow.",
+  "id": 27,
+  "q": "How many bones are there in a typical adult human body?"
+ },
+ {
+  "a": [
+   "0",
+   "1",
+   "3",
+   "2"
+  ],
+  "cat": "General Knowledge",
+  "correct": 4,
+  "diff": "medium",
+  "fact": "Two is the only even prime number, because every other even number is divisible by two.",
+  "id": 28,
+  "q": "What is the smallest prime number?"
+ },
+ {
+  "a": [
+   "20",
+   "25",
+   "30",
+   "35"
+  ],
+  "cat": "General Knowledge",
+  "correct": 3,
+  "diff": "medium",
+  "fact": "Quick trick for 15%: take 10% (which is 20) and add half of it (10) to get 30.",
+  "id": 29,
+  "q": "What is 15% of 200?"
+ },
+ {
+  "a": [
+   "Spanish",
+   "Portuguese",
+   "French",
+   "Italian"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "medium",
+  "fact": "Brazil has more Portuguese speakers than any other country in the world, including Portugal.",
+  "id": 30,
+  "q": "What is the main language spoken in Brazil?"
+ },
+ {
+  "a": [
+   "100",
+   "500",
+   "1,000",
+   "10,000"
+  ],
+  "cat": "General Knowledge",
+  "correct": 3,
+  "diff": "medium",
+  "fact": "The prefix kilo means one thousand, so a kilometer is also one thousand meters.",
+  "id": 31,
+  "q": "How many grams are there in one kilogram?"
+ },
+ {
+  "a": [
+   "Thomas Edison",
+   "Nikola Tesla",
+   "Isaac Newton",
+   "Alexander Graham Bell"
+  ],
+  "cat": "General Knowledge",
+  "correct": 4,
+  "diff": "medium",
+  "fact": "Alexander Graham Bell received the first United States patent for the telephone in 1876.",
+  "id": 32,
+  "q": "Who is credited with inventing the telephone?"
+ },
+ {
+  "a": [
+   "English",
+   "Hindi",
+   "Spanish",
+   "Mandarin Chinese"
+  ],
+  "cat": "General Knowledge",
+  "correct": 4,
+  "diff": "medium",
+  "fact": "Mandarin Chinese has over 900 million native speakers, more than any other language.",
+  "id": 33,
+  "q": "Which language has the most native speakers in the world?"
+ },
+ {
+  "a": [
+   "Toronto",
+   "Ottawa",
+   "Vancouver",
+   "Montreal"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "medium",
+  "fact": "Ottawa was chosen as Canada's capital by Queen Victoria in 1857.",
+  "id": 34,
+  "q": "What is the capital city of Canada?"
+ },
+ {
+  "a": [
+   "76",
+   "84",
+   "88",
+   "96"
+  ],
+  "cat": "General Knowledge",
+  "correct": 3,
+  "diff": "medium",
+  "fact": "A standard piano has 88 keys: 52 white keys and 36 black keys.",
+  "id": 35,
+  "q": "How many keys does a standard piano have?"
+ },
+ {
+  "a": [
+   "Quartz",
+   "Iron",
+   "Gold",
+   "Diamond"
+  ],
+  "cat": "General Knowledge",
+  "correct": 4,
+  "diff": "medium",
+  "fact": "Diamonds are made of pure carbon arranged in an extremely strong crystal structure.",
+  "id": 36,
+  "q": "Which naturally occurring substance is the hardest on Earth?"
+ },
+ {
+  "a": [
+   "William Shakespeare",
+   "Charles Dickens",
+   "Jane Austen",
+   "Mark Twain"
+  ],
+  "cat": "General Knowledge",
+  "correct": 1,
+  "diff": "medium",
+  "fact": "William Shakespeare wrote Romeo and Juliet early in his career, around 1595.",
+  "id": 37,
+  "q": "Who wrote the play Romeo and Juliet?"
+ },
+ {
+  "a": [
+   "90 degrees Celsius",
+   "100 degrees Celsius",
+   "80 degrees Celsius",
+   "120 degrees Celsius"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "medium",
+  "fact": "On high mountains water boils at a lower temperature because the air pressure is lower.",
+  "id": 38,
+  "q": "At sea level, at what temperature does water boil on the Celsius scale?"
+ },
+ {
+  "a": [
+   "World Wide Web",
+   "Web World Wide",
+   "Wide World Web",
+   "World Web Window"
+  ],
+  "cat": "General Knowledge",
+  "correct": 1,
+  "diff": "medium",
+  "fact": "The World Wide Web was invented by Tim Berners-Lee in 1989 while he worked at CERN.",
+  "id": 39,
+  "q": "What does 'www' in a web address stand for?"
+ },
+ {
+  "a": [
+   "Central Processing Unit",
+   "Computer Personal Unit",
+   "Central Program Utility",
+   "Core Processing Utility"
+  ],
+  "cat": "General Knowledge",
+  "correct": 1,
+  "diff": "medium",
+  "fact": "The CPU is often called the brain of the computer because it carries out the instructions of every program.",
+  "id": 40,
+  "q": "In computing, what does 'CPU' stand for?"
+ },
+ {
+  "a": [
+   "Pancreas",
+   "Liver",
+   "Spleen",
+   "Gallbladder"
+  ],
+  "cat": "General Knowledge",
+  "correct": 1,
+  "diff": "medium",
+  "fact": "Insulin from the pancreas helps control the level of sugar in the blood.",
+  "id": 41,
+  "q": "Which organ in the human body produces insulin?"
+ },
+ {
+  "a": [
+   "Won",
+   "Yen",
+   "Yuan",
+   "Ringgit"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "medium",
+  "fact": "The yen is one of the most traded currencies in the world.",
+  "id": 42,
+  "q": "What is the currency of Japan?"
+ },
+ {
+  "a": [
+   "Iron",
+   "Mercury",
+   "Aluminum",
+   "Copper"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "medium",
+  "fact": "Mercury is the only metal that stays liquid at standard room temperature.",
+  "id": 43,
+  "q": "Which metal is liquid at room temperature?"
+ },
+ {
+  "a": [
+   "Vitamin A",
+   "Vitamin B12",
+   "Vitamin C",
+   "Vitamin D"
+  ],
+  "cat": "General Knowledge",
+  "correct": 4,
+  "diff": "medium",
+  "fact": "Vitamin D is nicknamed the 'sunshine vitamin' because your skin makes it when sunlight touches it.",
+  "id": 44,
+  "q": "Which vitamin does sunlight help the human body produce?"
+ },
+ {
+  "a": [
+   "Africa",
+   "Asia",
+   "Europe",
+   "South America"
+  ],
+  "cat": "General Knowledge",
+  "correct": 1,
+  "diff": "medium",
+  "fact": "Kenya is named after Mount Kenya, the second-highest mountain in Africa.",
+  "id": 45,
+  "q": "On which continent is the country of Kenya located?"
+ },
+ {
+  "a": [
+   "Bill Gates",
+   "Tim Berners-Lee",
+   "Steve Jobs",
+   "Alan Turing"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "medium",
+  "fact": "Tim Berners-Lee created the first website in 1991 while working at CERN in Switzerland.",
+  "id": 46,
+  "q": "Who invented the World Wide Web?"
+ },
+ {
+  "a": [
+   "Venus",
+   "Mars",
+   "Mercury",
+   "Earth"
+  ],
+  "cat": "General Knowledge",
+  "correct": 3,
+  "diff": "medium",
+  "fact": "Mercury is only slightly larger than Earth's Moon.",
+  "id": 47,
+  "q": "Which is the smallest planet in our solar system?"
+ },
+ {
+  "a": [
+   "5",
+   "7",
+   "8",
+   "6"
+  ],
+  "cat": "General Knowledge",
+  "correct": 4,
+  "diff": "medium",
+  "fact": "Honeycomb cells are hexagons because that shape stores the most space using the least wax.",
+  "id": 48,
+  "q": "How many sides does a hexagon have?"
+ },
+ {
+  "a": [
+   "Pollen",
+   "Nectar",
+   "Sap",
+   "Dew"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "hard",
+  "fact": "Bees turn nectar into honey by fanning it with their wings to evaporate the water.",
+  "id": 49,
+  "q": "What do bees collect from flowers to make honey?"
+ },
+ {
+  "a": [
+   "Lead",
+   "Iron",
+   "Tin",
+   "Zinc"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "hard",
+  "fact": "Iron's symbol Fe comes from ferrum, the Latin word for iron.",
+  "id": 50,
+  "q": "The chemical symbol Fe stands for which element?"
+ },
+ {
+  "a": [
+   "Oslo",
+   "Helsinki",
+   "Reykjavik",
+   "Tallinn"
+  ],
+  "cat": "General Knowledge",
+  "correct": 3,
+  "diff": "hard",
+  "fact": "Reykjavik is the northernmost capital city of a country in the world.",
+  "id": 51,
+  "q": "What is the capital city of Iceland?"
+ },
+ {
+  "a": [
+   "23",
+   "44",
+   "48",
+   "46"
+  ],
+  "cat": "General Knowledge",
+  "correct": 4,
+  "diff": "hard",
+  "fact": "Humans get 23 chromosomes from each parent, making 23 pairs in most body cells.",
+  "id": 52,
+  "q": "How many chromosomes are there in a typical human body cell?"
+ },
+ {
+  "a": [
+   "Albert Einstein",
+   "Isaac Newton",
+   "Niels Bohr",
+   "Stephen Hawking"
+  ],
+  "cat": "General Knowledge",
+  "correct": 1,
+  "diff": "hard",
+  "fact": "Albert Einstein published the theory of general relativity in 1915, reshaping how science understands gravity.",
+  "id": 53,
+  "q": "Who developed the theory of general relativity?"
+ },
+ {
+  "a": [
+   "Heart",
+   "Liver",
+   "Lung",
+   "Brain"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "hard",
+  "fact": "The liver performs more than 500 different jobs, including cleaning the blood and aiding digestion.",
+  "id": 54,
+  "q": "Which is the largest internal organ in the human body?"
+ },
+ {
+  "a": [
+   "About 1 second",
+   "About 1 minute",
+   "About 8 minutes",
+   "About 1 hour"
+  ],
+  "cat": "General Knowledge",
+  "correct": 3,
+  "diff": "hard",
+  "fact": "Because light takes about 8 minutes to arrive, we always see the Sun as it looked 8 minutes ago.",
+  "id": 55,
+  "q": "About how long does sunlight take to reach Earth?"
+ },
+ {
+  "a": [
+   "Vitamin A",
+   "Vitamin B12",
+   "Vitamin C",
+   "Vitamin D"
+  ],
+  "cat": "General Knowledge",
+  "correct": 4,
+  "diff": "hard",
+  "fact": "Vitamin D helps the body absorb calcium, which keeps bones strong.",
+  "id": 56,
+  "q": "Which vitamin does human skin make when exposed to sunlight?"
+ },
+ {
+  "a": [
+   "Hydrogen",
+   "Helium",
+   "Oxygen",
+   "Carbon"
+  ],
+  "cat": "General Knowledge",
+  "correct": 1,
+  "diff": "hard",
+  "fact": "Hydrogen is the lightest and most abundant element in the universe.",
+  "id": 57,
+  "q": "Which element is first on the periodic table?"
+ },
+ {
+  "a": [
+   "Auckland",
+   "Wellington",
+   "Christchurch",
+   "Hamilton"
+  ],
+  "cat": "General Knowledge",
+  "correct": 2,
+  "diff": "hard",
+  "fact": "Wellington sits at the southern tip of New Zealand's North Island and is known for its strong winds.",
+  "id": 58,
+  "q": "What is the capital city of New Zealand?"
+ },
+ {
+  "a": [
+   "9",
+   "10",
+   "11",
+   "12"
+  ],
+  "cat": "General Knowledge",
+  "correct": 3,
+  "diff": "hard",
+  "fact": "Russia stretches across so much of the globe that when it is morning in the west, it is evening in the far east.",
+  "id": 59,
+  "q": "How many time zones does Russia have?"
+ },
+ {
+  "a": [
+   "Dinucleic acid",
+   "Deoxyribose nucleic atom",
+   "Dioxyribonucleic acid",
+   "Deoxyribonucleic acid"
+  ],
+  "cat": "General Knowledge",
+  "correct": 4,
+  "diff": "hard",
+  "fact": "If unwound and stretched out, the DNA in a single human cell would be about two meters long.",
+  "id": 60,
+  "q": "What does the abbreviation DNA stand for?"
+ }
+]
