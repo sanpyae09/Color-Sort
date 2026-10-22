@@ -134,6 +134,7 @@ class _BannerSlotState extends State<_BannerSlot> {
   @override
   void initState() {
     super.initState();
+    if (!Ads.enabled) return;
     _ad = BannerAd(
       size: AdSize.banner,
       adUnitId: Ads.bannerId,
