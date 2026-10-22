@@ -1,0 +1,492 @@
+[
+  {
+    "id": 201,
+    "cat": "Space & Astronomy",
+    "diff": "easy",
+    "q": "Which planet is closest to the Sun?",
+    "a": [
+      "Mercury",
+      "Venus",
+      "Mars",
+      "Earth"
+    ],
+    "correct": 1,
+    "fact": "Mercury completes an orbit around the Sun in just 88 days."
+  },
+  {
+    "id": 202,
+    "cat": "Space & Astronomy",
+    "diff": "easy",
+    "q": "What is the name of the planet we live on?",
+    "a": [
+      "Mars",
+      "Earth",
+      "Venus",
+      "Jupiter"
+    ],
+    "correct": 2,
+    "fact": "Earth is the only known planet to support life."
+  },
+  {
+    "id": 203,
+    "cat": "Space & Astronomy",
+    "diff": "easy",
+    "q": "What is the Moon to Earth?",
+    "a": [
+      "A star",
+      "A planet",
+      "A natural satellite",
+      "A comet"
+    ],
+    "correct": 3,
+    "fact": "The Moon is Earth's only natural satellite."
+  },
+  {
+    "id": 204,
+    "cat": "Space & Astronomy",
+    "diff": "easy",
+    "q": "Who was the first person to walk on the Moon?",
+    "a": [
+      "Buzz Aldrin",
+      "Yuri Gagarin",
+      "Michael Collins",
+      "Neil Armstrong"
+    ],
+    "correct": 4,
+    "fact": "Neil Armstrong stepped onto the Moon on July 20, 1969."
+  },
+  {
+    "id": 205,
+    "cat": "Space & Astronomy",
+    "diff": "easy",
+    "q": "Which planet is known as the Red Planet?",
+    "a": [
+      "Mars",
+      "Venus",
+      "Jupiter",
+      "Mercury"
+    ],
+    "correct": 1,
+    "fact": "Mars looks red because its surface is rich in iron oxide, or rust."
+  },
+  {
+    "id": 206,
+    "cat": "Space & Astronomy",
+    "diff": "easy",
+    "q": "Which is the largest planet in our solar system?",
+    "a": [
+      "Saturn",
+      "Jupiter",
+      "Neptune",
+      "Uranus"
+    ],
+    "correct": 2,
+    "fact": "Jupiter is so large that about 1,300 Earths could fit inside it."
+  },
+  {
+    "id": 207,
+    "cat": "Space & Astronomy",
+    "diff": "easy",
+    "q": "What star is at the center of our solar system?",
+    "a": [
+      "Polaris",
+      "Sirius",
+      "The Sun",
+      "Proxima Centauri"
+    ],
+    "correct": 3,
+    "fact": "The Sun contains 99.8 percent of all the mass in the solar system."
+  },
+  {
+    "id": 208,
+    "cat": "Space & Astronomy",
+    "diff": "easy",
+    "q": "Which planet is most famous for its wide, bright rings?",
+    "a": [
+      "Mars",
+      "Venus",
+      "Mercury",
+      "Saturn"
+    ],
+    "correct": 4,
+    "fact": "Saturn's rings are made mostly of ice and rock particles."
+  },
+  {
+    "id": 209,
+    "cat": "Space & Astronomy",
+    "diff": "easy",
+    "q": "How many planets are in our solar system?",
+    "a": [
+      "8",
+      "7",
+      "9",
+      "10"
+    ],
+    "correct": 1,
+    "fact": "Pluto was reclassified as a dwarf planet in 2006, leaving eight planets."
+  },
+  {
+    "id": 210,
+    "cat": "Space & Astronomy",
+    "diff": "easy",
+    "q": "What galaxy is our solar system part of?",
+    "a": [
+      "Andromeda",
+      "Milky Way",
+      "Triangulum",
+      "Whirlpool"
+    ],
+    "correct": 2,
+    "fact": "The Milky Way contains an estimated 100 to 400 billion stars."
+  },
+  {
+    "id": 211,
+    "cat": "Space & Astronomy",
+    "diff": "easy",
+    "q": "Which instrument do astronomers use to observe distant stars?",
+    "a": [
+      "Microscope",
+      "Stethoscope",
+      "Telescope",
+      "Periscope"
+    ],
+    "correct": 3,
+    "fact": "The first telescopes for astronomy were built in the early 1600s."
+  },
+  {
+    "id": 212,
+    "cat": "Space & Astronomy",
+    "diff": "easy",
+    "q": "What causes day and night on Earth?",
+    "a": [
+      "Earth's orbit",
+      "The Moon's orbit",
+      "The Sun moving",
+      "Earth's rotation"
+    ],
+    "correct": 4,
+    "fact": "Earth rotates once on its axis about every 24 hours."
+  },
+  {
+    "id": 213,
+    "cat": "Space & Astronomy",
+    "diff": "easy",
+    "q": "About how long does Earth take to orbit the Sun once?",
+    "a": [
+      "One year",
+      "One month",
+      "One week",
+      "One day"
+    ],
+    "correct": 1,
+    "fact": "Earth travels about 940 million kilometers during one orbit."
+  },
+  {
+    "id": 214,
+    "cat": "Space & Astronomy",
+    "diff": "easy",
+    "q": "Which planet is often called the Morning Star?",
+    "a": [
+      "Mars",
+      "Venus",
+      "Mercury",
+      "Jupiter"
+    ],
+    "correct": 2,
+    "fact": "Venus is the brightest planet visible from Earth."
+  },
+  {
+    "id": 215,
+    "cat": "Space & Astronomy",
+    "diff": "medium",
+    "q": "In what year did Apollo 11 land on the Moon?",
+    "a": [
+      "1959",
+      "1971",
+      "1969",
+      "1965"
+    ],
+    "correct": 3,
+    "fact": "Apollo 11's lunar module was named Eagle."
+  },
+  {
+    "id": 216,
+    "cat": "Space & Astronomy",
+    "diff": "medium",
+    "q": "In what year was the Hubble Space Telescope launched?",
+    "a": [
+      "1985",
+      "1995",
+      "2000",
+      "1990"
+    ],
+    "correct": 4,
+    "fact": "Hubble orbits about 547 kilometers above Earth."
+  },
+  {
+    "id": 217,
+    "cat": "Space & Astronomy",
+    "diff": "medium",
+    "q": "What does ISS stand for?",
+    "a": [
+      "International Space Station",
+      "International Solar System",
+      "Inner Space Station",
+      "International Satellite Station"
+    ],
+    "correct": 1,
+    "fact": "The ISS has been continuously occupied since November 2000."
+  },
+  {
+    "id": 218,
+    "cat": "Space & Astronomy",
+    "diff": "medium",
+    "q": "What was the first artificial satellite launched into space?",
+    "a": [
+      "Explorer 1",
+      "Sputnik 1",
+      "Vostok 1",
+      "Telstar 1"
+    ],
+    "correct": 2,
+    "fact": "The Soviet Union launched Sputnik 1 in 1957."
+  },
+  {
+    "id": 219,
+    "cat": "Space & Astronomy",
+    "diff": "medium",
+    "q": "What is the largest moon in our solar system?",
+    "a": [
+      "Titan",
+      "Europa",
+      "Ganymede",
+      "Callisto"
+    ],
+    "correct": 3,
+    "fact": "Ganymede, a moon of Jupiter, is even larger than the planet Mercury."
+  },
+  {
+    "id": 220,
+    "cat": "Space & Astronomy",
+    "diff": "medium",
+    "q": "Which former planet is now classified as a dwarf planet?",
+    "a": [
+      "Ceres",
+      "Eris",
+      "Makemake",
+      "Pluto"
+    ],
+    "correct": 4,
+    "fact": "Pluto was considered the ninth planet from 1930 until 2006."
+  },
+  {
+    "id": 221,
+    "cat": "Space & Astronomy",
+    "diff": "medium",
+    "q": "What does a light-year measure?",
+    "a": [
+      "Distance",
+      "Time",
+      "Brightness",
+      "Speed"
+    ],
+    "correct": 1,
+    "fact": "One light-year is about 9.46 trillion kilometers."
+  },
+  {
+    "id": 222,
+    "cat": "Space & Astronomy",
+    "diff": "medium",
+    "q": "Which element makes up most of the Sun?",
+    "a": [
+      "Helium",
+      "Hydrogen",
+      "Oxygen",
+      "Carbon"
+    ],
+    "correct": 2,
+    "fact": "The Sun converts hydrogen into helium through nuclear fusion."
+  },
+  {
+    "id": 223,
+    "cat": "Space & Astronomy",
+    "diff": "medium",
+    "q": "Who was the first woman in space?",
+    "a": [
+      "Sally Ride",
+      "Mae Jemison",
+      "Valentina Tereshkova",
+      "Kalpana Chawla"
+    ],
+    "correct": 3,
+    "fact": "Valentina Tereshkova flew aboard Vostok 6 in 1963."
+  },
+  {
+    "id": 224,
+    "cat": "Space & Astronomy",
+    "diff": "medium",
+    "q": "How many moons does Mars have?",
+    "a": [
+      "0",
+      "1",
+      "5",
+      "2"
+    ],
+    "correct": 4,
+    "fact": "Mars's two small moons are named Phobos and Deimos."
+  },
+  {
+    "id": 225,
+    "cat": "Space & Astronomy",
+    "diff": "medium",
+    "q": "What is a black hole?",
+    "a": [
+      "A region where gravity is so strong that light cannot escape",
+      "A hole in the ozone layer",
+      "An empty part of a galaxy",
+      "A type of star"
+    ],
+    "correct": 1,
+    "fact": "The boundary around a black hole is called the event horizon."
+  },
+  {
+    "id": 226,
+    "cat": "Space & Astronomy",
+    "diff": "medium",
+    "q": "Which famous comet returns about every 76 years?",
+    "a": [
+      "Comet Hale-Bopp",
+      "Halley's Comet",
+      "Comet Encke",
+      "Comet Tempel"
+    ],
+    "correct": 2,
+    "fact": "Halley's Comet was last visible from Earth in 1986."
+  },
+  {
+    "id": 227,
+    "cat": "Space & Astronomy",
+    "diff": "medium",
+    "q": "Where is the main asteroid belt located?",
+    "a": [
+      "Between Earth and Mars",
+      "Beyond Neptune",
+      "Between Mars and Jupiter",
+      "Between Venus and Earth"
+    ],
+    "correct": 3,
+    "fact": "The asteroid belt contains millions of rocky objects."
+  },
+  {
+    "id": 228,
+    "cat": "Space & Astronomy",
+    "diff": "medium",
+    "q": "What is it called when the Moon is fully illuminated from Earth?",
+    "a": [
+      "New Moon",
+      "Crescent Moon",
+      "Half Moon",
+      "Full Moon"
+    ],
+    "correct": 4,
+    "fact": "A full Moon occurs when Earth is between the Sun and the Moon."
+  },
+  {
+    "id": 229,
+    "cat": "Space & Astronomy",
+    "diff": "hard",
+    "q": "What is Earth's escape velocity, approximately?",
+    "a": [
+      "11.2 kilometers per second",
+      "7.9 kilometers per second",
+      "25 kilometers per second",
+      "5 kilometers per second"
+    ],
+    "correct": 1,
+    "fact": "A spacecraft must reach escape velocity to leave Earth's gravity without further thrust."
+  },
+  {
+    "id": 230,
+    "cat": "Space & Astronomy",
+    "diff": "hard",
+    "q": "What is the nearest star to Earth besides the Sun?",
+    "a": [
+      "Alpha Centauri A",
+      "Proxima Centauri",
+      "Barnard's Star",
+      "Sirius"
+    ],
+    "correct": 2,
+    "fact": "Proxima Centauri is about 4.24 light-years away."
+  },
+  {
+    "id": 231,
+    "cat": "Space & Astronomy",
+    "diff": "hard",
+    "q": "Who performed the first spacewalk?",
+    "a": [
+      "Yuri Gagarin",
+      "Neil Armstrong",
+      "Alexei Leonov",
+      "John Glenn"
+    ],
+    "correct": 3,
+    "fact": "Alexei Leonov spent about 12 minutes outside Voskhod 2 in 1965."
+  },
+  {
+    "id": 232,
+    "cat": "Space & Astronomy",
+    "diff": "hard",
+    "q": "In what year was Voyager 1 launched?",
+    "a": [
+      "1969",
+      "1981",
+      "1990",
+      "1977"
+    ],
+    "correct": 4,
+    "fact": "Voyager 1 is the most distant human-made object from Earth."
+  },
+  {
+    "id": 233,
+    "cat": "Space & Astronomy",
+    "diff": "hard",
+    "q": "What is the largest volcano in the solar system?",
+    "a": [
+      "Olympus Mons on Mars",
+      "Mauna Loa on Earth",
+      "Alba Mons on Mars",
+      "Elysium Mons on Mars"
+    ],
+    "correct": 1,
+    "fact": "Olympus Mons is about two and a half times the height of Mount Everest."
+  },
+  {
+    "id": 234,
+    "cat": "Space & Astronomy",
+    "diff": "hard",
+    "q": "About how hot is the surface of the Sun in Celsius?",
+    "a": [
+      "1,500 degrees",
+      "5,500 degrees",
+      "15,000 degrees",
+      "10,000 degrees"
+    ],
+    "correct": 2,
+    "fact": "The Sun's core is far hotter, at about 15 million degrees Celsius."
+  },
+  {
+    "id": 235,
+    "cat": "Space & Astronomy",
+    "diff": "hard",
+    "q": "What is the boundary around a black hole beyond which nothing can escape?",
+    "a": [
+      "Singularity",
+      "Accretion disk",
+      "Event horizon",
+      "Photon ring"
+    ],
+    "correct": 3,
+    "fact": "Once anything crosses the event horizon, it cannot return."
+  }
+]
