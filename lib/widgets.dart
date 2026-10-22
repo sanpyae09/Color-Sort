@@ -1,215 +1,393 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 
-/// Brand palette (from the approved design reference).
+import 'data.dart';
+import 'vpn.dart';
+
+/// SecureNet brand kit — deep navy + electric blue, per the design sheet.
 class Brand {
-  static const blue = Color(0xFF2563EB);
-  static const blueDark = Color(0xFF1D4ED8);
-  static const navy = Color(0xFF0B1B3A);
-  static const navyCard = Color(0xFF14264E);
-  static const gold = Color(0xFFFFC531);
-  static const cream = Color(0xFFFFF9EC);
-  static const bg = Color(0xFFF6F9FF);
-  static const green = Color(0xFF22C55E);
-  static const red = Color(0xFFEF4444);
-  static const ink = Color(0xFF16233F);
-  static const inkSoft = Color(0xFF5B6B8C);
+  static const bg0 = Color(0xFF030A22);
+  static const bg1 = Color(0xFF0A1C40);
+  static const card = Color(0xFF0C2150);
+  static const cardSoft = Color(0xFF102A5E);
+  static const border = Color(0xFF1D3A6E);
+  static const blue = Color(0xFF2E7CF6);
+  static const cyan = Color(0xFF38BDF8);
+  static const green = Color(0xFF2EEA8C);
+  static const amber = Color(0xFFFFB84D);
+  static const red = Color(0xFFFF5C5C);
+  static const textDim = Color(0xFF8CA3C7);
+  static const gold = Color(0xFFFFC93C);
+
+  static const primaryGradient = LinearGradient(
+    begin: Alignment.centerLeft,
+    end: Alignment.centerRight,
+    colors: [Color(0xFF1E6FEB), Color(0xFF38BDF8)],
+  );
+
+  static BoxDecoration get screenGradient => const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [bg1, bg0],
+        ),
+      );
+
+  static BoxDecoration cardBox({Color? color}) => BoxDecoration(
+        color: color ?? card,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: border, width: 1),
+      );
 }
 
-/// Fade + slide page route used for all screen transitions.
-class FadeSlideRoute<T> extends PageRouteBuilder<T> {
-  FadeSlideRoute({required WidgetBuilder builder, super.settings})
-      : super(
-          transitionDuration: const Duration(milliseconds: 320),
-          reverseTransitionDuration: const Duration(milliseconds: 240),
-          pageBuilder: (context, animation, secondaryAnimation) => builder(context),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            final curved = CurvedAnimation(parent: animation, curve: Curves.easeOutCubic);
-            return FadeTransition(
-              opacity: curved,
-              child: SlideTransition(
-                position: Tween<Offset>(begin: const Offset(0.06, 0), end: Offset.zero).animate(curved),
-                child: child,
-              ),
-            );
-          },
-        );
-}
-
-/// Fades + slides a child in on first build, with an optional stagger delay.
-class FadeSlideIn extends StatefulWidget {
-  final Widget child;
-  final int delayMs;
-  const FadeSlideIn({super.key, required this.child, this.delayMs = 0});
+class FlagCircle extends StatelessWidget {
+  final VpnServer server;
+  final double size;
+  const FlagCircle({super.key, required this.server, this.size = 40});
 
   @override
-  State<FadeSlideIn> createState() => _FadeSlideInState();
+  Widget build(BuildContext context) {
+    return ClipOval(
+      child: Image.asset(
+        server.flagAsset,
+        width: size,
+        height: size,
+        fit: BoxFit.cover,
+        errorBuilder: (_, __, ___) => Container(
+          width: size,
+          height: size,
+          color: Brand.cardSoft,
+          alignment: Alignment.center,
+          child: Text(
+            server.countryShort,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: size * 0.32,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 }
 
-class _FadeSlideInState extends State<FadeSlideIn> with SingleTickerProviderStateMixin {
-  late final AnimationController _c = AnimationController(vsync: this, duration: const Duration(milliseconds: 420));
+/// 4-bar signal indicator graded by ping.
+class SignalBars extends StatelessWidget {
+  final int ping;
+  const SignalBars({super.key, required this.ping});
+
+  @override
+  Widget build(BuildContext context) {
+    int bars;
+    Color color;
+    if (ping <= 0) {
+      bars = 0;
+      color = Brand.textDim;
+    } else if (ping <= 60) {
+      bars = 4;
+      color = Brand.green;
+    } else if (ping <= 120) {
+      bars = 3;
+      color = Brand.green;
+    } else if (ping <= 200) {
+      bars = 2;
+      color = Brand.amber;
+    } else {
+      bars = 1;
+      color = Brand.red;
+    }
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: List.generate(4, (i) {
+        final h = 5.0 + i * 3.0;
+        return Container(
+          width: 3.5,
+          height: h,
+          margin: const EdgeInsets.only(left: 2),
+          decoration: BoxDecoration(
+            color: i < bars ? color : Brand.border,
+            borderRadius: BorderRadius.circular(2),
+          ),
+        );
+      }),
+    );
+  }
+}
+
+class StatCard extends StatelessWidget {
+  final IconData icon;
+  final Color iconColor;
+  final String label;
+  final String value;
+  final String unit;
+  const StatCard({
+    super.key,
+    required this.icon,
+    required this.iconColor,
+    required this.label,
+    required this.value,
+    required this.unit,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: Brand.cardBox(),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Icon(icon, size: 15, color: iconColor),
+              const SizedBox(width: 6),
+              Text(label,
+                  style:
+                      const TextStyle(color: Brand.textDim, fontSize: 12)),
+            ],
+          ),
+          const SizedBox(height: 6),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.baseline,
+            textBaseline: TextBaseline.alphabetic,
+            children: [
+              Text(value,
+                  style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 21,
+                      fontWeight: FontWeight.w800)),
+              const SizedBox(width: 4),
+              Text(unit,
+                  style:
+                      const TextStyle(color: Brand.textDim, fontSize: 11)),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class PrimaryButton extends StatelessWidget {
+  final String label;
+  final VoidCallback? onTap;
+  final IconData? icon;
+  const PrimaryButton({super.key, required this.label, this.onTap, this.icon});
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(28),
+        child: Ink(
+          height: 54,
+          decoration: BoxDecoration(
+            gradient: Brand.primaryGradient,
+            borderRadius: BorderRadius.circular(28),
+            boxShadow: [
+              BoxShadow(
+                color: Brand.blue.withValues(alpha: 0.45),
+                blurRadius: 18,
+                offset: const Offset(0, 6),
+              ),
+            ],
+          ),
+          child: Center(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (icon != null) ...[
+                  Icon(icon, color: Colors.white, size: 20),
+                  const SizedBox(width: 8),
+                ],
+                Text(label,
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700)),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// The big glowing power button from the design sheet (screens 3/5/6).
+class ConnectButton extends StatefulWidget {
+  final VpnPhase phase;
+  final VoidCallback onTap;
+  const ConnectButton({super.key, required this.phase, required this.onTap});
+
+  @override
+  State<ConnectButton> createState() => _ConnectButtonState();
+}
+
+class _ConnectButtonState extends State<ConnectButton>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _pulse = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 1100),
+  );
 
   @override
   void initState() {
     super.initState();
-    if (widget.delayMs == 0) {
-      _c.forward();
+    _syncPulse();
+  }
+
+  @override
+  void didUpdateWidget(ConnectButton old) {
+    super.didUpdateWidget(old);
+    _syncPulse();
+  }
+
+  void _syncPulse() {
+    if (widget.phase == VpnPhase.connecting ||
+        widget.phase == VpnPhase.reconnecting) {
+      _pulse.repeat(reverse: true);
     } else {
-      Future.delayed(Duration(milliseconds: widget.delayMs), () {
-        if (mounted) _c.forward();
-      });
+      _pulse.stop();
+      _pulse.value = 0;
     }
   }
 
   @override
   void dispose() {
-    _c.dispose();
+    _pulse.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final curved = CurvedAnimation(parent: _c, curve: Curves.easeOutCubic);
-    return FadeTransition(
-      opacity: curved,
-      child: SlideTransition(
-        position: Tween<Offset>(begin: const Offset(0, 0.08), end: Offset.zero).animate(curved),
-        child: widget.child,
+    final phase = widget.phase;
+    final Color ring = switch (phase) {
+      VpnPhase.connected => Brand.green,
+      VpnPhase.reconnecting => Brand.amber,
+      VpnPhase.error || VpnPhase.denied => Brand.red,
+      _ => Brand.blue,
+    };
+    return AnimatedBuilder(
+      animation: _pulse,
+      builder: (context, _) {
+        final t = _pulse.value;
+        final scale = 1.0 + t * 0.03;
+        return GestureDetector(
+          onTap: widget.onTap,
+          child: Transform.scale(
+            scale: scale,
+            child: Container(
+              width: 208,
+              height: 208,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: RadialGradient(
+                  colors: [
+                    Brand.cardSoft,
+                    Brand.bg0,
+                  ],
+                ),
+                border: Border.all(color: ring, width: 5),
+                boxShadow: [
+                  BoxShadow(
+                    color: ring.withValues(alpha: 0.55 + t * 0.25),
+                    blurRadius: 42 + t * 18,
+                    spreadRadius: 4,
+                  ),
+                ],
+              ),
+              child: Icon(
+                Icons.power_settings_new,
+                size: 74,
+                color: phase == VpnPhase.connected ? Brand.green : Colors.white,
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class AppHeader extends StatelessWidget {
+  final VoidCallback? onCrown;
+  final VoidCallback? onProfile;
+  const AppHeader({super.key, this.onCrown, this.onProfile});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(18, 12, 10, 4),
+      child: Row(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(9),
+            child: Image.asset('assets/images/app_icon.png',
+                width: 30, height: 30),
+          ),
+          const SizedBox(width: 9),
+          const Text('SecureNet',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 19,
+                  fontWeight: FontWeight.w800)),
+          const Spacer(),
+          IconButton(
+            onPressed: onCrown,
+            icon: const Icon(Icons.workspace_premium,
+                color: Brand.gold, size: 24),
+          ),
+          IconButton(
+            onPressed: onProfile,
+            icon: const Icon(Icons.menu, color: Colors.white, size: 24),
+          ),
+        ],
       ),
     );
   }
 }
 
-/// Press-down scale feedback wrapper for buttons/cards.
-class PressScale extends StatefulWidget {
-  final Widget child;
+class MenuRow extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final String? subtitle;
+  final Widget? trailing;
   final VoidCallback? onTap;
-  const PressScale({super.key, required this.child, this.onTap});
-
-  @override
-  State<PressScale> createState() => _PressScaleState();
-}
-
-class _PressScaleState extends State<PressScale> {
-  bool _down = false;
+  const MenuRow({
+    super.key,
+    required this.icon,
+    required this.title,
+    this.subtitle,
+    this.trailing,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTapDown: (_) => setState(() => _down = true),
-      onTapUp: (_) => setState(() => _down = false),
-      onTapCancel: () => setState(() => _down = false),
-      onTap: widget.onTap,
-      child: AnimatedScale(
-        scale: _down ? 0.96 : 1.0,
-        duration: const Duration(milliseconds: 120),
-        curve: Curves.easeOut,
-        child: widget.child,
+    return ListTile(
+      onTap: onTap,
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
+      leading: Container(
+        width: 36,
+        height: 36,
+        decoration: BoxDecoration(
+          color: Brand.cardSoft,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Icon(icon, color: Brand.cyan, size: 19),
       ),
-    );
-  }
-}
-
-/// Gentle idle bobbing (mascot idle animation).
-class Bobbing extends StatefulWidget {
-  final Widget child;
-  final double distance;
-  const Bobbing({super.key, required this.child, this.distance = 6});
-
-  @override
-  State<Bobbing> createState() => _BobbingState();
-}
-
-class _BobbingState extends State<Bobbing> with SingleTickerProviderStateMixin {
-  late final AnimationController _c = AnimationController(vsync: this, duration: const Duration(milliseconds: 1600))..repeat(reverse: true);
-
-  @override
-  void dispose() {
-    _c.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _c,
-      builder: (context, child) {
-        final t = Curves.easeInOut.transform(_c.value);
-        return Transform.translate(offset: Offset(0, -widget.distance * t), child: child);
-      },
-      child: widget.child,
-    );
-  }
-}
-
-/// Animated integer that counts from its previous value to the new one.
-class CountUp extends StatefulWidget {
-  final int value;
-  final TextStyle? style;
-  final Duration duration;
-  const CountUp({super.key, required this.value, this.style, this.duration = const Duration(milliseconds: 600)});
-
-  @override
-  State<CountUp> createState() => _CountUpState();
-}
-
-class _CountUpState extends State<CountUp> {
-  int _from = 0;
-
-  @override
-  void didUpdateWidget(covariant CountUp oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    _from = oldWidget.value;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return TweenAnimationBuilder<double>(
-      tween: Tween<double>(begin: _from.toDouble(), end: widget.value.toDouble()),
-      duration: widget.duration,
-      curve: Curves.easeOutCubic,
-      builder: (context, v, _) => Text('${v.round()}', style: widget.style),
-    );
-  }
-}
-
-/// Horizontal shake animation, replays whenever [trigger] changes.
-class ShakeOn extends StatefulWidget {
-  final Widget child;
-  final int trigger;
-  const ShakeOn({super.key, required this.child, required this.trigger});
-
-  @override
-  State<ShakeOn> createState() => _ShakeOnState();
-}
-
-class _ShakeOnState extends State<ShakeOn> with SingleTickerProviderStateMixin {
-  late final AnimationController _c = AnimationController(vsync: this, duration: const Duration(milliseconds: 400));
-
-  @override
-  void didUpdateWidget(covariant ShakeOn oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (widget.trigger != oldWidget.trigger && widget.trigger > 0) {
-      _c.forward(from: 0);
-    }
-  }
-
-  @override
-  void dispose() {
-    _c.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _c,
-      builder: (context, child) {
-        final t = _c.value;
-        final dx = t == 0 || t == 1 ? 0.0 : sin(t * pi * 4) * 10 * (1 - t);
-        return Transform.translate(offset: Offset(dx, 0), child: child);
-      },
-      child: widget.child,
+      title: Text(title,
+          style: const TextStyle(color: Colors.white, fontSize: 15)),
+      subtitle: subtitle == null
+          ? null
+          : Text(subtitle!,
+              style: const TextStyle(color: Brand.textDim, fontSize: 12)),
+      trailing: trailing ??
+          const Icon(Icons.chevron_right, color: Brand.textDim, size: 20),
     );
   }
 }

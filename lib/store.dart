@@ -1,127 +1,107 @@
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Store extends ChangeNotifier {
-  Store._();
-  static final Store instance = Store._();
+/// Local settings + lifetime usage statistics (SharedPreferences).
+class AppStore {
+  AppStore._();
+  static final AppStore instance = AppStore._();
 
   SharedPreferences? _prefs;
 
-  int coins = 0;
-  int xp = 0;
-  int totalAnswered = 0;
-  int totalCorrect = 0;
-  int roundsPlayed = 0;
-  int bestRound = 0; // best correct count in a single round
-  int streak = 0;
-  bool soundOn = true;
-  String lastPlayDate = '';
-  String dailyDoneDate = '';
-  Set<int> seenIds = {};
-
-  static String dateStr(DateTime d) =>
-      '${d.year.toString().padLeft(4, '0')}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
-
-  int get level => xp ~/ 250 + 1;
-  int get xpInLevel => xp % 250;
-  double get accuracy => totalAnswered == 0 ? 0 : totalCorrect / totalAnswered;
-
-  String get levelTitle {
-    const titles = ['Brain Starter', 'Brain Learner', 'Quiz Explorer', 'Trivia Master', 'Grand Master'];
-    final i = (level - 1).clamp(0, titles.length - 1);
-    return titles[i];
-  }
-
   Future<void> init() async {
-    _prefs = await SharedPreferences.getInstance();
-    final p = _prefs!;
-    coins = p.getInt('coins') ?? 0;
-    xp = p.getInt('xp') ?? 0;
-    totalAnswered = p.getInt('totalAnswered') ?? 0;
-    totalCorrect = p.getInt('totalCorrect') ?? 0;
-    roundsPlayed = p.getInt('roundsPlayed') ?? 0;
-    bestRound = p.getInt('bestRound') ?? 0;
-    streak = p.getInt('streak') ?? 0;
-    soundOn = p.getBool('soundOn') ?? true;
-    lastPlayDate = p.getString('lastPlayDate') ?? '';
-    dailyDoneDate = p.getString('dailyDoneDate') ?? '';
-    seenIds = (p.getStringList('seenIds') ?? []).map(int.parse).toSet();
-    notifyListeners();
+    _prefs ??= await SharedPreferences.getInstance();
   }
 
-  Future<void> _save() async {
+  bool _getBool(String key, bool def) => _prefs?.getBool(key) ?? def;
+  Future<void> _setBool(String key, bool v) async {
+    try {
+      await _prefs?.setBool(key, v);
+    } catch (e) {
+      debugPrint('SecureNet: pref save failed: $e');
+    }
+  }
+
+  // ---- onboarding / settings ----
+  bool get seenOnboarding => _getBool('seen_onboarding', false);
+  Future<void> setSeenOnboarding() => _setBool('seen_onboarding', true);
+
+  bool get autoConnect => _getBool('auto_connect', false);
+  Future<void> setAutoConnect(bool v) => _setBool('auto_connect', v);
+
+  bool get killSwitch => _getBool('kill_switch', true);
+  Future<void> setKillSwitch(bool v) => _setBool('kill_switch', v);
+
+  bool get notifications => _getBool('notifications_pref', true);
+  Future<void> setNotifications(bool v) => _setBool('notifications_pref', v);
+
+  String get protocol => _prefs?.getString('protocol') ?? 'Auto (OpenVPN)';
+
+  String? get lastServerId => _prefs?.getString('last_server_id');
+  Future<void> setLastServerId(String id) async {
+    try {
+      await _prefs?.setString('last_server_id', id);
+    } catch (_) {}
+  }
+
+  bool get notifAsked => _getBool('notif_asked', false);
+  Future<void> setNotifAsked() => _setBool('notif_asked', true);
+
+  // ---- lifetime stats (Profile screen) ----
+  int get totalSeconds => _prefs?.getInt('stat_seconds') ?? 0;
+  int get totalBytesIn => _prefs?.getInt('stat_bytes_in') ?? 0;
+  int get totalBytesOut => _prefs?.getInt('stat_bytes_out') ?? 0;
+  int get sessionCount => _prefs?.getInt('stat_sessions') ?? 0;
+
+  List<String> get countriesUsed =>
+      _prefs?.getStringList('stat_countries') ?? const [];
+  List<String> get daysUsed =>
+      _prefs?.getStringList('stat_days') ?? const [];
+  int get daysConnected => daysUsed.length;
+
+  Future<void> recordSession({
+    required int durationSec,
+    required int bytesIn,
+    required int bytesOut,
+    required String countryCode,
+  }) async {
     final p = _prefs;
     if (p == null) return;
-    await p.setInt('coins', coins);
-    await p.setInt('xp', xp);
-    await p.setInt('totalAnswered', totalAnswered);
-    await p.setInt('totalCorrect', totalCorrect);
-    await p.setInt('roundsPlayed', roundsPlayed);
-    await p.setInt('bestRound', bestRound);
-    await p.setInt('streak', streak);
-    await p.setBool('soundOn', soundOn);
-    await p.setString('lastPlayDate', lastPlayDate);
-    await p.setString('dailyDoneDate', dailyDoneDate);
-    await p.setStringList('seenIds', seenIds.map((e) => e.toString()).toList());
-  }
-
-  /// Mark a question as seen without affecting answer stats (used by Skip).
-  void markSeen(int questionId) {
-    seenIds.add(questionId);
-    _save();
-  }
-
-  void recordAnswer(int questionId, bool correct) {
-    totalAnswered++;
-    if (correct) totalCorrect++;
-    seenIds.add(questionId);
-    _save();
-    notifyListeners();
-  }
-
-  /// Called when a round finishes. Handles coins/XP, best round, streak, daily flag.
-  Future<void> recordRound({required int correctCount, required int coinsEarned, required int xpEarned, required bool isDaily}) async {
-    roundsPlayed++;
-    coins += coinsEarned;
-    xp += xpEarned;
-    if (correctCount > bestRound) bestRound = correctCount;
-    final today = DateTime.now();
-    final t = dateStr(today);
-    if (isDaily) dailyDoneDate = t;
-    if (lastPlayDate != t) {
-      final yesterday = dateStr(today.subtract(const Duration(days: 1)));
-      streak = (lastPlayDate == yesterday) ? streak + 1 : 1;
-      lastPlayDate = t;
+    try {
+      await p.setInt('stat_seconds', totalSeconds + durationSec);
+      await p.setInt('stat_bytes_in', totalBytesIn + bytesIn);
+      await p.setInt('stat_bytes_out', totalBytesOut + bytesOut);
+      await p.setInt('stat_sessions', sessionCount + 1);
+      final countries = [...countriesUsed];
+      if (!countries.contains(countryCode)) {
+        countries.add(countryCode);
+        await p.setStringList('stat_countries', countries);
+      }
+      final now = DateTime.now();
+      final day =
+          '${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}';
+      final days = [...daysUsed];
+      if (!days.contains(day)) {
+        days.add(day);
+        await p.setStringList('stat_days', days);
+      }
+    } catch (e) {
+      debugPrint('SecureNet: session record failed: $e');
     }
-    await _save();
-    notifyListeners();
   }
+}
 
-  void addCoins(int n) {
-    coins += n;
-    _save();
-    notifyListeners();
+/// Format a byte count as KB / MB / GB.
+String formatBytes(int bytes) {
+  if (bytes < 1024) return '$bytes B';
+  if (bytes < 1024 * 1024) return '${(bytes / 1024).toStringAsFixed(1)} KB';
+  if (bytes < 1024 * 1024 * 1024) {
+    return '${(bytes / (1024 * 1024)).toStringAsFixed(1)} MB';
   }
+  return '${(bytes / (1024 * 1024 * 1024)).toStringAsFixed(2)} GB';
+}
 
-  void setSound(bool v) {
-    soundOn = v;
-    _save();
-    notifyListeners();
-  }
-
-  Future<void> resetAll() async {
-    coins = 0;
-    xp = 0;
-    totalAnswered = 0;
-    totalCorrect = 0;
-    roundsPlayed = 0;
-    bestRound = 0;
-    streak = 0;
-    lastPlayDate = '';
-    dailyDoneDate = '';
-    seenIds = {};
-    await _prefs?.clear();
-    await _save();
-    notifyListeners();
-  }
+/// Format bytes/sec as Mbps with one decimal.
+String formatMbps(num bytesPerSec) {
+  final mbps = bytesPerSec * 8 / 1000000;
+  return mbps.toStringAsFixed(1);
 }
