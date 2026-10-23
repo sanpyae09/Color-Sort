@@ -209,16 +209,26 @@ class ServerRepository {
     return best ?? (servers.isNotEmpty ? servers.first : null);
   }
 
-  List<VpnServer> get streamingPicks {
-    final list = servers.where((s) => s.ping > 0 && s.ping <= 90).toList()
-      ..sort((a, b) => a.ping.compareTo(b.ping));
-    return list;
+  /// Build 2 (user order): ONE best server per country.
+  /// [servers] arrives sorted by the VPN Gate quality score, which blends
+  /// line speed, ping, uptime and load — so the first server seen for each
+  /// country IS that country's best. The result stays score-ordered.
+  List<VpnServer> get bestPerCountry {
+    final seen = <String>{};
+    final out = <VpnServer>[];
+    for (final s in servers) {
+      if (seen.add(s.countryShort)) out.add(s);
+    }
+    return out;
   }
 
-  List<VpnServer> get gamingPicks {
-    final list = servers.where((s) => s.ping > 0 && s.ping <= 60).toList()
-      ..sort((a, b) => a.ping.compareTo(b.ping));
-    return list;
+  /// The best server for one country code (from [bestPerCountry]).
+  VpnServer? bestForCountry(String? code) {
+    if (code == null) return null;
+    for (final s in bestPerCountry) {
+      if (s.countryShort == code) return s;
+    }
+    return null;
   }
 }
 
