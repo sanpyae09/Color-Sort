@@ -40,7 +40,7 @@ class SecureNetApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
           seedColor: Brand.blue,
-          brightness: Brightness.dark,
+          brightness: Brightness.light,
         ),
         scaffoldBackgroundColor: Brand.bg0,
         useMaterial3: true,
@@ -135,7 +135,7 @@ class _SplashGateState extends State<SplashGate> {
                 const SizedBox(height: 22),
                 const Text('SecureNet',
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Brand.text,
                         fontSize: 36,
                         fontWeight: FontWeight.w800,
                         letterSpacing: 0.4)),
@@ -161,7 +161,7 @@ class _SplashGateState extends State<SplashGate> {
                       builder: (context, v, _) => LinearProgressIndicator(
                         value: v,
                         minHeight: 5,
-                        backgroundColor: Colors.white.withValues(alpha: 0.18),
+                        backgroundColor: Brand.border,
                         valueColor:
                             const AlwaysStoppedAnimation<Color>(Brand.cyan),
                       ),
@@ -252,7 +252,7 @@ class OnboardingPage extends StatelessWidget {
                 'Browse Freely\nWithout Limits',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    color: Colors.white,
+                    color: Brand.text,
                     fontSize: 27,
                     fontWeight: FontWeight.w800,
                     height: 1.25),
@@ -365,7 +365,7 @@ class _AppShellState extends State<AppShell> {
                         const SizedBox(height: 18),
                         const Text('Connection Lost',
                             style: TextStyle(
-                                color: Colors.white,
+                                color: Brand.text,
                                 fontSize: 22,
                                 fontWeight: FontWeight.w800)),
                         const SizedBox(height: 8),
@@ -399,8 +399,8 @@ class _AppShellState extends State<AppShell> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _tab,
         onTap: (i) => setState(() => _tab = i),
-        backgroundColor: const Color(0xFF060F2E),
-        selectedItemColor: Brand.cyan,
+        backgroundColor: Colors.white,
+        selectedItemColor: Brand.blue,
         unselectedItemColor: Brand.textDim,
         type: BottomNavigationBarType.fixed,
         items: const [
