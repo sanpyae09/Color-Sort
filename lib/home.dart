@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import 'data.dart';
-import 'settings.dart';
 import 'store.dart';
 import 'vpn.dart';
 import 'widgets.dart';
 
+/// Home — build 2, simplified per the user's order: power button, status,
+/// the selected (best-of-country) server, live speeds, and — only while
+/// connected — one compact session card. Everything else was removed.
 class HomeScreen extends StatefulWidget {
   final VoidCallback onGoLocations;
   const HomeScreen({super.key, required this.onGoLocations});
@@ -16,11 +19,23 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   bool _booted = false;
+  bool _showBatteryCard = false;
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) => _boot());
+    _checkBattery();
+  }
+
+  Future<void> _checkBattery() async {
+    try {
+      if (AppStore.instance.batteryAsked) return;
+      final status = await Permission.ignoreBatteryOptimizations.status;
+      if (!status.isGranted && mounted) {
+        setState(() => _showBatteryCard = true);
+      }
+    } catch (_) {}
   }
 
   Future<void> _boot() async {
@@ -33,15 +48,18 @@ class _HomeScreenState extends State<HomeScreen> {
       await repo.refresh();
       if (mounted) setState(() {});
     }
-    // Restore the previous selection (or the fastest server).
+    // Default target: the user's pinned country's best server first,
+    // then the last-used server, then the overall fastest.
+    VpnServer? defaultTarget() =>
+        repo.bestForCountry(AppStore.instance.pinnedCountry) ??
+        repo.byId(AppStore.instance.lastServerId) ??
+        repo.fastest;
     if (vpn.currentServer == null) {
-      final last = repo.byId(AppStore.instance.lastServerId);
-      final sel = last ?? repo.fastest;
+      final sel = defaultTarget();
       if (sel != null) vpn.select(sel);
     }
-    // Auto Connect: join the last (or fastest) server on start.
     if (AppStore.instance.autoConnect && !vpn.isConnected) {
-      final target = repo.byId(AppStore.instance.lastServerId) ?? repo.fastest;
+      final target = defaultTarget();
       if (target != null) vpn.connectTo(target);
     }
   }
@@ -60,18 +78,13 @@ class _HomeScreenState extends State<HomeScreen> {
           child: SafeArea(
             child: Column(
               children: [
-                AppHeader(
-                  onCrown: () => Navigator.of(context).push(MaterialPageRoute(
-                      builder: (_) => const PremiumPage())),
-                  onProfile: () => Navigator.of(context).push(
-                      MaterialPageRoute(builder: (_) => const ProfilePage())),
-                ),
+                const AppHeader(),
                 Expanded(
                   child: SingleChildScrollView(
                     padding: const EdgeInsets.fromLTRB(18, 6, 18, 18),
                     child: Column(
                       children: [
-                        const SizedBox(height: 8),
+                        const SizedBox(height: 10),
                         ConnectButton(
                           phase: vpn.phase,
                           onTap: () => _onPowerTap(selected),
@@ -117,16 +130,14 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ],
                         ),
-                        const SizedBox(height: 12),
-                        if (connected) ...[
-                          _connectionTimeCard(vpn),
+                        if (connected && selected != null) ...[
                           const SizedBox(height: 12),
+                          _sessionCard(vpn, selected),
                         ],
-                        _privacyCard(vpn, selected),
-                        const SizedBox(height: 12),
-                        _quickConnectCard(repo),
-                        const SizedBox(height: 12),
-                        _streamingCard(),
+                        if (_showBatteryCard) ...[
+                          const SizedBox(height: 12),
+                          _batteryCard(),
+                        ],
                       ],
                     ),
                   ),
@@ -172,7 +183,7 @@ class _HomeScreenState extends State<HomeScreen> {
         const SizedBox(width: 8),
         Text(text,
             style: const TextStyle(
-                color: Colors.white,
+                color: Brand.text,
                 fontSize: 16,
                 fontWeight: FontWeight.w600)),
       ],
@@ -182,7 +193,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _errorCard(String msg) {
     return Container(
       width: double.infinity,
-      decoration: Brand.cardBox(color: const Color(0xFF3A1430)),
+      decoration: Brand.cardBox(color: const Color(0xFFFFE3E1)),
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
       child: Row(
         children: [
@@ -190,7 +201,7 @@ class _HomeScreenState extends State<HomeScreen> {
           const SizedBox(width: 8),
           Expanded(
             child: Text(msg,
-                style: const TextStyle(color: Colors.white, fontSize: 13)),
+                style: const TextStyle(color: Brand.text, fontSize: 13)),
           ),
         ],
       ),
@@ -213,7 +224,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(width: 10),
                     Expanded(
                       child: Text('Fetching live servers…',
-                          style: TextStyle(color: Colors.white)),
+                          style: TextStyle(color: Brand.text)),
                     ),
                     Icon(Icons.chevron_right, color: Brand.textDim),
                   ],
@@ -228,7 +239,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           Text(selected.countryLong,
                               style: const TextStyle(
-                                  color: Colors.white,
+                                  color: Brand.text,
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700)),
                           Text(selected.hostName,
@@ -239,8 +250,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     SignalBars(ping: selected.ping),
                     const SizedBox(width: 6),
-                    Text(
-                        selected.ping > 0 ? '${selected.ping} ms' : '— ms',
+                    Text(selected.ping > 0 ? '${selected.ping} ms' : '— ms',
                         style: const TextStyle(
                             color: Brand.textDim, fontSize: 12)),
                     const Icon(Icons.chevron_right, color: Brand.textDim),
@@ -251,7 +261,8 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _connectionTimeCard(VpnController vpn) {
+  /// One compact card while connected: time + data + exit IP.
+  Widget _sessionCard(VpnController vpn, VpnServer server) {
     return Container(
       decoration: Brand.cardBox(),
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
@@ -264,143 +275,84 @@ class _HomeScreenState extends State<HomeScreen> {
               color: Brand.cardSoft,
               borderRadius: BorderRadius.circular(10),
             ),
-            child: const Icon(Icons.timer_outlined,
-                color: Brand.green, size: 20),
-          ),
-          const SizedBox(width: 12),
-          const Text('Connection Time',
-              style: TextStyle(color: Brand.textDim, fontSize: 13)),
-          const Spacer(),
-          Text(vpn.elapsedText,
-              style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 17,
-                  fontWeight: FontWeight.w800)),
-          const SizedBox(width: 14),
-          Text(formatBytes(vpn.bytesIn + vpn.bytesOut),
-              style: const TextStyle(color: Brand.textDim, fontSize: 12)),
-        ],
-      ),
-    );
-  }
-
-  Widget _privacyCard(VpnController vpn, VpnServer? selected) {
-    final connected = vpn.isConnected;
-    return Container(
-      decoration: Brand.cardBox(),
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-      child: Row(
-        children: [
-          Icon(
-            connected ? Icons.shield : Icons.shield_outlined,
-            color: connected ? Brand.green : Brand.textDim,
-            size: 26,
+            child: const Icon(Icons.shield, color: Brand.green, size: 20),
           ),
           const SizedBox(width: 12),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Text('Protected · IP ${server.ip}',
+                    style: const TextStyle(
+                        color: Brand.text,
+                        fontSize: 13.5,
+                        fontWeight: FontWeight.w700)),
                 Text(
-                  connected
-                      ? 'Your Privacy is Protected'
-                      : 'Your Privacy is Exposed',
-                  style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 14.5,
-                      fontWeight: FontWeight.w700),
-                ),
-                Text(
-                  connected && selected != null
-                      ? 'IP Address: ${selected.ip}'
-                      : 'Tap the button to secure your connection',
-                  style:
-                      const TextStyle(color: Brand.textDim, fontSize: 12),
-                ),
+                    'Data ${formatBytes(vpn.bytesIn + vpn.bytesOut)}',
+                    style: const TextStyle(
+                        color: Brand.textDim, fontSize: 12)),
               ],
             ),
           ),
+          Text(vpn.elapsedText,
+              style: const TextStyle(
+                  color: Brand.text,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w800)),
         ],
       ),
     );
   }
 
-  Widget _quickConnectCard(ServerRepository repo) {
-    final fastest = repo.fastest;
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: fastest == null
-            ? null
-            : () => VpnController.instance.connectTo(fastest),
-        borderRadius: BorderRadius.circular(16),
-        child: Ink(
-          decoration: Brand.cardBox(color: Brand.cardSoft),
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 13),
-          child: Row(
-            children: [
-              const Icon(Icons.bolt, color: Brand.gold, size: 24),
-              const SizedBox(width: 10),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text('Quick Connect',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w700)),
-                    Text(
-                      fastest == null
-                          ? 'No servers loaded yet'
-                          : 'Fastest Server · ${fastest.countryLong}',
-                      style: const TextStyle(
-                          color: Brand.textDim, fontSize: 12),
-                    ),
-                  ],
+  /// One-time stability prompt: phones with aggressive battery saving
+  /// kill the VPN service in the background, which looks like the
+  /// connection "dropping by itself".
+  Widget _batteryCard() {
+    return Container(
+      decoration: Brand.cardBox(color: Brand.cardSoft),
+      padding: const EdgeInsets.fromLTRB(14, 12, 8, 12),
+      child: Row(
+        children: [
+          const Icon(Icons.battery_saver_outlined,
+              color: Brand.blue, size: 24),
+          const SizedBox(width: 10),
+          const Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Keep the connection stable',
+                    style: TextStyle(
+                        color: Brand.text,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700)),
+                Text(
+                  'Allow SecureNet to run without battery limits so the '
+                  'phone cannot stop the VPN in the background.',
+                  style: TextStyle(color: Brand.textDim, fontSize: 12),
                 ),
-              ),
-              const Icon(Icons.chevron_right, color: Brand.textDim),
-            ],
+              ],
+            ),
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget _streamingCard() {
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: () => Navigator.of(context).push(
-            MaterialPageRoute(builder: (_) => const StreamingPage())),
-        borderRadius: BorderRadius.circular(16),
-        child: Ink(
-          decoration: Brand.cardBox(),
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 13),
-          child: const Row(
-            children: [
-              Icon(Icons.live_tv, color: Brand.cyan, size: 24),
-              SizedBox(width: 10),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Streaming Mode',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w700)),
-                    Text('Low-ping servers for smooth streaming',
-                        style:
-                            TextStyle(color: Brand.textDim, fontSize: 12)),
-                  ],
-                ),
-              ),
-              Icon(Icons.chevron_right, color: Brand.textDim),
-            ],
+          TextButton(
+            onPressed: () async {
+              await AppStore.instance.setBatteryAsked();
+              try {
+                await Permission.ignoreBatteryOptimizations.request();
+              } catch (_) {}
+              if (mounted) setState(() => _showBatteryCard = false);
+            },
+            child: const Text('Allow',
+                style: TextStyle(
+                    color: Brand.blue, fontWeight: FontWeight.w700)),
           ),
-        ),
+          IconButton(
+            onPressed: () async {
+              await AppStore.instance.setBatteryAsked();
+              if (mounted) setState(() => _showBatteryCard = false);
+            },
+            icon: const Icon(Icons.close, color: Brand.textDim, size: 18),
+          ),
+        ],
       ),
     );
   }
