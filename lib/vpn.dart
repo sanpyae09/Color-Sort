@@ -53,6 +53,11 @@ class VpnController extends ChangeNotifier {
   Timer? _elapsedTimer;
   Timer? _reconnectTimer;
   bool _userInitiatedDisconnect = false;
+
+  /// Build 2 (user order — the tunnel must never drop by itself): true
+  /// from the moment the user connects until THEY disconnect. Any
+  /// unexpected drop auto-reconnects, with backoff, without a cap.
+  bool _wantConnected = false;
   int _reconnectAttempts = 0;
   bool _sessionCounted = false;
 
@@ -136,18 +141,23 @@ class VpnController extends ChangeNotifier {
         phase == VpnPhase.reconnecting;
     _finalizeSession();
     if (!_userInitiatedDisconnect &&
+        _wantConnected &&
         wasActive &&
-        AppStore.instance.killSwitch &&
-        currentServer != null &&
-        _reconnectAttempts < 5) {
-      // Kill switch: hold the blocking overlay and retry the tunnel.
+        currentServer != null) {
+      // Unexpected drop: ALWAYS bring the tunnel back (user order). The
+      // kill switch setting now only controls whether the blocking
+      // overlay is shown while reconnecting.
       phase = VpnPhase.reconnecting;
-      killSwitchBlock = true;
+      killSwitchBlock = AppStore.instance.killSwitch;
       _reconnectAttempts++;
+      const delays = [3, 5, 10, 15];
+      final idx = (_reconnectAttempts - 1).clamp(0, delays.length - 1);
       notifyListeners();
       _reconnectTimer?.cancel();
-      _reconnectTimer = Timer(const Duration(seconds: 3), () {
-        if (phase == VpnPhase.reconnecting && currentServer != null) {
+      _reconnectTimer = Timer(Duration(seconds: delays[idx]), () {
+        if (phase == VpnPhase.reconnecting &&
+            currentServer != null &&
+            _wantConnected) {
           _startEngine(currentServer!);
         }
       });
@@ -205,21 +215,25 @@ class VpnController extends ChangeNotifier {
   }
 
   /// Select a server without connecting (list tap / details view).
+  /// Also pins the server's country as the user's country (build 2).
   void select(VpnServer server) {
     currentServer = server;
     AppStore.instance.setLastServerId(server.id);
+    AppStore.instance.setPinnedCountry(server.countryShort);
     notifyListeners();
   }
 
   Future<void> connectTo(VpnServer server) async {
     await init();
     _userInitiatedDisconnect = false;
+    _wantConnected = true;
     _reconnectAttempts = 0;
     _reconnectTimer?.cancel();
     currentServer = server;
     errorText = null;
     killSwitchBlock = false;
     await AppStore.instance.setLastServerId(server.id);
+    await AppStore.instance.setPinnedCountry(server.countryShort);
     await _maybeRequestNotifications();
     phase = VpnPhase.connecting;
     notifyListeners();
@@ -241,9 +255,16 @@ class VpnController extends ChangeNotifier {
       notifyListeners();
       return;
     }
+    // Stability: make sure the profile actively pings the relay so a
+    // silent network change is detected (and our auto-reconnect can act)
+    // instead of the tunnel quietly dying.
+    var profile = config;
+    if (!profile.contains('keepalive')) {
+      profile = '${profile.trim()}\nkeepalive 10 60\n';
+    }
     try {
       final started = await engine.connect(
-        config,
+        profile,
         '${server.countryShort} - ${server.hostName}',
       );
       if (!started) {
@@ -267,6 +288,7 @@ class VpnController extends ChangeNotifier {
 
   Future<void> disconnect() async {
     _userInitiatedDisconnect = true;
+    _wantConnected = false;
     _reconnectTimer?.cancel();
     killSwitchBlock = false;
     phase = VpnPhase.disconnecting;
