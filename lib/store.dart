@@ -46,6 +46,19 @@ class AppStore {
   bool get notifAsked => _getBool('notif_asked', false);
   Future<void> setNotifAsked() => _setBool('notif_asked', true);
 
+  /// Build 2: the country the user uses — pinned at the top of the
+  /// Locations list and used as the default connection target.
+  String? get pinnedCountry => _prefs?.getString('pinned_country');
+  Future<void> setPinnedCountry(String code) async {
+    try {
+      await _prefs?.setString('pinned_country', code);
+    } catch (_) {}
+  }
+
+  /// One-time battery-exemption prompt was shown (stable connection).
+  bool get batteryAsked => _getBool('battery_asked', false);
+  Future<void> setBatteryAsked() => _setBool('battery_asked', true);
+
   // ---- lifetime stats (Profile screen) ----
   int get totalSeconds => _prefs?.getInt('stat_seconds') ?? 0;
   int get totalBytesIn => _prefs?.getInt('stat_bytes_in') ?? 0;
