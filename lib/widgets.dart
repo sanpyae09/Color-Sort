@@ -3,25 +3,26 @@ import 'package:flutter/material.dart';
 import 'data.dart';
 import 'vpn.dart';
 
-/// SecureNet brand kit — deep navy + electric blue, per the design sheet.
+/// SecureNet brand kit — milk-cream + orange (build 2, user-chosen palette).
 class Brand {
-  static const bg0 = Color(0xFF030A22);
-  static const bg1 = Color(0xFF0A1C40);
-  static const card = Color(0xFF0C2150);
-  static const cardSoft = Color(0xFF102A5E);
-  static const border = Color(0xFF1D3A6E);
-  static const blue = Color(0xFF2E7CF6);
-  static const cyan = Color(0xFF38BDF8);
-  static const green = Color(0xFF2EEA8C);
-  static const amber = Color(0xFFFFB84D);
-  static const red = Color(0xFFFF5C5C);
-  static const textDim = Color(0xFF8CA3C7);
-  static const gold = Color(0xFFFFC93C);
+  static const bg0 = Color(0xFFFFFBF2); // milk cream
+  static const bg1 = Color(0xFFFFF1DC); // warm cream (top)
+  static const card = Color(0xFFFFFFFF);
+  static const cardSoft = Color(0xFFFFEAD1); // soft peach
+  static const border = Color(0xFFF1DCBB);
+  static const blue = Color(0xFFF97316); // primary orange
+  static const cyan = Color(0xFFFB8C1A); // accent orange
+  static const green = Color(0xFF16A34A);
+  static const amber = Color(0xFFF59E0B);
+  static const red = Color(0xFFE5484D);
+  static const text = Color(0xFF33241A); // dark cocoa
+  static const textDim = Color(0xFF9A7B5F);
+  static const gold = Color(0xFFF59E0B);
 
   static const primaryGradient = LinearGradient(
     begin: Alignment.centerLeft,
     end: Alignment.centerRight,
-    colors: [Color(0xFF1E6FEB), Color(0xFF38BDF8)],
+    colors: [Color(0xFFF97316), Color(0xFFFB923C)],
   );
 
   static BoxDecoration get screenGradient => const BoxDecoration(
@@ -60,7 +61,7 @@ class FlagCircle extends StatelessWidget {
           child: Text(
             server.countryShort,
             style: TextStyle(
-              color: Colors.white,
+              color: Brand.text,
               fontSize: size * 0.32,
               fontWeight: FontWeight.w700,
             ),
@@ -154,7 +155,7 @@ class StatCard extends StatelessWidget {
             children: [
               Text(value,
                   style: const TextStyle(
-                      color: Colors.white,
+                      color: Brand.text,
                       fontSize: 21,
                       fontWeight: FontWeight.w800)),
               const SizedBox(width: 4),
@@ -169,6 +170,7 @@ class StatCard extends StatelessWidget {
   }
 }
 
+/// Compact primary action button (orange gradient).
 class PrimaryButton extends StatelessWidget {
   final String label;
   final VoidCallback? onTap;
@@ -181,17 +183,17 @@ class PrimaryButton extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(28),
+        borderRadius: BorderRadius.circular(24),
         child: Ink(
-          height: 54,
+          height: 48,
           decoration: BoxDecoration(
             gradient: Brand.primaryGradient,
-            borderRadius: BorderRadius.circular(28),
+            borderRadius: BorderRadius.circular(24),
             boxShadow: [
               BoxShadow(
-                color: Brand.blue.withValues(alpha: 0.45),
-                blurRadius: 18,
-                offset: const Offset(0, 6),
+                color: Brand.blue.withValues(alpha: 0.35),
+                blurRadius: 14,
+                offset: const Offset(0, 5),
               ),
             ],
           ),
@@ -200,13 +202,13 @@ class PrimaryButton extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 if (icon != null) ...[
-                  Icon(icon, color: Colors.white, size: 20),
+                  Icon(icon, color: Colors.white, size: 19),
                   const SizedBox(width: 8),
                 ],
                 Text(label,
                     style: const TextStyle(
                         color: Colors.white,
-                        fontSize: 16,
+                        fontSize: 15.5,
                         fontWeight: FontWeight.w700)),
               ],
             ),
@@ -217,7 +219,7 @@ class PrimaryButton extends StatelessWidget {
   }
 }
 
-/// The big glowing power button from the design sheet (screens 3/5/6).
+/// The big power button (home screen). White disc, colored ring by phase.
 class ConnectButton extends StatefulWidget {
   final VpnPhase phase;
   final VoidCallback onTap;
@@ -281,29 +283,29 @@ class _ConnectButtonState extends State<ConnectButton>
           child: Transform.scale(
             scale: scale,
             child: Container(
-              width: 208,
-              height: 208,
+              width: 196,
+              height: 196,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                gradient: RadialGradient(
+                gradient: const RadialGradient(
                   colors: [
-                    Brand.cardSoft,
-                    Brand.bg0,
+                    Colors.white,
+                    Color(0xFFFFE9D2),
                   ],
                 ),
                 border: Border.all(color: ring, width: 5),
                 boxShadow: [
                   BoxShadow(
-                    color: ring.withValues(alpha: 0.55 + t * 0.25),
-                    blurRadius: 42 + t * 18,
-                    spreadRadius: 4,
+                    color: ring.withValues(alpha: 0.35 + t * 0.2),
+                    blurRadius: 34 + t * 14,
+                    spreadRadius: 3,
                   ),
                 ],
               ),
               child: Icon(
                 Icons.power_settings_new,
-                size: 74,
-                color: phase == VpnPhase.connected ? Brand.green : Colors.white,
+                size: 70,
+                color: ring,
               ),
             ),
           ),
@@ -313,15 +315,14 @@ class _ConnectButtonState extends State<ConnectButton>
   }
 }
 
+/// Slim app header: logo + name only (build 2 removed the extra buttons).
 class AppHeader extends StatelessWidget {
-  final VoidCallback? onCrown;
-  final VoidCallback? onProfile;
-  const AppHeader({super.key, this.onCrown, this.onProfile});
+  const AppHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(18, 12, 10, 4),
+      padding: const EdgeInsets.fromLTRB(18, 12, 18, 4),
       child: Row(
         children: [
           ClipRRect(
@@ -332,19 +333,9 @@ class AppHeader extends StatelessWidget {
           const SizedBox(width: 9),
           const Text('SecureNet',
               style: TextStyle(
-                  color: Colors.white,
+                  color: Brand.text,
                   fontSize: 19,
                   fontWeight: FontWeight.w800)),
-          const Spacer(),
-          IconButton(
-            onPressed: onCrown,
-            icon: const Icon(Icons.workspace_premium,
-                color: Brand.gold, size: 24),
-          ),
-          IconButton(
-            onPressed: onProfile,
-            icon: const Icon(Icons.menu, color: Colors.white, size: 24),
-          ),
         ],
       ),
     );
@@ -381,7 +372,7 @@ class MenuRow extends StatelessWidget {
         child: Icon(icon, color: Brand.cyan, size: 19),
       ),
       title: Text(title,
-          style: const TextStyle(color: Colors.white, fontSize: 15)),
+          style: const TextStyle(color: Brand.text, fontSize: 15)),
       subtitle: subtitle == null
           ? null
           : Text(subtitle!,
