@@ -100,7 +100,13 @@ for perm in (
     if perm not in m:
         perms += f'    <uses-permission android:name="{perm}"/>\n'
 if perms:
-    m = perms + m
+    # uses-permission elements belong INSIDE <manifest>, before <application>.
+    # (Never prepend them to the file: anything before the <?xml?> declaration
+    # makes the document invalid and flutter build fails parsing the manifest.)
+    mm = re.search(r"<manifest\b[^>]*>", m)
+    if not mm:
+        sys.exit("AndroidManifest.xml has no <manifest> tag")
+    m = m[: mm.end()] + "\n" + perms + m[mm.end():]
     print("manifest: permissions inserted")
 
 additions = ""
@@ -113,4 +119,14 @@ if additions:
     print("manifest: meta-data inserted")
 else:
     print("manifest: meta-data already present")
+
+# Final guard: the patched manifest MUST be well-formed XML — fail the CI step
+# loudly here instead of letting flutter build die with a vague parse error.
+import xml.etree.ElementTree as ET
+
+try:
+    ET.fromstring(m)
+except ET.ParseError as e:
+    sys.exit(f"AndroidManifest.xml is not valid XML after patching: {e}")
 manifest.write_text(m)
+print("manifest: XML validated")
