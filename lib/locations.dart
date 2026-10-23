@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'data.dart';
+import 'store.dart';
 import 'vpn.dart';
 import 'widgets.dart';
 
-enum _LocFilter { all, streaming, gaming, fastest }
-
+/// Locations — build 2: exactly ONE best server per country (chosen by
+/// the VPN Gate quality score). The user's country is remembered and
+/// always pinned at the top. No filter chips — the list stays clean.
 class LocationsScreen extends StatefulWidget {
   const LocationsScreen({super.key});
 
@@ -15,36 +17,17 @@ class LocationsScreen extends StatefulWidget {
 
 class _LocationsScreenState extends State<LocationsScreen> {
   String _query = '';
-  _LocFilter _filter = _LocFilter.all;
 
   List<VpnServer> _visible() {
     final repo = ServerRepository.instance;
-    List<VpnServer> list;
-    switch (_filter) {
-      case _LocFilter.all:
-        list = [...repo.servers];
-        break;
-      case _LocFilter.streaming:
-        list = repo.streamingPicks;
-        break;
-      case _LocFilter.gaming:
-        list = repo.gamingPicks;
-        break;
-      case _LocFilter.fastest:
-        list = [...repo.servers]
-          ..sort((a, b) {
-            final ap = a.ping <= 0 ? 1 << 30 : a.ping;
-            final bp = b.ping <= 0 ? 1 << 30 : b.ping;
-            return ap.compareTo(bp);
-          });
-        break;
-    }
-    if (list.isEmpty && repo.servers.isNotEmpty) {
-      // Filter matched nothing (e.g. no sub-60ms relays right now):
-      // fall back to everything sorted by ping rather than showing air.
-      list = [...repo.servers]
-        ..sort((a, b) => (a.ping <= 0 ? 1 << 30 : a.ping)
-            .compareTo(b.ping <= 0 ? 1 << 30 : b.ping));
+    var list = repo.bestPerCountry;
+    final pinned = AppStore.instance.pinnedCountry;
+    if (pinned != null && list.length > 1) {
+      // Pinned country first; the rest keep their quality order.
+      list = [
+        ...list.where((s) => s.countryShort == pinned),
+        ...list.where((s) => s.countryShort != pinned),
+      ];
     }
     if (_query.isNotEmpty) {
       final q = _query.toLowerCase();
@@ -68,6 +51,7 @@ class _LocationsScreenState extends State<LocationsScreen> {
     final repo = ServerRepository.instance;
     final vpn = VpnController.instance;
     final servers = _visible();
+    final pinned = AppStore.instance.pinnedCountry;
     return Container(
       decoration: Brand.screenGradient,
       child: SafeArea(
@@ -80,13 +64,13 @@ class _LocationsScreenState extends State<LocationsScreen> {
                 children: [
                   const Text('Locations',
                       style: TextStyle(
-                          color: Colors.white,
+                          color: Brand.text,
                           fontSize: 21,
                           fontWeight: FontWeight.w800)),
                   const Spacer(),
                   if (repo.lastUpdated != null)
                     Text(
-                      'Updated ${_hhmm(repo.lastUpdated!)} · ${repo.servers.length} servers',
+                      'Updated ${_hhmm(repo.lastUpdated!)} · ${repo.bestPerCountry.length} countries',
                       style: const TextStyle(
                           color: Brand.textDim, fontSize: 11.5),
                     ),
@@ -98,7 +82,7 @@ class _LocationsScreenState extends State<LocationsScreen> {
                             height: 20,
                             child: CircularProgressIndicator(
                                 strokeWidth: 2, color: Brand.cyan))
-                        : const Icon(Icons.refresh, color: Colors.white),
+                        : const Icon(Icons.refresh, color: Brand.text),
                   ),
                 ],
               ),
@@ -107,9 +91,9 @@ class _LocationsScreenState extends State<LocationsScreen> {
               padding: const EdgeInsets.fromLTRB(18, 8, 18, 10),
               child: TextField(
                 onChanged: (v) => setState(() => _query = v),
-                style: const TextStyle(color: Colors.white, fontSize: 14.5),
+                style: const TextStyle(color: Brand.text, fontSize: 14.5),
                 decoration: InputDecoration(
-                  hintText: 'Search country or city...',
+                  hintText: 'Search country...',
                   hintStyle: const TextStyle(color: Brand.textDim),
                   prefixIcon:
                       const Icon(Icons.search, color: Brand.textDim),
@@ -131,18 +115,6 @@ class _LocationsScreenState extends State<LocationsScreen> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 18),
-              child: Row(
-                children: [
-                  _chip('All', _LocFilter.all),
-                  _chip('Streaming', _LocFilter.streaming),
-                  _chip('Gaming', _LocFilter.gaming),
-                  _chip('Fastest', _LocFilter.fastest),
-                ],
-              ),
-            ),
-            const SizedBox(height: 8),
             Expanded(
               child: repo.servers.isEmpty
                   ? _emptyState(repo)
@@ -158,7 +130,8 @@ class _LocationsScreenState extends State<LocationsScreen> {
                           final s = servers[i];
                           final isSel = vpn.currentServer?.id == s.id;
                           final isLive = isSel && vpn.isConnected;
-                          return _serverRow(context, s, isSel, isLive);
+                          final isPinned = s.countryShort == pinned;
+                          return _serverRow(context, s, isSel, isLive, isPinned);
                         },
                       ),
                     ),
@@ -184,10 +157,9 @@ class _LocationsScreenState extends State<LocationsScreen> {
             Text(
               repo.loading
                   ? 'Fetching live servers…'
-                  : (repo.lastError ??
-                      'No servers yet. Pull to refresh.'),
+                  : (repo.lastError ?? 'No servers yet. Pull to refresh.'),
               textAlign: TextAlign.center,
-              style: const TextStyle(color: Colors.white, fontSize: 14.5),
+              style: const TextStyle(color: Brand.text, fontSize: 14.5),
             ),
             const SizedBox(height: 16),
             if (!repo.loading)
@@ -202,29 +174,8 @@ class _LocationsScreenState extends State<LocationsScreen> {
     );
   }
 
-  Widget _chip(String label, _LocFilter f) {
-    final active = _filter == f;
-    return Padding(
-      padding: const EdgeInsets.only(right: 8),
-      child: ChoiceChip(
-        label: Text(label),
-        selected: active,
-        onSelected: (_) => setState(() => _filter = f),
-        labelStyle: TextStyle(
-          color: active ? Colors.white : Brand.textDim,
-          fontSize: 13,
-          fontWeight: FontWeight.w600,
-        ),
-        backgroundColor: Brand.card,
-        selectedColor: Brand.blue,
-        side: const BorderSide(color: Brand.border),
-        showCheckmark: false,
-      ),
-    );
-  }
-
-  Widget _serverRow(
-      BuildContext context, VpnServer s, bool isSel, bool isLive) {
+  Widget _serverRow(BuildContext context, VpnServer s, bool isSel,
+      bool isLive, bool isPinned) {
     return Material(
       color: Colors.transparent,
       child: InkWell(
@@ -235,17 +186,19 @@ class _LocationsScreenState extends State<LocationsScreen> {
         },
         borderRadius: BorderRadius.circular(14),
         child: Ink(
-          decoration: Brand.cardBox(
-              color: isSel ? Brand.cardSoft : Brand.card),
+          decoration:
+              Brand.cardBox(color: isSel ? Brand.cardSoft : Brand.card),
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
           child: Row(
             children: [
               Icon(
-                isSel
-                    ? Icons.radio_button_checked
-                    : Icons.radio_button_unchecked,
-                color: isSel ? Brand.cyan : Brand.textDim,
-                size: 20,
+                isPinned
+                    ? Icons.push_pin
+                    : (isSel
+                        ? Icons.radio_button_checked
+                        : Icons.radio_button_unchecked),
+                color: isPinned || isSel ? Brand.blue : Brand.textDim,
+                size: 19,
               ),
               const SizedBox(width: 10),
               FlagCircle(server: s, size: 38),
@@ -254,11 +207,35 @@ class _LocationsScreenState extends State<LocationsScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(s.countryLong,
-                        style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600)),
+                    Row(
+                      children: [
+                        Flexible(
+                          child: Text(s.countryLong,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                  color: Brand.text,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w600)),
+                        ),
+                        if (isPinned) ...[
+                          const SizedBox(width: 7),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 6, vertical: 1.5),
+                            decoration: BoxDecoration(
+                              color: Brand.blue,
+                              borderRadius: BorderRadius.circular(7),
+                            ),
+                            child: const Text('YOUR COUNTRY',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 8.5,
+                                    fontWeight: FontWeight.w800,
+                                    letterSpacing: 0.4)),
+                          ),
+                        ],
+                      ],
+                    ),
                     Text(
                       isLive ? '${s.hostName} · Connected' : s.hostName,
                       style: TextStyle(
@@ -269,8 +246,8 @@ class _LocationsScreenState extends State<LocationsScreen> {
                 ),
               ),
               Text(s.ping > 0 ? '${s.ping} ms' : '— ms',
-                  style:
-                      const TextStyle(color: Brand.textDim, fontSize: 12.5)),
+                  style: const TextStyle(
+                      color: Brand.textDim, fontSize: 12.5)),
               const SizedBox(width: 7),
               SignalBars(ping: s.ping),
             ],
@@ -281,8 +258,8 @@ class _LocationsScreenState extends State<LocationsScreen> {
   }
 }
 
-/// Screen 8 — server details with a gradient header, live stats from the
-/// API listing, honest feature rows and a Connect button.
+/// Server details — the country's best server: live stats from the API
+/// listing, a few honest facts and one Connect button.
 class ServerDetailsPage extends StatelessWidget {
   final VpnServer server;
   const ServerDetailsPage({super.key, required this.server});
@@ -304,18 +281,12 @@ class ServerDetailsPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  // Gradient header with the flag
                   Container(
                     margin: const EdgeInsets.fromLTRB(18, 10, 18, 0),
-                    padding: const EdgeInsets.fromLTRB(16, 14, 16, 20),
+                    padding: const EdgeInsets.fromLTRB(8, 8, 16, 18),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      gradient: const LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [Color(0xFF123B7A), Color(0xFF0A1C40)],
-                      ),
-                      border: Border.all(color: Brand.border),
+                      gradient: Brand.primaryGradient,
                     ),
                     child: Column(
                       children: [
@@ -327,19 +298,17 @@ class ServerDetailsPage extends StatelessWidget {
                                   color: Colors.white),
                             ),
                             const Spacer(),
-                            Icon(
-                              connectedHere
-                                  ? Icons.favorite
-                                  : Icons.favorite_border,
-                              color: connectedHere
-                                  ? Brand.red
-                                  : Brand.textDim,
-                              size: 21,
-                            ),
+                            const Text('BEST SERVER',
+                                style: TextStyle(
+                                    color: Colors.white70,
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w800,
+                                    letterSpacing: 1.2)),
+                            const SizedBox(width: 8),
                           ],
                         ),
-                        FlagCircle(server: server, size: 84),
-                        const SizedBox(height: 12),
+                        FlagCircle(server: server, size: 80),
+                        const SizedBox(height: 10),
                         Text(server.countryLong,
                             style: const TextStyle(
                                 color: Colors.white,
@@ -347,7 +316,7 @@ class ServerDetailsPage extends StatelessWidget {
                                 fontWeight: FontWeight.w800)),
                         Text(server.hostName,
                             style: const TextStyle(
-                                color: Brand.textDim, fontSize: 13)),
+                                color: Colors.white70, fontSize: 13)),
                         FutureBuilder<String?>(
                           future: CityLookup.cityFor(server.ip),
                           builder: (context, snap) {
@@ -357,7 +326,8 @@ class ServerDetailsPage extends StatelessWidget {
                               padding: const EdgeInsets.only(top: 4),
                               child: Text('IP location: $city',
                                   style: const TextStyle(
-                                      color: Brand.cyan, fontSize: 12.5)),
+                                      color: Colors.white,
+                                      fontSize: 12.5)),
                             );
                           },
                         ),
@@ -373,7 +343,7 @@ class ServerDetailsPage extends StatelessWidget {
                             server.ping > 0 ? '${server.ping}' : '—', 'ms'),
                         _miniStat('Download',
                             server.speedMbps.toStringAsFixed(1), 'Mbps'),
-                        _miniStat('Upload', '—', 'Mbps'),
+                        _miniStat('Sessions', '${server.sessions}', ''),
                       ],
                     ),
                   ),
@@ -395,33 +365,18 @@ class ServerDetailsPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 18),
-                    child: Text('Server Features',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15.5,
-                            fontWeight: FontWeight.w700)),
-                  ),
-                  const SizedBox(height: 6),
                   Expanded(
                     child: ListView(
                       padding: const EdgeInsets.symmetric(horizontal: 6),
                       children: [
                         _feature(Icons.speed, 'High Speed Server',
                             '${server.speedMbps.toStringAsFixed(0)} Mbps listed capacity'),
-                        _feature(Icons.live_tv, 'Optimized for Streaming',
-                            server.ping > 0 && server.ping <= 90
-                                ? 'Low ping (${server.ping} ms)'
-                                : 'Standard latency'),
                         _feature(Icons.people_outline, 'Public Relay Server',
                             server.operatorName.isEmpty
                                 ? 'Community-operated (VPN Gate)'
                                 : server.operatorName),
-                        _feature(Icons.lock_outline, 'AES-128-CBC Encryption',
-                            'OpenVPN tunnel, certificate verified'),
-                        _feature(Icons.bar_chart, 'Active Sessions',
-                            '${server.sessions} users connected now'),
+                        _feature(Icons.lock_outline, 'Encrypted Tunnel',
+                            'OpenVPN, certificate verified'),
                       ],
                     ),
                   ),
@@ -445,7 +400,7 @@ class ServerDetailsPage extends StatelessWidget {
             children: [
               Text(value,
                   style: const TextStyle(
-                      color: Colors.white,
+                      color: Brand.text,
                       fontSize: 19,
                       fontWeight: FontWeight.w800)),
               const SizedBox(width: 3),
@@ -473,7 +428,7 @@ class ServerDetailsPage extends StatelessWidget {
         child: Icon(icon, color: Brand.cyan, size: 19),
       ),
       title: Text(title,
-          style: const TextStyle(color: Colors.white, fontSize: 14.5)),
+          style: const TextStyle(color: Brand.text, fontSize: 14.5)),
       subtitle: Text(sub,
           style: const TextStyle(color: Brand.textDim, fontSize: 12)),
     );
