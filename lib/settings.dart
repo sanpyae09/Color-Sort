@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 
-import 'data.dart';
 import 'store.dart';
 import 'vpn.dart';
 import 'widgets.dart';
 
+/// Settings — build 2, trimmed to what matters: the three switches, a
+/// battery-stability row, protocol info, system VPN settings, support.
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
 
@@ -26,7 +28,7 @@ class _SettingsPageState extends State<SettingsPage> {
               padding: EdgeInsets.fromLTRB(18, 14, 18, 6),
               child: Text('Settings',
                   style: TextStyle(
-                      color: Colors.white,
+                      color: Brand.text,
                       fontSize: 21,
                       fontWeight: FontWeight.w800)),
             ),
@@ -34,58 +36,6 @@ class _SettingsPageState extends State<SettingsPage> {
               child: ListView(
                 padding: const EdgeInsets.only(bottom: 18),
                 children: [
-                  _sectionLabel('Account'),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 18),
-                    child: Material(
-                      color: Colors.transparent,
-                      child: InkWell(
-                        onTap: () => Navigator.of(context).push(
-                            MaterialPageRoute(
-                                builder: (_) => const PremiumPage())),
-                        borderRadius: BorderRadius.circular(16),
-                        child: Ink(
-                          decoration: Brand.cardBox(color: Brand.cardSoft),
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 14, vertical: 13),
-                          child: const Row(
-                            children: [
-                              Icon(Icons.workspace_premium,
-                                  color: Brand.gold, size: 26),
-                              SizedBox(width: 12),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                  children: [
-                                    Text('Premium Plan',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.w700)),
-                                    Text(
-                                        'Free during the test period',
-                                        style: TextStyle(
-                                            color: Brand.textDim,
-                                            fontSize: 12)),
-                                  ],
-                                ),
-                              ),
-                              Icon(Icons.chevron_right,
-                                  color: Brand.textDim),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  MenuRow(
-                    icon: Icons.person_outline,
-                    title: 'Profile',
-                    subtitle: 'Your local usage statistics',
-                    onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                        builder: (_) => const ProfilePage())),
-                  ),
                   _sectionLabel('General'),
                   _switchRow(
                     icon: Icons.bolt_outlined,
@@ -101,7 +51,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     icon: Icons.shield_outlined,
                     title: 'Kill Switch',
                     subtitle:
-                        'Block traffic and auto-reconnect if the tunnel drops',
+                        'Block the screen while an interrupted tunnel reconnects',
                     value: store.killSwitch,
                     onChanged: (v) async {
                       await store.setKillSwitch(v);
@@ -116,6 +66,36 @@ class _SettingsPageState extends State<SettingsPage> {
                     onChanged: (v) async {
                       await store.setNotifications(v);
                       setState(() {});
+                    },
+                  ),
+                  _sectionLabel('Connection'),
+                  FutureBuilder<PermissionStatus>(
+                    future: Permission.ignoreBatteryOptimizations.status,
+                    builder: (context, snap) {
+                      final granted = snap.data?.isGranted ?? false;
+                      return MenuRow(
+                        icon: Icons.battery_saver_outlined,
+                        title: 'Stable Connection',
+                        subtitle: granted
+                            ? 'Battery limits off — the VPN can run in the background'
+                            : 'Allow no battery limits so the phone cannot stop the VPN',
+                        trailing: Text(granted ? 'On' : 'Set up',
+                            style: TextStyle(
+                                color: granted
+                                    ? Brand.green
+                                    : Brand.blue,
+                                fontWeight: FontWeight.w700)),
+                        onTap: granted
+                            ? null
+                            : () async {
+                                try {
+                                  await Permission
+                                      .ignoreBatteryOptimizations
+                                      .request();
+                                } catch (_) {}
+                                if (mounted) setState(() {});
+                              },
+                      );
                     },
                   ),
                   MenuRow(
@@ -163,7 +143,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                   const SizedBox(height: 14),
                   const Center(
-                    child: Text('SecureNet 1.0.0 · Live servers by VPN Gate',
+                    child: Text('SecureNet 1.1.0 · Live servers by VPN Gate',
                         style:
                             TextStyle(color: Brand.textDim, fontSize: 11.5)),
                   ),
@@ -205,7 +185,7 @@ class _SettingsPageState extends State<SettingsPage> {
         child: Icon(icon, color: Brand.cyan, size: 19),
       ),
       title: Text(title,
-          style: const TextStyle(color: Colors.white, fontSize: 15)),
+          style: const TextStyle(color: Brand.text, fontSize: 15)),
       subtitle: Text(subtitle,
           style: const TextStyle(color: Brand.textDim, fontSize: 12)),
       trailing: Switch(
@@ -223,14 +203,13 @@ class _SettingsPageState extends State<SettingsPage> {
       context: context,
       builder: (_) => AlertDialog(
         backgroundColor: Brand.card,
-        title: Text(title, style: const TextStyle(color: Colors.white)),
+        title: Text(title, style: const TextStyle(color: Brand.text)),
         content: Text(body,
             style: const TextStyle(color: Brand.textDim, height: 1.45)),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child:
-                const Text('OK', style: TextStyle(color: Brand.cyan)),
+            child: const Text('OK', style: TextStyle(color: Brand.blue)),
           ),
         ],
       ),
@@ -240,16 +219,16 @@ class _SettingsPageState extends State<SettingsPage> {
 
 const _helpText = '''
 Why is a server slow or unreachable?
-The servers are public relays run by volunteers around the world (the VPN Gate project). Speed and availability change minute by minute. Tap Refresh on the Locations screen for the newest list, and prefer low-ping servers near you.
+The servers are public relays run by volunteers around the world (the VPN Gate project). Speed and availability change minute by minute. Tap Refresh on the Locations screen for the newest list. SecureNet shows only the single best server for each country.
+
+The connection dropped by itself
+SecureNet reconnects automatically whenever the tunnel is interrupted, and keeps retrying until it succeeds — you do not need to do anything. If drops keep happening, open Settings → Stable Connection and allow SecureNet to run without battery limits: many phones aggressively stop VPN apps in the background to save power. For the strongest protection, also enable "Always-on VPN" in Settings → System VPN Settings.
 
 The app says "VPN permission was refused"
-Android asks once for permission to create the VPN tunnel. Accept the system dialog, or the connection cannot start. You can also check Settings → System VPN Settings.
-
-What does the Kill Switch do?
-If the tunnel drops unexpectedly, SecureNet blocks the screen with a reconnecting notice and retries your server automatically (up to 5 times). For the strongest protection, also enable "Always-on VPN" and "Block connections without VPN" in the system VPN settings.
+Android asks once for permission to create the VPN tunnel. Accept the system dialog, or the connection cannot start.
 
 Which server should I pick?
-Lowest ping = most responsive. High "listed capacity" (Mbps) = better for video. Servers are sorted by a community score by default.
+Each country shows its best server, ranked by a quality score that blends line speed, ping and reliability. Low ping = most responsive; high listed capacity (Mbps) = better for video.
 ''';
 
 const _privacyText = '''
@@ -265,420 +244,10 @@ SecureNet is provided as-is, free of charge, for personal use. VPN servers are p
 
 You are responsible for using this app in line with the laws and regulations that apply where you are. Do not use the service for abusive, fraudulent or illegal activity; relay operators may block abusive traffic at any time.
 
-The developers may update or discontinue the app at any time. Premium features shown in the app are not yet available for purchase.
+The developers may update or discontinue the app at any time.
 ''';
 
-/// Screen 10 — Premium upgrade (visual only; no payments in this build).
-class PremiumPage extends StatelessWidget {
-  const PremiumPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Brand.bg0,
-      appBar: _pageBar(context, ''),
-      body: Container(
-        decoration: Brand.screenGradient,
-        child: ListView(
-          padding: const EdgeInsets.fromLTRB(22, 4, 22, 22),
-          children: [
-            const Icon(Icons.workspace_premium,
-                color: Brand.gold, size: 52),
-            const SizedBox(height: 10),
-            const Center(
-              child: Text('Go Premium',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24,
-                      fontWeight: FontWeight.w800)),
-            ),
-            const SizedBox(height: 6),
-            const Center(
-              child: Text(
-                'Unlock the full potential of SecureNet\nwith premium features.',
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Brand.textDim, height: 1.4),
-              ),
-            ),
-            const SizedBox(height: 20),
-            ...const [
-              'Unlimited Bandwidth',
-              'Access to 100+ Countries',
-              'Ad-Free Experience',
-              'Multi-Device Support',
-              '24/7 Priority Support',
-            ].map((f) => Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5),
-                  child: Row(
-                    children: [
-                      const Icon(Icons.check_circle,
-                          color: Brand.green, size: 20),
-                      const SizedBox(width: 10),
-                      Text(f,
-                          style: const TextStyle(
-                              color: Colors.white, fontSize: 15)),
-                    ],
-                  ),
-                )),
-            const SizedBox(height: 20),
-            Row(
-              children: [
-                Expanded(child: _planCard('Monthly', '\$4.99', '/month', false)),
-                const SizedBox(width: 12),
-                Expanded(child: _planCard('Yearly', '\$39.99', '/year', true)),
-              ],
-            ),
-            const SizedBox(height: 22),
-            PrimaryButton(
-              label: 'Upgrade Now',
-              onTap: () => showDialog<void>(
-                context: context,
-                builder: (_) => AlertDialog(
-                  backgroundColor: Brand.card,
-                  title: const Text('Coming soon',
-                      style: TextStyle(color: Colors.white)),
-                  content: const Text(
-                    'Premium is not on sale yet. Every feature in this '
-                    'test build is completely free — enjoy!',
-                    style: TextStyle(color: Brand.textDim, height: 1.45),
-                  ),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.of(context).pop(),
-                      child: const Text('OK',
-                          style: TextStyle(color: Brand.cyan)),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _planCard(String name, String price, String per, bool featured) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Brand.card,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-            color: featured ? Brand.blue : Brand.border,
-            width: featured ? 2 : 1),
-      ),
-      padding: const EdgeInsets.symmetric(vertical: 16),
-      child: Column(
-        children: [
-          if (featured)
-            Container(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-              decoration: BoxDecoration(
-                color: Brand.blue,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: const Text('Save 33%',
-                  style: TextStyle(color: Colors.white, fontSize: 10.5)),
-            ),
-          const SizedBox(height: 6),
-          Text(name,
-              style: const TextStyle(color: Brand.textDim, fontSize: 13)),
-          const SizedBox(height: 4),
-          Text(price,
-              style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 22,
-                  fontWeight: FontWeight.w800)),
-          Text(per,
-              style: const TextStyle(color: Brand.textDim, fontSize: 11.5)),
-        ],
-      ),
-    );
-  }
-}
-
-/// Screen 11 — Streaming Mode info + one-tap connect to a low-ping server.
-class StreamingPage extends StatelessWidget {
-  const StreamingPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Brand.bg0,
-      appBar: _pageBar(context, 'Streaming Mode'),
-      body: Container(
-        decoration: Brand.screenGradient,
-        child: ListView(
-          padding: const EdgeInsets.fromLTRB(22, 16, 22, 22),
-          children: [
-            Container(
-              height: 170,
-              decoration: Brand.cardBox(color: Brand.cardSoft),
-              child: const Center(
-                child: Icon(Icons.live_tv, color: Brand.cyan, size: 76),
-              ),
-            ),
-            const SizedBox(height: 20),
-            const Center(
-              child: Text(
-                'Access your favorite content\nfrom anywhere',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 19,
-                    fontWeight: FontWeight.w800,
-                    height: 1.3),
-              ),
-            ),
-            const SizedBox(height: 8),
-            const Center(
-              child: Text(
-                'Start Streaming picks the lowest-ping live server, '
-                'which gives the smoothest playback.',
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Brand.textDim, height: 1.45),
-              ),
-            ),
-            const SizedBox(height: 18),
-            ...const [
-              'Optimized for Streaming',
-              'HD Video Support',
-              'Fast & Stable Connection',
-            ].map((f) => Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5),
-                  child: Row(
-                    children: [
-                      const Icon(Icons.check_circle,
-                          color: Brand.green, size: 20),
-                      const SizedBox(width: 10),
-                      Text(f,
-                          style: const TextStyle(
-                              color: Colors.white, fontSize: 15)),
-                    ],
-                  ),
-                )),
-            const SizedBox(height: 24),
-            PrimaryButton(
-              label: 'Start Streaming',
-              icon: Icons.play_arrow,
-              onTap: () async {
-                final repo = ServerRepository.instance;
-                if (repo.servers.isEmpty) await repo.refresh();
-                final picks = repo.streamingPicks;
-                final target =
-                    picks.isNotEmpty ? picks.first : repo.fastest;
-                if (target != null) {
-                  VpnController.instance.connectTo(target);
-                }
-                if (context.mounted) {
-                  Navigator.of(context).popUntil((r) => r.isFirst);
-                }
-              },
-            ),
-            const SizedBox(height: 10),
-            const Center(
-              child: Text('Learn More',
-                  style: TextStyle(color: Brand.cyan, fontSize: 13.5)),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-/// Screen 12 — Profile with real local usage statistics.
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final store = AppStore.instance;
-    final totalData = store.totalBytesIn + store.totalBytesOut;
-    return Scaffold(
-      backgroundColor: Brand.bg0,
-      appBar: _pageBar(context, 'Profile'),
-      body: Container(
-        decoration: Brand.screenGradient,
-        child: ListView(
-          padding: const EdgeInsets.fromLTRB(18, 10, 18, 22),
-          children: [
-            Center(
-              child: Column(
-                children: [
-                  ClipOval(
-                    child: Image.asset('assets/images/app_icon.png',
-                        width: 84, height: 84, fit: BoxFit.cover),
-                  ),
-                  const SizedBox(height: 10),
-                  const Text('Guest User',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 19,
-                          fontWeight: FontWeight.w800)),
-                  const Text('No account needed — guest mode',
-                      style: TextStyle(color: Brand.textDim, fontSize: 12.5)),
-                ],
-              ),
-            ),
-            const SizedBox(height: 16),
-            Material(
-              color: Colors.transparent,
-              child: InkWell(
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (_) => const PremiumPage())),
-                borderRadius: BorderRadius.circular(16),
-                child: Ink(
-                  decoration: Brand.cardBox(color: Brand.cardSoft),
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 14, vertical: 13),
-                  child: const Row(
-                    children: [
-                      Icon(Icons.workspace_premium,
-                          color: Brand.gold, size: 24),
-                      SizedBox(width: 10),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('Free Member',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w700)),
-                            Text('All test features unlocked',
-                                style: TextStyle(
-                                    color: Brand.textDim, fontSize: 12)),
-                          ],
-                        ),
-                      ),
-                      Icon(Icons.chevron_right, color: Brand.textDim),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 14),
-            Row(
-              children: [
-                _profileStat('${store.daysConnected}', 'Days\nConnected'),
-                _profileStat(
-                    '${store.countriesUsed.length}', 'Countries\nUsed'),
-                _profileStat(formatBytes(totalData), 'Data\nUsed'),
-              ],
-            ),
-            const SizedBox(height: 14),
-            Container(
-              decoration: Brand.cardBox(),
-              child: Column(
-                children: [
-                  MenuRow(
-                    icon: Icons.card_membership,
-                    title: 'My Subscriptions',
-                    onTap: () => Navigator.of(context).push(
-                        MaterialPageRoute(
-                            builder: (_) => const PremiumPage())),
-                  ),
-                  MenuRow(
-                    icon: Icons.history,
-                    title: 'Usage History',
-                    subtitle:
-                        '${store.sessionCount} sessions · ${_fmtDuration(store.totalSeconds)} total',
-                    onTap: () => Navigator.of(context).push(
-                        MaterialPageRoute(
-                            builder: (_) => const InfoPage(
-                                title: 'Usage History',
-                                body: ''))),
-                  ),
-                  MenuRow(
-                    icon: Icons.devices_outlined,
-                    title: 'Device Management',
-                    subtitle: 'This device · Android',
-                    onTap: () => Navigator.of(context).push(
-                        MaterialPageRoute(
-                            builder: (_) => const InfoPage(
-                                title: 'Device Management',
-                                body:
-                                    'SecureNet is running on this Android device only. There is no account and no other device is linked.\n\nYour settings and usage statistics never leave this phone.'))),
-                  ),
-                  MenuRow(
-                    icon: Icons.help_outline,
-                    title: 'Help & Support',
-                    onTap: () => Navigator.of(context).push(
-                        MaterialPageRoute(
-                            builder: (_) => const InfoPage(
-                                title: 'Help & Support', body: _helpText))),
-                  ),
-                  MenuRow(
-                    icon: Icons.logout,
-                    title: 'Log Out',
-                    trailing: const SizedBox.shrink(),
-                    onTap: () => showDialog<void>(
-                      context: context,
-                      builder: (_) => AlertDialog(
-                        backgroundColor: Brand.card,
-                        title: const Text('Guest mode',
-                            style: TextStyle(color: Colors.white)),
-                        content: const Text(
-                          'You are using SecureNet as a guest — there is '
-                          'no account to log out of. Your settings stay '
-                          'on this device.',
-                          style:
-                              TextStyle(color: Brand.textDim, height: 1.45),
-                        ),
-                        actions: [
-                          TextButton(
-                            onPressed: () => Navigator.of(context).pop(),
-                            child: const Text('OK',
-                                style: TextStyle(color: Brand.cyan)),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  static String _fmtDuration(int secs) {
-    if (secs < 3600) return '${secs ~/ 60} min';
-    final h = secs ~/ 3600;
-    final m = (secs % 3600) ~/ 60;
-    return '${h}h ${m}m';
-  }
-
-  Widget _profileStat(String value, String label) {
-    return Expanded(
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 4),
-        decoration: Brand.cardBox(),
-        padding: const EdgeInsets.symmetric(vertical: 12),
-        child: Column(
-          children: [
-            Text(value,
-                style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 17,
-                    fontWeight: FontWeight.w800)),
-            const SizedBox(height: 3),
-            Text(label,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                    color: Brand.textDim, fontSize: 11, height: 1.25)),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-/// Simple scrollable text page (privacy, terms, help, device info).
+/// Simple scrollable text page (privacy, terms, help).
 class InfoPage extends StatelessWidget {
   final String title;
   final String body;
@@ -686,15 +255,6 @@ class InfoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final store = AppStore.instance;
-    final text = title == 'Usage History'
-        ? 'Sessions: ${store.sessionCount}\n'
-            'Total time connected: ${ProfilePage._fmtDuration(store.totalSeconds)}\n'
-            'Downloaded: ${formatBytes(store.totalBytesIn)}\n'
-            'Uploaded: ${formatBytes(store.totalBytesOut)}\n'
-            'Countries used: ${store.countriesUsed.isEmpty ? '—' : store.countriesUsed.join(', ')}\n'
-            'Days connected: ${store.daysConnected}'
-        : body;
     return Scaffold(
       backgroundColor: Brand.bg0,
       appBar: _pageBar(context, title),
@@ -703,9 +263,9 @@ class InfoPage extends StatelessWidget {
         child: SingleChildScrollView(
           padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
           child: Text(
-            text.trim(),
+            body.trim(),
             style: const TextStyle(
-                color: Color(0xFFC9D6F2), fontSize: 14.5, height: 1.55),
+                color: Color(0xFF5B4632), fontSize: 14.5, height: 1.55),
           ),
         ),
       ),
@@ -719,11 +279,11 @@ PreferredSizeWidget _pageBar(BuildContext context, String title) {
     elevation: 0,
     leading: IconButton(
       onPressed: () => Navigator.of(context).pop(),
-      icon: const Icon(Icons.arrow_back, color: Colors.white),
+      icon: const Icon(Icons.arrow_back, color: Brand.text),
     ),
     title: Text(title,
         style: const TextStyle(
-            color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700)),
+            color: Brand.text, fontSize: 18, fontWeight: FontWeight.w700)),
     centerTitle: false,
   );
 }
