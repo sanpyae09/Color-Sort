@@ -154,7 +154,7 @@ class BoardTheme {
 }
 
 const List<BoardTheme> kBoardThemes = [
-  BoardTheme('Cream Wood', Color(0xFF8D6E63), Color(0xFFF5EFE3), Color(0xFFFFF8E7)),
+  BoardTheme('Cream Wood', Color(0xFF8D6E63), Color(0xFFE9CD9F), Color(0xFFFFF8E7)),
   BoardTheme('Dark Walnut', Color(0xFF4E342E), Color(0xFFEFEBE9), Color(0xFFEFEBE9)),
   BoardTheme('Mint', Color(0xFF2E7D6B), Color(0xFFE8F5E9), Color(0xFFF1F8E9)),
 ];
@@ -349,8 +349,9 @@ Widget coinChip() {
   return Container(
     padding: const EdgeInsets.only(left: 10, right: 4, top: 4, bottom: 4),
     decoration: BoxDecoration(
-      color: Colors.white,
+      color: const Color(0xFFFFF8E7),
       borderRadius: BorderRadius.circular(20),
+      border: Border.all(color: const Color(0xFF8D6E63), width: 1.5),
       boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.12), blurRadius: 6, offset: const Offset(0, 2))],
     ),
     child: Row(
@@ -367,6 +368,67 @@ Widget coinChip() {
           alignment: Alignment.center,
           child: const Text('+', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16)),
         ),
+      ],
+    ),
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Picture style: wood + cream + glossy blocks, exactly the reference look.
+// ---------------------------------------------------------------------------
+
+const Color kWoodDark = Color(0xFF6D4C2F);
+const Color kWood = Color(0xFF8D6E63);
+const Color kWoodLight = Color(0xFFA67C52);
+const Color kCream = Color(0xFFFFF8E7);
+const Color kCreamCard = Color(0xFFFDEBD0);
+
+LinearGradient woodGradient() {
+  return const LinearGradient(
+    colors: [kWoodLight, kWood, kWoodDark],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  );
+}
+
+/// Glossy block gradient: light top edge, base middle, darker bottom edge.
+LinearGradient glossGradient(Color base) {
+  return LinearGradient(
+    colors: [
+      Color.lerp(base, Colors.white, 0.35)!,
+      base,
+      Color.lerp(base, Colors.black, 0.18)!,
+    ],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  );
+}
+
+/// Wooden header strip used by every dialog, like the picture's brown bars.
+Widget woodHeader(String title, {VoidCallback? onClose}) {
+  return Container(
+    width: double.infinity,
+    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+    decoration: BoxDecoration(gradient: woodGradient()),
+    child: Row(
+      children: [
+        Expanded(
+          child: Text(
+            title,
+            style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w900, color: Colors.white),
+          ),
+        ),
+        if (onClose != null)
+          InkWell(
+            onTap: onClose,
+            borderRadius: BorderRadius.circular(16),
+            child: Container(
+              width: 32,
+              height: 32,
+              decoration: const BoxDecoration(color: Colors.white24, shape: BoxShape.circle),
+              child: const Icon(Icons.close, color: Colors.white, size: 20),
+            ),
+          ),
       ],
     ),
   );
@@ -466,21 +528,44 @@ Widget miniBlocks(List<Color> colors) {
   );
 }
 
+/// Glossy gradient button, like the picture's green Play / blue Restart.
 Widget bigButton(String label, Color color, VoidCallback onTap, {IconData? icon}) {
   return SizedBox(
     width: double.infinity,
     height: 56,
-    child: ElevatedButton.icon(
-      onPressed: () {
-        Sfx.play('click');
-        onTap();
-      },
-      icon: icon != null ? Icon(icon, color: Colors.white) : const SizedBox.shrink(),
-      label: Text(label, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)),
-      style: ElevatedButton.styleFrom(
-        backgroundColor: color,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(28)),
-        elevation: 4,
+    child: Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () {
+          Sfx.play('click');
+          onTap();
+        },
+        borderRadius: BorderRadius.circular(28),
+        child: Ink(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color.lerp(color, Colors.white, 0.25)!,
+                color,
+                Color.lerp(color, Colors.black, 0.12)!,
+              ],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+            borderRadius: BorderRadius.circular(28),
+            boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.3), blurRadius: 6, offset: const Offset(0, 3))],
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              if (icon != null) ...[
+                Icon(icon, color: Colors.white),
+                const SizedBox(width: 8),
+              ],
+              Text(label, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)),
+            ],
+          ),
+        ),
       ),
     ),
   );
@@ -492,26 +577,18 @@ Future<void> showSheet(BuildContext context, String title, Widget body) {
     builder: (_) => Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       backgroundColor: const Color(0xFFFFF8E7),
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Expanded(child: Text(title, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold))),
-                  IconButton(
-                    icon: const Icon(Icons.close),
-                    onPressed: () => Navigator.of(context).pop(),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 8),
-              body,
-            ],
-          ),
+      clipBehavior: Clip.antiAlias,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            woodHeader(title, onClose: () => Navigator.of(context).pop()),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: body,
+            ),
+          ],
         ),
       ),
     ),
@@ -611,46 +688,53 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFFFF8E7),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  coinChip(),
-                  Row(
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.card_giftcard, color: Color(0xFFE53935)),
-                        onPressed: () => _daily(context),
-                      ),
-                      IconButton(
-                        icon: const Icon(Icons.settings, color: Color(0xFF8D6E63)),
-                        onPressed: () => _settings(context),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xFF8ED0F8), Color(0xFFCDEBFF), Color(0xFFFFF8E7)],
+            stops: [0.0, 0.45, 1.0],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    coinChip(),
+                    Row(
+                      children: [
+                        _roundWoodButton(Icons.card_giftcard, () => _daily(context)),
+                        const SizedBox(width: 8),
+                        _roundWoodButton(Icons.settings, () => _settings(context)),
+                      ],
+                    ),
+                  ],
+                ),
               const Spacer(),
-              // Logo: blocks piled on a little wooden board, as in the picture.
+              // Logo: big 3D-style BLOCK PUZZLE over a wooden board, as in
+              // the picture — glossy blocks on top, wooden plaque below.
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   _logoBlock(const Color(0xFF8E24AA)),
                   _logoBlock(const Color(0xFF1E88E5)),
                   _logoBlock(const Color(0xFF43A047)),
+                  _logoBlock(const Color(0xFFFFC107)),
                 ],
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 6),
               Container(
-                padding: const EdgeInsets.all(7),
+                padding: const EdgeInsets.all(9),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF8D6E63),
-                  borderRadius: BorderRadius.circular(14),
-                  boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.25), blurRadius: 8, offset: const Offset(0, 4))],
+                  gradient: woodGradient(),
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(color: const Color(0xFF5D4037), width: 2),
+                  boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.3), blurRadius: 10, offset: const Offset(0, 5))],
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -664,13 +748,25 @@ class _HomeScreenState extends State<HomeScreen> {
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         children: row.map((v) {
+                          if (v == -1) {
+                            return Container(
+                              width: 34,
+                              height: 34,
+                              margin: const EdgeInsets.all(2),
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFE9CD9F),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            );
+                          }
                           return Container(
-                            width: 26,
-                            height: 26,
+                            width: 34,
+                            height: 34,
                             margin: const EdgeInsets.all(2),
                             decoration: BoxDecoration(
-                              color: v == -1 ? const Color(0xFFF5EFE3) : Color(v),
-                              borderRadius: BorderRadius.circular(6),
+                              gradient: glossGradient(Color(v)),
+                              borderRadius: BorderRadius.circular(8),
+                              boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.25), blurRadius: 3, offset: const Offset(0, 2))],
                             ),
                           );
                         }).toList(),
@@ -678,14 +774,31 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 12),
               const Text(
                 'BLOCK',
-                style: TextStyle(fontSize: 52, fontWeight: FontWeight.w900, color: Color(0xFFFF8F00), letterSpacing: 2, shadows: [Shadow(color: Colors.black26, offset: Offset(0, 3), blurRadius: 4)]),
+                style: TextStyle(
+                  fontSize: 62,
+                  fontWeight: FontWeight.w900,
+                  color: Color(0xFFFFB300),
+                  letterSpacing: 2,
+                  shadows: [
+                    Shadow(color: Color(0xFF5D4037), offset: Offset(0, 4), blurRadius: 0),
+                    Shadow(color: Colors.black38, offset: Offset(0, 6), blurRadius: 6),
+                  ],
+                ),
               ),
-              const Text(
-                'PUZZLE',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900, color: Color(0xFF5D4037), letterSpacing: 6),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 4),
+                decoration: BoxDecoration(
+                  gradient: woodGradient(),
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.3), blurRadius: 6, offset: const Offset(0, 3))],
+                ),
+                child: const Text(
+                  'PUZZLE',
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900, color: Colors.white, letterSpacing: 6),
+                ),
               ),
               const Spacer(),
               bigButton('Play', const Color(0xFF43A047), () {
@@ -709,19 +822,40 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ),
+        ),
+      ),
+    );
+  }
+
+  Widget _roundWoodButton(IconData icon, VoidCallback onTap) {
+    return InkWell(
+      onTap: () {
+        Sfx.play('click');
+        onTap();
+      },
+      borderRadius: BorderRadius.circular(20),
+      child: Container(
+        width: 40,
+        height: 40,
+        decoration: BoxDecoration(
+          gradient: woodGradient(),
+          shape: BoxShape.circle,
+          boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.25), blurRadius: 4, offset: const Offset(0, 2))],
+        ),
+        child: Icon(icon, color: Colors.white, size: 22),
       ),
     );
   }
 
   Widget _logoBlock(Color c) {
     return Container(
-      width: 34,
-      height: 34,
+      width: 40,
+      height: 40,
       margin: const EdgeInsets.all(3),
       decoration: BoxDecoration(
-        color: c,
-        borderRadius: BorderRadius.circular(8),
-        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.25), blurRadius: 4, offset: const Offset(0, 2))],
+        gradient: glossGradient(c),
+        borderRadius: BorderRadius.circular(9),
+        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.3), blurRadius: 4, offset: const Offset(0, 2))],
       ),
     );
   }
@@ -736,12 +870,16 @@ class _HomeScreenState extends State<HomeScreen> {
         borderRadius: BorderRadius.circular(16),
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
-          decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16), boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 6, offset: const Offset(0, 2))]),
+          decoration: BoxDecoration(
+              color: const Color(0xFFFDEBD0),
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(color: const Color(0xFF8D6E63), width: 1.5),
+              boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.12), blurRadius: 6, offset: const Offset(0, 2))]),
           child: Column(
             children: [
               Icon(icon, color: const Color(0xFF8D6E63), size: 26),
               const SizedBox(height: 4),
-              Text(label, textAlign: TextAlign.center, maxLines: 2, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w600)),
+              Text(label, textAlign: TextAlign.center, maxLines: 2, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: Color(0xFF5D4037))),
             ],
           ),
         ),
@@ -1117,15 +1255,60 @@ class _GameScreenState extends State<GameScreen> {
     profile.gamesPlayed++;
     profile.markPlayedToday();
     profile.save();
-    _dealTray();
+    _prefillBoard();
+    _dealTray(ensureMove: true);
   }
 
-  void _dealTray() {
+  /// The game starts with random blocks already on the board, like the
+  /// reference picture's gameplay panel — never an empty board.
+  void _prefillBoard() {
+    const targetCells = 20; // ~31% of the 64 cells.
+    var placed = 0;
+    var attempts = 0;
+    while (placed < targetCells && attempts < 200) {
+      attempts++;
+      final p = Piece(randomShape(_rng), _rng.nextInt(_colors.length), 'pre');
+      final r = _rng.nextInt(kBoard);
+      final c = _rng.nextInt(kBoard);
+      if (!_canPlace(p, r, c)) continue;
+      final comp = _wouldComplete(p, r, c);
+      if (comp.rows.isNotEmpty || comp.cols.isNotEmpty) continue;
+      for (final cell in p.shape.cells) {
+        _board[r + cell.x][c + cell.y] = p.color;
+      }
+      placed += p.shape.size;
+    }
+  }
+
+  void _dealTray({bool ensureMove = false}) {
     setState(() {
-      _tray = List.generate(3, (_) {
-        final shape = randomShape(_rng);
-        return Piece(shape, _rng.nextInt(_colors.length), 'p${_pieceSeq++}');
-      });
+      var tries = 0;
+      do {
+        _tray = List.generate(3, (_) {
+          final shape = randomShape(_rng);
+          return Piece(shape, _rng.nextInt(_colors.length), 'p${_pieceSeq++}');
+        });
+        tries++;
+      } while (ensureMove && !_anyMove() && tries < 50);
+      if (ensureMove && !_anyMove()) {
+        // Vanishingly unlikely at ~31% fill, but a game must never start
+        // dead: clear a few random filled cells and deal once more.
+        var cleared = 0;
+        var guard = 0;
+        while (cleared < 10 && guard < 200) {
+          guard++;
+          final r = _rng.nextInt(kBoard);
+          final c = _rng.nextInt(kBoard);
+          if (_board[r][c] != -1) {
+            _board[r][c] = -1;
+            cleared++;
+          }
+        }
+        _tray = List.generate(3, (_) {
+          final shape = randomShape(_rng);
+          return Piece(shape, _rng.nextInt(_colors.length), 'p${_pieceSeq++}');
+        });
+      }
     });
   }
 
@@ -1286,7 +1469,13 @@ class _GameScreenState extends State<GameScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text('Game Over', style: TextStyle(fontSize: 28, fontWeight: FontWeight.w900, color: Color(0xFFE53935))),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                decoration: BoxDecoration(gradient: woodGradient(), borderRadius: BorderRadius.circular(14)),
+                alignment: Alignment.center,
+                child: const Text('Game Over', style: TextStyle(fontSize: 28, fontWeight: FontWeight.w900, color: Colors.white)),
+              ),
               if (_newBest) ...[
                 const SizedBox(height: 6),
                 Container(
@@ -1324,9 +1513,9 @@ class _GameScreenState extends State<GameScreen> {
     final box = ctx.findRenderObject() as RenderBox?;
     if (box == null || !box.hasSize) return;
     // Board container has 6px padding and the grid has 2px gaps: the pitch
-    // between cell origins is (width - padding) / 10, and cell (0,0) starts
-    // at the container origin + padding. Using the pitch (not the visual
-    // cell size) keeps the ghost aligned with the finger across the board.
+    // between cell origins is (width - padding) / kBoard, and cell (0,0)
+    // starts at the container origin + padding. Using the pitch (not the
+    // visual cell size) keeps the ghost aligned across the board.
     _boardOrigin = box.localToGlobal(const Offset(6, 6));
     _cellSize = (box.size.width - 12) / kBoard;
   }
@@ -1350,6 +1539,18 @@ class _GameScreenState extends State<GameScreen> {
   // Lift the piece the instant the finger TOUCHES it (onPanDown), not only
   // once the finger starts moving (onPanStart fires after the move slop, so
   // a touch-and-hold showed nothing in build 1 — the user's complaint).
+  /// Screen position of the CENTER of the lifted piece. The piece floats
+  /// above the finger, so the ghost must follow the piece — never the
+  /// finger (in 1.0.3 the ghost sat under the finger while the piece
+  /// floated above it, which looked broken).
+  Offset _pieceCenter(Offset finger, int idx) {
+    final p = _tray[idx];
+    if (p == null) return finger;
+    final cell = p.shape.width >= 4 || p.shape.height >= 4 ? 15.0 : 19.0;
+    final ph = p.shape.height * cell;
+    return Offset(finger.dx, finger.dy - 90 - ph / 2);
+  }
+
   void _dragStart(int idx, Offset globalPos) {
     if (_clearing) return;
     _boardMetrics();
@@ -1360,13 +1561,13 @@ class _GameScreenState extends State<GameScreen> {
     });
     Sfx.play('pickup');
     _vibrate();
-    _updateHover(globalPos);
+    _updateHover(_pieceCenter(globalPos, idx));
   }
 
   void _dragUpdate(DragUpdateDetails d) {
     if (_draggingIdx == null) return;
     setState(() => _dragPos = d.globalPosition);
-    _updateHover(d.globalPosition);
+    _updateHover(_pieceCenter(d.globalPosition, _draggingIdx!));
   }
 
   void _dragEnd() {
@@ -1465,7 +1666,22 @@ class _GameScreenState extends State<GameScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text('Paused', style: TextStyle(fontSize: 26, fontWeight: FontWeight.w900)),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                decoration: BoxDecoration(gradient: woodGradient(), borderRadius: BorderRadius.circular(14)),
+                child: Row(
+                  children: [
+                    const Expanded(
+                      child: Text('Paused', textAlign: TextAlign.center, style: TextStyle(fontSize: 26, fontWeight: FontWeight.w900, color: Colors.white)),
+                    ),
+                    InkWell(
+                      onTap: () => Navigator.of(context).pop(),
+                      child: const Icon(Icons.close, color: Colors.white),
+                    ),
+                  ],
+                ),
+              ),
               const SizedBox(height: 20),
               bigButton('Resume', const Color(0xFF43A047), () => Navigator.of(context).pop(), icon: Icons.play_arrow),
               const SizedBox(height: 10),
@@ -1496,7 +1712,11 @@ class _GameScreenState extends State<GameScreen> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
       decoration: BoxDecoration(
-        color: const Color(0xFFFFF8E7),
+        gradient: const LinearGradient(
+          colors: [Colors.white, Color(0xFFFDEBD0)],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: const Color(0xFF8D6E63), width: 2),
       ),
@@ -1523,7 +1743,7 @@ class _GameScreenState extends State<GameScreen> {
               height: cell,
               margin: EdgeInsets.all(max(1.0, cell * 0.04)),
               decoration: BoxDecoration(
-                color: _colors[p.color % _colors.length],
+                gradient: glossGradient(_colors[p.color % _colors.length]),
                 borderRadius: BorderRadius.circular(cell * 0.18),
                 // Graphics Quality Low disables shadows entirely.
                 boxShadow: profile.graphics == 0
@@ -1587,11 +1807,12 @@ class _GameScreenState extends State<GameScreen> {
       height: size,
       padding: const EdgeInsets.all(6),
       decoration: BoxDecoration(
-        color: _bTheme.frame,
+        gradient: woodGradient(),
         borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: kWoodDark, width: 2),
         boxShadow: profile.graphics == 0
             ? null
-            : [BoxShadow(color: Colors.black.withOpacity(0.25), blurRadius: 10, offset: const Offset(0, 4))],
+            : [BoxShadow(color: Colors.black.withOpacity(0.3), blurRadius: 10, offset: const Offset(0, 4))],
       ),
       child: GridView.builder(
         physics: const NeverScrollableScrollPhysics(),
@@ -1618,12 +1839,14 @@ class _GameScreenState extends State<GameScreen> {
           } else {
             bg = _bTheme.cell;
           }
+          final filled = v != -1;
           return AnimatedScale(
             scale: isClearing ? 0.0 : 1.0,
             duration: const Duration(milliseconds: 260),
             child: Container(
               decoration: BoxDecoration(
-                color: bg,
+                color: filled ? null : bg,
+                gradient: filled ? glossGradient(_colors[v % _colors.length]) : null,
                 borderRadius: BorderRadius.circular(5),
                 border: isGhost
                     ? Border.all(color: _ghostInvalid ? Colors.red : ghostColor, width: 1.5)
@@ -1638,42 +1861,55 @@ class _GameScreenState extends State<GameScreen> {
 
   Widget _booster(IconData icon, String label, int left, VoidCallback onTap) {
     final disabled = left <= 0;
+    // Picture colors: Shuffle orange, Hint blue, Undo green.
+    final c = label == 'Shuffle'
+        ? const Color(0xFFFF8F00)
+        : (label == 'Hint' ? const Color(0xFF1E88E5) : const Color(0xFF43A047));
     return InkWell(
       onTap: disabled ? null : onTap,
-      borderRadius: BorderRadius.circular(24),
+      borderRadius: BorderRadius.circular(32),
       child: Opacity(
         opacity: disabled ? 0.4 : 1.0,
-        child: Container(
-          width: 64,
-          height: 64,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            shape: BoxShape.circle,
-            boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.12), blurRadius: 6, offset: const Offset(0, 2))],
-          ),
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(icon, color: const Color(0xFF1E88E5), size: 24),
-                  Text(label, style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w600)),
-                ],
-              ),
-              Positioned(
-                right: 2,
-                top: 2,
-                child: Container(
-                  width: 20,
-                  height: 20,
-                  decoration: const BoxDecoration(color: Color(0xFFE53935), shape: BoxShape.circle),
-                  alignment: Alignment.center,
-                  child: Text('$left', style: const TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.bold)),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Stack(
+              clipBehavior: Clip.none,
+              children: [
+                Container(
+                  width: 62,
+                  height: 62,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [Color.lerp(c, Colors.white, 0.25)!, c],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                    ),
+                    shape: BoxShape.circle,
+                    boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.25), blurRadius: 6, offset: const Offset(0, 3))],
+                  ),
+                  child: Icon(icon, color: Colors.white, size: 28),
                 ),
-              ),
-            ],
-          ),
+                Positioned(
+                  right: -2,
+                  top: -2,
+                  child: Container(
+                    width: 22,
+                    height: 22,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFFFB300),
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.white, width: 1.5),
+                    ),
+                    alignment: Alignment.center,
+                    child: Text('$left', style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold)),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 4),
+            Text(label, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color: Color(0xFF5D4037))),
+          ],
         ),
       ),
     );
@@ -1749,7 +1985,9 @@ class _GameScreenState extends State<GameScreen> {
                             child: piece == null
                                 ? const SizedBox(height: 60)
                                 : Opacity(
-                                    opacity: isDraggingThis ? 0.25 : 1.0,
+                                    // Fully hidden while dragging — no leftover
+                                    // copy under the finger (user report).
+                                    opacity: isDraggingThis ? 0.0 : 1.0,
                                     child: GestureDetector(
                                       behavior: HitTestBehavior.opaque,
                                       onPanDown: (d) => _dragStart(i, d.globalPosition),
@@ -1788,26 +2026,26 @@ class _GameScreenState extends State<GameScreen> {
                 ],
               ),
             ),
-            // Dragged piece floats ABOVE the finger, lifted with a shadow.
-            // Build 1 centered the piece on the finger with only a 24px
-            // offset, so the fingertip covered it completely (user report).
-            // Now the piece is drawn 1.3x larger with its BOTTOM edge 100px
-            // above the touch point, so the whole piece stays visible above
-            // the finger at all times; the ghost on the board shows landing.
+            // Dragged piece floats ABOVE the finger, at exactly the SAME
+            // size as the tray original (never bigger — user report), with
+            // its bottom edge 90px above the touch point. The ghost follows
+            // this lifted piece via _pieceCenter, so piece and shadow move
+            // as one clean unit.
             if (dragPiece != null)
               Builder(
                 builder: (ctx) {
-                  final pw = dragPiece.shape.width * _cellSize * 1.3;
-                  final ph = dragPiece.shape.height * _cellSize * 1.3;
+                  final cell = dragPiece.shape.width >= 4 || dragPiece.shape.height >= 4 ? 15.0 : 19.0;
+                  final pw = dragPiece.shape.width * cell;
+                  final ph = dragPiece.shape.height * cell;
                   final sw = MediaQuery.of(ctx).size.width;
                   // clamp() returns num, but Positioned needs double — cast.
                   final left = (_dragPos.dx - pw / 2).clamp(8.0, max(8.0, sw - pw - 8)).toDouble();
-                  final top = max(8.0, _dragPos.dy - ph - 100).toDouble();
+                  final top = max(8.0, _dragPos.dy - ph - 90).toDouble();
                   return Positioned(
                     left: left,
                     top: top,
                     child: IgnorePointer(
-                      child: _pieceWidget(dragPiece, _cellSize * 1.3, withShadow: true),
+                      child: _pieceWidget(dragPiece, cell, withShadow: true),
                     ),
                   );
                 },
