@@ -16,7 +16,10 @@ void main() {
 // Models
 // ---------------------------------------------------------------------------
 
-const int kBoard = 10;
+/// Board size, exactly as in the user's reference pictures: 8x8.
+/// (NOT 10x10 — the first build used 10x10 from web articles and the user
+/// corrected it: his pictures show an 8x8 board.)
+const int kBoard = 8;
 
 /// A piece shape, written as rows of '1'/'0' characters.
 class Shape {
@@ -209,6 +212,8 @@ class Profile {
   bool dailyClaimed = false;
   int totalCleared = 0;
   int bestCombo = 0;
+  int maxLinesInMove = 0;
+  int graphics = 1; // 0 Low, 1 Medium, 2 High
   int gamesPlayed = 0;
   int streakDays = 0;
   String lastPlayDate = '';
@@ -234,6 +239,8 @@ class Profile {
     dailyClaimed = p.getBool('dailyClaimed') ?? false;
     totalCleared = p.getInt('totalCleared') ?? 0;
     bestCombo = p.getInt('bestCombo') ?? 0;
+    maxLinesInMove = p.getInt('maxLinesInMove') ?? 0;
+    graphics = p.getInt('graphics') ?? 1;
     gamesPlayed = p.getInt('gamesPlayed') ?? 0;
     streakDays = p.getInt('streakDays') ?? 0;
     lastPlayDate = p.getString('lastPlayDate') ?? '';
@@ -262,6 +269,8 @@ class Profile {
     await p.setBool('dailyClaimed', dailyClaimed);
     await p.setInt('totalCleared', totalCleared);
     await p.setInt('bestCombo', bestCombo);
+    await p.setInt('maxLinesInMove', maxLinesInMove);
+    await p.setInt('graphics', graphics);
     await p.setInt('gamesPlayed', gamesPlayed);
     await p.setInt('streakDays', streakDays);
     await p.setString('lastPlayDate', lastPlayDate);
@@ -338,7 +347,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
 Widget coinChip() {
   return Container(
-    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+    padding: const EdgeInsets.only(left: 10, right: 4, top: 4, bottom: 4),
     decoration: BoxDecoration(
       color: Colors.white,
       borderRadius: BorderRadius.circular(20),
@@ -350,6 +359,90 @@ Widget coinChip() {
         const Icon(Icons.monetization_on, color: Color(0xFFFFB300), size: 20),
         const SizedBox(width: 4),
         Text('${profile.coins}', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+        const SizedBox(width: 6),
+        Container(
+          width: 22,
+          height: 22,
+          decoration: const BoxDecoration(color: Color(0xFF43A047), shape: BoxShape.circle),
+          alignment: Alignment.center,
+          child: const Text('+', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16)),
+        ),
+      ],
+    ),
+  );
+}
+
+/// How-to dialog shared by Home and the in-game help button, mirroring the
+/// reference picture: a mini board, a piece above it with a down arrow, the
+/// steps, and a green Got-it button.
+Future<void> showHowToDialog(BuildContext context) {
+  // Fixed mini-board pattern: (row, col, color).
+  const pattern = [
+    (0, 0, 0xFFFFC107),
+    (0, 2, 0xFF8E24AA),
+    (1, 1, 0xFF1E88E5),
+    (1, 3, 0xFF43A047),
+    (2, 0, 0xFFEC407A),
+    (2, 2, 0xFF00ACC1),
+    (3, 1, 0xFFFFC107),
+    (3, 3, 0xFFE53935),
+  ];
+  Widget cell(int r, int c) {
+    Color? fill;
+    for (final p in pattern) {
+      if (p.$1 == r && p.$2 == c) fill = Color(p.$3);
+    }
+    return Container(
+      width: 13,
+      height: 13,
+      margin: const EdgeInsets.all(1),
+      decoration: BoxDecoration(
+        color: fill ?? const Color(0xFFF5EFE3),
+        borderRadius: BorderRadius.circular(3),
+      ),
+    );
+  }
+
+  return showSheet(
+    context,
+    'How to Play',
+    Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Center(
+          child: Column(
+            children: [
+              Container(
+                width: 15,
+                height: 30,
+                decoration: BoxDecoration(color: const Color(0xFF8E24AA), borderRadius: BorderRadius.circular(4)),
+              ),
+              const Icon(Icons.arrow_downward, color: Color(0xFF1E88E5), size: 26),
+              const SizedBox(height: 4),
+              Container(
+                padding: const EdgeInsets.all(5),
+                decoration: BoxDecoration(color: const Color(0xFF8D6E63), borderRadius: BorderRadius.circular(10)),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: List.generate(4, (r) => Row(mainAxisSize: MainAxisSize.min, children: List.generate(4, (c) => cell(r, c)))),
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 16),
+        const Text('1. Drag the block to the board.', style: TextStyle(fontSize: 16)),
+        const SizedBox(height: 10),
+        const Text('2. Fill all the spaces to clear.', style: TextStyle(fontSize: 16)),
+        const SizedBox(height: 10),
+        const Text('3. Clear lines on consecutive moves to build combos.', style: TextStyle(fontSize: 16)),
+        const SizedBox(height: 10),
+        const Text('4. The game ends when no remaining block fits anywhere. Beat your best score!', style: TextStyle(fontSize: 16)),
+        const SizedBox(height: 10),
+        const Text('Tip: touch a block and it lifts up at once — the shadow shows exactly where it will land.',
+            style: TextStyle(fontSize: 15, color: Colors.brown)),
+        const SizedBox(height: 16),
+        bigButton('Got it', const Color(0xFF43A047), () => Navigator.of(context).pop()),
       ],
     ),
   );
@@ -425,6 +518,84 @@ Future<void> showSheet(BuildContext context, String title, Widget body) {
   );
 }
 
+/// Settings dialog shared by Home and the in-game Pause dialog, styled like
+/// the reference picture: Sound / Music / Vibrate toggles, Graphics Quality
+/// Low / Medium / High, Language, Privacy Policy, Terms of Service.
+Future<void> showSettingsDialog(BuildContext context, VoidCallback onChanged) {
+  return showSheet(
+    context,
+    'Settings',
+    StatefulBuilder(
+      builder: (ctx, setDlg) {
+        void refresh() {
+          setDlg(() {});
+          onChanged();
+          profile.save();
+        }
+
+        Widget toggle(String label, IconData icon, bool value, ValueChanged<bool> onChanged2) {
+          return SwitchListTile(
+            title: Row(children: [Icon(icon, color: const Color(0xFF8D6E63)), const SizedBox(width: 8), Text(label)]),
+            value: value,
+            activeColor: const Color(0xFF43A047),
+            onChanged: (v) {
+              onChanged2(v);
+              refresh();
+            },
+          );
+        }
+
+        Widget qualityBtn(int v, String label) {
+          final selected = profile.graphics == v;
+          return Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 3),
+              child: ElevatedButton(
+                onPressed: () {
+                  profile.graphics = v;
+                  Sfx.play('click');
+                  refresh();
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: selected ? const Color(0xFF43A047) : const Color(0xFFD7CCC8),
+                ),
+                child: Text(label, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+              ),
+            ),
+          );
+        }
+
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            toggle('Sound', Icons.volume_up, profile.sound, (v) {
+              profile.sound = v;
+              Sfx.enabled = v;
+            }),
+            toggle('Music', Icons.music_note, profile.music, (v) async {
+              profile.music = v;
+              Sfx.musicEnabled = v;
+              if (v) {
+                await Sfx.startMusic();
+              } else {
+                await Sfx.stopMusic();
+              }
+            }),
+            toggle('Vibrate', Icons.vibration, profile.vibrate, (v) => profile.vibrate = v),
+            const SizedBox(height: 8),
+            const Text('Graphics Quality', style: TextStyle(fontWeight: FontWeight.bold)),
+            const SizedBox(height: 6),
+            Row(children: [qualityBtn(0, 'Low'), qualityBtn(1, 'Medium'), qualityBtn(2, 'High')]),
+            const ListTile(title: Text('Language'), trailing: Text('English')),
+            const ListTile(title: Text('Privacy Policy'), trailing: Icon(Icons.chevron_right)),
+            const ListTile(title: Text('Terms of Service'), trailing: Icon(Icons.chevron_right)),
+          ],
+        );
+      },
+    ),
+  );
+}
+
 // ---------------------------------------------------------------------------
 // Home
 // ---------------------------------------------------------------------------
@@ -464,7 +635,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               const Spacer(),
-              // Logo block art
+              // Logo: blocks piled on a little wooden board, as in the picture.
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -472,6 +643,40 @@ class _HomeScreenState extends State<HomeScreen> {
                   _logoBlock(const Color(0xFF1E88E5)),
                   _logoBlock(const Color(0xFF43A047)),
                 ],
+              ),
+              const SizedBox(height: 8),
+              Container(
+                padding: const EdgeInsets.all(7),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF8D6E63),
+                  borderRadius: BorderRadius.circular(14),
+                  boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.25), blurRadius: 8, offset: const Offset(0, 4))],
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    for (final row in const [
+                      [0xFFFFC107, -1, 0xFF8E24AA, 0xFF1E88E5],
+                      [0xFFEC407A, 0xFF43A047, -1, 0xFFFFC107],
+                      [-1, 0xFF00ACC1, 0xFFE53935, -1],
+                      [0xFF43A047, -1, 0xFFFFC107, 0xFF8E24AA],
+                    ])
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: row.map((v) {
+                          return Container(
+                            width: 26,
+                            height: 26,
+                            margin: const EdgeInsets.all(2),
+                            decoration: BoxDecoration(
+                              color: v == -1 ? const Color(0xFFF5EFE3) : Color(v),
+                              borderRadius: BorderRadius.circular(6),
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                  ],
+                ),
               ),
               const SizedBox(height: 10),
               const Text(
@@ -482,24 +687,22 @@ class _HomeScreenState extends State<HomeScreen> {
                 'PUZZLE',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900, color: Color(0xFF5D4037), letterSpacing: 6),
               ),
-              const SizedBox(height: 8),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
-                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20)),
-                child: Text('Best: ${profile.best}', style: const TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF8D6E63))),
-              ),
               const Spacer(),
               bigButton('Play', const Color(0xFF43A047), () {
                 Navigator.of(context).push(MaterialPageRoute(builder: (_) => const GameScreen())).then((_) => setState(() {}));
               }, icon: Icons.play_arrow),
               const SizedBox(height: 20),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  _homeIcon(context, Icons.calendar_today, 'Daily', () => _daily(context)),
+                  _homeIcon(context, Icons.calendar_today, 'Daily Challenge', () => _daily(context)),
+                  const SizedBox(width: 8),
                   _homeIcon(context, Icons.store, 'Shop', () => _shop(context)),
-                  _homeIcon(context, Icons.emoji_events, 'Awards', () => _achievements(context)),
-                  _homeIcon(context, Icons.help_outline, 'How to', () => _howTo(context)),
+                  const SizedBox(width: 8),
+                  _homeIcon(context, Icons.emoji_events, 'Achievements', () => _achievements(context)),
+                  const SizedBox(width: 8),
+                  _homeIcon(context, Icons.apps, 'More Games', () {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('More games coming soon!')));
+                  }),
                 ],
               ),
               const SizedBox(height: 12),
@@ -524,84 +727,64 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _homeIcon(BuildContext context, IconData icon, String label, VoidCallback onTap) {
-    return InkWell(
-      onTap: () {
-        Sfx.play('click');
-        onTap();
-      },
-      borderRadius: BorderRadius.circular(16),
-      child: Container(
-        width: 68,
-        padding: const EdgeInsets.symmetric(vertical: 10),
-        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16), boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 6, offset: const Offset(0, 2))]),
-        child: Column(
-          children: [
-            Icon(icon, color: const Color(0xFF8D6E63), size: 26),
-            const SizedBox(height: 4),
-            Text(label, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600)),
-          ],
+    return Expanded(
+      child: InkWell(
+        onTap: () {
+          Sfx.play('click');
+          onTap();
+        },
+        borderRadius: BorderRadius.circular(16),
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
+          decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16), boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 6, offset: const Offset(0, 2))]),
+          child: Column(
+            children: [
+              Icon(icon, color: const Color(0xFF8D6E63), size: 26),
+              const SizedBox(height: 4),
+              Text(label, textAlign: TextAlign.center, maxLines: 2, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w600)),
+            ],
+          ),
         ),
       ),
     );
   }
 
   void _settings(BuildContext context) {
-    showSheet(
-      context,
-      'Settings',
-      StatefulBuilder(
-        builder: (ctx, setDlg) {
-          Widget toggle(String label, IconData icon, bool value, ValueChanged<bool> onChanged) {
-            return SwitchListTile(
-              title: Row(children: [Icon(icon, color: const Color(0xFF8D6E63)), const SizedBox(width: 8), Text(label)]),
-              value: value,
-              activeColor: const Color(0xFF43A047),
-              onChanged: (v) {
-                onChanged(v);
-                setDlg(() {});
-                setState(() {});
-                profile.save();
-              },
-            );
-          }
-
-          return Column(
-            children: [
-              toggle('Sound', Icons.volume_up, profile.sound, (v) {
-                profile.sound = v;
-                Sfx.enabled = v;
-              }),
-              toggle('Music', Icons.music_note, profile.music, (v) async {
-                profile.music = v;
-                Sfx.musicEnabled = v;
-                if (v) {
-                  await Sfx.startMusic();
-                } else {
-                  await Sfx.stopMusic();
-                }
-              }),
-              toggle('Vibrate', Icons.vibration, profile.vibrate, (v) => profile.vibrate = v),
-              const ListTile(title: Text('Language'), trailing: Text('English')),
-              const ListTile(title: Text('Privacy Policy'), trailing: Icon(Icons.chevron_right)),
-              const ListTile(title: Text('Terms of Service'), trailing: Icon(Icons.chevron_right)),
-            ],
-          );
-        },
-      ),
-    );
+    showSettingsDialog(context, () => setState(() {}));
   }
 
   void _shop(BuildContext context) {
+    var tab = 0;
     showSheet(
       context,
       'Shop',
       StatefulBuilder(
         builder: (ctx, setDlg) {
+          Widget tabBtn(int i, String label) {
+            final selected = tab == i;
+            return Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 3),
+                child: ElevatedButton(
+                  onPressed: () {
+                    tab = i;
+                    Sfx.play('click');
+                    setDlg(() {});
+                  },
+                  style: ElevatedButton.styleFrom(backgroundColor: selected ? const Color(0xFF8D6E63) : const Color(0xFFD7CCC8)),
+                  child: Text(label, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                ),
+              ),
+            );
+          }
+
           return Column(
             children: [
-              Row(children: [coinChip(), const Spacer(), const Text('Block styles', style: TextStyle(fontWeight: FontWeight.bold))]),
+              Row(children: [coinChip(), const Spacer()]),
               const SizedBox(height: 12),
-              ...kBlockThemes.asMap().entries.map((e) {
+              Row(children: [tabBtn(0, 'Blocks'), tabBtn(1, 'Themes'), tabBtn(2, 'Coins')]),
+              const SizedBox(height: 12),
+              if (tab == 0) ...kBlockThemes.asMap().entries.map((e) {
                 final i = e.key;
                 final t = e.value;
                 final owned = profile.ownedThemes.contains(i);
@@ -635,10 +818,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 );
               }),
-              const SizedBox(height: 12),
-              const Text('Board styles', style: TextStyle(fontWeight: FontWeight.bold)),
-              const SizedBox(height: 6),
-              ...kBoardThemes.asMap().entries.map((e) {
+              if (tab == 1) ...kBoardThemes.asMap().entries.map((e) {
                 final i = e.key;
                 final t = e.value;
                 final equipped = profile.boardTheme == i;
@@ -659,9 +839,21 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 );
               }),
-              const SizedBox(height: 12),
-              const Text('Earn coins by clearing lines, combos and the Daily Challenge. No purchase needed.',
-                  style: TextStyle(color: Colors.grey)),
+              if (tab == 2)
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('You have ${profile.coins} coins.', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                    const SizedBox(height: 8),
+                    const Text('Earn coins by clearing lines, combos and the Daily Challenge. No purchase needed.',
+                        style: TextStyle(color: Colors.grey)),
+                    const SizedBox(height: 12),
+                    bigButton('Go to Daily Challenge', const Color(0xFFFFB300), () {
+                      Navigator.of(ctx).pop();
+                      _daily(context);
+                    }),
+                  ],
+                ),
             ],
           );
         },
@@ -681,6 +873,69 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text('Clear 20 lines today and get rewards!'),
+              const SizedBox(height: 12),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  for (var i = 0; i < 7; i++)
+                    Container(
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        color: i < profile.streakDays.clamp(0, 7) ? const Color(0xFF43A047) : Colors.grey.shade300,
+                        shape: BoxShape.circle,
+                      ),
+                      alignment: Alignment.center,
+                      child: i < profile.streakDays.clamp(0, 7)
+                          ? const Icon(Icons.check, color: Colors.white, size: 18)
+                          : const SizedBox.shrink(),
+                    ),
+                  Container(
+                    width: 34,
+                    height: 34,
+                    decoration: const BoxDecoration(color: Color(0xFFFFB300), shape: BoxShape.circle),
+                    alignment: Alignment.center,
+                    child: const Icon(Icons.card_giftcard, color: Colors.white, size: 20),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 12),
+              Center(
+                child: Container(
+                  padding: const EdgeInsets.all(5),
+                  decoration: BoxDecoration(color: const Color(0xFF8D6E63), borderRadius: BorderRadius.circular(10)),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: List.generate(8, (r) {
+                      return Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: List.generate(8, (c) {
+                          const filled = {
+                            (0, 1): 0xFFFFC107,
+                            (1, 1): 0xFF8E24AA,
+                            (1, 4): 0xFF1E88E5,
+                            (2, 2): 0xFF43A047,
+                            (3, 0): 0xFFEC407A,
+                            (3, 5): 0xFF00ACC1,
+                            (4, 3): 0xFFFFC107,
+                            (5, 6): 0xFFE53935,
+                          };
+                          final v = filled[(r, c)];
+                          return Container(
+                            width: 11,
+                            height: 11,
+                            margin: const EdgeInsets.all(1),
+                            decoration: BoxDecoration(
+                              color: v == null ? const Color(0xFFF5EFE3) : Color(v),
+                              borderRadius: BorderRadius.circular(3),
+                            ),
+                          );
+                        }),
+                      );
+                    }),
+                  ),
+                ),
+              ),
               const SizedBox(height: 12),
               LinearProgressIndicator(
                 value: (profile.dailyLines / goal).clamp(0.0, 1.0),
@@ -716,11 +971,13 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _achievements(BuildContext context) {
+    // Mirrors the picture's list, adapted to endless play (no levels):
+    // First Move / 10 Games / Block Master / Perfect Clear / Daily Player.
     final defs = <(String, String, int Function(), int, int)>[
       ('First Move', 'Place your first block', () => profile.gamesPlayed > 0 ? 1 : 0, 1, 50),
+      ('10 Games', 'Play 10 games', () => profile.gamesPlayed, 10, 100),
       ('Block Master', 'Clear 1000 blocks in total', () => profile.totalCleared, 1000, 200),
-      ('Combo Star', 'Reach a 3x combo streak', () => profile.bestCombo, 3, 150),
-      ('High Scorer', 'Score 5000 points in one game', () => profile.best, 5000, 200),
+      ('Perfect Clear', 'Clear 3 lines in one move', () => profile.maxLinesInMove, 3, 150),
       ('Daily Player', 'Play 7 days in a row', () => profile.streakDays, 7, 200),
     ];
     showSheet(
@@ -772,25 +1029,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _howTo(BuildContext context) {
-    showSheet(
-      context,
-      'How to Play',
-      const Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text('1. Drag a block from the bottom tray onto the board.', style: TextStyle(fontSize: 16)),
-          SizedBox(height: 10),
-          Text('2. Fill a full row or column to clear it and score.', style: TextStyle(fontSize: 16)),
-          SizedBox(height: 10),
-          Text('3. Clear lines on consecutive moves to build combos.', style: TextStyle(fontSize: 16)),
-          SizedBox(height: 10),
-          Text('4. The game ends when no remaining block fits anywhere. Beat your best score!', style: TextStyle(fontSize: 16)),
-          SizedBox(height: 10),
-          Text('Tip: touch a block and it lifts up at once — the shadow shows exactly where it will land.',
-              style: TextStyle(fontSize: 15, color: Colors.brown)),
-        ],
-      ),
-    );
+    showHowToDialog(context);
   }
 }
 
@@ -990,6 +1229,7 @@ class _GameScreenState extends State<GameScreen> {
         _runCoins += coins;
         profile.coins += coins;
         profile.totalCleared += rows.length * kBoard + cols.length * kBoard;
+        if (lines > profile.maxLinesInMove) profile.maxLinesInMove = lines;
         profile.dailyLines += lines;
       });
       if (_combo >= 2) {
@@ -1107,17 +1347,20 @@ class _GameScreenState extends State<GameScreen> {
     });
   }
 
-  void _dragStart(int idx, DragStartDetails d) {
+  // Lift the piece the instant the finger TOUCHES it (onPanDown), not only
+  // once the finger starts moving (onPanStart fires after the move slop, so
+  // a touch-and-hold showed nothing in build 1 — the user's complaint).
+  void _dragStart(int idx, Offset globalPos) {
     if (_clearing) return;
     _boardMetrics();
     setState(() {
       _draggingIdx = idx;
-      _dragPos = d.globalPosition;
+      _dragPos = globalPos;
       _hintGhost = null;
     });
     Sfx.play('pickup');
     _vibrate();
-    _updateHover(d.globalPosition);
+    _updateHover(globalPos);
   }
 
   void _dragUpdate(DragUpdateDetails d) {
@@ -1235,6 +1478,10 @@ class _GameScreenState extends State<GameScreen> {
                 Navigator.of(context).pop();
                 Navigator.of(context).pop();
               }, icon: Icons.home),
+              const SizedBox(height: 10),
+              bigButton('Settings', const Color(0xFF5D4037), () {
+                showSettingsDialog(context, () => setState(() {}));
+              }, icon: Icons.settings),
             ],
           ),
         ),
@@ -1243,6 +1490,25 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   // -- rendering --------------------------------------------------------------
+
+  /// Boxed Score/Best readout in the picture's top-bar style.
+  Widget _topBox(String label, String value) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+      decoration: BoxDecoration(
+        color: const Color(0xFFFFF8E7),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: const Color(0xFF8D6E63), width: 2),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(label, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.brown)),
+          Text(value, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w900)),
+        ],
+      ),
+    );
+  }
 
   Widget _pieceWidget(Piece p, double cell, {bool withShadow = false}) {
     return Column(
@@ -1259,9 +1525,12 @@ class _GameScreenState extends State<GameScreen> {
               decoration: BoxDecoration(
                 color: _colors[p.color % _colors.length],
                 borderRadius: BorderRadius.circular(cell * 0.18),
-                boxShadow: withShadow
-                    ? [BoxShadow(color: Colors.black.withOpacity(0.35), blurRadius: 10, offset: const Offset(0, 6))]
-                    : [BoxShadow(color: Colors.black.withOpacity(0.18), blurRadius: 2, offset: const Offset(0, 1))],
+                // Graphics Quality Low disables shadows entirely.
+                boxShadow: profile.graphics == 0
+                    ? null
+                    : (withShadow
+                        ? [BoxShadow(color: Colors.black.withOpacity(0.35), blurRadius: 10, offset: const Offset(0, 6))]
+                        : [BoxShadow(color: Colors.black.withOpacity(0.18), blurRadius: 2, offset: const Offset(0, 1))]),
               ),
             );
           }).toList(),
@@ -1320,7 +1589,9 @@ class _GameScreenState extends State<GameScreen> {
       decoration: BoxDecoration(
         color: _bTheme.frame,
         borderRadius: BorderRadius.circular(16),
-        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.25), blurRadius: 10, offset: const Offset(0, 4))],
+        boxShadow: profile.graphics == 0
+            ? null
+            : [BoxShadow(color: Colors.black.withOpacity(0.25), blurRadius: 10, offset: const Offset(0, 4))],
       ),
       child: GridView.builder(
         physics: const NeverScrollableScrollPhysics(),
@@ -1422,26 +1693,21 @@ class _GameScreenState extends State<GameScreen> {
                 children: [
                   Row(
                     children: [
-                      IconButton(
-                        icon: const Icon(Icons.pause, color: Color(0xFF8D6E63)),
-                        onPressed: _pauseDialog,
-                      ),
-                      Expanded(
-                        child: Column(
-                          children: [
-                            const Text('SCORE', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.brown)),
-                            Text('$_score', style: const TextStyle(fontSize: 26, fontWeight: FontWeight.w900)),
-                          ],
+                      Container(
+                        decoration: const BoxDecoration(color: Color(0xFF1E88E5), shape: BoxShape.circle),
+                        child: IconButton(
+                          icon: const Icon(Icons.pause, color: Colors.white),
+                          onPressed: _pauseDialog,
                         ),
                       ),
-                      Column(
-                        children: [
-                          const Text('BEST', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.brown)),
-                          Text('${max(profile.best, _score)}', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                        ],
-                      ),
                       const SizedBox(width: 8),
-                      coinChip(),
+                      Expanded(child: Center(child: _topBox('SCORE', '$_score'))),
+                      const SizedBox(width: 8),
+                      _topBox('BEST', '${max(profile.best, _score)}'),
+                      IconButton(
+                        icon: const Icon(Icons.help_outline, color: Color(0xFF8D6E63)),
+                        onPressed: () => showHowToDialog(context),
+                      ),
                     ],
                   ),
                   SizedBox(
@@ -1486,7 +1752,7 @@ class _GameScreenState extends State<GameScreen> {
                                     opacity: isDraggingThis ? 0.25 : 1.0,
                                     child: GestureDetector(
                                       behavior: HitTestBehavior.opaque,
-                                      onPanStart: (d) => _dragStart(i, d),
+                                      onPanDown: (d) => _dragStart(i, d.globalPosition),
                                       onPanUpdate: _dragUpdate,
                                       onPanEnd: (_) => _dragEnd(),
                                       onPanCancel: () => setState(() {
@@ -1522,17 +1788,28 @@ class _GameScreenState extends State<GameScreen> {
                 ],
               ),
             ),
-            // Dragged piece follows the finger, lifted with a shadow.
+            // Dragged piece floats ABOVE the finger, lifted with a shadow.
+            // Build 1 centered the piece on the finger with only a 24px
+            // offset, so the fingertip covered it completely (user report).
+            // Now the piece is drawn 1.3x larger with its BOTTOM edge 100px
+            // above the touch point, so the whole piece stays visible above
+            // the finger at all times; the ghost on the board shows landing.
             if (dragPiece != null)
-              Positioned(
-                left: _dragPos.dx - (dragPiece.shape.width * _cellSize) / 2,
-                top: _dragPos.dy - (dragPiece.shape.height * _cellSize) / 2 - 24,
-                child: IgnorePointer(
-                  child: Transform.scale(
-                    scale: 1.12,
-                    child: _pieceWidget(dragPiece, _cellSize, withShadow: true),
-                  ),
-                ),
+              Builder(
+                builder: (ctx) {
+                  final pw = dragPiece.shape.width * _cellSize * 1.3;
+                  final ph = dragPiece.shape.height * _cellSize * 1.3;
+                  final sw = MediaQuery.of(ctx).size.width;
+                  final left = (_dragPos.dx - pw / 2).clamp(8.0, max(8.0, sw - pw - 8));
+                  final top = max(8.0, _dragPos.dy - ph - 100);
+                  return Positioned(
+                    left: left,
+                    top: top,
+                    child: IgnorePointer(
+                      child: _pieceWidget(dragPiece, _cellSize * 1.3, withShadow: true),
+                    ),
+                  );
+                },
               ),
           ],
         ),
