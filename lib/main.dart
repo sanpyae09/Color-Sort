@@ -1800,8 +1800,9 @@ class _GameScreenState extends State<GameScreen> {
                   final pw = dragPiece.shape.width * _cellSize * 1.3;
                   final ph = dragPiece.shape.height * _cellSize * 1.3;
                   final sw = MediaQuery.of(ctx).size.width;
-                  final left = (_dragPos.dx - pw / 2).clamp(8.0, max(8.0, sw - pw - 8));
-                  final top = max(8.0, _dragPos.dy - ph - 100);
+                  // clamp() returns num, but Positioned needs double — cast.
+                  final left = (_dragPos.dx - pw / 2).clamp(8.0, max(8.0, sw - pw - 8)).toDouble();
+                  final top = max(8.0, _dragPos.dy - ph - 100).toDouble();
                   return Positioned(
                     left: left,
                     top: top,
