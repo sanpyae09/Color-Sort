@@ -1,0 +1,63 @@
+name: Build Block Puzzle APK
+
+on:
+  push:
+    branches: [blockpuzzle]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Generate sound effects
+        run: python3 ci/gen_sfx.py
+
+      - name: Scaffold android project (template from installed Flutter)
+        run: |
+          flutter create --project-name blockpuzzle --org com.pyaystudios --platforms android scaffold_tmp
+          cp -r scaffold_tmp/android android
+          rm -rf scaffold_tmp
+
+      - name: Patch manifest (Impeller off, XML validated)
+        run: python3 ci/patch_manifest.py
+
+      - name: Pub get
+        run: flutter pub get
+
+      - name: Generate launcher icons
+        run: dart run flutter_launcher_icons
+
+      - name: Build release APK
+        run: flutter build apk --release
+
+      - name: Publish APK to release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cp build/app/outputs/flutter-apk/app-release.apk blockpuzzle.apk
+          ls -la blockpuzzle.apk
+          gh release view blockpuzzle >/dev/null 2>&1 || gh release create blockpuzzle --title "Block Puzzle (test build)" --notes "Automated build from the blockpuzzle branch. Endless block puzzle, no ads in build 1."
+          gh release upload blockpuzzle blockpuzzle.apk --clobber
+
+      - name: Upload artifact (backup)
+        uses: actions/upload-artifact@v4
+        with:
+          name: blockpuzzle-apk
+          path: blockpuzzle.apk
