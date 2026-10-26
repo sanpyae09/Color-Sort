@@ -2631,7 +2631,7 @@ class _GameScreenState extends State<GameScreen> {
               ]),
             ),
             if (dragPiece != null) _floatingPiece(),
-            ]),
+            ]);
           }),
         ),
       ),
