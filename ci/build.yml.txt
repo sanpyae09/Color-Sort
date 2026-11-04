@@ -1,0 +1,71 @@
+name: Build NUVESSA APK
+
+on:
+  push:
+    branches: [nuvessa]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Decode assets (split base64 -> files)
+        run: |
+          mkdir -p assets/images assets/audio
+          for base in app_icon.png listen_en_everyday.mp3 listen_ms_everyday.mp3; do
+            cat assets_b64/${base}.b64.part* > /tmp/${base}.b64
+            if [[ "$base" == listen_* ]]; then out="assets/audio/$base"; else out="assets/images/$base"; fi
+            base64 -d /tmp/${base}.b64 > "$out"
+            echo "decoded $out ($(stat -c%s "$out") bytes)"
+          done
+          ls -lh assets/audio/ assets/images/
+
+      - name: Scaffold android project (template from installed Flutter)
+        run: |
+          flutter create --project-name nuvessa --org com.pyaystudios --platforms android scaffold_tmp
+          cp -r scaffold_tmp/android android
+          rm -rf scaffold_tmp
+
+      - name: Patch scaffold (applicationId, minSdk, Impeller off, media permissions)
+        run: python3 ci/post_scaffold.py
+
+      - name: Pub get
+        run: flutter pub get
+
+      - name: Generate launcher icons
+        run: dart run flutter_launcher_icons
+
+      - name: Build release APK (debug-signed test build)
+        run: flutter build apk --release
+
+      - name: Publish APK to release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cp build/app/outputs/flutter-apk/app-release.apk nuvessa.apk
+          ls -la nuvessa.apk
+          gh release view nuvessa-v1 >/dev/null 2>&1 || gh release create nuvessa-v1 --title "NUVESSA v1 (test build)" --notes "Automated test build from the nuvessa branch. English + Bahasa Malaysia first, with screen-off Listen Mode."
+          gh release upload nuvessa-v1 nuvessa.apk --clobber
+
+      - name: Upload artifact (backup)
+        uses: actions/upload-artifact@v4
+        with:
+          name: nuvessa-apk
+          path: nuvessa.apk
