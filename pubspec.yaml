@@ -1,0 +1,38 @@
+name: nuvessa
+description: "NUVESSA - Learn Every Language. Unlock Every World. English and Bahasa Malaysia first, with screen-off listening lessons."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.5.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  shared_preferences: ^2.3.2
+  flutter_tts: ^4.2.0
+  just_audio: ^0.9.46
+  just_audio_background: ^0.0.1-beta.15
+  audio_service: ^0.18.0
+  audio_session: ^0.1.21
+  speech_to_text: ^7.0.0
+  share_plus: ^10.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  flutter_launcher_icons: ^0.14.1
+
+flutter_launcher_icons:
+  android: true
+  ios: false
+  image_path: "assets/images/app_icon.png"
+  min_sdk_android: 24
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/audio/
