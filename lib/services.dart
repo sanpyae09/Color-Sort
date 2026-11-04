@@ -130,7 +130,11 @@ class Store extends ChangeNotifier {
 
 // ---------------- Text to speech (phone TTS, works offline) ----------------
 class TtsService {
-  final FlutterTts _tts = FlutterTts();
+  // Same init-order rule as ListenPlayer: no platform object at import
+  // time. The FlutterTts instance is created on first use, after
+  // WidgetsFlutterBinding is ready.
+  FlutterTts? _ttsInstance;
+  FlutterTts get _tts => _ttsInstance ??= FlutterTts();
   bool _ready = false;
 
   Future<void> init() async {
@@ -171,15 +175,37 @@ final tts = TtsService();
 // It is NOT a timer that stops when the app sleeps, and it is NOT
 // flutter_tts spoken from the UI thread.
 class ListenPlayer {
-  final AudioPlayer player = AudioPlayer();
+  // SYSTEMATIC FIX: JustAudioBackground.init() in main() MUST run before
+  // any AudioPlayer exists. Creating the player at import time (as a
+  // top-level final) would break that order, so the player is created
+  // lazily on first use, long after main() has initialised the
+  // background service.
+  AudioPlayer? _player;
+  AudioPlayer get player => _player ??= AudioPlayer();
   ListenLesson? current;
   bool _prepared = false;
+
+  // White-screen fix companion (v1.1): main() now inits the audio
+  // background service in the background AFTER runApp, so Listen Mode
+  // must not create/play before that init has had its chance. The
+  // player waits at most 5s for the ready signal, then plays anyway.
+  final Completer<void> _audioReady = Completer<void>();
+  void markAudioReady() {
+    if (!_audioReady.isCompleted) _audioReady.complete();
+  }
+
+  Future<void> _waitAudioReady() async {
+    try {
+      await _audioReady.future.timeout(const Duration(seconds: 5));
+    } catch (_) {}
+  }
 
   Stream<PlayerState> get stateStream => player.playerStateStream;
   Stream<Duration> get positionStream => player.positionStream;
   Stream<Duration?> get durationStream => player.durationStream;
 
   Future<void> playLesson(ListenLesson lesson) async {
+    await _waitAudioReady();
     try {
       if (current?.id != lesson.id || !_prepared) {
         await player.setAudioSource(

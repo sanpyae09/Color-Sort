@@ -12,14 +12,37 @@ final Store store = Store();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await JustAudioBackground.init(
-    androidNotificationChannelId: 'com.pyaystudios.nuvessa.audio',
-    androidNotificationChannelName: 'NUVESSA Listening',
-    androidNotificationOngoing: true,
-  );
-  await tts.init();
-  await store.load();
+  // WHITE-SCREEN FIX (v1.1, user report 2026-11-04 ~22:24): v1 awaited
+  // JustAudioBackground.init + tts.init + store.load BEFORE runApp, so if
+  // any one of those platform calls stalls on a phone, Flutter never
+  // renders its first frame and the user sees only a white screen.
+  // Now the app runs FIRST, and all three inits happen in the background,
+  // each capped at 8 seconds, errors swallowed. A failed/slow init must
+  // never block the UI again; saved settings apply via notifyListeners
+  // when store.load finishes, and TTS re-inits on first speak if needed.
   runApp(const NuvessaApp());
+  unawaited(_initInBackground());
+}
+
+Future<void> _initInBackground() async {
+  try {
+    await JustAudioBackground.init(
+      androidNotificationChannelId: 'com.pyaystudios.nuvessa.audio',
+      androidNotificationChannelName: 'NUVESSA Listening',
+      androidNotificationOngoing: true,
+    ).timeout(const Duration(seconds: 8));
+  } catch (_) {
+    // Audio background service unavailable/slow: Listen Mode still opens;
+    // playback falls back to the in-app player path in ListenPlayer.
+  } finally {
+    listenPlayer.markAudioReady();
+  }
+  try {
+    await tts.init().timeout(const Duration(seconds: 8));
+  } catch (_) {}
+  try {
+    await store.load().timeout(const Duration(seconds: 8));
+  } catch (_) {}
 }
 
 class NuvessaApp extends StatelessWidget {
