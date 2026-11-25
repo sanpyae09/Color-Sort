@@ -2254,13 +2254,13 @@ class DhammaPainter extends CustomPainter {
     for (int i = -2; i <= 2; i++) {
       final petal = Path()
         ..moveTo(cx + i * 26, size.height * 0.78)
-        ..quadraticCurveTo(
+        ..quadraticBezierTo(
           cx + i * 26 + 10,
           size.height * 0.70,
           cx + i * 26,
           size.height * 0.66,
         )
-        ..quadraticCurveTo(
+        ..quadraticBezierTo(
           cx + i * 26 - 10,
           size.height * 0.70,
           cx + i * 26,
