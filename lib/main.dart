@@ -1,6 +1,7 @@
-// Live Studio 1.0.0 — original implementation by Pyay Studios.
+// Live Studio 1.0.1 — original implementation by Pyay Studios.
 // Interactive game overlays for TikTok / YouTube Live.
-// All graphics are drawn in code (CustomPaint). No copied assets, no
+// Studio scenes are original cartoon artwork generated for this app
+// (embedded as base64 JPEGs in art_*.dart). No copied assets, no
 // copyrighted music bundled — songs come from the user's own device.
 // TikTok has no official public gift-stream API for third-party apps, so
 // the live engine tries a public live-page resolve first and otherwise
@@ -17,6 +18,64 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
+
+import 'art_dhamma.dart';
+import 'art_truck.dart';
+import 'art_runner.dart';
+import 'art_whack.dart';
+import 'art_tug.dart';
+
+// ------------------------------------------------------------ studio artwork
+// Base64 JPEGs decoded once and cached (never decode per animation frame).
+class _ArtCache {
+  static final Map<String, Uint8List> _m = {};
+  static Uint8List of(String id) {
+    return _m.putIfAbsent(id, () {
+      switch (id) {
+        case 'dhamma':
+          return base64Decode(kArtDhamma);
+        case 'truck':
+          return base64Decode(kArtTruck);
+        case 'runner':
+          return base64Decode(kArtRunner);
+        case 'whack':
+          return base64Decode(kArtWhack);
+        case 'tug':
+          return base64Decode(kArtTug);
+        default:
+          return base64Decode(kArtDhamma);
+      }
+    });
+  }
+}
+
+/// Full-bleed studio scene.
+Widget _bgArt(String studioId) {
+  return Image.memory(
+    _ArtCache.of(studioId),
+    fit: BoxFit.cover,
+    width: double.infinity,
+    height: double.infinity,
+  );
+}
+
+/// Dark gradient scrim so white text stays readable over bright artwork.
+Widget _scrim({double opacity = 0.45}) {
+  return Container(
+    decoration: BoxDecoration(
+      gradient: LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [
+          Colors.black.withOpacity(opacity),
+          Colors.black.withOpacity(0.0),
+          Colors.black.withOpacity(opacity * 0.9),
+        ],
+        stops: const [0.0, 0.45, 1.0],
+      ),
+    ),
+  );
+}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -789,9 +848,14 @@ class LiveStudioHome extends StatelessWidget {
           final s = kStudios[i - 1];
           return Card(
             child: ListTile(
-              leading: CircleAvatar(
-                backgroundColor: s.color,
-                child: Icon(s.icon, color: Colors.white),
+              leading: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.memory(
+                  _ArtCache.of(s.id),
+                  width: 56,
+                  height: 56,
+                  fit: BoxFit.cover,
+                ),
               ),
               title: Text('${s.title}  •  ${s.myTitle}'),
               subtitle: Text(s.desc),
@@ -1205,7 +1269,13 @@ class _SetupScreenState extends State<SetupScreen> {
                       ),
                     if (!connected && connectStatus.isNotEmpty)
                       const Chip(
-                        label: Text('Demo mode'),
+                        label: Text(
+                          'Demo mode',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                         backgroundColor: Colors.orange,
                       ),
                   ],
@@ -1331,6 +1401,11 @@ class _LiveScreenState extends State<LiveScreen>
   // dhamma
   int _blessings = 0;
 
+  // Orientation is decided by the studio, not the saved ratio.
+  bool get _isLandscape =>
+      widget.def.landscapeDefault ||
+      (widget.def.id == 'dhamma' && widget.presetIndex == 7);
+
   @override
   void initState() {
     super.initState();
@@ -1342,7 +1417,11 @@ class _LiveScreenState extends State<LiveScreen>
       if (mounted) setState(() {});
     });
     WakelockPlus.enable();
-    if (widget.cfg.ratio == 'Landscape') {
+    // Orientation is locked per studio preset, not per saved ratio:
+    // Party Truck + Tug of War (and Dhamma's landscape preset) run in
+    // landscape; the other studios run in portrait. A landscape studio
+    // must never show as a tiny scene in a tall portrait canvas.
+    if (_isLandscape) {
       SystemChrome.setPreferredOrientations([
         DeviceOrientation.landscapeLeft,
         DeviceOrientation.landscapeRight,
@@ -1528,7 +1607,7 @@ class _LiveScreenState extends State<LiveScreen>
   @override
   Widget build(BuildContext context) {
     final cfg = widget.cfg;
-    final isLandscape = cfg.ratio == 'Landscape';
+    final isLandscape = _isLandscape;
     return Scaffold(
       backgroundColor: Colors.black,
       body: GestureDetector(
@@ -1536,6 +1615,25 @@ class _LiveScreenState extends State<LiveScreen>
         child: Stack(
           children: [
             Positioned.fill(child: _gameCanvas()),
+            // top scrim so header text/icons stay readable over artwork
+            Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              height: 110,
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Colors.black.withOpacity(0.55),
+                      Colors.black.withOpacity(0.0),
+                    ],
+                  ),
+                ),
+              ),
+            ),
             // top bar
             Positioned(
               top: 0,
@@ -1552,7 +1650,13 @@ class _LiveScreenState extends State<LiveScreen>
                       Chip(
                         label: Text(
                           _engine.demoMode ? 'DEMO MODE' : 'LIVE',
-                          style: const TextStyle(fontSize: 11),
+                          style: TextStyle(
+                            fontSize: 11,
+                            fontWeight: FontWeight.bold,
+                            color: _engine.demoMode
+                                ? Colors.black
+                                : Colors.white,
+                          ),
                         ),
                         backgroundColor: _engine.demoMode
                             ? Colors.orange
@@ -1641,21 +1745,29 @@ class _LiveScreenState extends State<LiveScreen>
                       ),
                       const SizedBox(height: 4),
                       Expanded(
-                        child: ListView(
-                          children: _log
-                              .take(5)
-                              .map(
-                                (e) => Text(
-                                  '${e.kind == 'gift'
-                                      ? '🎁'
-                                      : e.kind == 'join'
-                                      ? '👋'
-                                      : '💬'} ${e.user}: ${e.text}',
-                                  style: const TextStyle(fontSize: 12),
+                        child: _log.isEmpty
+                            ? const Text(
+                                '💬 Comments and 🎁 gifts will appear here.\nTap “Test gift” below to try one now.',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.white70,
                                 ),
                               )
-                              .toList(),
-                        ),
+                            : ListView(
+                                children: _log
+                                    .take(5)
+                                    .map(
+                                      (e) => Text(
+                                        '${e.kind == 'gift'
+                                            ? '🎁'
+                                            : e.kind == 'join'
+                                            ? '👋'
+                                            : '💬'} ${e.user}: ${e.text}',
+                                        style: const TextStyle(fontSize: 12),
+                                      ),
+                                    )
+                                    .toList(),
+                              ),
                       ),
                     ],
                   ),
@@ -1759,18 +1871,41 @@ class _LiveScreenState extends State<LiveScreen>
     final preset = kDhammaPresets[widget.presetIndex % kDhammaPresets.length];
     return Stack(
       children: [
-        Positioned.fill(
-          child: CustomPaint(
-            painter: DhammaPainter(
-              phase: _anim.value,
-              overlay: widget.cfg.overlay,
-              preset: preset,
+        Positioned.fill(child: _bgArt('dhamma')),
+        Positioned.fill(child: _scrim(opacity: 0.35)),
+        // Waveform strip — sits in its own band above the event log,
+        // never over text or the log box.
+        if (widget.cfg.overlay != 'No overlay')
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 208,
+            height: 26,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                for (int i = 0; i < 36; i++)
+                  Expanded(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 1),
+                      height:
+                          6 +
+                          18 *
+                              (0.5 +
+                                  0.5 *
+                                      math.sin(
+                                        _anim.value * math.pi * 2 + i * 0.7,
+                                      )),
+                      color: Colors.white.withOpacity(0.75),
+                    ),
+                  ),
+              ],
             ),
           ),
-        ),
         Positioned(
           left: 16,
-          bottom: 210,
+          right: 16,
+          bottom: 244,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -1801,53 +1936,61 @@ class _LiveScreenState extends State<LiveScreen>
   }
 
   Widget _truckCanvas() {
+    // The whole scene gently bounces while the riders dance.
+    final bounce = _dancing
+        ? math.sin(_anim.value * math.pi * 2 * widget.cfg.speed) * 8
+        : 0.0;
     return Stack(
       children: [
         Positioned.fill(
-          child: CustomPaint(
-            painter: TruckPainter(
-              phase: _anim.value,
-              dancing: _dancing,
-              speed: widget.cfg.speed,
-              riderCount: _riders.length,
-              vvipIndex: _vvip.isEmpty ? -1 : _riders.indexOf(_vvip),
-            ),
+          child: Transform.translate(
+            offset: Offset(0, bounce),
+            child: _bgArt('truck'),
           ),
         ),
+        Positioned.fill(child: _scrim(opacity: 0.3)),
         Positioned(
           left: 16,
+          right: 16,
           top: 90,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Party Truck',
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  shadows: [Shadow(blurRadius: 6, color: Colors.black)],
-                ),
-              ),
-              Text(
-                'Riders (${_riders.length}): ${_riders.join(', ')}',
-                style: const TextStyle(
-                  shadows: [Shadow(blurRadius: 4, color: Colors.black)],
-                ),
-              ),
-              if (_vvip.isNotEmpty)
-                Text(
-                  '👑 VVIP: $_vvip',
-                  style: const TextStyle(
-                    color: Colors.amber,
+          child: Container(
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: Colors.black.withOpacity(0.45),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Party Truck',
+                  style: TextStyle(
+                    fontSize: 22,
                     fontWeight: FontWeight.bold,
+                    shadows: [Shadow(blurRadius: 6, color: Colors.black)],
+                  ),
+                ),
+                Text(
+                  'Riders (${_riders.length}): ${_riders.join(', ')}',
+                  style: const TextStyle(
                     shadows: [Shadow(blurRadius: 4, color: Colors.black)],
                   ),
                 ),
-              Text(
-                'Gifts: ${widget.cfg.gifts.entries.map((e) => '${e.value} = ${e.key}').join('  •  ')}',
-                style: const TextStyle(fontSize: 11, color: Colors.white70),
-              ),
-            ],
+                if (_vvip.isNotEmpty)
+                  Text(
+                    '👑 VVIP: $_vvip',
+                    style: const TextStyle(
+                      color: Colors.amber,
+                      fontWeight: FontWeight.bold,
+                      shadows: [Shadow(blurRadius: 4, color: Colors.black)],
+                    ),
+                  ),
+                Text(
+                  'Gifts: ${widget.cfg.gifts.entries.map((e) => '${e.value} = ${e.key}').join('  •  ')}',
+                  style: const TextStyle(fontSize: 12, color: Colors.white),
+                ),
+              ],
+            ),
           ),
         ),
       ],
@@ -1864,8 +2007,10 @@ class _LiveScreenState extends State<LiveScreen>
               painter: MapPainter(selected: _mapRegion, points: _mapPoints),
             ),
           ),
+          Positioned.fill(child: _scrim(opacity: 0.18)),
           Positioned(
             left: 16,
+            right: 16,
             top: 90,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -1924,17 +2069,18 @@ class _LiveScreenState extends State<LiveScreen>
     required double progressB,
   }) {
     return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [Color(0xFF1B5E20), Color(0xFF2E7D32), Color(0xFF8D6E63)],
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: MemoryImage(_ArtCache.of('runner')),
+          fit: BoxFit.cover,
         ),
       ),
       child: Stack(
         children: [
+          Positioned.fill(child: _scrim(opacity: 0.3)),
           Positioned(
             left: 16,
+            right: 16,
             top: 90,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -2023,17 +2169,18 @@ class _LiveScreenState extends State<LiveScreen>
 
   Widget _whackCanvas() {
     return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [Color(0xFF4A148C), Color(0xFF7B1FA2)],
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: MemoryImage(_ArtCache.of('whack')),
+          fit: BoxFit.cover,
         ),
       ),
       child: Stack(
         children: [
+          Positioned.fill(child: _scrim(opacity: 0.25)),
           Positioned(
             left: 16,
+            right: 16,
             top: 90,
             child: Text(
               'Whack-a-Dwarf — Score: $_whackScore',
@@ -2066,9 +2213,9 @@ class _LiveScreenState extends State<LiveScreen>
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.black45,
+                      color: Colors.black.withOpacity(0.35),
                       borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: Colors.white24),
+                      border: Border.all(color: Colors.white38),
                     ),
                     child: Center(
                       child: Text(
@@ -2082,12 +2229,13 @@ class _LiveScreenState extends State<LiveScreen>
             ),
           ),
           const Positioned(
-            left: 0,
-            right: 0,
+            left: 16,
+            right: 16,
             bottom: 210,
             child: Center(
               child: Text(
                 'Tap the dwarf with the hammer!  Gifts & comments make them pop.',
+                textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.white70, fontSize: 12),
               ),
             ),
@@ -2101,15 +2249,15 @@ class _LiveScreenState extends State<LiveScreen>
     final boys = (_pull < 0 ? -_pull : 0.0);
     final girls = (_pull > 0 ? _pull : 0.0);
     return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [Color(0xFF0D47A1), Color(0xFF1565C0), Color(0xFF5D4037)],
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: MemoryImage(_ArtCache.of('tug')),
+          fit: BoxFit.cover,
         ),
       ),
       child: Stack(
         children: [
+          Positioned.fill(child: _scrim(opacity: 0.3)),
           Positioned(
             left: 16,
             top: 90,
@@ -2191,13 +2339,14 @@ class _LiveScreenState extends State<LiveScreen>
             ),
           ),
           Positioned(
-            left: 0,
-            right: 0,
+            left: 16,
+            right: 16,
             bottom: 210,
             child: Center(
               child: Text(
                 'Gifts: ${widget.cfg.gifts.entries.map((e) => '${e.value} = ${e.key}').join('  •  ')}',
-                style: const TextStyle(fontSize: 11, color: Colors.white70),
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: 12, color: Colors.white),
               ),
             ),
           ),
@@ -2208,212 +2357,6 @@ class _LiveScreenState extends State<LiveScreen>
 }
 
 // ---------------------------------------------------------------- painters
-class DhammaPainter extends CustomPainter {
-  final double phase;
-  final String overlay;
-  final String preset;
-  DhammaPainter({
-    required this.phase,
-    required this.overlay,
-    required this.preset,
-  });
-  @override
-  void paint(Canvas canvas, Size size) {
-    final bg = Paint()
-      ..shader = const LinearGradient(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        colors: [Color(0xFF3E2723), Color(0xFF6D4C41), Color(0xFFD9A441)],
-      ).createShader(Rect.fromLTWH(0, 0, size.width, size.height));
-    canvas.drawRect(Rect.fromLTWH(0, 0, size.width, size.height), bg);
-    // sun / moon
-    canvas.drawCircle(
-      Offset(size.width * 0.78, size.height * 0.16),
-      42,
-      Paint()..color = Colors.amber.shade200.withOpacity(0.9),
-    );
-    // pagoda silhouette (original simple shapes)
-    final gold = Paint()..color = const Color(0xFFFFD54F);
-    final dark = Paint()..color = const Color(0xFF4E342E);
-    final cx = size.width / 2;
-    final baseY = size.height * 0.62;
-    canvas.drawRect(Rect.fromLTWH(cx - 90, baseY, 180, 26), dark);
-    canvas.drawRect(Rect.fromLTWH(cx - 65, baseY - 34, 130, 34), dark);
-    canvas.drawRect(Rect.fromLTWH(cx - 42, baseY - 64, 84, 30), dark);
-    final spire = Path()
-      ..moveTo(cx, baseY - 150)
-      ..lineTo(cx - 16, baseY - 64)
-      ..lineTo(cx + 16, baseY - 64)
-      ..close();
-    canvas.drawPath(spire, gold);
-    canvas.drawCircle(Offset(cx, baseY - 158), 8, gold);
-    // lotus petals
-    for (int i = -2; i <= 2; i++) {
-      final petal = Path()
-        ..moveTo(cx + i * 26, size.height * 0.78)
-        ..quadraticBezierTo(
-          cx + i * 26 + 10,
-          size.height * 0.70,
-          cx + i * 26,
-          size.height * 0.66,
-        )
-        ..quadraticBezierTo(
-          cx + i * 26 - 10,
-          size.height * 0.70,
-          cx + i * 26,
-          size.height * 0.78,
-        );
-      canvas.drawPath(
-        petal,
-        Paint()..color = Colors.pink.shade200.withOpacity(0.9),
-      );
-    }
-    // waveform overlay
-    if (overlay != 'No overlay') {
-      final bars = overlay.contains('Circular') ? 24 : 32;
-      for (int i = 0; i < bars; i++) {
-        final h =
-            12 + 44 * (0.5 + 0.5 * math.sin(phase * math.pi * 2 + i * 0.7));
-        final x = size.width * (i + 0.5) / bars;
-        final y = size.height * 0.86;
-        canvas.drawRect(
-          Rect.fromLTWH(x - 3, y - h / 2, 6, h),
-          Paint()..color = Colors.white.withOpacity(0.75),
-        );
-      }
-    }
-  }
-
-  @override
-  bool shouldRepaint(DhammaPainter old) =>
-      old.phase != phase || old.overlay != overlay;
-}
-
-class TruckPainter extends CustomPainter {
-  final double phase;
-  final bool dancing;
-  final double speed;
-  final int riderCount;
-  final int vvipIndex;
-  TruckPainter({
-    required this.phase,
-    required this.dancing,
-    required this.speed,
-    required this.riderCount,
-    required this.vvipIndex,
-  });
-  @override
-  void paint(Canvas canvas, Size size) {
-    // sky + ground
-    canvas.drawRect(
-      Rect.fromLTWH(0, 0, size.width, size.height),
-      Paint()
-        ..shader = const LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [Color(0xFF81D4FA), Color(0xFFC8E6C9), Color(0xFF8D6E63)],
-        ).createShader(Rect.fromLTWH(0, 0, size.width, size.height)),
-    );
-    // sun
-    canvas.drawCircle(
-      Offset(size.width * 0.85, size.height * 0.12),
-      34,
-      Paint()..color = Colors.yellow.shade300,
-    );
-    final w = size.width, h = size.height;
-    final truckY = h * 0.55;
-    final bounce = dancing ? math.sin(phase * math.pi * 2 * speed) * 6 : 0;
-    // truck body
-    final body = Paint()..color = const Color(0xFF2E9E5B);
-    canvas.drawRRect(
-      RRect.fromLTRBR(
-        w * 0.12,
-        truckY - 70 + bounce,
-        w * 0.88,
-        truckY + 10 + bounce,
-        const Radius.circular(14),
-      ),
-      body,
-    );
-    // cab
-    canvas.drawRRect(
-      RRect.fromLTRBR(
-        w * 0.66,
-        truckY - 110 + bounce,
-        w * 0.88,
-        truckY + 10 + bounce,
-        const Radius.circular(10),
-      ),
-      Paint()..color = const Color(0xFFFF7043),
-    );
-    canvas.drawRect(
-      Rect.fromLTWH(w * 0.70, truckY - 100 + bounce, 60, 36),
-      Paint()..color = Colors.lightBlue.shade100,
-    );
-    // wheels
-    for (final wx in [w * 0.25, w * 0.55, w * 0.78]) {
-      canvas.drawCircle(
-        Offset(wx, truckY + 14),
-        20,
-        Paint()..color = Colors.black,
-      );
-      canvas.drawCircle(
-        Offset(wx, truckY + 14),
-        9,
-        Paint()..color = Colors.grey.shade400,
-      );
-    }
-    // riders dancing on the truck bed
-    for (int i = 0; i < riderCount; i++) {
-      final rx = w * (0.18 + 0.09 * i);
-      final jump = dancing
-          ? (math.sin(phase * math.pi * 2 * speed + i) * 10).abs()
-          : 0;
-      final isVvip = i == vvipIndex;
-      final cy = truckY - 92 - jump + bounce;
-      canvas.drawCircle(
-        Offset(rx, cy),
-        16,
-        Paint()
-          ..color = isVvip
-              ? Colors.amber
-              : [
-                  Colors.red,
-                  Colors.blue,
-                  Colors.purple,
-                  Colors.teal,
-                  Colors.pink,
-                ][i % 5],
-      );
-      canvas.drawRect(
-        Rect.fromLTWH(rx - 12, cy + 14, 24, 26),
-        Paint()..color = isVvip ? Colors.amber.shade700 : Colors.white,
-      );
-      if (isVvip) {
-        final crown = Path()
-          ..moveTo(rx - 12, cy - 16)
-          ..lineTo(rx - 6, cy - 28)
-          ..lineTo(rx, cy - 18)
-          ..lineTo(rx + 6, cy - 28)
-          ..lineTo(rx + 12, cy - 16)
-          ..close();
-        canvas.drawPath(crown, Paint()..color = Colors.amber);
-      }
-    }
-    // road
-    canvas.drawRect(
-      Rect.fromLTWH(0, truckY + 34, w, 8),
-      Paint()..color = Colors.white70,
-    );
-  }
-
-  @override
-  bool shouldRepaint(TruckPainter old) =>
-      old.phase != phase ||
-      old.riderCount != riderCount ||
-      old.vvipIndex != vvipIndex;
-}
-
 class MapPainter extends CustomPainter {
   final RegionInfo? selected;
   final Map<String, int> points;
