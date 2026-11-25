@@ -630,9 +630,9 @@ class _EditorToolScreenState extends State<EditorToolScreen> {
     (i) => 0.2 + 0.6 * ((i * 37 % 10) / 10),
   );
   Future<void> _pick() async {
-    final r = await FilePicker.platform.pickFiles(type: FileType.video);
-    if (r != null && r.files.isNotEmpty) {
-      setState(() => fileName = r.files.first.name);
+    final files = await FilePicker.pickFiles(type: FileType.video);
+    if (files.isNotEmpty) {
+      setState(() => fileName = files.first.name);
     }
   }
 
@@ -842,14 +842,11 @@ class _SetupScreenState extends State<SetupScreen> {
   }
 
   Future<void> _pickSongs() async {
-    final r = await FilePicker.platform.pickFiles(
-      type: FileType.audio,
-      allowMultiple: true,
-    );
-    if (r != null) {
+    final files = await FilePicker.pickFiles(type: FileType.audio);
+    if (files.isNotEmpty) {
       setState(
         () => cfg!.songs.addAll(
-          r.files
+          files
               .map((f) => f.path)
               .whereType<String>()
               .where((p) => p.isNotEmpty),
