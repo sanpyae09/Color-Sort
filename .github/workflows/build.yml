@@ -1,0 +1,60 @@
+name: Build Live Studio APK
+
+on:
+  push:
+    branches: [livestudio]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Scaffold android project (template from installed Flutter)
+        run: |
+          flutter create --project-name livestudio --org com.pyaystudios --platforms android scaffold_tmp
+          cp -r scaffold_tmp/android android
+          rm -rf scaffold_tmp
+
+      - name: Patch scaffold (applicationId, minSdk, permissions)
+        run: python3 ci/post_scaffold.py
+
+      - name: Pub get
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze || true
+
+      - name: Build release APK
+        run: flutter build apk --release
+
+      - name: Publish APK to release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cp build/app/outputs/flutter-apk/app-release.apk livestudio.apk
+          ls -la livestudio.apk
+          gh release view livestudio-v1 >/dev/null 2>&1 || gh release create livestudio-v1 --title "Live Studio v1.0.0" --notes "Live Studio 1.0.0 — 5 interactive studios for TikTok / YouTube Live. Original implementation by Pyay Studios."
+          gh release upload livestudio-v1 livestudio.apk --clobber
+
+      - name: Upload artifact (backup)
+        uses: actions/upload-artifact@v4
+        with:
+          name: livestudio-apk
+          path: livestudio.apk
