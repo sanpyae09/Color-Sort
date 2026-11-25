@@ -25,16 +25,28 @@ if is_kts:
     text, n2 = re.subn(r"minSdk\s*=\s*flutter\.minSdkVersion", "minSdk = 24", text, count=1)
     if n2 == 0:
         text, n2 = re.subn(r"minSdk\s*=\s*\d+", "minSdk = 24", text, count=1)
+    # Pin NDK to 28.2.13676358 (the template's flutter.ndkVersion, required
+    # by the plugins; installed in the local SDK, auto-installed by CI).
+    text, n3 = re.subn(r'ndkVersion\s*=\s*flutter\.ndkVersion', 'ndkVersion = "28.2.13676358"', text, count=1)
+    if n3 == 0:
+        text, n3 = re.subn(r'ndkVersion\s*=\s*"[^"]*"', 'ndkVersion = "28.2.13676358"', text, count=1)
 else:
     text, n1 = re.subn(r'applicationId\s+"[^"]*"', f'applicationId "{APP_ID}"', text, count=1)
     text, n2 = re.subn(r"minSdkVersion\s+flutter\.minSdkVersion", "minSdkVersion 24", text, count=1)
     if n2 == 0:
         text, n2 = re.subn(r"minSdkVersion\s+\d+", "minSdkVersion 24", text, count=1)
+    text, n3 = re.subn(r'ndkVersion\s+flutter\.ndkVersion', 'ndkVersion "28.2.13676358"', text, count=1)
+    if n3 == 0:
+        text, n3 = re.subn(r'ndkVersion\s+"[^"]*"', 'ndkVersion "28.2.13676358"', text, count=1)
 gradle.write_text(text)
 print(f"gradle patched: applicationId replacements={n1}, minSdk replacements={n2}")
 
 manifest = Path("android/app/src/main/AndroidManifest.xml")
 m = manifest.read_text()
+
+# Launcher label: template uses the project name ("livestudio"); show "Live Studio".
+m, n_label = re.subn(r'android:label="[^"]*"', 'android:label="Live Studio"', m, count=1)
+print(f"manifest: label replacements={n_label}")
 
 perms = ""
 for perm in (
